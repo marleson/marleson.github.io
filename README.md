@@ -3,9 +3,11 @@
 Introduction
 ============
 
-Iniciando meu site no github. Essa será o [Marleson Webpage][]
+Iniciando meu site no github. Essa será o [Marleson Webpage][].
+Em caso dúvidas, ou queira contribuir, veja o [E-mail] do administrador na secao de contato.
 
 [Marleson Webpage]: https://marleson.github.io
+[E-mail]: m.rondiner@gmail.com
 
 ## Contato
 * m.rondiner@gmail.com  
