@@ -1,9 +1,5 @@
 ![WPM - WebPage Marleson](webBanner.png)
 
-Meu Site
-========
-marleson.github.io
-
 Introduction
 ============
 Iniciando meu site no github. Essa será minha [Webpage][Marleson Webpage].
