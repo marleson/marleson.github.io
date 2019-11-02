@@ -7,6 +7,17 @@ Em caso dúvidas, ou queira contribuir, entre em contato com o administrador.
 
 [Marleson Webpage]: https://marleson.github.io
 
+
+Pastas
+======
+
+./docs: site de publicação das notas de aula
+
+./pub: scripts de construção de ./docs
+
+./src: códigos-fonte das notas de aula
+
+
 Contato
 =======
 * Márleson Ferreira: m.rondiner@gmail.com  
