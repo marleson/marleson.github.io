@@ -1547,7 +1547,7 @@ input, select, textarea {
 			width: 40rem;
 			max-width: 100%;
 			background-color: rgba(27, 31, 34, 0.3);
-			/* background-color: rgb(255, 255, 255,0.175); */
+			/* background-color: rgba(27, 31, 34, 0.85); */
 			border-radius: 4px;
 			opacity: 0;
 		}
