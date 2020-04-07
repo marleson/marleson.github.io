@@ -1,4 +1,4 @@
-![WPM - WebPage Marleson](webBanner.png)
+![WPM - WebPage Marleson](images/webBanner.png)
 
 Introduction
 ============
