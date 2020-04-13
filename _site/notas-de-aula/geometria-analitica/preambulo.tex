@@ -1,0 +1,168 @@
+%Este trabalho está licenciado sob a Licença Atribuição-CompartilhaIgual 4.0 Internacional Creative Commons. Para visualizar uma cópia desta licença, visite http://creativecommons.org/licenses/by-sa/4.0/ ou mande uma carta para Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Predefinicoes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\ifisbook         % O layout será book?
+\newif\ifishtml         % O layout será html?
+
+\newif\ifisoctave       % Códigos em octave?
+\newif\ifispython       % Códigos em python
+\newif\ifismaxima       % Códigos em maxima?
+
+\def\tfn{config.knd}     % Arquivo que guarda as definições do tipo de saída
+\def \tdata{}          % Definições do tipo de saída: book, slide ou html.
+
+\openin1=\tfn\relax    % Leitura das definições de saída
+\read1 to \tdata
+\closein1
+
+\tdata                 % Definições de saída
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Opcões de Linguagem
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Parágrafos sem indentação
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+%\usepackage{lipsum}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot{}
+\fancyfoot[RE,RO]{\thepage}
+\fancyfoot[CE,CO]{\href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Licença CC-BY-SA 4.0}}
+
+%%%% no blank pages between chapters %%%%
+\let\cleardoublepage\clearpage
+
+%%%% ams-latex %%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%\usepackage{mathtools}
+
+%%% landscape environment%%%
+\usepackage{lscape}
+
+%%%% graphics %%%%
+\usepackage{graphicx}
+
+%\usepackage{graphics}
+%\usepackage{caption}
+
+%%%% links %%%%
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage[pdfborder={0 0 0 [0 0]},colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue]{hyperref}
+
+
+%%%% code insert (verbatim) %%%%
+\usepackage{verbatim}
+
+
+%%%% citation %%%%
+\usepackage{cite}
+
+%%%% lists %%%%
+\usepackage{enumerate}
+
+%%%% index %%%%
+\usepackage{makeidx}
+
+
+%%%% miscellaneous %%%%
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+\usepackage{xcolor}
+
+% \renewcommand{\arraystretch}{1.5} %space between rows in tables
+% \usepackage{array,booktabs}
+% \usepackage{tikz}
+
+%emphasis \emph
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS E NOVOS COMANDOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\arc}{\operatorname{arc}}
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand{\senh}{\operatorname{senh}}
+\newcommand{\tg}{\operatorname{tg}}
+\newcommand{\cotg}{\operatorname{cotg}}
+\newcommand{\cosec}{\operatorname{cosec}}
+\newcommand{\cossec}{\operatorname{cossec}}
+\newcommand{\p}{\partial}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\sign}{\operatorname{sign}}
+
+% SumPy link
+\newcommand{\sympy}{\href{https://www.sympy.org}{SymPy}}
+
+% Python link
+\newcommand{\python}{\href{https://www.python.org}{Python}}
+
+%E = 10^
+\def\E#1{\mathrm{E}\!#1\!}
+%NaN
+\def\NaN{\mathrm{NaN}\!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\emconstrucao}{\vspace{0.25cm}Em construção ...\vspace{0.25cm}}
+
+\newcommand{\fenics}{\href{https://fenicsproject.org/}{FENiCS}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[section]
+\newtheorem{lem}{Lema}[section]
+\newtheorem{prop}{Proposição}[section]
+\newtheorem{corol}{Corolário}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definição}[section]
+\newtheorem{obs}{Observação}[section]
+\newtheorem{ex}{Exemplo}[section]
+
+\newenvironment{dem}{\begin{proof}}{\end{proof}}
+
+
+%Exercícios Resolvidos
+
+\newtheorem{exeresol}{ER}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% + INTRUCOES PARA O FORMATO LIVRO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifisbook
+\input ./preambulo_book.tex
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% + INTRUCOES PARA O FORMATO HTML
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifishtml
+\input ./preambulo_html.tex
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

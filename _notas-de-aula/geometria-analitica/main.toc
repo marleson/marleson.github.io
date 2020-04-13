@@ -1,0 +1,14 @@
+\babel@toc {brazil}{}
+\contentsline {chapter}{Capa}{i}{Doc-Start}%
+\contentsline {chapter}{Licença}{ii}{chapter*.1}%
+\contentsline {chapter}{Prefácio}{iii}{chapter*.2}%
+\contentsline {chapter}{Sumário}{iv}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Estudo de retas}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Sistema de coordenadas no espaço}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Equações da reta}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Equação vetorial de uma reta}{4}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Equações paramétricas de uma reta}{5}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Equações da reta na forma simétrica}{6}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Exercícios resolvidos}{6}{subsection.1.2.4}%
+\contentsline {chapter}{Respostas dos Exercícios}{9}{chapter*.6}%
+\contentsline {chapter}{Referências Bibliográficas}{10}{chapter*.7}%

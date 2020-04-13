@@ -1,3 +1,0 @@
-\contentsline {chapter}{Capa}{i}{Doc-Start}%
-\contentsline {chapter}{Sumário}{ii}{chapter*.1}%
-\contentsline {chapter}{Referências Bibliográficas}{2}{chapter*.2}%

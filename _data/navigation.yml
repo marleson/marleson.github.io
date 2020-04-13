@@ -1,0 +1,16 @@
+# main links
+main:
+  - title: "Notas de aula"
+    url: /notas-de-aula/
+  - title: "Blog"
+    url: /posts/
+  - title: "Sobre mim"
+    url: /about/    
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/
