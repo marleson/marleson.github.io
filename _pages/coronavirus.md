@@ -3,6 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
+date: 2020-04-13
 toc: true
 toc_label: "Sumário"
 header: 
@@ -28,7 +29,7 @@ Neste gráfico é possível acompanhar a evolução do número total de casos su
 <iframe title="" aria-label="Stacked Column Chart" id="datawrapper-chart-dEAcn" src="//datawrapper.dwcdn.net/dEAcn/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
 
-No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/0404/boletim-covid-19-amapa-confirma-primeira-morte-por-coronavirus">a primeira morte</a> no estado do Amapá. Existem ainda 166 casos confirmados, a maioria na cidade de Macapá, 737 casos suspeitos, 736 descartados em todo o estado e 55 pacientes recuperados.
+No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/0404/boletim-covid-19-amapa-confirma-primeira-morte-por-coronavirus">a primeira morte</a> no estado do Amapá. Existem ainda 237 casos confirmados, a maioria na cidade de Macapá, 147 casos suspeitos *(Macapá não informou o número de suspeitos)*, 1014 descartados em todo o estado e 92 pacientes recuperados.
 
 ## Evolução da infecção no Amapá
 
