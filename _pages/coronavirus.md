@@ -20,8 +20,14 @@ A taxa de confirmados por mil habitantes é calculada baseando-se na estimativa 
 
 ## Amapá: Casos suspeitos e confirmados de COVID-19 
 
-Os focos de casos supeitos e confirmados pelo estado são mostrados no mapa abaixo.
-<iframe title="Amap&aacute; : Casos suspeitos e confirmados de COVID-19" aria-label="Brazil amapá municipalities Symbol map" id="datawrapper-chart-8JlI2" src="//datawrapper.dwcdn.net/8JlI2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); </script>
+Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas abaixo.
+
+<iframe title="Casos suspeitos no estado do Amap&aacute;, 12 abr." aria-label="Brazil amapá municipalities choropleth map" id="datawrapper-chart-ez9u7" src="//datawrapper.dwcdn.net/ez9u7/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
+</script>
+**Macapá não informou o número de suspeitos*
+
+<iframe title="Casos confirmados no estado do Amap&aacute;, 12 Abr." aria-label="Brazil amapá municipalities Symbol map" id="datawrapper-chart-8JlI2" src="//datawrapper.dwcdn.net/8JlI2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
+</script>
 
 ## Municípios: Casos suspeitos 
 
