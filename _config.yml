@@ -20,7 +20,7 @@ title                    : "Márleson Ferreira"
 title_separator          : "-"
 subtitle                 : "Códigos, notas de aula e mais" # site tagline that appears below site title in masthead
 name                     : "Márleson Ferreira"
-description              : "bla bla bla"
+description              : "Meu site pessoal com notas de aula, códigos e mais."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
