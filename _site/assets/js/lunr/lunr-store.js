@@ -23,6 +23,12 @@ var store = [{
         "url": "http://localhost:4000/blogando-jupyter-jekyll/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
+        "title": "Criando um atalho no Desktop para o Anaconda",
+        "excerpt":"Após sua instalação do Anaconda no linux, provavelmente terá que executá-lo pelo terminal nas primeiras vezes. Isso às vezes atrapalha o fluxo de trabalho e para não precisar abrir o terminal todas as vezes e vou deixar aqui os passos que fiz para ter um ícone disponível na sua área...","categories": [],
+        "tags": ["Anaconda","Linux","Atalhos","Linux Mint"],
+        "url": "http://localhost:4000/Atalho-no-desktop-para-Anaconda/",
+        "teaser": "http://localhost:4000/images/500x300.png"
+      },{
         "title": "Início com Python (em construção)",
         "excerpt":"Vou iniciar um pouco de python em Jupiter Notebook Primeira coisa import numpy as np np.random.seed(1) N = 100 A fórmula da baskara: import pandas as pd import seaborn as sns url = \"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data\" names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class'] iris = pd.read_csv(url, names=names) iris.head() sepal-length sepal-width petal-length petal-width...","categories": [],
         "tags": ["python","jupyter"],

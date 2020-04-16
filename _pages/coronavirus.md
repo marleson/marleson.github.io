@@ -3,7 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
-date: 2020-04-14
+date: 2020-04-15
 toc: true
 toc_label: "Sumário"
 header: 
@@ -29,7 +29,11 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 <iframe title="Casos confirmados no estado do Amap&aacute;, 12 Abr." aria-label="Brazil amapá municipalities Symbol map" id="datawrapper-chart-8JlI2" src="//datawrapper.dwcdn.net/8JlI2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
 </script>
 
-Em todo o estado existem 308 casos confirmados, a maioria na cidade de Macapá, 536 casos suspeitos *(no boletim o esse número é divergente, pois não apresenta a soma de casos em cada município)*. O total de casos descartados **não foi divulgado** neste dia 14 de abril, até a última contagem eram 1034 descartados. Há ainda 133 pacientes já recuperados.
+
+
+> O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências. O número de confirmados por município é 340, mas o boletim informa 342 casos, a maioria na cidade de Macapá. O número de suspeitos é 538, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 305. O total de casos descartados **não foi divulgado** no dia 14 e neste 15 de abril, até a última contagem eram 1034 descartados. Há ainda 145 pacientes já recuperados.
+
+
 
 ## Municípios: Casos suspeitos 
 
