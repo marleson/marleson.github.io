@@ -26,7 +26,7 @@ var store = [{
         "title": "Criando um atalho no Desktop para o Anaconda",
         "excerpt":"Após sua instalação do Anaconda no linux, provavelmente terá que executá-lo pelo terminal nas primeiras vezes. Isso às vezes atrapalha o fluxo de trabalho e para não precisar abrir o terminal todas as vezes e vou deixar aqui os passos que fiz para ter um ícone disponível na sua área...","categories": [],
         "tags": ["Anaconda","Linux","Atalhos","Linux Mint"],
-        "url": "http://localhost:4000/Atalho-no-desktop-para-Anaconda/",
+        "url": "http://localhost:4000/tutoriais/Atalho%20no%20desktop%20para%20Anaconda/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
         "title": "Início com Python (em construção)",
