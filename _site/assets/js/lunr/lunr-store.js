@@ -29,6 +29,12 @@ var store = [{
         "url": "http://localhost:4000/tutoriais/Atalho%20no%20desktop%20para%20Anaconda/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
+        "title": "Instalando o Anaconda no Linux Mint",
+        "excerpt":"O Anaconda é blabla… Baixando o Anaconda Instalação Após o download, entre na pasta que contém o arquivo de instalação bash Anaconda3-2020.02-Linux-x86_64.sh Com a instalação iniciada, será solicitado que você leia o acordo de licença do produto. Pressione enter até aparecer o termo de aceite. Na tela seguinte, digite yes...","categories": [],
+        "tags": ["Anaconda","Linux","Atalhos","Linux Mint"],
+        "url": "http://localhost:4000/tutoriais/Instalando%20o%20Anaconda%20no%20Linux/",
+        "teaser": "http://localhost:4000/images/500x300.png"
+      },{
         "title": "Início com Python (em construção)",
         "excerpt":"Vou iniciar um pouco de python em Jupiter Notebook Primeira coisa import numpy as np np.random.seed(1) N = 100 A fórmula da baskara: import pandas as pd import seaborn as sns url = \"https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data\" names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class'] iris = pd.read_csv(url, names=names) iris.head() sepal-length sepal-width petal-length petal-width...","categories": [],
         "tags": ["python","jupyter"],
