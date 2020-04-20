@@ -23,6 +23,12 @@ var store = [{
         "url": "http://localhost:4000/blogando-jupyter-jekyll/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
+        "title": "Modelo SIR",
+        "excerpt":" ","categories": [],
+        "tags": ["modelo SIR","covid19","epidemias"],
+        "url": "http://localhost:4000/modelo-SIR-codid19/",
+        "teaser": "http://localhost:4000/images/500x300.png"
+      },{
         "title": "Criando um atalho no Desktop para o Anaconda",
         "excerpt":"Após sua instalação do Anaconda no linux, provavelmente terá que executá-lo pelo terminal nas primeiras vezes. Isso às vezes atrapalha o fluxo de trabalho e para não precisar abrir o terminal todas as vezes e vou deixar aqui os passos que fiz para ter um ícone disponível na sua área...","categories": [],
         "tags": ["Anaconda","Linux","Atalhos","Linux Mint"],
