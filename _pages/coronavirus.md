@@ -68,9 +68,9 @@ O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa 
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-OryD4" src="//datawrapper.dwcdn.net/OryD4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
 
-## Previsão de casos confirmados (Atualização - 4 de Abr.)*
+## Previsão de casos confirmados (Atualização - 20 de Abr.)*
 
-Neste gráfico é empregado um modelo de regressão não-linear para estimar o número de infectados para os próximos 15 dias no estado (por ser uma aproximação, um tempo maior não traria muita confiabilidade). O modelo tem um coeficiente de determinação de 0, 9567 (R<sup>2</sup> = 0, 9567). Basicamente, isso significa que o modelo consegue explicar em 95.67% os dados coletados.
+Neste gráfico é empregado um modelo de regressão não-linear para estimar o número de infectados para os próximos 15 dias no estado (por ser uma aproximação, um tempo maior não traria muita confiabilidade). O modelo tem um coeficiente de determinação de 0,9791 (R<sup>2</sup> = 0,9791). Basicamente, isso significa que o modelo consegue explicar em quase 98% os dados coletados.
 {: .text-justify}
 
 <iframe title="Proje&ccedil; &atilde; o do n&uacute; mero de casos no Amap&aacute; " aria-label="Interactive line chart"
