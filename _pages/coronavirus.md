@@ -35,7 +35,7 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 
 <!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
 
-**NOTA:** O número de confirmados no estado é 492, a maioria na cidade de Macapá. O número de suspeitos é 1191, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 1152. Desde o dia 13/04 os casos descaratados não eram divulgados, o que não possibilitava a previsão da quantidade de testes realizados. Neste dia 22/04 o total de casos descartados é 1363 casos *(o mesmo número do dia anterior e certamente equivocado)*. Desse modo, não é possível estimar quantidade de testes realizados. Há ainda 236 pacientes já recuperados.
+**NOTA:** O número de confirmados no estado é 492, a maioria na cidade de Macapá. O número de suspeitos é 1191, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 1152. Desde o dia 13/04 os casos descaratados não eram divulgados, o que não possibilitava a previsão da quantidade de testes realizados. Neste dia 22/04 o total de casos descartados é 1413 casos *(no boletim do estado foi informado o mesmo número do dia anterior - certamente equivocado)*. Com esse número é possível estimar que 76 testes foram realizados no dia, sendo 34,21% de casos confirmados. Há ainda 236 pacientes já recuperados.
 {: .text-justify}
 {: .notice--warning}
 
@@ -63,7 +63,7 @@ No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/
 <iframe title="Casos Confirmados" aria-label="Interactive line chart" id="datawrapper-chart-DiAEX" src="//datawrapper.dwcdn.net/DiAEX/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
 
-O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa da taxa de duplicação do número de casos e mortos no estado (a cada dia, a cada 2 dias, a cada 3 dias e a cada semana). Os dados estão em escala logarítmica.
+O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa da taxa de duplicação do número de casos no estado (a cada dia, a cada 2 dias, a cada 3 dias e a cada semana). Os dados estão em escala logarítmica.
 {: .text-justify}
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-OryD4" src="//datawrapper.dwcdn.net/OryD4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
