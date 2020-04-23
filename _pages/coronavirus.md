@@ -63,6 +63,9 @@ No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/
 <iframe title="Casos Confirmados" aria-label="Interactive line chart" id="datawrapper-chart-DiAEX" src="//datawrapper.dwcdn.net/DiAEX/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
 
+No dia 18 de abril, o governo do estado decretou <a href="http://transparencia.ap.gov.br/relatorios/covid/DECRETO_N_1538_DE_18_DE_ABRIL_DE_2020.pdf"> estado de calamidade pública</a>, em função do crescimento do número de casos confirmados pela covid-19.
+{: .text-justify}
+
 O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa da taxa de duplicação do número de casos no estado (a cada dia, a cada 2 dias, a cada 3 dias e a cada semana). Os dados estão em escala logarítmica.
 {: .text-justify}
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-OryD4" src="//datawrapper.dwcdn.net/OryD4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
