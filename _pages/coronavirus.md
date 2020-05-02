@@ -3,7 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
-date: 2020-04-26
+date: 2020-05-01
 toc: true
 toc_label: "Sumário"
 toc_sticky: true
@@ -35,7 +35,7 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 
 <!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
 
-**NOTA:** O número de confirmados no estado é 821, a maioria na cidade de Macapá. O número de suspeitos é 1219, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 1122. Neste dia 26/04 o total de casos descartados é 1817 casos. Há ainda 306 pacientes já recuperados.
+**NOTA:** O número de confirmados no estado é 1120, a maioria na cidade de Macapá. O número de suspeitos é 3023, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 2302. Neste dia 01/05 o total de casos descartados é 2018 casos. Há ainda 488 pacientes já recuperados.
 {: .text-justify}
 {: .notice--warning}
 
@@ -65,6 +65,9 @@ No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/
 
 No dia 18 de abril, o governo do estado decretou <a href="http://transparencia.ap.gov.br/relatorios/covid/DECRETO_N_1538_DE_18_DE_ABRIL_DE_2020.pdf"> estado de calamidade pública</a>, em função do crescimento do número de casos confirmados pela covid-19.
 {: .text-justify}
+
+<iframe title="Curva de Infectados no estado do Amap&aacute;" aria-label="Interactive line chart" id="datawrapper-chart-jqubB" src="//datawrapper.dwcdn.net/jqubB/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
+</script>
 
 O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa da taxa de duplicação do número de casos no estado (a cada dia, a cada 2 dias, a cada 3 dias e a cada semana). Os dados estão em escala logarítmica.
 {: .text-justify}
