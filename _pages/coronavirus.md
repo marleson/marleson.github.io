@@ -3,7 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
-date: 2020-05-01
+date: 2020-05-05
 toc: true
 toc_label: "Sumário"
 toc_sticky: true
@@ -35,7 +35,7 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 
 <!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
 
-**NOTA:** O número de confirmados no estado é 1120, a maioria na cidade de Macapá. O número de suspeitos é 3023, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 2302. Neste dia 01/05 o total de casos descartados é 2018 casos. Há ainda 488 pacientes já recuperados.
+**NOTA:** O número de confirmados no estado é 1931, a maioria na cidade de Macapá. O número de suspeitos é 2968, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 2512. Neste dia 05/05 o total de casos descartados é 2588 casos. Há ainda 557 pacientes já recuperados.
 {: .text-justify}
 {: .notice--warning}
 
