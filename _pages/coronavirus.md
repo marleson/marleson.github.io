@@ -35,7 +35,7 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 
 <!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
 
-**NOTA:** O número de confirmados no estado é 1931, a maioria na cidade de Macapá. O número de suspeitos é 2968, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 2512. Neste dia 05/05 o total de casos descartados é 2588 casos. Há ainda 557 pacientes já recuperados.
+**NOTA:** O número de confirmados no estado é 1931, a maioria na cidade de Macapá. O número de suspeitos é 3303, mas pode-se notar que nem todos os casos estão sendo testados, visto que o número casos em análise laboratorial divulgado é de 2512. Neste dia 05/05 o total de casos descartados é 2588 casos. Há ainda 557 pacientes já recuperados.
 {: .text-justify}
 {: .notice--warning}
 
