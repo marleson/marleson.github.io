@@ -4,6 +4,8 @@ main:
     url: /notas-de-aula/
   - title: "Blog"
     url: /posts/
+  - title: "Agenda"
+    url: /agenda/
   - title: "Sobre mim"
     url: /about/    
   # - title: "About"
