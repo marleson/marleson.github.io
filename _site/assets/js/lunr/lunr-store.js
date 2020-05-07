@@ -23,12 +23,6 @@ var store = [{
         "url": "http://localhost:4000/blogando-jupyter-jekyll/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
-        "title": "Modelo SIR",
-        "excerpt":" ","categories": [],
-        "tags": ["modelo SIR","covid19","epidemias"],
-        "url": "http://localhost:4000/modelo-SIR-codid19/",
-        "teaser": "http://localhost:4000/images/500x300.png"
-      },{
         "title": "Como adicionar suporte ao latex no minimal mistakes",
         "excerpt":"Uma das minhas dificuldades em postar blogs com textos matemáticos foi encontrar um suporte adequado para textos em Latex. Neste post eu mostro como adicionar o suporte ao latex para o seu blog baseado no tema Minimal Mistakes Jekyll. Passo 1: Defina o mecanismo de remarcação para kramdown No seu...","categories": [],
         "tags": ["minimal mistakes","jekyll","latex","mathjax"],
