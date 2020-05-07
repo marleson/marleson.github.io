@@ -12,7 +12,7 @@ var store = [{
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
         "title": "Page Archive",
-        "excerpt":"                                                                                ","categories": [],
+        "excerpt":"                                                                                     ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/page-archive/",
         "teaser": "http://localhost:4000/images/500x300.png"
