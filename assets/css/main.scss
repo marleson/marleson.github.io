@@ -33,6 +33,7 @@ $base0f: #ff5370;
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+
 // marleson add 11.04.20 (format table in jupyter converted to md) >>>>
 
 p, blockquote, ul, ol, dl, li, table, pre {

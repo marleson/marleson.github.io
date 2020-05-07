@@ -12,7 +12,7 @@ var store = [{
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
         "title": "Page Archive",
-        "excerpt":"                                                                                ","categories": [],
+        "excerpt":"                                                                                     ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/page-archive/",
         "teaser": "http://localhost:4000/images/500x300.png"
@@ -27,6 +27,12 @@ var store = [{
         "excerpt":" ","categories": [],
         "tags": ["modelo SIR","covid19","epidemias"],
         "url": "http://localhost:4000/modelo-SIR-codid19/",
+        "teaser": "http://localhost:4000/images/500x300.png"
+      },{
+        "title": "Como adicionar suporte ao latex no minimal mistakes",
+        "excerpt":"Uma das minhas dificuldades em postar blogs com textos matemáticos foi encontrar um suporte adequado para textos em Latex. Neste post eu mostro como adicionar o suporte ao latex para o seu blog baseado no tema Minimal Mistakes Jekyll. Passo 1: Defina o mecanismo de remarcação para kramdown No seu...","categories": [],
+        "tags": ["minimal mistakes","jekyll","latex","mathjax"],
+        "url": "http://localhost:4000/como-adicionar-latex-ao-minimal-mistakes/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
         "title": "Criando um atalho no Desktop para o Anaconda",
