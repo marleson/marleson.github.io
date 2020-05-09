@@ -9,7 +9,7 @@ var store = [{
         "excerpt":" ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/notas-de-aula/geo-analitica/",
-        "teaser": "http://localhost:4000/images/500x300.png"
+        "teaser": "http://localhost:4000/images/bg.jpg"
       },{
         "title": "Page Archive",
         "excerpt":"                                                                                ","categories": [],

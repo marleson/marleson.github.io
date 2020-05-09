@@ -21,6 +21,7 @@ $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
 $helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
+$soleil: soleil, sans-serif;
 
 /* serif typefaces */
 $georgia: Georgia, serif !default;
@@ -29,7 +30,7 @@ $bodoni: "Bodoni MT", serif !default;
 $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
-$global-font-family: $sans-serif !default;
+$global-font-family: $sans-serif  !default;
 $header-font-family: $sans-serif !default;
 $caption-font-family: $serif !default;
 
@@ -144,7 +145,7 @@ $small: 600px !default;
 $medium: 768px !default;
 $medium-wide: 900px !default;
 $large: 1024px !default;
-$x-large: 1280px !default;
+$x-large: 1400px !default;
 $max-width: $x-large !default;
 
 /*
