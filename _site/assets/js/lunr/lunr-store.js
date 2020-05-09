@@ -29,6 +29,12 @@ var store = [{
         "url": "http://localhost:4000/como-adicionar-latex-ao-minimal-mistakes/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
+        "title": "O modelo SIR para estudo de epidemias",
+        "excerpt":"O novo coronavírus (Covid-19) vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o número de casos confirmados passam de 145 mil e de mortos se aproxima de 10 mil. Ao mesmo tempo que essa doença se propaga rapidamente, estou interessado em compreender...","categories": [],
+        "tags": ["covid19","coronavirus","amapá"],
+        "url": "http://localhost:4000/SIR_blog_AP/",
+        "teaser": "http://localhost:4000/images/500x300.png"
+      },{
         "title": "Criando um atalho no Desktop para o Anaconda",
         "excerpt":"Após sua instalação do Anaconda no linux, provavelmente terá que executá-lo pelo terminal nas primeiras vezes. Isso às vezes atrapalha o fluxo de trabalho e para não precisar abrir o terminal todas as vezes e vou deixar aqui os passos que fiz para ter um ícone disponível na sua área...","categories": [],
         "tags": ["Anaconda","Linux","Atalhos","Linux Mint"],
