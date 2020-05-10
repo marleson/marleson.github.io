@@ -5,6 +5,8 @@ date: 2020-04-11
 author_profile: true
 layout: collection
 collection: tutoriais
+entries_layout: grid
+classes: wide
 
 ---
 

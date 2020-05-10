@@ -24,7 +24,7 @@ description              : "Meu site pessoal com notas de aula, códigos e mais.
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "images/500x300.png" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : "images/bg.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/images/favicon-96x96.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
@@ -285,7 +285,10 @@ collections:
     permalink: /:collection/:path/
   notas-de-aula:
     output: true
-    permalink: /:collection/:path/    
+    permalink: /:collection/:path/ 
+  codigos:
+    output: true
+    permalink: /:collection/:path/           
 
 # Defaults
 defaults:
@@ -330,3 +333,14 @@ defaults:
       author_profile: true
       share: true
       comments: true
+
+    # _codigos
+  - scope:
+      path: ""
+      type: codigos
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true      
+
