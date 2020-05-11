@@ -28,7 +28,7 @@ header:
 Estudo da Covid-19 pelo modelo SIR
 ==========
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fprimeiro%20teste.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fcovid-19-SIR-model-ap.ipynb)
 
 A Covid-19 é uma doença respiratória causada pelo novo coronavírus (SARS-CoV-2). Esse vírus vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o
 número de casos confirmados passam de 145 mil e de mortos ultrapassa os 10 mil.
