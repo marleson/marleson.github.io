@@ -38,8 +38,8 @@ var store = [{
         "title": "Estudo da Covid-19 pelo modelo SIR",
         "excerpt":"A Covid-19 é uma doença respiratória causada pelo novo coronavírus (SARS-CoV-2). Esse vírus vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o número de casos confirmados passam de 145 mil e de mortos ultrapassa os 10 mil. Ao mesmo tempo que essa...","categories": [],
         "tags": ["modelo SIR","covid19","coronavirus","amapá"],
-        "url": "http://localhost:4000/SIR_blog_AP/",
-        "teaser": "http://localhost:4000/images/500x300.png"
+        "url": "http://localhost:4000/estudo-da-covid-19-pelo-modelo-SIR/",
+        "teaser": "http://localhost:4000/images/bg.jpg"
       },{
         "title": "Criando um atalho no Desktop para o Anaconda",
         "excerpt":"Após sua instalação do Anaconda no linux, provavelmente terá que executá-lo pelo terminal nas primeiras vezes. Isso às vezes atrapalha o fluxo de trabalho e para não precisar abrir o terminal todas as vezes e vou deixar aqui os passos que fiz para ter um ícone disponível na sua área...","categories": [],

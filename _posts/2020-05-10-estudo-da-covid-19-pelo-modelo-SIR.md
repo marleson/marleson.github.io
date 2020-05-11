@@ -2,7 +2,7 @@
 title: "O modelo SIR "
 excerpt: 'Sobre o SIR'
 tagline: "Uma abordagem com os dados do estado do Amapá"
-date: 2020-05-09
+date: 2020-05-10
 tags: [modelo SIR, covid19, coronavirus, amapá]
 layout: single
 # classes: wide
@@ -19,18 +19,6 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: images/covid-19.jpg
-
-# sidebar:
-#   - title: "Fernando Rodrigues"
-#     image: images/fernando.png
-#     image_alt: "fernando"
-#     text: "Professor do IFRS -  Campus Osório"
-#   - title: "Márleson Ferreira"
-#     image: images/marleson-icon1.png
-#     image_alt: "marleson"
-#     text: "Doutor em Engenharia"
-    
-    
 
 ---
 
@@ -314,10 +302,8 @@ output['Pc'] = 1-1/output['R0']
 ### As equações do modelo SIR
 Abaixo estão definidas o conjunto das 3 equações acopladas que descrevem o comportamento epidemiológico.
 
-\begin{equation}
-S'(t) = -\beta \dfrac{I(t)}{N(t)}S(t); \quad I'(t) = \beta \dfrac{I(t)}{N(t)}S(t) - \gamma I(t) \quad \mbox{e}\quad
-R'(t) = \gamma I(t)
-\end{equation}
+$$ S' = -\beta \dfrac{I(t)}{N(t)}S(t); \quad I' = \beta \dfrac{I(t)}{N(t)}S(t) - \gamma I(t) \quad \mbox{e}\quad
+R' = \gamma I(t) $$
 
 
 ```python
