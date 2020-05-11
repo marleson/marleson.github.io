@@ -23,8 +23,12 @@ header:
 ---
 
 
+
+
 Estudo da Covid-19 pelo modelo SIR
 ==========
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fprimeiro%20teste.ipynb)
 
 A Covid-19 é uma doença respiratória causada pelo novo coronavírus (SARS-CoV-2). Esse vírus vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o
 número de casos confirmados passam de 145 mil e de mortos ultrapassa os 10 mil.
@@ -60,7 +64,7 @@ representam a população que já adquiriu imunidade e não estão mais
 suscetíveis a doença. Nesse caso incluem-se também os mortos (que não
 podem disseminar a doença).
 
-![image](/images/SIR_statement.svg)
+![image](/images/SIR_statement.svg){: .align-center}
 
 O modelo SIR permite descrever o número de pessoas em cada compartimento
 com uma equação diferencial ordinária. O parâmetro $\beta$ é a taxa que
@@ -302,8 +306,8 @@ output['Pc'] = 1-1/output['R0']
 ### As equações do modelo SIR
 Abaixo estão definidas o conjunto das 3 equações acopladas que descrevem o comportamento epidemiológico.
 
-$$ S' = -\beta \dfrac{I(t)}{N(t)}S(t); \quad I' = \beta \dfrac{I(t)}{N(t)}S(t) - \gamma I(t) \quad \mbox{e}\quad
-R' = \gamma I(t) $$
+$$ S' = -\beta \dfrac{I}{N}S; \quad I' = \beta \dfrac{I}{N}S - \gamma I \quad \mbox{e}\quad
+R' = \gamma I $$
 
 
 ```python
@@ -347,7 +351,7 @@ print('No dia ', d1, 'é atingido o número máximo de infectados: ', int(Imax[-
 
 
 
-### Criar frames
+### Criando frames
 Nesta seção são criados os frames para cada uma das soluções
 
 
@@ -364,7 +368,7 @@ for frame in range(num_frames):
     frames.append(curr_frame)   
 ```
 
-### Criar Figura
+### Criando Figura
 Este é o último passo para a visualização das soluções. A figura é criada colocando a solução inicial, de onde partem as demais soluções. Os frames criados anteriormente são acrescentados, a fim de vizualizar as soluções a cada passo de tempo.
 
 
