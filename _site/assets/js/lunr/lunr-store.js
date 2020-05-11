@@ -29,9 +29,9 @@ var store = [{
         "url": "http://localhost:4000/como-adicionar-latex-ao-minimal-mistakes/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
-        "title": "O modelo SIR para estudo de epidemias",
-        "excerpt":"O novo coronavírus (Covid-19) vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o número de casos confirmados passam de 145 mil e de mortos se aproxima de 10 mil. Ao mesmo tempo que essa doença se propaga rapidamente, estou interessado em compreender...","categories": [],
-        "tags": ["covid19","coronavirus","amapá"],
+        "title": "Estudo da Covid-19 pelo modelo SIR",
+        "excerpt":"A Covid-19 é uma doença respiratória causada pelo novo coronavírus (SARS-CoV-2). Esse vírus vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o número de casos confirmados passam de 145 mil e de mortos ultrapassa os 10 mil. Ao mesmo tempo que essa...","categories": [],
+        "tags": ["modelo SIR","covid19","coronavirus","amapá"],
         "url": "http://localhost:4000/SIR_blog_AP/",
         "teaser": "http://localhost:4000/images/500x300.png"
       },{
