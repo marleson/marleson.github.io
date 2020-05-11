@@ -77,7 +77,7 @@ imunidade. Não há chance de eles voltarem suscetíveis novamente.
 $$
 \begin{array}{rcl}
 \dfrac{dS}{dt} &=& -\beta \dfrac{I}{N}S\\[10pt]
-\dfrac{dI}{dt} &=&  \beta \dfrac{I}{N}S\\[10pt]
+\dfrac{dI}{dt} &=&  \beta \dfrac{I}{N}S - \gamma I\\[10pt]
 \dfrac{dR}{dt} &=& \gamma I
 \end{array}
 $$ 
