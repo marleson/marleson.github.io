@@ -2,7 +2,7 @@
   {% if site.data.ui-text[site.locale].share_on_label %}
   <!-- <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "Share on" }}</h4> -->
   {% endif %}
-
+<!-- 
   <a href="https://twitter.com/intent/tweet?{% if site.twitter.username %}via={{ site.twitter.username | url_encode }}&{% endif %}text={{ page.title | url_encode }}%20{{ page.url | absolute_url | url_encode }}"
     class="btn btn--twitter"
     onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
@@ -25,6 +25,9 @@
     onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
     title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Whatsapp"><i
       class="fab fa-whatsapp" aria-hidden="true"></i><span> </span></a>
+ -->
 
+  <!-- marleson - share buttons -->
+  <div class="sharethis-inline-share-buttons"></div>
 
 </section>
