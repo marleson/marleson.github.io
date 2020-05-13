@@ -1,10 +1,10 @@
 ---
-title: "O modelo SIR "
+title: "Estudo da Covid-19 pelo modelo SIR"
 excerpt: 'Sobre o SIR'
 tagline: "Uma abordagem com os dados do estado do Amapá"
 date: 2020-05-10
 tags: [modelo SIR, covid19, coronavirus, amapá]
-layout: single
+
 # classes: wide
 #collection: notas # collection name
 # entries_layout: # list (default), grid
@@ -19,6 +19,11 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: images/covid-19.jpg
+  caption: "[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fcovid-19-SIR-model-ap.ipynb)"
+  actions:
+  - label: "Jupyter Notebook"
+    url: "https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fcovid-19-SIR-model-ap.ipynb"
+    btn_class: "btn--primary"
 
 ---
 
@@ -27,8 +32,6 @@ header:
 
 Estudo da Covid-19 pelo modelo SIR
 ==========
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/marleson/marleson.github.io/master?filepath=_jupyter%2Fcovid-19-SIR-model-ap.ipynb)
 
 A Covid-19 é uma doença respiratória causada pelo novo coronavírus (SARS-CoV-2). Esse vírus vem causando bastante preocupação no mundo pela sua acelerada disseminação. No Brasil, até a presente data, o
 número de casos confirmados passam de 145 mil e de mortos ultrapassa os 10 mil.
