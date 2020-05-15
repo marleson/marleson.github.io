@@ -35,7 +35,7 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 
 <!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
 
-**NOTA:** O número de confirmados no estado é 3428, a maioria na cidade de Macapá. O estado conta com 5662 casos suspeitos e 3663 casos descartados. Há ainda 1014 pacientes já recuperados.
+**<i class="fas fa-hand-point-right"></i> NOTA:** O número de confirmados no estado é 3428, a maioria na cidade de Macapá. O estado conta com 5662 casos suspeitos e 3663 casos descartados. Há ainda 1014 pacientes já recuperados. 
 {: .notice--warning}
 
 
@@ -73,7 +73,7 @@ O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa 
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-OryD4" src="//datawrapper.dwcdn.net/OryD4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
 
-## Previsão de casos confirmados (Atualização - 20 de Abr.)*
+## Previsão de casos confirmados <br> (Atualização - 20 de Abr.)*
 
 Neste gráfico é empregado um modelo de regressão não-linear para estimar o número de infectados para os próximos 15 dias no estado (por ser uma aproximação, um tempo maior não traria muita confiabilidade). O modelo tem um coeficiente de determinação de 0,9791 (R<sup>2</sup> = 0,9791). Basicamente, isso significa que o modelo consegue explicar em quase 98% os dados coletados.
 {: .text-justify}
