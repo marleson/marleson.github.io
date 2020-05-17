@@ -3,7 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
-date: 2020-05-14
+date: 2020-05-16
 toc: true
 toc_label: "Sumário"
 toc_sticky: true
@@ -33,9 +33,13 @@ Os focos de casos supeitos e confirmados pelo estado são mostrados nos mapas ab
 <iframe title="Casos confirmados no estado do Amap&aacute;, 12 Abr." aria-label="Brazil amapá municipalities Symbol map" id="datawrapper-chart-8JlI2" src="//datawrapper.dwcdn.net/8JlI2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
 </script>
 
-<!-- O [boletim deste dia 15](https://www.portal.ap.gov.br/noticia/1504/atualizacao-ndash-boletim-covid-19-amapa-15-de-abril-de-2020-18h-) novamente apresenta inconsistências.  -->
+A tabela abaixo mostra o número acumulado de casos no estado e por municípios, além da evolução da quantidade de casos na semana e a taxa de duplicação média, levando em consideração os últimos 7 dias.
 
-**<i class="fas fa-hand-point-right"></i> NOTA:** O número de confirmados no estado é 3428, a maioria na cidade de Macapá. O estado conta com 5662 casos suspeitos e 3663 casos descartados. Há ainda 1014 pacientes já recuperados. 
+
+<iframe title="Casos de Coronavírus e taxas de duplicação" aria-label="chart" id="datawrapper-chart-P1MY4" src="https://datawrapper.dwcdn.net/P1MY4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="880"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
+</script>
+
+**<i class="fas fa-hand-point-right"></i> NOTA:** O número de confirmados no estado é 3834, a maioria na cidade de Macapá. O estado conta com 6358 casos suspeitos e 4047 casos descartados. Há ainda 1078 pacientes já recuperados. 
 {: .notice--warning}
 
 
@@ -72,6 +76,9 @@ O gráfico abaixo mostra também a evolução da doença e exibe uma estimativa 
 {: .text-justify}
 <iframe title="[ Insert title here ]" aria-label="Interactive line chart" id="datawrapper-chart-OryD4" src="//datawrapper.dwcdn.net/OryD4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none; " height="600"></iframe><script type="text/javascript">!function(){"use strict"; window.addEventListener("message", function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']"); t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}(); 
 </script>
+
+
+
 
 ## Previsão de casos confirmados <br> (Atualização - 20 de Abr.)*
 
