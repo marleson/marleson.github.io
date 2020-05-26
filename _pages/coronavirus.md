@@ -3,7 +3,7 @@ title: "CORONAVÍRUS NO AMAPÁ"
 excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
-date: 2020-05-16
+date: 2020-05-25
 toc: true
 toc_label: "Sumário"
 toc_sticky: true
@@ -39,7 +39,7 @@ A tabela abaixo mostra o número acumulado de casos no estado e por municípios,
 <iframe title="Casos de Coronavírus e taxas de duplicação" aria-label="chart" id="datawrapper-chart-P1MY4" src="https://datawrapper.dwcdn.net/P1MY4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="880"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
 </script>
 
-**<i class="fas fa-hand-point-right"></i> NOTA:** O número de confirmados no estado é 3834, a maioria na cidade de Macapá. O estado conta com 6358 casos suspeitos e 4047 casos descartados. Há ainda 1078 pacientes já recuperados. 
+**<i class="fas fa-hand-point-right"></i> NOTA:** O número de confirmados no estado é 6584, a maioria na cidade de Macapá. O estado conta com 7899 casos suspeitos e 5581 casos descartados. Há ainda 2584 pacientes já recuperados.
 {: .notice--warning}
 
 
@@ -67,7 +67,8 @@ No dia 04 de abril foi confirmada <a href="https://www.portal.ap.gov.br/noticia/
 </script>
 
 No dia 18 de abril, o governo do estado decretou <a href="http://transparencia.ap.gov.br/relatorios/covid/DECRETO_N_1538_DE_18_DE_ABRIL_DE_2020.pdf"> estado de calamidade pública</a>, em função do crescimento do número de casos confirmados pela covid-19.
-{: .text-justify}
+
+No dia 19 de maio, o governo resolveu adotar medidas mais restritivas de circulação de pessoas com o **Lockdown** (*Confinamento*, em Inglês). O [decreto nº 1.726, de 15 de maio,](https://docs.google.com/viewer?url=http%3A%2F%2Ftransparencia.ap.gov.br%2Frelatorios%2Fcovid%2FDECRETO_N_1726_DE_15_DE_MAIO_DE_2020.pdf) não fecha serviços essenciais, mas intensifica as ações preventivas e repressivas. O estado passa a adotar barreiras sanitárias, rodízio de veículos, proibição de circulação em logradouros e etc. Segundo o governo, essas medidas buscam diminuir o índice de infectados e achatar a curva de contágio da doença. Mais detalhes podem ser conferidos pelo [portal do governo do Amapá](https://www.portal.ap.gov.br/noticia/1505/lockdown-amapa-restringe-circulacao-de-pessoas-e-implanta-rodizio-de-veiculos).
 
 <iframe title="Curva de Infectados no estado do Amap&aacute;" aria-label="Interactive line chart" id="datawrapper-chart-jqubB" src="//datawrapper.dwcdn.net/jqubB/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="600"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
 </script>
