@@ -1,6 +1,6 @@
 ---
 title: "CORONAVÍRUS NO AMAPÁ"
-excerpt: 'Gráficos sobre o COVID-19 no estado do Amapá'
+excerpt: 'MONITORAMENTO ENCERRADO! Os gráficos do estado e municípios podem ser acompanhados no portal da Fiocruz (Link abaixo)'
 permalink: /coronavirus/
 tags: [covid19, coronavirus, amapá]
 date: 2020-06-24
@@ -11,6 +11,10 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: images/covid-19.jpg
+  actions:
+  - label: "Monitora Covid19 - FIOCRUZ"
+    url: "https://bigdata-covid19.icict.fiocruz.br/"
+    btn_class: "btn--primary"
 ---
 
 # Coronavírus no Amapá
