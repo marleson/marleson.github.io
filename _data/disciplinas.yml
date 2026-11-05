@@ -1,0 +1,19 @@
+# Disciplinas exibidas na página /notas-de-aula/.
+#
+# A chave (ex.: calculo-1) deve ser igual ao campo `disciplina:` usado no
+# front matter de cada nota. A ordem abaixo é a ordem em que as disciplinas
+# aparecem na página. Disciplinas sem nenhuma nota publicada não aparecem.
+#
+# Exemplo:
+#
+# calculo-1:
+#   nome: "Cálculo I"
+#   descricao: "Limites, derivadas e integrais de funções de uma variável."
+#
+# algebra-linear:
+#   nome: "Álgebra Linear"
+#   descricao: "Espaços vetoriais, transformações lineares e autovalores."
+#
+# edo:
+#   nome: "Equações Diferenciais Ordinárias"
+#   descricao: "EDOs de 1ª e 2ª ordem, sistemas e aplicações."

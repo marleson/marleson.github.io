@@ -1,9 +1,44 @@
 <!-- start custom head snippets -->
 
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- Ícones / PWA -->
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/images/favicon-96x96.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/images/marleson-icon.jpg' | relative_url }}">
+<meta name="theme-color" content="#000000">
 
-<!-- Reaction buttons - marleson -->
-<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb0ff07525e90012616e2b&product=inline-reaction-buttons" async="async"></script>
+{% if page.mathjax %}
+<!-- MathJax 4: LaTeX nas páginas com `mathjax: true` no front matter -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      tags: 'ams',
+      macros: {
+        R: '\\mathbb{R}',
+        N: '\\mathbb{N}',
+        Z: '\\mathbb{Z}',
+        Q: '\\mathbb{Q}',
+        C: '\\mathbb{C}',
+        dd: '\\,\\mathrm{d}',
+        abs: ['\\left|#1\\right|', 1],
+        norm: ['\\left\\|#1\\right\\|', 1]
+      }
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    output: {
+      displayOverflow: 'linebreak',
+      linebreaks: { inline: true }
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+{% endif %}
 
+<!-- Botões de reação/compartilhamento (ShareThis) -->
+<script src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb0ff07525e90012616e2b&product=inline-reaction-buttons" async="async"></script>
 
 <!-- end custom head snippets -->

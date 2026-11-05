@@ -1,85 +1,127 @@
-# [Márleson Ferreira - Website](https://marleson.github.io/)
+# [Márleson Ferreira — site pessoal](https://marleson.github.io/)
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
-[![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.7-blue.svg)](https://jekyllrb.com/)
-[![Ruby gem](https://img.shields.io/gem/v/minimal-mistakes-jekyll.svg)](https://rubygems.org/gems/minimal-mistakes-jekyll)
+[![Build do site](https://github.com/marleson/marleson.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/marleson/marleson.github.io/actions/workflows/build.yml)
 
-Minimal Mistakes is a flexible two-column Jekyll theme, perfect for building personal sites, blogs, and portfolios. As the name implies, styling is purposely minimalistic to be enhanced and customized by you :smile:.
+Notas de aula de matemática, blog, tutoriais e códigos. Feito com [Jekyll](https://jekyllrb.com/)
+e o tema [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/), publicado pelo GitHub Pages.
 
-:sparkles: See what's new in the [CHANGELOG](CHANGELOG.md).
+## Como o site funciona
 
+| O quê | Onde |
+|---|---|
+| Configuração geral (título, redes sociais, comentários, analytics) | `_config.yml` |
+| Menu superior | `_data/navigation.yml` |
+| Disciplinas das notas de aula | `_data/disciplinas.yml` |
+| Notas de aula | `_notas-de-aula/<disciplina>/NN-titulo.md` |
+| Posts do blog | `_posts/AAAA-MM-DD-titulo.md` |
+| Tutoriais | `_tutoriais/` |
+| Páginas avulsas (Sobre, Agenda, ...) | `_pages/` |
+| Imagens | `images/` |
+| Estilos personalizados (inclusive caixas de teorema) | `assets/css/main.scss` |
+| MathJax e scripts extras no `<head>` | `_includes/head/custom.html` |
+| Modelos de post e de nota | `_modelos/` |
 
+O tema é carregado pelo `remote_theme` (versão fixa em `_config.yml`), então **não há arquivos do
+tema no repositório**. Para atualizar o tema, troque o número da versão em `remote_theme`.
+Para sobrescrever algum arquivo do tema, copie-o para o mesmo caminho neste repositório
+(foi o que se fez com `_includes/breadcrumbs.html` e `_includes/social-share.html`).
 
+## Publicando conteúdo
 
-**If you enjoy this theme, please consider [supporting me](https://www.paypal.me/mmistakes) to continue developing and maintaining it.**
+### Nova nota de aula
 
+```bash
+bin/novo nota calculo-1 "Limites e continuidade"
+```
 
+Isso cria `_notas-de-aula/calculo-1/01-limites-e-continuidade.md` já com o modelo.
+Na primeira nota de uma disciplina, cadastre o nome dela em `_data/disciplinas.yml`:
 
-**Note:** The theme uses the [jekyll-include-cache](https://github.com/benbalter/jekyll-include-cache) plugin which will need to be installed in your `Gemfile` and added to the `plugins` array of `_config.yml`. Otherwise you'll encounter `Unknown tag 'include_cached'` errors at build.
+```yaml
+calculo-1:
+  nome: "Cálculo I"
+  descricao: "Limites, derivadas e integrais de funções de uma variável."
+```
 
+A página [/notas-de-aula/](https://marleson.github.io/notas-de-aula/) agrupa as notas por
+disciplina automaticamente, na ordem do campo `ordem:`.
 
+### Novo post
 
-## Características
+```bash
+bin/novo post "Título do post"
+```
 
-- Divulgação de materiais de estudo em matemática e engenharias
-- Produção e gerenciamento de códigos
-- Ensaios sobre ciências
-- Desenvolvimento de pesquisas científicas
+Para deixar algo como rascunho (não aparece no site), use `published: false` no front matter.
 
-### Páginas
+## Escrevendo matemática
 
-As seguintes páginas estão em construção:
+O MathJax 4 está ligado por padrão em notas, posts e tutoriais (`mathjax: true`).
 
-1. Blog
+```markdown
+Em linha: $f(x) = x^2$  ·  Destaque: $$\int_a^b f(x)\dd x$$
 
-2. Notas de aula
+\begin{equation}\label{eq:euler}
+  e^{i\pi} + 1 = 0
+\end{equation}
+A equação \eqref{eq:euler} ...
+```
 
-3. Tutoriais
+Atalhos: `\R \N \Z \Q \C`, `\dd` (diferencial), `\abs{x}`, `\norm{v}` — para criar outros,
+edite `macros` em `_includes/head/custom.html`.
 
+Caixas para teoremas etc. (o `markdown="1"` é obrigatório):
 
-4. Códigos
+```markdown
+<div class="teorema" markdown="1">
+**Teorema 1 (Valor Médio).** Se $f$ é contínua em $[a,b]$ e derivável em $(a,b)$, ...
+</div>
 
----
+<div class="demonstracao" markdown="1">
+*Demonstração.* ...
+</div>
+```
 
+Classes disponíveis: `teorema`, `proposicao`, `lema`, `corolario`, `definicao`, `exemplo`,
+`exercicio`, `observacao`, `demonstracao`, `solucao`.
 
-## Development
+> Dica: se uma fórmula em linha contém `_` ou `*` e o Markdown a estraga, escreva-a com
+> `$$...$$` no meio do texto — o kramdown trata isso como fórmula em linha.
 
-To set up your environment to develop this theme, run `bundle install`.
+## Rodando localmente
 
-To test the theme, run `bundle exec rake preview` and open your browser at `http://localhost:4000/test/`. This starts a Jekyll server using content in the `test/` directory. As modifications are made to the theme and test site, it will regenerate and you should see the changes in the browser after a refresh.
+Requer Ruby 3.x e Bundler.
 
----
+```bash
+bundle install
+```
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Abra <http://localhost:4000>. Alterações no `_config.yml` exigem reiniciar o servidor.
+
+## Automação
+
+- **Build no GitHub Actions** (`.github/workflows/build.yml`): a cada push/PR o site é compilado e
+  os links internos são verificados. Se algo quebrar, o erro aparece na aba *Actions* antes de ir ao ar.
+- **Dependabot** (`.github/dependabot.yml`): abre PRs mensais atualizando gems, actions e pacotes Python.
+
+## Pendências que dependem de você
+
+- **Analytics**: o Google Analytics Universal (`UA-...`) foi desligado pelo Google. Crie uma
+  propriedade GA4 e coloque o ID `G-...` em `analytics` no `_config.yml`.
+- **Comentários**: estão desligados (o Facebook Comments exigia um `appid` que nunca foi configurado).
+  Siga os passos comentados em `comments` no `_config.yml` para ativar o giscus.
+
+## Notebooks (Binder)
+
+Os notebooks em `_jupyter/` podem ser abertos online pelo
+[Binder](https://mybinder.org/v2/gh/marleson/marleson.github.io/master); as dependências estão em
+`requirements.txt`.
 
 ## Créditos
 
-### Autor
-
-**Márleson Ferreira**
-
-- <https://marleson.github.io/>
-- <https://github.com/marleson>
-- <https://twitter.com/marleson>
-- <https://facebook.com/marleson.ferreira>
-- <https://instagram.com/marleson.ferreira>
-
-
-### Ícones + Demo Images:
-
-- [The Noun Project](https://thenounproject.com) -- Garrett Knoll, Arthur Shlain, and [tracy tam](https://thenounproject.com/tracytam)
-- [Font Awesome](http://fontawesome.io/)
-- [Unsplash](https://unsplash.com/)
-
-### Outros:
-
-- [Jekyll](http://jekyllrb.com/)
-- [jQuery](http://jquery.com/)
-- [Susy](http://susy.oddbird.net/)
-- [Breakpoint](http://breakpoint-sass.com/)
-- [Magnific Popup](http://dimsemenov.com/plugins/magnific-popup/)
-- [FitVids.JS](http://fitvidsjs.com/)
-- [GreedyNav.js](https://github.com/lukejacksonn/GreedyNav)
-- [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-- [Gumshoe](https://github.com/cferdinandi/gumshoe)
-- [jQuery throttle / debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/)
-- [Lunr](http://lunrjs.com)
-
+Tema [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) por Michael Rose (MIT).
+Imagens de demonstração do [Unsplash](https://unsplash.com/).

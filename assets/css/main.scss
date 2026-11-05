@@ -1,14 +1,17 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
+search: false
 ---
 
-// Personalizacao (marleson)
+@charset "utf-8";
 
-$link-color: black;
-// $paragraph-indent: true;
+// -----------------------------------------------------------------------------
+// Variáveis personalizadas (antes de importar o tema)
+// -----------------------------------------------------------------------------
+$link-color: #000;
+$x-large: 1400px;
 
-
-/* default syntax highlighting (base16) */
+// Realce de sintaxe (base16 "material")
 $base00: #263238;
 $base01: #2e3c43;
 $base02: #314549;
@@ -26,42 +29,121 @@ $base0d: #82aaff;
 $base0e: #c792ea;
 $base0f: #ff5370;
 
-
-
-@charset "utf-8";
-
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+// -----------------------------------------------------------------------------
+// Ajustes de layout (herdados da versão anterior do site)
+// -----------------------------------------------------------------------------
+.page__content {
+  text-align: justify;
+  hyphens: auto;
 
-// marleson add 11.04.20 (format table in jupyter converted to md) >>>>
+  // Em telas pequenas o texto justificado cria buracos — alinha à esquerda
+  @include breakpoint(max-width $small) {
+    text-align: left;
+  }
+}
 
-p, blockquote, ul, ol, dl, li, table, pre {
-    margin: 15px 0; }
-    
-    table {
-      padding: 0; }
-      table tr {
-        border-top: 1px solid #cccccc;
-        background-color: white;
-        margin: 0;
-        padding: 0; }
-        table tr:nth-child(2n) {
-          background-color: #f8f8f8; }
-          table tr th {
-          font-weight: bold;
-          border: 1px solid #cccccc;
-          text-align: left;
-          margin: 0;
-          padding: 6px 13px; }
-        table tr td {
-          border: 1px solid #cccccc;
-          text-align: left;
-          margin: 0;
-          padding: 6px 13px; }
-        table tr th :first-child, table tr td :first-child {
-          margin-top: 0; }
-        table tr th :last-child, table tr td :last-child {
-    margin-bottom: 0; }
+.page__hero--overlay {
+  .page__title,
+  .page__meta,
+  .page__lead,
+  .btn {
+    text-shadow: 3px 3px 4px rgba(#000, 0.8);
+  }
+}
 
-    // marleson add 11.04.20 <<<<<
+.page__taxonomy { color: $gray; }
+.page__date { font-size: 0.9em; }
+.sidebar__right { text-align: left; }
+
+.author__avatar img {
+  max-width: 200px;
+
+  @include breakpoint($large) { padding: 3px; }
+}
+
+.author__bio {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.author__urls-wrapper { z-index: 20; }
+
+// Tabelas (incluindo as geradas a partir de notebooks Jupyter)
+.page__content table {
+  display: block;          // permite rolagem horizontal em telas pequenas
+  overflow-x: auto;
+  margin: 1em 0;
+
+  tr:nth-child(2n) { background-color: #f8f8f8; }
+  th, td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 6px 13px;
+  }
+  th { font-weight: bold; }
+}
+
+// -----------------------------------------------------------------------------
+// Matemática
+// -----------------------------------------------------------------------------
+// Fórmulas longas não estouram a largura da página em celulares
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
+
+// Ambientes para notas de aula. Uso em Markdown:
+//
+//   <div class="teorema" markdown="1">
+//   **Teorema 1 (Valor Médio).** Se $f$ é contínua em $[a,b]$ ...
+//   </div>
+//
+// Classes: teorema, proposicao, lema, corolario, definicao, exemplo,
+//          exercicio, observacao, demonstracao, solucao
+@mixin math-env($color) {
+  margin: 1.5em 0;
+  padding: 0.75em 1em;
+  border-left: 4px solid $color;
+  border-radius: 0 $border-radius $border-radius 0;
+  background-color: mix(#fff, $color, 92%);
+  text-align: left;
+
+  > :first-child { margin-top: 0; }
+  > :last-child  { margin-bottom: 0; }
+}
+
+.teorema, .proposicao, .lema, .corolario { @include math-env(#2f6fb5); }
+.definicao                               { @include math-env(#2e8b57); }
+.exemplo                                 { @include math-env(#d08a1e); }
+.exercicio                               { @include math-env(#8e44ad); }
+.observacao                              { @include math-env(#7a7a7a); }
+
+.demonstracao, .solucao {
+  margin: -1em 0 1.5em;
+  padding: 0.5em 1em;
+  border-left: 4px solid #ccc;
+  text-align: left;
+
+  &::after {
+    content: "\25A1"; // □ (fim da demonstração)
+    display: block;
+    margin-top: -1.5em;
+    text-align: right;
+  }
+  > :first-child { margin-top: 0; }
+  > :last-child  { margin-bottom: 0; }
+}
+
+// Lista de notas agrupadas por disciplina
+.disciplina {
+  margin-bottom: 2em;
+
+  h2 { margin-bottom: 0.5em; }
+  ol { margin-top: 0; }
+  .disciplina__desc { color: $gray; font-size: $type-size-6; }
+}

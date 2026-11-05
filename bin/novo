@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Cria um novo post ou nota de aula a partir dos modelos em _modelos/.
+#
+# Uso:
+#   bin/novo post "Título do post"
+#   bin/novo nota calculo-1 "Limites e continuidade"
+#
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+slug() {
+  # minúsculas, sem acentos, espaços -> hífens
+  echo "$1" | iconv -f utf-8 -t ascii//TRANSLIT 2>/dev/null \
+    | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g'
+}
+
+hoje=$(date +%Y-%m-%d)
+
+case "${1:-}" in
+  post)
+    titulo="${2:?Informe o título: bin/novo post \"Título\"}"
+    arquivo="_posts/${hoje}-$(slug "$titulo").md"
+    modelo="_modelos/post.md"
+    ;;
+  nota)
+    disciplina="${2:?Informe a disciplina: bin/novo nota calculo-1 \"Título\"}"
+    titulo="${3:?Informe o título: bin/novo nota $disciplina \"Título\"}"
+    dir="_notas-de-aula/$disciplina"
+    mkdir -p "$dir"
+    ordem=$(( $(find "$dir" -name '*.md' | wc -l) + 1 ))
+    arquivo="$dir/$(printf '%02d' "$ordem")-$(slug "$titulo").md"
+    modelo="_modelos/nota-de-aula.md"
+    ;;
+  *)
+    sed -n '2,7p' "$0"; exit 1 ;;
+esac
+
+[[ -e "$arquivo" ]] && { echo "Já existe: $arquivo" >&2; exit 1; }
+
+titulo_esc=$(printf '%s' "$titulo" | sed 's/[&|\\]/\\&/g')
+sed -e "s|TÍTULO DA NOTA|${titulo_esc}|; s|TÍTULO DO POST|${titulo_esc}|; s|DATA|${hoje}|" \
+    -e "s|CHAVE-DA-DISCIPLINA|${disciplina:-}|; s|^ordem: 1 |ordem: ${ordem:-1} |" \
+    "$modelo" > "$arquivo"
+
+echo "Criado: $arquivo"
+if [[ "${1}" == nota ]] && ! grep -q "^${disciplina}:" _data/disciplinas.yml; then
+  echo "Lembrete: cadastre \"${disciplina}\" em _data/disciplinas.yml para definir o nome exibido."
+fi

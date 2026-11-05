@@ -1,0 +1,41 @@
+# Compila o site a cada push/PR para detectar erros antes de irem ao ar.
+# A publicação continua sendo feita automaticamente pelo GitHub Pages.
+name: Verificar build do site
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build do Jekyll
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+          LANG: C.UTF-8
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verificar links internos
+        run: |
+          gem install html-proofer -v "~> 5.0" --no-document
+          htmlproofer ./_site \
+            --disable-external \
+            --ignore-urls "/^\/?#/,/localhost/" \
+            --ignore-missing-alt \
+            --allow-hash-href \
+            --no-enforce-https \
+            --checks "Links,Images,Scripts"

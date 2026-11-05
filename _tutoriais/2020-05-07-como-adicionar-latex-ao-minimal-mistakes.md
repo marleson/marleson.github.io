@@ -19,6 +19,9 @@ render_with_liquid: false
 
 # Como adicionar suporte ao latex no minimal mistakes
 
+**Atualização (2026):** o endereço `cdn.mathjax.org` usado abaixo foi desativado e o MathJax 2 foi substituído pelo MathJax 4. Hoje este site carrega o MathJax pelo arquivo `_includes/head/custom.html` (sem alterar arquivos do tema). Veja o README do [repositório](https://github.com/marleson/marleson.github.io) para a configuração atual.
+{: .notice--warning}
+
 Uma das minhas dificuldades em postar blogs com textos matemáticos foi encontrar um suporte adequado para textos em [Latex](https://www.latex-project.org/). 
 
 Neste post eu mostro como adicionar o suporte ao latex para o seu blog baseado no tema [Minimal Mistakes Jekyll](https://mmistakes.github.io/minimal-mistakes/).

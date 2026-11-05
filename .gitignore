@@ -1,3 +1,18 @@
+# Saída do Jekyll
 _site/
 .sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Sistema / editores
 .DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python / Jupyter
+.ipynb_checkpoints/
+__pycache__/

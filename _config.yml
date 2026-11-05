@@ -1,118 +1,110 @@
-# Welcome to Jekyll!
+# =============================================================================
+#  Configuração do site — Márleson Ferreira
+# =============================================================================
+# Este arquivo NÃO é recarregado automaticamente pelo `jekyll serve`.
+# Depois de alterá-lo, pare o servidor (Ctrl+C) e rode novamente.
 #
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
+# Documentação do tema: https://mmistakes.github.io/minimal-mistakes/docs/configuration/
 
-# Theme Settings
-#
-# Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+# Tema
+# O tema é carregado diretamente do GitHub, numa versão fixa. Para atualizar,
+# basta trocar o número depois do "@" (veja https://github.com/mmistakes/minimal-mistakes/releases).
+remote_theme             : "mmistakes/minimal-mistakes@4.28.1"
+minimal_mistakes_skin    : "contrast" # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "catppuccin_latte", "catppuccin_mocha"
 
-# theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "default", # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-
-# Site Settings
+# Site
 locale                   : "pt-BR"
 title                    : "Márleson Ferreira"
 title_separator          : "-"
-subtitle                 : "Códigos, notas de aula e mais" # site tagline that appears below site title in masthead
+subtitle                 : "Códigos, notas de aula e mais"
 name                     : "Márleson Ferreira"
-description              : "Meu site pessoal com notas de aula, códigos e mais."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "images/bg.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/images/favicon-96x96.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-# breadcrumbs            : false # true, false (default)
+description              : "Site pessoal de Márleson Ferreira: notas de aula de matemática, códigos, tutoriais e mais."
+url                      : "https://marleson.github.io"
+baseurl                  : ""
+repository               : "marleson/marleson.github.io"
+teaser                   : "/images/bg.jpg"
+logo                     : "/images/favicon-96x96.png"
+masthead_title           :
+breadcrumbs              : true
 words_per_minute         : 200
+enable_copy_code_button  : true
+date_format              : "%d/%m/%Y"
+
+# Comentários
+# Recomendado: giscus (gratuito, usa as Discussions do GitHub, sem anúncios).
+# Para ativar:
+#   1. Ative "Discussions" em Settings > General do repositório no GitHub
+#   2. Instale o app https://github.com/apps/giscus no repositório
+#   3. Gere os IDs em https://giscus.app/pt e preencha abaixo
+#   4. Troque `provider` para "giscus"
 comments:
-  provider               : "facebook" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
-  disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-  utterances:
-    theme                : # "github-light" (default), "github-dark"
-    issue_term           : # "pathname" (default)
-  staticman:
-    branch               : # "master"
-    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
-reCaptcha:
-  siteKey                :
-  secret                 :
+  provider               : false # false, "giscus", "utterances", "disqus", "discourse", "facebook", "staticman_v2", "custom"
+  giscus:
+    repo_id              : # ex.: "R_kgDO..."
+    category_name        : "Comentários"
+    category_id          : # ex.: "DIC_kwDO..."
+    discussion_term      : "pathname"
+    reactions_enabled    : "1"
+    theme                : "light"
+    strict               : "0"
+    input_position       : "bottom"
+    emit_metadata        : "0"
+    lazy                 : true
+
 atom_feed:
-  path                   : # blank (default) uses feed.xml
-search                   : true # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
-algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
-google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
-# SEO Related
+  path                   : # em branco usa /feed.xml
+  hide                   : false
+
+search                   : true
+search_full_content      : true
+search_provider          : lunr
+
+# SEO
 google_site_verification :
 bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
 
-# Social Sharing
+# Redes sociais
 twitter:
   username               : "marleson"
 facebook:
   username               : "marleson.ferreira"
   app_id                 :
   publisher              :
-og_image                 : "images/site-logo.png" # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
+og_image                 : "/images/site-logo.png"
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
-    - "https://twitter.com/marleson"
+  type                   : Person
+  name                   : "Márleson Ferreira"
+  links:
+    - "https://x.com/marleson"
     - "https://www.facebook.com/marleson.ferreira"
     - "https://instagram.com/marlesonferreira"
+    - "https://github.com/marleson"
 
 # Analytics
+# O Google Analytics "Universal" (IDs UA-...) foi desativado pelo Google em 2023.
+# Para voltar a medir acessos, crie uma propriedade GA4 em https://analytics.google.com,
+# copie o ID "G-XXXXXXXXXX" e preencha abaixo trocando `provider` para "google-gtag".
 analytics:
-  provider               : "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               : false # false, "google-gtag", "custom"
   google:
-    tracking_id          : "UA-163475920-1"
-    anonymize_ip         : true # true, false (default)
+    tracking_id          : # "G-XXXXXXXXXX"
+    anonymize_ip         : true
 
-
-# Site Author
+# Autor (barra lateral)
 author:
   name             : "Márleson Ferreira"
-  avatar           : "/images/marleson-icon.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/images/marleson-icon.jpg"
   bio              : "Professor &#124; Matemático &#124; Pesquisador"
   location         : "Santana, AP - Brasil"
-  email            : 
   links:
     - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:marleson.ferreira@ifap.edu.br
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/marleson"
+      icon: "fas fa-fw fa-square-envelope"
+      url: "mailto:marleson.ferreira@ifap.edu.br"
+    - label: "X (Twitter)"
+      icon: "fab fa-fw fa-square-x-twitter"
+      url: "https://x.com/marleson"
     - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
+      icon: "fab fa-fw fa-square-facebook"
       url: "https://facebook.com/marleson.ferreira"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -121,32 +113,25 @@ author:
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/marlesonferreira"
 
-# Site Footer
+# Rodapé
 footer:
+  since: "2020"
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/marleson"
+    - label: "X (Twitter)"
+      icon: "fab fa-fw fa-square-x-twitter"
+      url: "https://x.com/marleson"
     - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
+      icon: "fab fa-fw fa-square-facebook"
       url: "https://facebook.com/marleson.ferreira"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/marleson"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/marlesonferreira"
 
-
-# Reading Files
+# Leitura de arquivos
 include:
-  - .htaccess
   - _pages
 exclude:
   - "*.sublime-project"
@@ -154,43 +139,30 @@ exclude:
   - vendor
   - .asset-cache
   - .bundle
-  - .jekyll-assets-cache
+  - .jekyll-cache
   - .sass-cache
-  - assets/js/plugins
-  - assets/js/_main.js
-  - assets/js/vendor
-  - Capfile
-  - CHANGELOG
-  - config
+  - .github
+  - _modelos
   - Gemfile
-  - Gruntfile.js
-  - gulpfile.js
+  - Gemfile.lock
   - LICENSE
-  - log
+  - README.md
   - node_modules
-  - package.json
-  - package-lock.json
-  - Rakefile
-  - README
+  - requirements.txt
+  - bin
   - tmp
-  - /docs # ignore Minimal Mistakes /docs
-  - /test # ignore Minimal Mistakes /test
 keep_files:
   - .git
-  - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
-# Conversion
+# Conversão
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
-
-# Markdown Processing
 kramdown:
   input: GFM
   hard_wrap: false
@@ -199,100 +171,73 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+  math_engine: mathjax
 
-
-# Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed
 
-
-# Outputting
+# Saída
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+timezone: America/Belem
+paginate: 5
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
-
-# Plugins (previously gems:)
+# Plugins (todos suportados pelo GitHub Pages)
 plugins:
+  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-  - jekyll-titles-from-headings  # strip title - marleson
+  - jekyll-seo-tag
+  - jekyll-titles-from-headings
 
-# mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-remote-theme
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-titles-from-headings
 
+titles_from_headings:
+  enabled:     true
+  strip_title: true
+  collections: true
 
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path>/my-awesome-category/index.html ~> path: /
+# Arquivos por categoria/tag
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
-
-# HTML Compression
-# - https://jch.penibelst.de/
+# Compressão de HTML
 compress_html:
   clippings: all
   ignore:
     envs: development
 
-titles_from_headings:  # marleson
-  enabled:     true
-  strip_title: true
-  collections: true
-  
-
-  
-
-
-# Collections
+# Coleções
 collections:
   tutoriais:
     output: true
     permalink: /:collection/:path/
   notas-de-aula:
     output: true
-    permalink: /:collection/:path/ 
+    permalink: /:collection/:path/
   codigos:
     output: true
-    permalink: /:collection/:path/           
+    permalink: /:collection/:path/
 
-# Defaults
+# Valores padrão (front matter) de cada tipo de conteúdo
 defaults:
-  # _posts
+  # Posts do blog
   - scope:
       path: ""
       type: posts
@@ -300,11 +245,13 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      show_date: true
       comments: true
       share: true
       related: true
-      
-  # _pages
+      mathjax: true
+
+  # Páginas avulsas (_pages)
   - scope:
       path: "_pages"
       type: pages
@@ -312,35 +259,45 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comments: true
+      comments: false
 
-    # _tutoriais
+  # Tutoriais
   - scope:
       path: ""
       type: tutoriais
     values:
       layout: single
       author_profile: true
+      read_time: true
+      show_date: true
       share: true
       comments: true
-      
-    # _notas-de-aula
+      mathjax: true
+
+  # Notas de aula: matemática ligada, sumário lateral fixo
   - scope:
       path: ""
       type: notas-de-aula
     values:
       layout: single
       author_profile: true
+      read_time: true
+      show_date: true
       share: true
       comments: true
+      mathjax: true
+      toc: true
+      toc_sticky: true
+      toc_label: "Sumário"
+      toc_icon: "list"
 
-    # _codigos
+  # Códigos
   - scope:
       path: ""
       type: codigos
     values:
       layout: single
       author_profile: true
+      show_date: true
       share: true
-      comments: true      
-
+      comments: true
