@@ -1,53 +1,34 @@
 ---
 title: "Notas de aula"
 permalink: /notas-de-aula/
-excerpt: "Notas de aula de matemática organizadas por disciplina."
+excerpt: "Notas de aula organizadas por disciplina. Escolha a sua turma para ver as aulas publicadas e o conteúdo planejado."
 classes: wide
 comments: false
 share: false
 ---
 
-{% assign notas = site["notas-de-aula"] | where_exp: "n", "n.published != false" %}
-{% assign grupos = notas | group_by: "disciplina" %}
+Escolha a disciplina para ver as aulas já publicadas e o conteúdo previsto para o semestre.
+Você também pode usar a busca (ícone de lupa no menu) para encontrar um assunto específico.
 
-{% if notas.size == 0 %}
-<p class="notice--info">As primeiras notas de aula serão publicadas em breve.</p>
-{% else %}
-
-{% comment %} Disciplinas cadastradas em _data/disciplinas.yml, na ordem do arquivo {% endcomment %}
-{% assign listadas = "" | split: "" %}
-{% for d in site.data.disciplinas %}
-  {% assign chave = d[0] %}
-  {% assign info = d[1] %}
-  {% assign grupo = grupos | where: "name", chave | first %}
-  {% if grupo %}
-    {% assign listadas = listadas | push: chave %}
-<section class="disciplina" id="{{ chave }}">
-  <h2>{{ info.nome | default: chave }}</h2>
-  {% if info.descricao %}<p class="disciplina__desc">{{ info.descricao }}</p>{% endif %}
-  <ol>
-  {% assign itens = grupo.items | sort: "ordem" %}
-  {% for nota in itens %}
-    <li><a href="{{ nota.url | relative_url }}">{{ nota.title }}</a>{% if nota.excerpt and nota.excerpt != "" %} — <small>{{ nota.excerpt | strip_html | truncate: 120 }}</small>{% endif %}</li>
+{% assign notas = site["notas-de-aula"] %}
+{% for nv in site.data.disciplinas.niveis %}
+{% assign nivel_chave = nv[0] %}
+<section class="nivel" id="{{ nivel_chave }}">
+  <h2>{{ nv[1].nome }}</h2>
+  <div class="disciplina-grid">
+  {% for d in site.data.disciplinas %}
+    {% if d[1].nivel == nivel_chave %}
+      {% assign aulas = notas | where: "disciplina", d[0] %}
+    <a class="disciplina-card" href="{{ '/notas-de-aula/' | append: d[0] | append: '/' | relative_url }}">
+      <span class="disciplina-card__nome">{{ d[1].nome }}</span>
+      {% if d[1].curso %}<span class="disciplina-card__curso">{{ d[1].curso }}</span>{% endif %}
+      <span class="disciplina-card__desc">{{ d[1].descricao }}</span>
+      <span class="disciplina-card__status{% if aulas.size == 0 %} vazio{% endif %}">
+        {% if aulas.size == 0 %}Em breve{% elsif aulas.size == 1 %}1 aula publicada{% else %}{{ aulas.size }} aulas publicadas{% endif %}
+      </span>
+    </a>
+    {% endif %}
   {% endfor %}
-  </ol>
+  </div>
 </section>
-  {% endif %}
 {% endfor %}
-
-{% comment %} Disciplinas usadas nas notas mas não cadastradas no arquivo de dados {% endcomment %}
-{% for grupo in grupos %}
-  {% unless listadas contains grupo.name %}
-<section class="disciplina">
-  <h2>{% if grupo.name == "" or grupo.name == nil %}Outras notas{% else %}{{ grupo.name }}{% endif %}</h2>
-  <ol>
-  {% assign itens = grupo.items | sort: "ordem" %}
-  {% for nota in itens %}
-    <li><a href="{{ nota.url | relative_url }}">{{ nota.title }}</a></li>
-  {% endfor %}
-  </ol>
-</section>
-  {% endunless %}
-{% endfor %}
-
-{% endif %}

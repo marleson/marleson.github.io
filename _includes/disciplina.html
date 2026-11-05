@@ -1,0 +1,41 @@
+{% comment %}
+  Corpo da página de uma disciplina. Uso: page.disciplina = chave em _data/disciplinas.yml
+{% endcomment %}
+{% assign chave = page.disciplina %}
+{% assign info = site.data.disciplinas[chave] %}
+{% assign nivel = site.data.disciplinas.niveis[info.nivel] %}
+{% assign aulas = site["notas-de-aula"] | where: "disciplina", chave | sort: "ordem" %}
+
+<p class="disciplina__info">
+  <a href="{{ '/notas-de-aula/#' | append: info.nivel | relative_url }}" class="disciplina__nivel">{{ nivel.nome }}</a>
+  {% if info.curso %}<span class="disciplina__curso">{{ info.curso }}</span>{% endif %}
+</p>
+
+<p class="disciplina__lead">{{ info.descricao }}</p>
+{% if info.referencia %}<p class="disciplina__ref"><strong>Livro-texto:</strong> {{ info.referencia }}</p>{% endif %}
+
+<h2 id="aulas">Aulas publicadas</h2>
+{% if aulas.size == 0 %}
+<p class="notice--info">As aulas desta disciplina serão publicadas aqui ao longo do semestre.</p>
+{% else %}
+<ol class="aula-lista">
+  {% for a in aulas %}
+  <li>
+    <a href="{{ a.url | relative_url }}">{{ a.title }}</a>
+    {% if a.excerpt and a.excerpt != "" %}<span class="aula-lista__resumo">{{ a.excerpt | strip_html | truncate: 180 }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+{% endif %}
+
+{% if info.unidades %}
+<h2 id="conteudo">Conteúdo previsto</h2>
+<div class="ementa">
+  {% for u in info.unidades %}
+  <div class="ementa__unidade">
+    <h3>{{ u.titulo }}</h3>
+    <ul>{% for t in u.topicos %}<li>{{ t }}</li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

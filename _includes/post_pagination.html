@@ -1,0 +1,33 @@
+{% comment %}
+  Igual ao do tema, mas nas notas de aula "Anterior/Próxima" navega apenas
+  entre as aulas da mesma disciplina, na ordem do campo `ordem`.
+{% endcomment %}
+{% assign locale = include.locale | default: site.locale %}
+{% assign anterior = page.previous %}
+{% assign proxima = page.next %}
+{% if page.collection == "notas-de-aula" and page.disciplina %}
+  {% assign anterior = nil %}
+  {% assign proxima = nil %}
+  {% assign aulas = site["notas-de-aula"] | where: "disciplina", page.disciplina | sort: "ordem" %}
+  {% for a in aulas %}
+    {% if a.url == page.url %}
+      {% assign i_ant = forloop.index0 | minus: 1 %}
+      {% if forloop.first == false %}{% assign anterior = aulas[i_ant] %}{% endif %}
+      {% if forloop.last == false %}{% assign proxima = aulas[forloop.index] %}{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if anterior or proxima %}
+  <nav class="pagination" aria-label="Navegação entre páginas">
+    {% if anterior %}
+      <a href="{{ anterior.url | relative_url }}" class="pagination--pager" title="{{ anterior.title | markdownify | strip_html | strip }}">{{ site.data.ui-text[locale].pagination_previous | default: "Anterior" }}</a>
+    {% else %}
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[locale].pagination_previous | default: "Anterior" }}</a>
+    {% endif %}
+    {% if proxima %}
+      <a href="{{ proxima.url | relative_url }}" class="pagination--pager" title="{{ proxima.title | markdownify | strip_html | strip }}">{{ site.data.ui-text[locale].pagination_next | default: "Próxima" }}</a>
+    {% else %}
+      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[locale].pagination_next | default: "Próxima" }}</a>
+    {% endif %}
+  </nav>
+{% endif %}

@@ -28,23 +28,47 @@ Para sobrescrever algum arquivo do tema, copie-o para o mesmo caminho neste repo
 
 ## Publicando conteúdo
 
-### Nova nota de aula
+### Disciplinas
+
+As disciplinas ficam em `_data/disciplinas.yml`, separadas em Ensino Médio e Ensino Superior.
+Lá você edita nome, turma, descrição, livro-texto e o **conteúdo previsto** (ementa por unidade),
+que aparece na página da disciplina mesmo antes de haver aulas publicadas.
+
+| Disciplina | Página | Pasta das aulas |
+|---|---|---|
+| Matemática 1 | `/notas-de-aula/matematica-1/` | `_notas-de-aula/matematica-1/` |
+| Matemática 2 | `/notas-de-aula/matematica-2/` | `_notas-de-aula/matematica-2/` |
+| Matemática 3 | `/notas-de-aula/matematica-3/` | `_notas-de-aula/matematica-3/` |
+| Introdução ao Cálculo | `/notas-de-aula/introducao-ao-calculo/` | `_notas-de-aula/introducao-ao-calculo/` |
+| Cálculo 1 | `/notas-de-aula/calculo-1/` | `_notas-de-aula/calculo-1/` |
+| Teoria dos Números | `/notas-de-aula/teoria-dos-numeros/` | `_notas-de-aula/teoria-dos-numeros/` |
+
+Para criar uma disciplina nova: adicione-a em `_data/disciplinas.yml` e copie um dos arquivos de
+`_pages/disciplinas/` trocando a chave.
+
+### Importar uma aula pronta em HTML
+
+Para aulas no formato "caderno" (como a Aula 01 de Teoria dos Números), use:
+
+```bash
+bin/importar-aula ~/Downloads/aula-02-algoritmo-divisao-mdc.html teoria-dos-numeros
+```
+
+O script copia o conteúdo e as fórmulas, cria o cabeçalho da aula, adiciona o sumário lateral e
+grava em `_notas-de-aula/teoria-dos-numeros/aula-02-....html`. A ordem é tirada do título
+("Aula 02 — ..."); para definir outra, use `--ordem 2`. Para substituir uma aula já importada,
+acrescente `--forcar`. Depois é só fazer commit e push.
+
+A navegação "Anterior / Próxima" e a lista de aulas na barra lateral são geradas sozinhas,
+dentro da mesma disciplina.
+
+### Nova nota de aula em Markdown
 
 ```bash
 bin/novo nota calculo-1 "Limites e continuidade"
 ```
 
 Isso cria `_notas-de-aula/calculo-1/01-limites-e-continuidade.md` já com o modelo.
-Na primeira nota de uma disciplina, cadastre o nome dela em `_data/disciplinas.yml`:
-
-```yaml
-calculo-1:
-  nome: "Cálculo I"
-  descricao: "Limites, derivadas e integrais de funções de uma variável."
-```
-
-A página [/notas-de-aula/](https://marleson.github.io/notas-de-aula/) agrupa as notas por
-disciplina automaticamente, na ordem do campo `ordem:`.
 
 ### Novo post
 

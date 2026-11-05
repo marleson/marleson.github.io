@@ -1,19 +1,112 @@
-# Disciplinas exibidas na página /notas-de-aula/.
+# =============================================================================
+#  Disciplinas exibidas em /notas-de-aula/
+# =============================================================================
+# A chave (ex.: teoria-dos-numeros) é:
+#   - o nome da pasta das aulas:      _notas-de-aula/teoria-dos-numeros/
+#   - o valor do campo `disciplina:` no front matter de cada aula
+#   - o endereço da página:           /notas-de-aula/teoria-dos-numeros/
 #
-# A chave (ex.: calculo-1) deve ser igual ao campo `disciplina:` usado no
-# front matter de cada nota. A ordem abaixo é a ordem em que as disciplinas
-# aparecem na página. Disciplinas sem nenhuma nota publicada não aparecem.
+# Campos:
+#   nome       nome exibido
+#   nivel      "medio" ou "superior" (define a seção da página de notas)
+#   curso      curso/turma (opcional)
+#   descricao  uma ou duas frases sobre a disciplina
+#   referencia livro-texto principal (opcional)
+#   unidades   ementa planejada, por unidade. Serve de "mapa" para os alunos
+#              enquanto as aulas ainda não foram publicadas. Edite à vontade.
 #
-# Exemplo:
-#
-# calculo-1:
-#   nome: "Cálculo I"
-#   descricao: "Limites, derivadas e integrais de funções de uma variável."
-#
-# algebra-linear:
-#   nome: "Álgebra Linear"
-#   descricao: "Espaços vetoriais, transformações lineares e autovalores."
-#
-# edo:
-#   nome: "Equações Diferenciais Ordinárias"
-#   descricao: "EDOs de 1ª e 2ª ordem, sistemas e aplicações."
+# Para criar uma disciplina nova: adicione aqui e crie a página
+# _pages/disciplinas/<chave>.md (copie uma das existentes e troque a chave).
+
+niveis:
+  medio:
+    nome: "Ensino Médio"
+    descricao: "Notas de aula das disciplinas de Matemática do Ensino Médio."
+  superior:
+    nome: "Ensino Superior"
+    descricao: "Notas de aula das disciplinas de graduação."
+
+# ---------------------------------------------------------------- Ensino Médio
+matematica-1:
+  nome: "Matemática 1"
+  nivel: medio
+  curso: "1º ano do Ensino Médio"
+  descricao: "Conjuntos, funções e sequências: a linguagem básica da Matemática do Ensino Médio."
+  unidades:
+    - titulo: "Conjuntos e conjuntos numéricos"
+      topicos: ["Noções de conjuntos e operações", "Naturais, inteiros, racionais e reais", "Intervalos"]
+    - titulo: "Funções"
+      topicos: ["Conceito de função, domínio e imagem", "Gráficos", "Função afim", "Função quadrática", "Função modular"]
+    - titulo: "Exponenciais e logaritmos"
+      topicos: ["Potências e radicais", "Função exponencial", "Logaritmos e propriedades", "Função logarítmica"]
+    - titulo: "Sequências"
+      topicos: ["Progressão aritmética", "Progressão geométrica"]
+
+matematica-2:
+  nome: "Matemática 2"
+  nivel: medio
+  curso: "2º ano do Ensino Médio"
+  descricao: "Trigonometria, matrizes e sistemas, contagem e probabilidade."
+  unidades:
+    - titulo: "Trigonometria"
+      topicos: ["Trigonometria no triângulo retângulo", "Ciclo trigonométrico", "Funções trigonométricas", "Relações e transformações"]
+    - titulo: "Matrizes e sistemas lineares"
+      topicos: ["Matrizes e operações", "Determinantes", "Sistemas lineares"]
+    - titulo: "Análise combinatória e probabilidade"
+      topicos: ["Princípio fundamental da contagem", "Arranjos, permutações e combinações", "Binômio de Newton", "Probabilidade"]
+
+matematica-3:
+  nome: "Matemática 3"
+  nivel: medio
+  curso: "3º ano do Ensino Médio"
+  descricao: "Geometria, estatística, números complexos e polinômios."
+  unidades:
+    - titulo: "Geometria"
+      topicos: ["Geometria plana: áreas", "Geometria espacial: prismas, pirâmides, cilindros, cones e esferas"]
+    - titulo: "Geometria analítica"
+      topicos: ["Ponto e reta", "Circunferência", "Cônicas"]
+    - titulo: "Estatística"
+      topicos: ["Gráficos e tabelas", "Medidas de tendência central e de dispersão"]
+    - titulo: "Números complexos e polinômios"
+      topicos: ["Números complexos", "Polinômios e equações algébricas"]
+
+# ------------------------------------------------------------- Ensino Superior
+introducao-ao-calculo:
+  nome: "Introdução ao Cálculo"
+  nivel: superior
+  descricao: "Revisão e aprofundamento da Matemática básica necessária para o Cálculo: números reais, funções e trigonometria."
+  unidades:
+    - titulo: "Números reais"
+      topicos: ["Propriedades e ordem", "Desigualdades e valor absoluto", "Intervalos"]
+    - titulo: "Funções"
+      topicos: ["Domínio, imagem e gráficos", "Composição e inversa", "Funções polinomiais e racionais", "Funções exponenciais e logarítmicas"]
+    - titulo: "Trigonometria"
+      topicos: ["Ciclo trigonométrico", "Funções trigonométricas e inversas", "Identidades"]
+
+calculo-1:
+  nome: "Cálculo 1"
+  nivel: superior
+  descricao: "Limites, derivadas e integrais de funções de uma variável real."
+  unidades:
+    - titulo: "Limites e continuidade"
+      topicos: ["Noção intuitiva e definição formal", "Propriedades e limites fundamentais", "Limites no infinito e assíntotas", "Continuidade"]
+    - titulo: "Derivadas"
+      topicos: ["Definição e interpretação", "Regras de derivação e regra da cadeia", "Derivação implícita e taxas relacionadas"]
+    - titulo: "Aplicações da derivada"
+      topicos: ["Teorema do Valor Médio", "Máximos e mínimos", "Esboço de gráficos", "Regra de L'Hôpital", "Otimização"]
+    - titulo: "Integrais"
+      topicos: ["Primitivas", "Integral definida e Teorema Fundamental do Cálculo", "Técnicas de integração", "Aplicações: áreas e volumes"]
+
+teoria-dos-numeros:
+  nome: "Teoria dos Números"
+  nivel: superior
+  curso: "Licenciatura em Matemática"
+  descricao: "Teoria Elementar dos Números: indução, divisibilidade, números primos e congruências."
+  referencia: "SANTOS, J. P. O. Introdução à Teoria dos Números. Rio de Janeiro: SBM/IMPA, 1998."
+  unidades:
+    - titulo: "Unidade I — Números inteiros e divisibilidade"
+      topicos: ["Princípio da Boa Ordem e indução finita", "Divisibilidade", "Algoritmo da Divisão", "Máximo divisor comum e Algoritmo de Euclides", "Mínimo múltiplo comum"]
+    - titulo: "Unidade II — Números primos"
+      topicos: ["Teorema Fundamental da Aritmética", "Infinitude e distribuição dos primos"]
+    - titulo: "Unidade III — Congruências"
+      topicos: ["Congruências e suas propriedades", "Congruências lineares", "Teorema Chinês do Resto", "Teoremas de Fermat, Euler e Wilson"]

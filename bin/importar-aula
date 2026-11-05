@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""Importa uma aula em HTML (formato "sheet": header.head + div.body + footer)
+para a coleção de notas de aula do site.
+
+Uso:
+    bin/importar-aula ARQUIVO.html DISCIPLINA [--ordem N] [--data AAAA-MM-DD]
+
+Exemplo:
+    bin/importar-aula ~/Downloads/aula-02.html teoria-dos-numeros
+
+O que o script faz:
+  * usa o <h1> como título, o .sub como resumo e as etiquetas de .meta
+    como cabeçalho da aula;
+  * copia o conteúdo de <div class="body"> (seções, caixas, fórmulas) sem
+    alterações, apenas adicionando âncoras (id) nos <h2> para o sumário;
+  * descarta o <head> (estilos e MathJax próprios: o site já tem os seus)
+    e a barra de navegação (o site gera "Anterior/Próxima" sozinho);
+  * transforma o <footer> em um bloco de referências no fim da aula;
+  * grava em _notas-de-aula/DISCIPLINA/aula-NN-titulo.html
+
+Só usa a biblioteca padrão do Python 3.
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import html
+import json
+import re
+import sys
+import unicodedata
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parent.parent
+
+
+def slug(texto: str) -> str:
+    t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
+
+
+def texto(fragmento: str) -> str:
+    """Remove tags e normaliza espaços."""
+    sem_tags = re.sub(r"<[^>]+>", "", fragmento)
+    return re.sub(r"\s+", " ", html.unescape(sem_tags)).strip()
+
+
+def bloco(doc: str, inicio_regex: str) -> str | None:
+    """Conteúdo interno do primeiro elemento que casa com inicio_regex,
+    respeitando aninhamento de tags do mesmo nome."""
+    m = re.search(inicio_regex, doc, re.S)
+    if not m:
+        return None
+    tag = re.match(r"<(\w+)", m.group(0)).group(1)
+    abre = re.compile(rf"<{tag}\b", re.I)
+    fecha = re.compile(rf"</{tag}\s*>", re.I)
+    pos, nivel = m.end(), 1
+    while nivel:
+        a, f = abre.search(doc, pos), fecha.search(doc, pos)
+        if not f:
+            sys.exit(f"Erro: <{tag}> sem fechamento.")
+        if a and a.start() < f.start():
+            nivel, pos = nivel + 1, a.end()
+        else:
+            nivel, pos = nivel - 1, f.end()
+    return doc[m.end():f.start()]
+
+
+def ancorar_h2(corpo: str) -> str:
+    usados = set()
+
+    def troca(m):
+        attrs, interno = m.group(1), m.group(2)
+        if "id=" in attrs:
+            return m.group(0)
+        rotulo = texto(re.sub(r'<span class="snum"[^>]*>.*?</span>', "", interno))
+        base = slug(rotulo) or "secao"
+        ident, n = base, 2
+        while ident in usados:
+            ident, n = f"{base}-{n}", n + 1
+        usados.add(ident)
+        return f'<h2{attrs} id="{ident}">{interno}</h2>'
+
+    corpo = re.sub(r"<h2([^>]*)>(.*?)</h2>", troca, corpo, flags=re.S)
+    # O número do selo vira atributo (desenhado via CSS) para não poluir o sumário
+    return re.sub(r'<span class="snum"([^>]*)>\s*([^<]*?)\s*</span>',
+                  r'<span class="snum" data-n="\2"\1></span>', corpo)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("arquivo")
+    ap.add_argument("disciplina", help="chave em _data/disciplinas.yml, ex.: teoria-dos-numeros")
+    ap.add_argument("--ordem", type=int, help="posição na disciplina (padrão: número da aula no título)")
+    ap.add_argument("--data", default=dt.date.today().isoformat())
+    ap.add_argument("--forcar", action="store_true", help="sobrescreve se já existir")
+    a = ap.parse_args()
+
+    doc = Path(a.arquivo).expanduser().read_text(encoding="utf-8")
+
+    cab = bloco(doc, r'<header[^>]*class="[^"]*\bhead\b[^"]*"[^>]*>') or ""
+    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", cab or doc, re.S)
+    if not h1:
+        sys.exit("Erro: não encontrei o <h1> com o título da aula.")
+    titulo = texto(h1.group(1))
+    kicker = re.search(r'<p class="kicker"[^>]*>(.*?)</p>', cab, re.S)
+    sub = re.search(r'<p class="sub"[^>]*>(.*?)</p>', cab, re.S)
+    meta = [texto(s) for s in re.findall(r"<span[^>]*>(.*?)</span>", bloco(cab, r'<div class="meta"[^>]*>') or "", re.S)]
+
+    corpo = bloco(doc, r'<div class="body"[^>]*>')
+    if corpo is None:
+        sys.exit('Erro: não encontrei <div class="body"> com o conteúdo da aula.')
+    corpo = ancorar_h2(corpo.strip())
+
+    rodape = bloco(doc, r"<footer[^>]*>")
+
+    num = re.search(r"Aula\s*0*(\d+)", titulo, re.I)
+    ordem = a.ordem or (int(num.group(1)) if num else 1)
+    nome_curto = re.sub(r"^Aula\s*\d+\s*[—–-]\s*", "", titulo)
+
+    destino_dir = RAIZ / "_notas-de-aula" / a.disciplina
+    destino_dir.mkdir(parents=True, exist_ok=True)
+    # Usa o nome do arquivo original se ele já seguir o padrão "aula-NN-..."
+    original = re.search(r"aula-?\d+-[a-z0-9-]+", slug(Path(a.arquivo).stem))
+    if original:
+        nome = re.sub(r"^aula-?\d+", f"aula-{ordem:02d}", original.group(0))
+    else:
+        palavras = slug(nome_curto).split("-")[:6]
+        nome = f"aula-{ordem:02d}-" + "-".join(palavras)
+    destino = destino_dir / f"{nome}.html"
+    if destino.exists() and not a.forcar:
+        sys.exit(f"Já existe: {destino.relative_to(RAIZ)} (use --forcar para sobrescrever)")
+
+    fm = {
+        "title": titulo,
+        "disciplina": a.disciplina,
+        "ordem": ordem,
+        "date": a.data,
+        "excerpt": texto(sub.group(1)) if sub else "",
+    }
+    linhas = ["---"] + [f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in fm.items()]
+    linhas.append("aula:")
+    if kicker:
+        linhas.append(f"  kicker: {json.dumps(texto(kicker.group(1)), ensure_ascii=False)}")
+    if sub:
+        linhas.append(f"  resumo: {json.dumps(sub.group(1).strip(), ensure_ascii=False)}")
+    if meta:
+        linhas.append("  etiquetas:")
+        linhas += [f"    - {json.dumps(m, ensure_ascii=False)}" for m in meta]
+    linhas.append("---")
+
+    saida = "\n".join(linhas) + "\n\n{% include aula-cabecalho.html %}\n\n"
+    # {% raw %} impede que fórmulas com {{ ... }} sejam lidas como Liquid
+    saida += '{% raw %}\n<div class="aula">\n' + corpo + "\n"
+    if rodape and rodape.strip():
+        saida += '\n<aside class="aula-refs">\n' + rodape.strip() + "\n</aside>\n"
+    saida += "</div>\n{% endraw %}\n"
+
+    destino.write_text(saida, encoding="utf-8")
+    print(f"Criado: {destino.relative_to(RAIZ)}")
+    print(f"  título: {titulo}")
+    print(f"  ordem:  {ordem}   (altere no front matter se precisar)")
+    print(f"  seções: {len(re.findall(r'<h2', corpo))}")
+
+
+if __name__ == "__main__":
+    main()

@@ -139,11 +139,305 @@ mjx-container[display="true"] {
   > :last-child  { margin-bottom: 0; }
 }
 
-// Lista de notas agrupadas por disciplina
-.disciplina {
-  margin-bottom: 2em;
+// =============================================================================
+// Notas de aula: índice, páginas de disciplina e navegação
+// =============================================================================
+$nota-azul: #16324f;
+$nota-azul-2: #22507d;
+$nota-azul-claro: #eaf0f7;
+$nota-linha: #e3e7ec;
+$nota-linha-2: #ccd4de;
+$nota-texto-2: #3d4654;
+$nota-texto-3: #5c6678;
 
-  h2 { margin-bottom: 0.5em; }
-  ol { margin-top: 0; }
-  .disciplina__desc { color: $gray; font-size: $type-size-6; }
+.nivel {
+  margin: 2em 0 2.5em;
+  > h2 { margin-bottom: 0.75em; }
+}
+
+.disciplina-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1em;
+}
+
+a.disciplina-card {
+  hyphens: manual;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  padding: 1.1em 1.25em;
+  border: 1px solid $nota-linha;
+  border-top: 4px solid $nota-azul-2;
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+  transition: box-shadow 0.15s, transform 0.15s;
+
+  &:hover, &:focus-visible {
+    box-shadow: 0 6px 18px rgba(20, 24, 31, 0.1);
+    transform: translateY(-2px);
+  }
+}
+#medio a.disciplina-card { border-top-color: #0f766e; }
+
+.disciplina-card__nome { font-size: $type-size-4; font-weight: 700; color: $nota-azul; line-height: 1.25; }
+.disciplina-card__curso { font-size: $type-size-6; color: $nota-texto-3; }
+.disciplina-card__desc { font-size: $type-size-6; color: $nota-texto-2; flex-grow: 1; }
+.disciplina-card__status {
+  align-self: flex-start;
+  margin-top: 0.4em;
+  padding: 0.15em 0.75em;
+  border-radius: 999px;
+  background: $nota-azul-claro;
+  color: $nota-azul-2;
+  font-size: $type-size-7;
+  font-weight: 700;
+
+  &.vazio { background: #f2f4f7; color: $nota-texto-3; }
+}
+
+// Página de uma disciplina
+.disciplina__info { display: flex; flex-wrap: wrap; gap: 0.5em; margin-bottom: 0.5em; }
+.disciplina__nivel, .disciplina__curso {
+  padding: 0.1em 0.75em;
+  border-radius: 999px;
+  border: 1px solid $nota-linha-2;
+  font-size: $type-size-6;
+  text-decoration: none;
+}
+.disciplina__lead { font-size: $type-size-4; color: $nota-texto-2; }
+.disciplina__ref { font-size: $type-size-6; color: $nota-texto-3; }
+
+.aula-lista {
+  padding-left: 1.5em;
+  li { margin-bottom: 0.9em; }
+  a { font-weight: 600; }
+}
+.aula-lista__resumo { display: block; font-size: $type-size-6; color: $nota-texto-3; }
+
+.ementa {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1em;
+}
+.ementa__unidade {
+  padding: 0.9em 1.1em;
+  border: 1px solid $nota-linha;
+  border-radius: 10px;
+  background: #fbfcfd;
+  text-align: left;
+
+  h3 { margin: 0 0 0.5em; font-size: $type-size-5; }
+  ul { margin: 0; padding-left: 1.2em; font-size: $type-size-6; }
+  li { margin-bottom: 0.2em; }
+}
+
+// Lista de aulas na barra lateral (só em telas grandes)
+.aulas-nav {
+  display: none;
+  margin-top: 1.5em;
+  padding-top: 1em;
+  border-top: 1px solid $nota-linha;
+  font-size: $type-size-6;
+
+  @include breakpoint($large) { display: block; }
+
+  .aulas-nav__titulo { display: block; font-weight: 700; margin-bottom: 0.5em; text-decoration: none; }
+  ol { margin: 0; padding-left: 1.3em; }
+  li { margin-bottom: 0.4em; line-height: 1.35; }
+  li a { text-decoration: none; color: $nota-texto-2; }
+  li a:hover { text-decoration: underline; }
+  li.atual a { font-weight: 700; color: $nota-azul; }
+}
+
+// =============================================================================
+// Aulas importadas (bin/importar-aula): componentes do formato "caderno"
+// Tudo fica dentro de .aula para não afetar o resto do site.
+// =============================================================================
+.aula-cabecalho {
+  margin: 0 0 1.5em;
+  padding: 1.1em 1.4em;
+  border-radius: 12px;
+  background: linear-gradient(135deg, $nota-azul 0%, $nota-azul-2 60%, #2f6ea8 100%);
+  color: #fff;
+  text-align: left;
+  hyphens: manual;
+
+  p, strong, em { color: #fff; }
+}
+.aula-cabecalho__kicker {
+  margin: 0 0 0.6em;
+  font-size: $type-size-7;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.aula-cabecalho__etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 0 0 0.9em;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0.15em 0.8em;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(9, 26, 45, 0.3);
+    font-size: $type-size-7;
+    font-weight: 600;
+  }
+}
+.aula-cabecalho__resumo { margin: 0; font-size: $type-size-5; line-height: 1.55; opacity: 0.95; }
+
+.aula {
+  --aula-teal: #0f766e;   --aula-teal-soft: #e7f4f2;
+  --aula-amber: #9a5d08;  --aula-amber-soft: #fdf3e3;
+  --aula-plum: #6d28a8;   --aula-plum-soft: #f4edfb;
+  --aula-rose: #a4283f;   --aula-rose-soft: #fbecef;
+  --aula-green: #1c6b4a;  --aula-green-soft: #e8f5ee;
+
+  section { padding: 1.5em 0; border-top: 1px solid $nota-linha; }
+  section:first-of-type { border-top: none; padding-top: 0; }
+
+  .snum {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.6em; height: 1.6em; margin-right: 0.5em;
+    border-radius: 7px; background: $nota-azul; color: #fff;
+    font-size: 0.6em; font-weight: 700; vertical-align: 0.2em;
+
+    &[data-n]::before { content: attr(data-n); }
+  }
+  h2 { border-bottom: none; padding-bottom: 0; margin-top: 0; }
+  .sec-lead { color: $nota-texto-3; font-style: italic; text-align: left; }
+  .cap { font-size: $type-size-6; color: $nota-texto-3; }
+
+  // Rótulos das caixas
+  .label {
+    display: block; margin-bottom: 0.4em;
+    font-size: $type-size-8; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: $nota-texto-3;
+  }
+
+  // Objetivos
+  .goals {
+    padding: 1.1em 1.4em; border: 1px solid #c4e2d2; border-radius: 10px;
+    background: var(--aula-green-soft); text-align: left;
+    h2, h3 { margin: 0 0 0.6em; font-size: $type-size-6; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aula-green); }
+    ul { margin: 0; padding-left: 1.2em; }
+  }
+
+  // Roteiro (lista de horários)
+  .route {
+    margin: 1em 0; border: 1px solid $nota-linha; border-radius: 10px; overflow: hidden; text-align: left;
+    > div { display: grid; grid-template-columns: 7.5em 1fr; border-bottom: 1px solid $nota-linha; }
+    > div:last-child { border-bottom: none; }
+    dt { margin: 0; padding: 0.6em 0.9em; background: #f5f7fa; font-size: $type-size-6; font-weight: 700; color: $nota-azul-2; font-variant-numeric: tabular-nums; }
+    dd { margin: 0; padding: 0.6em 1em; font-size: $type-size-6; }
+
+    @include breakpoint(max-width $small) {
+      > div { grid-template-columns: 1fr; }
+      dt { border-bottom: 1px solid $nota-linha; }
+    }
+  }
+
+  // Caixas
+  .box {
+    margin: 1.2em 0; padding: 1em 1.25em;
+    border: 1px solid $nota-linha-2; border-radius: 10px; background: #f7f9fb; text-align: left;
+    p:last-child, ul:last-child, ol:last-child { margin-bottom: 0; }
+    &.market { background: var(--aula-amber-soft); border-color: #eed9b3; .label { color: var(--aula-amber); } }
+    &.tip    { background: var(--aula-teal-soft);  border-color: #bfe0db; .label { color: var(--aula-teal); } }
+    &.think  { background: var(--aula-plum-soft);  border-color: #dfd0f0; .label { color: var(--aula-plum); } }
+    &.warn   { background: var(--aula-rose-soft);  border-color: #f0ccd3; .label { color: var(--aula-rose); } }
+  }
+
+  // Teoremas, definições e demonstrações
+  .thm {
+    margin: 1.1em 0; padding: 1em 1.25em;
+    border: 1px solid $nota-linha-2; border-left: 4px solid $nota-azul; border-radius: 10px;
+    background: #fbfcfd; text-align: left;
+    .label { color: $nota-azul; }
+    p:last-child { margin-bottom: 0; }
+  }
+  .dem {
+    margin: 0.75em 0 1.1em; padding: 0.1em 0 0.1em 1.1em;
+    border-left: 3px solid $nota-linha-2;
+    p:last-child { margin-bottom: 0; }
+  }
+  .qed { display: block; text-align: right; color: $nota-texto-3; }
+
+  // Cartões
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.9em; margin: 1.1em 0; }
+  .card {
+    padding: 1em 1.1em; border: 1px solid $nota-linha; border-radius: 10px; background: #fbfcfd; text-align: left;
+    .k { margin-bottom: 0.4em; font-size: $type-size-8; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--aula-teal); }
+    .big { font-size: $type-size-3; font-weight: 700; color: $nota-azul; line-height: 1.1; }
+    p { margin: 0; font-size: $type-size-6; }
+  }
+
+  // Tabelas com rolagem
+  .tw { overflow-x: auto; margin: 1.1em 0; }
+
+  // Atividade
+  .lab { margin: 1.4em 0; border: 2px solid var(--aula-teal); border-radius: 12px; overflow: hidden; text-align: left; }
+  .lab-h {
+    padding: 0.8em 1.3em; background: var(--aula-teal); color: #fff;
+    .t { font-size: $type-size-8; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.86; }
+    .n { font-size: $type-size-4; font-weight: 700; }
+  }
+  .lab-b { padding: 1.2em 1.3em; }
+
+  .steps {
+    counter-reset: passo; list-style: none; margin: 0; padding: 0;
+    li { counter-increment: passo; position: relative; margin-bottom: 0.9em; padding-left: 2.3em; }
+    li::before {
+      content: counter(passo);
+      position: absolute; left: 0; top: 0.1em;
+      display: flex; align-items: center; justify-content: center;
+      width: 1.6em; height: 1.6em; border-radius: 50%;
+      border: 1px solid #cfdeee; background: $nota-azul-claro; color: $nota-azul-2;
+      font-size: $type-size-7; font-weight: 700;
+    }
+  }
+
+  // Resumo
+  .recap {
+    padding: 1.1em 1.4em; border: 1px solid #d2dfed; border-left: 4px solid $nota-azul-2;
+    border-radius: 10px; background: $nota-azul-claro; text-align: left;
+    h3 { margin: 0 0 0.6em; font-size: $type-size-6; letter-spacing: 0.1em; text-transform: uppercase; color: $nota-azul-2; }
+    ol { margin: 0; }
+  }
+
+  // Exercícios
+  .ex {
+    margin-bottom: 0.8em; padding: 0.9em 1.2em;
+    border: 1px solid $nota-linha; border-radius: 10px; background: #fbfcfd; text-align: left;
+    .n { margin-bottom: 0.3em; font-size: $type-size-8; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--aula-plum); }
+    p:last-child { margin-bottom: 0; }
+  }
+
+  // Código
+  .lang {
+    display: inline-block; margin: 0.9em 0 0.3em; padding: 0.1em 0.6em;
+    border: 1px solid #d3e0ee; border-radius: 5px; background: $nota-azul-claro; color: $nota-azul-2;
+    font-size: $type-size-8; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  }
+}
+
+.aula-refs {
+  margin-top: 1.5em; padding: 1em 1.25em;
+  border-top: 1px solid $nota-linha; background: #f9fafb; border-radius: 8px;
+  font-size: $type-size-6; color: $nota-texto-3; text-align: left;
+}
+
+@media print {
+  .aula-cabecalho { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .aula .lab-h, .aula .snum { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

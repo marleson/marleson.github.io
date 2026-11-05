@@ -2,7 +2,7 @@
   Versão personalizada do breadcrumbs do Minimal Mistakes:
   - links acumulados (/notas-de-aula/calculo-1/ em vez de /calculo-1)
   - nas notas de aula, a disciplina usa o nome de _data/disciplinas.yml e
-    aponta para a seção correspondente em /notas-de-aula/
+    aponta para a página da disciplina (/notas-de-aula/<disciplina>/)
   - posts continuam apontando para o arquivo de categorias
 {% endcomment %}
 {% assign locale = include.locale | default: site.locale %}
@@ -29,7 +29,7 @@
         {% if page.collection == 'posts' %}
           {% assign link = site.category_archive.path | append: '#' | append: crumb | downcase %}
         {% elsif page.collection == 'notas-de-aula' and forloop.index == 2 %}
-          {% assign link = '/notas-de-aula/#' | append: crumb %}
+          {% assign link = acumulado %}
           {% if site.data.disciplinas[crumb].nome %}{% assign nome = site.data.disciplinas[crumb].nome %}{% endif %}
         {% else %}
           {% assign link = acumulado %}
