@@ -382,8 +382,22 @@ a.disciplina-card {
     p { margin: 0; font-size: $type-size-6; }
   }
 
-  // Tabelas com rolagem
-  .tw { overflow-x: auto; margin: 1.1em 0; }
+  // Tabelas com rolagem: no celular a tabela rola para o lado em vez de
+  // quebrar as fórmulas no meio das células
+  .tw {
+    overflow-x: auto; margin: 1.1em 0;
+    border: 1px solid $nota-linha; border-radius: 10px;
+
+    table { display: table; width: 100%; margin: 0; border-collapse: collapse; }
+    // impede o MathJax de quebrar fórmulas em linha dentro das células
+    mjx-container, mjx-container * { white-space: nowrap !important; }
+    th, td { white-space: nowrap; border: none; border-bottom: 1px solid $nota-linha; padding: 0.6em 0.9em; vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    thead th {
+      background: #f4f6f9; color: $nota-texto-3; border-bottom: 1px solid $nota-linha-2;
+      font-size: $type-size-8; letter-spacing: 0.09em; text-transform: uppercase;
+    }
+  }
 
   // Atividade
   .lab { margin: 1.4em 0; border: 2px solid var(--aula-teal); border-radius: 12px; overflow: hidden; text-align: left; }
