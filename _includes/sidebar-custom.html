@@ -1,0 +1,15 @@
+{% comment %}
+  Nas notas de aula: lista de aulas da mesma disciplina na barra lateral.
+{% endcomment %}
+{% if page.collection == "notas-de-aula" and page.disciplina %}
+  {% assign info = site.data.disciplinas[page.disciplina] %}
+  {% assign aulas = site["notas-de-aula"] | where: "disciplina", page.disciplina | sort: "ordem" %}
+  <nav class="aulas-nav" aria-label="Aulas da disciplina">
+    <a class="aulas-nav__titulo" href="{{ '/notas-de-aula/' | append: page.disciplina | append: '/' | relative_url }}">{{ info.nome | default: page.disciplina }}</a>
+    <ol>
+      {% for a in aulas %}
+      <li{% if a.url == page.url %} class="atual"{% endif %}><a href="{{ a.url | relative_url }}"{% if a.url == page.url %} aria-current="page"{% endif %}>{{ a.title }}</a></li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

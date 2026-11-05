@@ -1,0 +1,277 @@
+---
+title: "Aula 02 — Algoritmo da Divisão e Máximo Divisor Comum"
+disciplina: "teoria-dos-numeros"
+ordem: 2
+date: "2026-11-05"
+excerpt: "Hoje fechamos uma promessa da Aula 01: usar o Princípio da Boa Ordem para provar, de verdade, que a divisão com resto sempre existe e é única. A partir daí, chegamos ao máximo divisor comum — não como \"o maior divisor em comum\", mas como o menor valor positivo que se escreve como combinação linear de dois inteiros."
+aula:
+  kicker: "Teoria dos Números · Licenciatura em Matemática · Unidade II"
+  resumo: "Hoje fechamos uma promessa da Aula 01: usar o Princípio da Boa Ordem para provar, de verdade, que a divisão com resto sempre existe e é única. A partir daí, chegamos ao máximo divisor comum — não como \"o maior divisor em comum\", mas como o menor valor positivo que se escreve como combinação linear de dois inteiros."
+  etiquetas:
+    - "Encontro 2 de 9"
+    - "Unidade II · Divisibilidade"
+    - "Base: SANTOS, cap. 1 (§1.3–1.4)"
+    - "Duração sugerida: 4 horas/aula"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+<!-- OBJETIVOS -->
+<section>
+  <div class="goals">
+    <h2 id="o-que-voce-leva-desta-aula">O que você leva desta aula</h2>
+    <ul>
+      <li>Enunciar o Algoritmo da Divisão e demonstrar a existência e a unicidade de quociente e resto, a partir do Princípio da Boa Ordem.</li>
+      <li>Aplicar o algoritmo também a dividendos e divisores negativos, sem confundir "resto" com "resto em valor absoluto".</li>
+      <li>Definir máximo divisor comum e demonstrar que ele sempre existe e se escreve como combinação linear <code>d = n₀a + m₀b</code>.</li>
+      <li>Demonstrar e usar a caracterização do MDC como o divisor comum que é múltiplo de todos os divisores comuns — não apenas "o maior".</li>
+      <li>Definir números relativamente primos e demonstrar o lema <code>a | bc, (a,b)=1 ⇒ a | c</code>, peça-chave para o Teorema Fundamental da Aritmética.</li>
+      <li><em>Como futuro(a) professor(a):</em> perceber por que "resto é sempre não negativo" é uma <strong>escolha de convenção</strong> embutida no enunciado do teorema, e não uma lei da natureza — relevante para quando a divisão euclidiana aparecer no Ensino Fundamental.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ROTEIRO -->
+<section>
+  <h2 id="roteiro-do-encontro"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro do encontro</h2>
+  <p class="sec-lead">Da boa ordem à divisão com resto; da divisão ao máximo divisor comum.</p>
+  <dl class="route">
+    <div><dt>00:00–00:15</dt><dd><b>Retomada.</b> PBO e indução da Aula 01 — relembrar o enunciado e por que íamos precisar deles hoje.</dd></div>
+    <div><dt>00:15–01:10</dt><dd><b>Algoritmo da Divisão.</b> Enunciado, demonstração completa (existência via PBO, unicidade por contradição) e exemplos com <code>b &lt; 0</code>.</dd></div>
+    <div><dt>01:10–01:25</dt><dd><b>Intervalo.</b></dd></div>
+    <div><dt>01:25–02:15</dt><dd><b>Máximo Divisor Comum.</b> Definição, existência como combinação linear (Teorema 1.3) e caracterização por divisibilidade (Teorema 1.4).</dd></div>
+    <div><dt>02:15–02:50</dt><dd><b>Propriedades do MDC.</b> <code>(ta,tb)=t(a,b)</code>; números relativamente primos; <code>(a,b)=(a,b+ax)</code>; o lema <code>a|bc,(a,b)=1 ⇒ a|c</code>.</dd></div>
+    <div><dt>02:50–03:15</dt><dd><b>Por que isso importa.</b> Onde o MDC vai ser usado nas próximas três aulas (Euclides, MMC, Teorema Fundamental da Aritmética).</dd></div>
+    <div><dt>03:15–04:00</dt><dd><b>Atividade em duplas</b> e socialização das soluções.</dd></div>
+  </dl>
+</section>
+
+<!-- 1 -->
+<section>
+  <h2 id="de-onde-viemos"><span class="snum" data-n="1" aria-hidden="true"></span>De onde viemos</h2>
+  <p class="sec-lead">A Aula 01 terminou com uma promessa. Hoje a cumprimos.</p>
+
+  <p>Na Aula 01 estabelecemos três ferramentas equivalentes — o Princípio da Boa Ordem (PBO), a Indução Finita e a Indução Completa — e usamos a última delas para começar Divisibilidade: a definição de \(a \mid b\) e duas propriedades (transitividade e combinação linear). Hoje usamos a <strong>primeira</strong> dessas ferramentas, o PBO, para demonstrar o resultado que o próprio SANTOS chama, no prefácio do livro, de "o mais importante" do capítulo: o Algoritmo da Divisão.</p>
+
+  <div class="box think">
+    <span class="label">Pense um minuto</span>
+    <p>Você certamente sabe, desde o Ensino Fundamental, que "11 dividido por 4 dá quociente 2 e resto 3". Mas por que precisamos de uma <em>demonstração</em> para algo que parece tão concreto? O que exatamente garante que não existe uma segunda forma de escrever \(11 = q\cdot 4 + r\) com \(0 \leq r &lt; 4\)?</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2 id="o-algoritmo-da-divisao"><span class="snum" data-n="2" aria-hidden="true"></span>O Algoritmo da Divisão</h2>
+  <p class="sec-lead">O resultado mais citado do curso — praticamente todo teorema das próximas oito aulas se apoia nele.</p>
+
+  <div class="thm">
+    <span class="label">Teorema 1.2 · Algoritmo da Divisão</span>
+    <p>Dados dois inteiros \(a\) e \(b\), com \(b &gt; 0\), existe um único par de inteiros \(q\) e \(r\) tais que</p>
+    <p>\[ a = qb + r, \qquad 0 \leq r &lt; b. \]</p>
+    <p>(\(q\) é chamado de <em>quociente</em> e \(r\) de <em>resto</em> da divisão de \(a\) por \(b\); \(r = 0 \Leftrightarrow b \mid a\).)</p>
+  </div>
+
+  <div class="dem">
+    <span class="label">Demonstração — existência, via PBO</span>
+    <p>Considere o conjunto \(S = \{\, a - xb : x \in \mathbb{Z} \text{ e } a - xb \geq 0 \,\}\). O conjunto \(S\) é não vazio: tomando \(x\) suficientemente negativo (por exemplo \(x = -|a|\)), o número \(a - xb\) fica positivo. Além disso \(S \subseteq \mathbb{Z}^+ \cup \{0\}\). Se \(0 \in S\) terminamos com \(r=0\); caso contrário, \(S\) é um conjunto não vazio de inteiros positivos e, pelo <strong>PBO</strong>, possui um elemento mínimo \(r = a - qb\), para algum inteiro \(q\).</p>
+    <p>Falta mostrar que \(r &lt; b\). Suponha, por contradição, que \(r \geq b\). Então \(r - b = a - (q+1)b \geq 0\), ou seja, \(r - b\) também pertence a \(S\). Mas \(r - b &lt; r\), contradizendo o fato de \(r\) ser o <strong>mínimo</strong> de \(S\). Logo \(r &lt; b\), e \(a = qb + r\) com \(0 \leq r &lt; b\), como queríamos.</p>
+  </div>
+
+  <div class="dem">
+    <span class="label">Demonstração — unicidade</span>
+    <p>Suponha dois pares satisfazendo o enunciado: \(a = qb + r\) e \(a = q_1 b + r_1\), com \(0 \leq r, r_1 &lt; b\). Subtraindo,</p>
+    <p>\[ 0 = b(q - q_1) + (r - r_1) \;\Rightarrow\; b(q_1 - q) = r - r_1. \]</p>
+    <p>Logo \(b \mid (r - r_1)\). Mas como \(0 \leq r &lt; b\) e \(0 \leq r_1 &lt; b\), temos \(|r - r_1| &lt; b\). O único múltiplo de \(b\) com valor absoluto menor que \(b\) é o próprio \(0\); portanto \(r = r_1\), e daí \(b(q_1-q) = 0\) com \(b \neq 0\) implica \(q = q_1\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Onde exatamente entrou o PBO</span>
+    <p>Note a estrutura: a existência de \(q\) e \(r\) não foi "calculada" — foi <strong>garantida</strong> pelo PBO, que assegurou um elemento mínimo para o conjunto \(S\). É o mesmo padrão de argumento da Aula 01 (PBO ⇒ indução): primeiro garantimos que um certo conjunto tem mínimo, depois mostramos que esse mínimo tem a propriedade que queríamos.</p>
+  </div>
+
+  <h3>E quando o divisor é negativo?</h3>
+  <p>O enunciado do Teorema 1.2 pede \(b &gt; 0\). Para \(b &lt; 0\), a convenção do livro-texto é manter sempre \(0 \leq r &lt; |b|\), ajustando o quociente de acordo.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th scope="col" style="width:140px">Caso</th><th scope="col">Exemplo</th><th scope="col">Verificação</th></tr></thead>
+    <tbody>
+      <tr><td><b>\(a=11,\ b=4\)</b></td><td>\(q=2,\ r=3\)</td><td>\(11 = 2\cdot 4 + 3\), \(0\le 3&lt;4\)</td></tr>
+      <tr><td><b>\(a=-11,\ b=4\)</b></td><td>\(q=-3,\ r=1\)</td><td>\(-11 = -3\cdot 4 + 1\), \(0\le 1&lt;4\)</td></tr>
+      <tr><td><b>\(a=11,\ b=-4\)</b></td><td>\(q=-2,\ r=3\)</td><td>\(11 = -2\cdot(-4) + 3\), \(0\le 3&lt;4\)</td></tr>
+      <tr><td><b>\(a=-11,\ b=-4\)</b></td><td>\(q=3,\ r=1\)</td><td>\(-11 = 3\cdot(-4) + 1\), \(0\le 1&lt;4\)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <span class="label">Cuidado didático</span>
+    <p>É muito comum um aluno "resolver" \(-11 \div 4\) fazendo a conta com \(11\) e só trocando o sinal do resultado, obtendo \(q=-2, r=-3\). Isso quebra a exigência \(0 \leq r &lt; b\) do teorema — e é exatamente essa exigência que torna \(q\) e \(r\) <strong>únicos</strong>. Vale a pena mostrar esse contraexemplo em sala antes de ensinar o algoritmo na Educação Básica.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2 id="maximo-divisor-comum"><span class="snum" data-n="3" aria-hidden="true"></span>Máximo Divisor Comum</h2>
+  <p class="sec-lead">A definição intuitiva é "o maior divisor comum". A definição útil é outra — e as duas coincidem.</p>
+
+  <p>Dados dois inteiros \(a\) e \(b\), não ambos nulos, o <strong>máximo divisor comum</strong> de \(a\) e \(b\), denotado \((a,b)\), é o maior inteiro que divide \(a\) e \(b\). Essa é a definição com que todo mundo chega à universidade. O próximo teorema mostra algo bem mais forte do que "maior": mostra que o MDC sempre pode ser escrito como uma combinação linear de \(a\) e \(b\) — e é essa propriedade, não o tamanho, que faz o MDC ser tão útil.</p>
+
+  <div class="thm">
+    <span class="label">Teorema 1.3</span>
+    <p>Seja \(d\) o máximo divisor comum de \(a\) e \(b\). Então existem inteiros \(n_0\) e \(m_0\) tais que</p>
+    <p>\[ d = n_0 a + m_0 b. \]</p>
+  </div>
+
+  <div class="dem">
+    <span class="label">Demonstração, via PBO</span>
+    <p>Seja \(B\) o conjunto de todas as combinações lineares \(na + mb\) (\(n, m \in \mathbb{Z}\)) que são <strong>positivas</strong>. Como \(a\) e \(b\) não são ambos nulos, \(B\) é não vazio (por exemplo, \(a \cdot a + b \cdot b = a^2+b^2 &gt; 0\) pertence a \(B\)). Pelo <strong>PBO</strong>, \(B\) tem um elemento mínimo; escrevemos esse mínimo como \(c = n_0 a + m_0 b\).</p>
+    <p><b>Afirmação: \(c \mid a\) e \(c \mid b\).</b> Pelo Algoritmo da Divisão, \(a = qc + r\) com \(0 \leq r &lt; c\). Substituindo \(c\):</p>
+    <p>\[ r = a - qc = a - q(n_0 a + m_0 b) = (1 - qn_0)\,a + (-qm_0)\,b, \]</p>
+    <p>ou seja, \(r\) também é uma combinação linear de \(a\) e \(b\). Se \(r &gt; 0\), então \(r \in B\) e \(r &lt; c\), contradizendo a minimalidade de \(c\). Logo \(r = 0\) e \(c \mid a\). O mesmo argumento, trocando os papéis, mostra \(c \mid b\).</p>
+    <p><b>\(c\) é o maior divisor comum.</b> Se \(d_1\) é qualquer divisor comum de \(a\) e \(b\), então \(d_1 \mid (n_0 a + m_0 b) = c\) pela Proposição 1.2 (combinação linear, da Aula 01); em particular \(d_1 \leq c\). Logo \(c\) é, de fato, o máximo divisor comum: \(c = d = n_0 a + m_0 b\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box think">
+    <span class="label">Por que essa demonstração é mais forte que "tentar os divisores"</span>
+    <p>Repare que em nenhum momento calculamos divisores de \(a\) ou de \(b\). A existência de \(d\) — e sua expressão como combinação linear — saiu inteiramente do PBO aplicado ao conjunto \(B\). É o terceiro teorema seguido (depois do Algoritmo da Divisão e, na Aula 01, da equivalência PBO⇔Indução) cuja demonstração tem exatamente essa forma: definir um conjunto de inteiros positivos, extrair seu mínimo pelo PBO, e mostrar que esse mínimo tem a propriedade desejada.</p>
+  </div>
+
+  <h3>A caracterização que vamos usar o tempo todo</h3>
+
+  <div class="thm">
+    <span class="label">Teorema 1.4</span>
+    <p>O máximo divisor comum \(d\) de \(a\) e \(b\) é o divisor positivo de \(a\) e \(b\) que é divisível por todo divisor comum de \(a\) e \(b\).</p>
+  </div>
+  <p class="cap">Isto é: \((a,b)\) não é só o <em>maior</em> divisor comum — é o divisor comum que todos os outros divisores comuns <strong>dividem</strong>. Essa é a propriedade que realmente usamos nas demonstrações futuras (Teorema Fundamental da Aritmética, mínimo múltiplo comum), muito mais do que o simples "é o maior".</p>
+
+  <h3>Propriedades imediatas</h3>
+  <div class="cards">
+    <div class="card"><div class="k">Proposição 1.3</div><p>Para todo inteiro positivo \(t\): \((ta,tb) = t\,(a,b)\). Multiplicar os dois números pelo mesmo fator multiplica o MDC por esse fator.</p></div>
+    <div class="card"><div class="k">Proposição 1.4</div><p>Se \(c&gt;0\) divide \(a\) e \(b\), então \(\left(\dfrac{a}{c}, \dfrac{b}{c}\right) = \dfrac{1}{c}(a,b)\).</p></div>
+    <div class="card"><div class="k">Corolário</div><p>Se \((a,b) = d\), então \(\left(\dfrac{a}{d}, \dfrac{b}{d}\right) = 1\). Dividir \(a\) e \(b\) pelo próprio MDC sempre produz dois números <em>relativamente primos</em>.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2 id="numeros-relativamente-primos-e-o-lema-de-euclides"><span class="snum" data-n="4" aria-hidden="true"></span>Números relativamente primos e o lema de Euclides</h2>
+  <p class="sec-lead">O caso particular \((a,b)=1\) é tão frequente que merece nome próprio — e um teorema só para ele.</p>
+
+  <div class="thm">
+    <span class="label">Definição 1.2</span>
+    <p>Os inteiros \(a\) e \(b\) são <strong>relativamente primos</strong> (ou primos entre si) quando \((a,b) = 1\).</p>
+  </div>
+
+  <div class="thm">
+    <span class="label">Teorema 1.5</span>
+    <p>Para \(a\), \(b\) e \(x\) inteiros, \((a,b) = (a,\, b+ax)\).</p>
+  </div>
+  <p class="cap">Somar um múltiplo de \(a\) a \(b\) não altera o máximo divisor comum com \(a\). Esse resultado é a base do Algoritmo de Euclides, que veremos na Aula 03: ele garante que podemos trocar \((a,b)\) por \((b, r)\), onde \(r\) é o resto de \(a\) por \(b\), sem perder informação nenhuma.</p>
+
+  <div class="thm">
+    <span class="label">Teorema 1.6 · Lema de Euclides</span>
+    <p>Se \(a \mid bc\) e \((a,b) = 1\), então \(a \mid c\).</p>
+  </div>
+  <div class="dem">
+    <span class="label">Demonstração</span>
+    <p>Como \((a,b)=1\), pelo Teorema 1.3 existem inteiros \(n\) e \(m\) tais que \(na + mb = 1\). Multiplicando os dois lados por \(c\):</p>
+    <p>\[ n(ac) + m(bc) = c. \]</p>
+    <p>Agora, \(a \mid ac\) (trivialmente) e \(a \mid bc\) (por hipótese); pela Proposição 1.2 (combinação linear, Aula 01), \(a\) divide a soma \(n(ac) + m(bc) = c\). Logo \(a \mid c\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box market">
+    <span class="label">Por que este lema é tão importante</span>
+    <p>O Lema de Euclides é a peça que faz o Teorema Fundamental da Aritmética funcionar: é ele que garante que, se um primo divide um produto, então divide um dos fatores. Sem ele, não conseguiríamos provar que a fatoração em primos é <em>única</em> — apenas que ela existe (o que já fizemos, por indução completa, na Aula 01). Guarde esse nome; ele volta na Aula 04.</p>
+  </div>
+</section>
+
+<!-- ATIVIDADE -->
+<section>
+  <h2 id="atividade-em-duplas"><span class="snum" data-n="5" aria-hidden="true"></span>Atividade em duplas</h2>
+  <p class="sec-lead">45 minutos aplicando os dois teoremas centrais da aula.</p>
+
+  <div class="lab">
+    <div class="lab-h">
+      <div class="t">Prática guiada</div>
+      <div class="n">Do algoritmo da divisão ao MDC como combinação linear</div>
+    </div>
+    <div class="lab-b">
+      <ol class="steps">
+        <li><b>Algoritmo da Divisão, casos negativos.</b> Para cada par, encontrem \(q\) e \(r\) satisfazendo \(0 \leq r &lt; |b|\): (a) \(a=59,\ b=6\); (b) \(a=-71,\ b=5\); (c) \(a=-48,\ b=-7\); (d) \(a=67,\ b=-13\).</li>
+        <li><b>MDC por combinação linear.</b> Sem usar o Algoritmo de Euclides (ainda não o vimos!), encontrem inteiros \(n_0\) e \(m_0\) tais que \(n_0\cdot 15 + m_0\cdot 4 = (15,4)\), por tentativa organizada. Confiram: o valor encontrado é mesmo o MDC?</li>
+        <li><b>Usando o Teorema 1.4.</b> Mostrem que, se \(d\) é um divisor comum de \(a\) e \(b\) tal que todo outro divisor comum de \(a\) e \(b\) divide \(d\), então \(d\) é necessariamente positivo e igual a \((a,b)\). (Dica: dois números que se dividem mutuamente só podem diferir em sinal.)</li>
+        <li><b>Lema de Euclides em ação.</b> Mostrem que, se \((a,b)=1\) e \((a,c)=1\), então \((a,bc)=1\). (Dica: usem o Teorema 1.3 duas vezes e multipliquem as duas igualdades.)</li>
+        <li><b>Diagnóstico para a Aula 03.</b> No item 2, vocês encontraram \(n_0\) e \(m_0\) "no olho". Para \((1126, 522)\) essa estratégia já não é prática. Que propriedade da aula de hoje (pensem no Teorema 1.5) poderia transformar esse problema em uma sequência de divisões cada vez menores?</li>
+      </ol>
+
+      <div class="box think" style="margin-bottom:0">
+        <span class="label">Pegadinha proposital</span>
+        <p>No item 3, é tentador concluir direto que \(d = (a,b)\) "porque a definição diz isso". Mas a definição que vocês receberam foi a do Teorema 1.4 (divisibilidade mútua), não a definição clássica (maior divisor comum) — o exercício pede para vocês mostrarem que as duas coincidem, não para repetir o enunciado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section>
+  <h2 id="resumo-em-seis-linhas"><span class="snum" data-n="6" aria-hidden="true"></span>Resumo em seis linhas</h2>
+  <div class="recap">
+    <h3>Se você lembrar só disso, está bom</h3>
+    <ol>
+      <li>O Algoritmo da Divisão garante \(q\) e \(r\) únicos com \(a=qb+r\), \(0\le r&lt;b\) — e sua existência sai diretamente do PBO.</li>
+      <li>A exigência \(0 \leq r &lt; b\) não é um detalhe: é ela que torna \(q\) e \(r\) únicos, inclusive quando \(a\) ou \(b\) são negativos.</li>
+      <li>\((a,b)\) sempre se escreve como combinação linear \(n_0a+m_0b\) — essa é a propriedade mais importante do MDC, demonstrada (de novo) via PBO.</li>
+      <li>\((a,b)\) é, mais precisamente, o divisor comum que todo outro divisor comum <em>divide</em> — não apenas o maior numericamente.</li>
+      <li>\((a,b)=1\) define números relativamente primos; \((a,b)=(a,b+ax)\) é a base do Algoritmo de Euclides (Aula 03).</li>
+      <li>O Lema de Euclides (\(a\mid bc\), \((a,b)=1 \Rightarrow a\mid c\)) é o ingrediente que vai garantir, na Aula 04, a <em>unicidade</em> da fatoração em primos.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- EXERCÍCIOS -->
+<section>
+  <h2 id="para-casa"><span class="snum" data-n="7" aria-hidden="true"></span>Para casa</h2>
+  <p class="sec-lead">Baseados nos problemas propostos de SANTOS, cap. 1. Tragam as soluções por escrito para o início da Aula 03.</p>
+
+  <div class="ex">
+    <div class="n">Exercício 1 · Algoritmo da Divisão</div>
+    <p>Dados \(a\) e \(b\) inteiros com \(b \neq 0\), mostre que existem inteiros \(q\) e \(r\) satisfazendo \(a = qb \pm r\), com \(0 \leq r \leq b/2\). (Observe que este enunciado é diferente do Teorema 1.2: aqui o resto pode ser subtraído, e seu alcance é até \(b/2\), não até \(b\).)</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 2 · MDC e combinação linear</div>
+    <p>Mostre que se \((a,b)=1\), então \((2a+b,\, a+2b) = 1\) ou \(3\). (Dica: chamem \(d=(2a+b,a+2b)\) e usem combinações lineares para mostrar que \(d \mid 3a\) e \(d \mid 3b\).)</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 3 · Relativamente primos</div>
+    <p>Mostre que, sendo \(n\) um inteiro, o número \(n(n+1)(n+2)(n+3)+1\) é um quadrado perfeito. (Dica: não é sobre MDC diretamente, mas usa a mesma disciplina de manipular expressões algébricas que vocês treinaram hoje — façam a substituição \(m=n^2+3n\) e simplifiquem.)</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 4 · Reflexão para a docência</div>
+    <p>O algoritmo da "divisão euclidiana" é ensinado no Ensino Fundamental sem a exigência explícita \(0 \leq r &lt; b\) ser discutida como condição de <strong>unicidade</strong>. Escrevam cinco linhas explicando, em linguagem acessível a um estudante do 6º ano, por que essa condição é necessária — ou seja, o que dá errado se ela não for exigida.</p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Leitura para a próxima aula</span>
+    <p>SANTOS, J. P. O. <em>Introdução à Teoria dos Números</em>, Capítulo 1, seções 1.5 (O Algoritmo de Euclides) e 1.7 (Mínimo Múltiplo Comum). Revisem o Teorema 1.5 de hoje (\((a,b)=(a,b+ax)\)) — ele é usado em todos os passos do Algoritmo de Euclides.</p>
+  </div>
+</section>
+
+<!-- PRÓXIMA -->
+<section>
+  <h2 id="na-proxima-aula"><span class="snum" data-n="8" aria-hidden="true"></span>Na próxima aula</h2>
+  <p><strong>Aula 03 — Algoritmo de Euclides e Mínimo Múltiplo Comum.</strong> Vamos transformar a busca "no olho" por \(n_0\) e \(m_0\) de hoje em um procedimento sistemático: uma sequência de divisões sucessivas que termina exatamente no máximo divisor comum. Em seguida, definimos o mínimo múltiplo comum e mostramos a relação \([a,b]\cdot(a,b) = a\cdot b\).</p>
+  <p><strong>Tragam:</strong> os quatro exercícios resolvidos e a reflexão do Exercício 4.</p>
+</section>
+
+<aside class="aula-refs">
+<b>Teoria dos Números — Curso de Licenciatura em Matemática</b> · UNIFAP · 2026.2<br>
+  Material de aula preparado a partir de SANTOS, J. P. O. <em>Introdução à Teoria dos Números</em>, Rio de Janeiro: SBM/IMPA, 1998 (Capítulo 1, seções 1.3 e 1.4). Referências complementares: ROSEN, K. H. <em>Elementary Number Theory and Its Applications</em>, 6ª ed.
+</aside>
+</div>
+{% endraw %}

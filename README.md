@@ -28,23 +28,72 @@ Para sobrescrever algum arquivo do tema, copie-o para o mesmo caminho neste repo
 
 ## Publicando conteúdo
 
-### Nova nota de aula
+### Disciplinas
+
+As disciplinas ficam em `_data/disciplinas.yml`, separadas em Ensino Médio e Ensino Superior.
+Lá você edita nome, turma, descrição, livro-texto e o **conteúdo previsto** (ementa por unidade),
+que aparece na página da disciplina mesmo antes de haver aulas publicadas.
+
+| Disciplina | Página | Pasta das aulas |
+|---|---|---|
+| Matemática 1 | `/notas-de-aula/matematica-1/` | `_notas-de-aula/matematica-1/` |
+| Matemática 2 | `/notas-de-aula/matematica-2/` | `_notas-de-aula/matematica-2/` |
+| Matemática 3 | `/notas-de-aula/matematica-3/` | `_notas-de-aula/matematica-3/` |
+| Introdução ao Cálculo | `/notas-de-aula/introducao-ao-calculo/` | `_notas-de-aula/introducao-ao-calculo/` |
+| Cálculo 1 | `/notas-de-aula/calculo-1/` | `_notas-de-aula/calculo-1/` |
+| Teoria dos Números | `/notas-de-aula/teoria-dos-numeros/` | `_notas-de-aula/teoria-dos-numeros/` |
+
+Para criar uma disciplina nova: adicione-a em `_data/disciplinas.yml` e copie um dos arquivos de
+`_pages/disciplinas/` trocando a chave.
+
+### Importar uma aula pronta em HTML
+
+Para aulas no formato "caderno" (como a Aula 01 de Teoria dos Números), use:
+
+```bash
+bin/importar-aula ~/Downloads/aula-02-algoritmo-divisao-mdc.html teoria-dos-numeros
+```
+
+O script copia o conteúdo e as fórmulas, cria o cabeçalho da aula, adiciona o sumário lateral e
+grava em `_notas-de-aula/teoria-dos-numeros/aula-02-....html`. A ordem é tirada do título
+("Aula 02 — ..."); para definir outra, use `--ordem 2`. Para substituir uma aula já importada,
+acrescente `--forcar`. Depois é só fazer commit e push.
+
+A navegação "Anterior / Próxima" e a lista de aulas na barra lateral são geradas sozinhas,
+dentro da mesma disciplina.
+
+### Gráficos interativos (função afim)
+
+Qualquer aula pode ter gráficos interativos de função afim. Coloque `graficos: true` no front
+matter e, onde quiser o gráfico:
+
+```html
+<div class="grafico-afim" data-titulo="Interativo · explore a e b"
+     data-a="1" data-b="2" data-janela="-6,6,-6,6"
+     data-controles="a,b" data-mostrar="raiz,intercepto,inclinacao">
+  <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+</div>
+```
+
+| Atributo | O que faz |
+|---|---|
+| `data-a`, `data-b` | valores iniciais da função \(f(x) = ax + b\) |
+| `data-janela` | região visível: `xmin,xmax,ymin,ymax` (mesma escala nos dois eixos) |
+| `data-controles` | controles exibidos: `a`, `b`, `x` (ponto que percorre a reta), `dominio` |
+| `data-mostrar` | marcadores: `raiz`, `intercepto`, `inclinacao`, `sinal` |
+| `data-modo="dois-pontos"` | o aluno arrasta dois pontos e o gráfico calcula `a` e `b` (`data-pontos="x1,y1,x2,y2"`) |
+| `data-x`, `data-dominio` | valor inicial do ponto móvel / intervalo inicial do domínio |
+
+O código está em `assets/js/grafico-afim.js` (JavaScript puro, sem bibliotecas externas), e
+funciona com mouse, toque e teclado. Exemplo completo: `_notas-de-aula/matematica-1/funcao-afim.html`.
+
+### Nova nota de aula em Markdown
 
 ```bash
 bin/novo nota calculo-1 "Limites e continuidade"
 ```
 
 Isso cria `_notas-de-aula/calculo-1/01-limites-e-continuidade.md` já com o modelo.
-Na primeira nota de uma disciplina, cadastre o nome dela em `_data/disciplinas.yml`:
-
-```yaml
-calculo-1:
-  nome: "Cálculo I"
-  descricao: "Limites, derivadas e integrais de funções de uma variável."
-```
-
-A página [/notas-de-aula/](https://marleson.github.io/notas-de-aula/) agrupa as notas por
-disciplina automaticamente, na ordem do campo `ordem:`.
 
 ### Novo post
 
@@ -69,6 +118,9 @@ A equação \eqref{eq:euler} ...
 
 Atalhos: `\R \N \Z \Q \C`, `\dd` (diferencial), `\abs{x}`, `\norm{v}` — para criar outros,
 edite `macros` em `_includes/head/custom.html`.
+
+**Nas notas de aula**, fórmula em linha é só `\( ... \)` (o `$` simples fica desligado para que
+"R$ 4,00" apareça como texto). Destaque continua com `$$ ... $$` ou `\[ ... \]`.
 
 Caixas para teoremas etc. (o `markdown="1"` é obrigatório):
 

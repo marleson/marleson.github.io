@@ -1,0 +1,342 @@
+---
+title: "Aula 01 — O Princípio da Boa Ordem, a Indução Finita e a Divisibilidade"
+disciplina: "teoria-dos-numeros"
+ordem: 1
+date: "2026-11-05"
+excerpt: "Antes de qualquer teorema sobre números primos ou congruências, precisamos de um chão firme: como se prova algo sobre todos os inteiros positivos, de uma vez só? Esta aula constrói esse chão — o Princípio da Boa Ordem e os dois princípios de indução — e dá o primeiro passo em Divisibilidade."
+aula:
+  kicker: "Teoria dos Números · Licenciatura em Matemática · Unidade I"
+  resumo: "Antes de qualquer teorema sobre números primos ou congruências, precisamos de um chão firme: como se prova algo sobre <strong>todos</strong> os inteiros positivos, de uma vez só? Esta aula constrói esse chão — o Princípio da Boa Ordem e os dois princípios de indução — e dá o primeiro passo em Divisibilidade."
+  etiquetas:
+    - "Encontro 1 de 9"
+    - "Unidade I · Números Inteiros"
+    - "Base: SANTOS, cap. 1 (§1.1–1.2) e Apêndice A"
+    - "Duração sugerida: 4 horas/aula"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+<!-- OBJETIVOS -->
+<section>
+  <div class="goals">
+    <h2 id="o-que-voce-leva-desta-aula">O que você leva desta aula</h2>
+    <ul>
+      <li>Enunciar o Princípio da Boa Ordem (PBO) e reconhecer por que ele é tomado como o ponto de partida axiomático dos inteiros positivos.</li>
+      <li>Enunciar e aplicar a <strong>primeira forma</strong> do Princípio de Indução Finita para provar fórmulas e identidades que dependem de \(n\).</li>
+      <li>Enunciar e aplicar a <strong>segunda forma</strong> (Indução Completa), sabendo dizer quando ela é necessária e a primeira forma não basta.</li>
+      <li>Explicar, em linhas gerais, por que PBO, indução finita e indução completa são <strong>logicamente equivalentes</strong> — três portas para a mesma sala.</li>
+      <li>Definir divisibilidade entre inteiros e demonstrar suas propriedades elementares (transitividade e a propriedade da combinação linear).</li>
+      <li><em>Como futuro(a) professor(a):</em> reconhecer a indução como o principal instrumento de rigor que você vai precisar justificar na Educação Básica, mesmo quando ali ela aparecer disfarçada de "e assim por diante".</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ROTEIRO -->
+<section>
+  <h2 id="roteiro-do-encontro"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro do encontro</h2>
+  <p class="sec-lead">Da intuição do "menor elemento" até a primeira demonstração formal por indução, terminando em divisibilidade.</p>
+  <dl class="route">
+    <div><dt>00:00–00:15</dt><dd><b>Abertura.</b> Por que a Teoria dos Números começa nos inteiros <em>positivos</em> e por que precisamos de axiomas mesmo para algo "óbvio".</dd></div>
+    <div><dt>00:15–00:45</dt><dd><b>Princípio da Boa Ordem.</b> Enunciado, exemplos e contraexemplos (por que falha em \(\mathbb{Z}\) e em \(\mathbb{Q}^+\)).</dd></div>
+    <div><dt>00:45–01:30</dt><dd><b>Indução finita, primeira forma.</b> Anatomia de uma prova por indução; exemplo da soma de Gauss e da soma geométrica.</dd></div>
+    <div><dt>01:30–01:45</dt><dd><b>Intervalo.</b></dd></div>
+    <div><dt>01:45–02:20</dt><dd><b>Indução completa, segunda forma.</b> Quando a primeira forma não é suficiente; exemplo com fatoração.</dd></div>
+    <div><dt>02:20–02:35</dt><dd><b>PBO ⇔ Indução.</b> A ideia da equivalência entre os três princípios (Apêndice A do livro-texto).</dd></div>
+    <div><dt>02:35–03:15</dt><dd><b>Divisibilidade.</b> Definição, propriedades básicas e primeiros exemplos.</dd></div>
+    <div><dt>03:15–04:00</dt><dd><b>Atividade em duplas</b> e socialização das soluções.</dd></div>
+  </dl>
+</section>
+
+<!-- 1 -->
+<section>
+  <h2 id="por-que-comecar-por-aqui"><span class="snum" data-n="1" aria-hidden="true"></span>Por que começar por aqui</h2>
+  <p class="sec-lead">Teoria dos Números estuda os inteiros. Mas "estudar" aqui significa provar, e provar sobre um conjunto infinito exige uma ferramenta específica.</p>
+
+  <p>A Teoria dos Números se divide, tradicionalmente, em três ramos: Elementar, Analítica e Algébrica. Nesta disciplina trabalhamos a parte <strong>Elementar</strong>: propriedades dos números inteiros que podem ser demonstradas com ferramentas do próprio conjunto \(\mathbb{Z}\), sem recorrer a análise ou álgebra abstrata. Isso não significa "fácil" — significa que as ferramentas são poucas, e por isso precisam ser muito bem compreendidas.</p>
+
+  <p>A primeira dessas ferramentas resolve um problema que parece banal: como provar uma afirmação do tipo <em>"para todo inteiro positivo \(n\), vale tal fórmula"</em>? Verificar caso a caso é impossível — há infinitos casos. Precisamos de um princípio que garanta, de uma só vez, a validade para todos os inteiros positivos. Esse princípio é o que vamos construir hoje, em três versões equivalentes.</p>
+
+  <div class="box think">
+    <span class="label">Pense um minuto</span>
+    <p>Quando você diz a um aluno do Ensino Médio que \(1 + 2 + 3 + \cdots + n = \dfrac{n(n+1)}{2}\) "porque dá pra ver o padrão", você está apelando para a intuição, não para uma prova. O que exatamente falta, do ponto de vista lógico, para essa frase virar uma demonstração?</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2 id="principio-da-boa-ordem-pbo"><span class="snum" data-n="2" aria-hidden="true"></span>Princípio da Boa Ordem (PBO)</h2>
+  <p class="sec-lead">O axioma mais simples possível — e, ainda assim, o suficiente para fundamentar tudo o que vem depois.</p>
+
+  <div class="thm">
+    <span class="label">A₀ · Princípio da Boa Ordem</span>
+    <p>Todo conjunto não vazio de inteiros positivos contém um elemento mínimo.</p>
+  </div>
+
+  <p>Repare no que essa frase <strong>não</strong> diz: ela não diz que o conjunto é finito, nem que é fácil descobrir qual é o mínimo — só que ele <em>existe</em>. É um enunciado de existência, e é justamente esse tipo de garantia que faltava para começarmos a demonstrar coisas.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">Vale</div><p>\(\mathbb{Z}^+ = \{1, 2, 3, \dots\}\): qualquer subconjunto não vazio tem um menor elemento. Por exemplo, o conjunto dos pares maiores que 100 tem mínimo 102.</p></div>
+    <div class="card"><div class="k">Falha em ℤ</div><p>O próprio \(\mathbb{Z}\) não tem elemento mínimo — não há "o menor número negativo". O PBO é um privilégio dos inteiros <strong>positivos</strong> (ou, de modo geral, limitados inferiormente).</p></div>
+    <div class="card"><div class="k">Falha em ℚ⁺</div><p>O conjunto dos racionais positivos não tem mínimo: dado qualquer racional positivo \(r\), o número \(r/2\) é menor e ainda positivo. A boa ordem depende do conjunto, não é "óbvia".</p></div>
+  </div>
+
+  <div class="box warn">
+    <span class="label">Cuidado didático</span>
+    <p>É comum um aluno achar o PBO "óbvio demais para precisar ser dito". Vale a pena mostrar em sala que ele <strong>falha</strong> em \(\mathbb{Q}^+\) exatamente para quebrar essa impressão: uma propriedade só é um axioma útil quando conseguimos apontar contextos parecidos em que ela deixa de valer.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2 id="inducao-finita-a-primeira-forma"><span class="snum" data-n="3" aria-hidden="true"></span>Indução finita: a primeira forma</h2>
+  <p class="sec-lead">A ferramenta de trabalho do dia a dia em Teoria dos Números.</p>
+
+  <div class="thm">
+    <span class="label">A₁ · Primeira forma do Princípio de Indução Finita</span>
+    <p>Seja \(B\) um subconjunto dos inteiros positivos. Se \(B\) possui as duas propriedades</p>
+    <ol>
+      <li>\(1 \in B\)</li>
+      <li>\(k + 1 \in B\) sempre que \(k \in B\)</li>
+    </ol>
+    <p>então \(B\) contém todos os inteiros positivos.</p>
+  </div>
+
+  <p>Na prática, quando queremos provar uma afirmação \(P(n)\) para todo inteiro positivo \(n\), definimos \(B = \{n \in \mathbb{Z}^+ : P(n) \text{ é verdadeira}\}\) e mostramos que esse \(B\) satisfaz (i) e (ii). Toda demonstração por indução tem exatamente essas duas partes:</p>
+
+  <ul>
+    <li><strong>Base da indução:</strong> verificar \(P(1)\) (ou o menor valor de \(n\) para o qual a afirmação faz sentido).</li>
+    <li><strong>Passo indutivo:</strong> assumir \(P(k)\) verdadeira (<em>hipótese de indução</em>) e provar que isso implica \(P(k+1)\).</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="label">O erro mais comum</span>
+    <p>Assumir \(P(k)\) não é "assumir o que se quer provar". A afirmação a ser provada é a implicação inteira, \(P(k) \Rightarrow P(k+1)\), para <strong>todo</strong> \(k\). Ninguém está usando \(P(n)\) para provar \(P(n)\); está usando um caso menor, já "conquistado", para avançar um passo.</p>
+  </div>
+
+  <h3>Exemplo — a soma de Gauss</h3>
+  <p>Provemos que, para todo inteiro positivo \(n\),</p>
+  <p>\[ 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}. \]</p>
+
+  <div class="dem">
+    <span class="label">Demonstração por indução</span>
+    <p><b>Base (n = 1):</b> o lado esquerdo é 1; o lado direito é \(\dfrac{1\cdot 2}{2} = 1\). Iguais — a base está verificada.</p>
+    <p><b>Hipótese de indução:</b> suponha que, para um certo \(k \geq 1\), vale \(1 + 2 + \cdots + k = \dfrac{k(k+1)}{2}\).</p>
+    <p><b>Passo indutivo:</b> queremos provar a fórmula para \(k+1\). Somando \(k+1\) aos dois lados da hipótese de indução:</p>
+    <p>\[
+    \begin{aligned}
+    1 + 2 + \cdots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1) \\
+    &= (k+1)\left(\frac{k}{2} + 1\right) \\
+    &= \frac{(k+1)(k+2)}{2}.
+    \end{aligned}
+    \]</p>
+    <p>Que é exatamente a fórmula original com \(n = k+1\). Logo \(B\) contém \(1\) e, sempre que contém \(k\), contém \(k+1\). Pelo Princípio de Indução Finita, a fórmula vale para todo inteiro positivo \(n\).<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo — a soma geométrica (SANTOS, Exemplo 1.1)</h3>
+  <p>Um segundo exemplo, útil porque reaparecerá quando estudarmos progressões e mínimo múltiplo comum. Para todo inteiro positivo \(n\) e \(x \neq 1\),</p>
+  <p>\[ 1 + x + x^2 + \cdots + x^{n-1} = \frac{x^n - 1}{x - 1}. \]</p>
+  <div class="dem">
+    <span class="label">Ideia da demonstração</span>
+    <p>Para \(n = 1\) a afirmação é \(x^0 = 1 = \dfrac{x-1}{x-1}\), verdadeira. Supondo a fórmula válida para \(n-1\), somamos \(x^{n-1}\) aos dois lados e reorganizamos:</p>
+    <p>\[
+    \begin{aligned}
+    1 + x + \cdots + x^{n-2} + x^{n-1} &= \frac{x^{n-1} - 1}{x-1} + x^{n-1} \\
+    &= \frac{x^{n-1} - 1 + (x-1)x^{n-1}}{x-1} \\
+    &= \frac{x^n - 1}{x-1},
+    \end{aligned}
+    \]</p>
+    <p>concluindo o passo indutivo.<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Onde isso aparece na sua futura sala de aula</span>
+    <p>A "prova por indução" da Educação Básica costuma parar na base e num único caso numérico, sem nomear a hipótese de indução. Formalizar essas duas peças — base e passo — é exatamente o que separa "generalizar um padrão" de "demonstrar uma fórmula", e é uma discussão que vale a pena levar, adaptada, para o Ensino Médio (por exemplo, ao justificar a fórmula da soma de uma PA).</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2 id="inducao-completa-a-segunda-forma"><span class="snum" data-n="4" aria-hidden="true"></span>Indução completa: a segunda forma</h2>
+  <p class="sec-lead">Às vezes, saber que \(P(k)\) vale não é o bastante — é preciso poder usar <em>todos</em> os casos anteriores.</p>
+
+  <div class="thm">
+    <span class="label">A₂ · Segunda forma do Princípio de Indução Finita (Indução Completa)</span>
+    <p>Seja \(B\) um subconjunto dos inteiros positivos. Se \(B\) possui as duas propriedades</p>
+    <ol>
+      <li>\(1 \in B\)</li>
+      <li>\(k + 1 \in B\) sempre que \(1, 2, \dots, k \in B\)</li>
+    </ol>
+    <p>então \(B\) contém todos os inteiros positivos.</p>
+  </div>
+
+  <p>A diferença para a primeira forma é sutil, mas decisiva: no passo indutivo, em vez de usar apenas o caso \(k\), temos o direito de usar <strong>qualquer</strong> caso entre \(1\) e \(k\). Isso é indispensável quando, para chegar a \(n\), o argumento "quebra" \(n\) em pedaços de tamanhos variados — não necessariamente \(n - 1\).</p>
+
+  <h3>Exemplo — Teorema Fundamental da Aritmética (existência)</h3>
+  <p>Um exemplo clássico em que a primeira forma não basta: mostrar que <strong>todo inteiro \(n &gt; 1\)</strong> pode ser escrito como produto de primos.</p>
+  <div class="dem">
+    <span class="label">Por que precisa da segunda forma</span>
+    <p>Se \(n\) é primo, não há nada a provar. Se \(n\) é composto, então \(n = n_1 \cdot n_2\) com \(1 &lt; n_1, n_2 &lt; n\) — e para concluir a prova precisamos saber que \(n_1\) e \(n_2\) <em>já</em> se escrevem como produto de primos. Mas \(n_1\) e \(n_2\) não são necessariamente iguais a \(n - 1\): podem ser qualquer valor menor que \(n\). A hipótese "vale para \(n - 1\)" (primeira forma) não me dá isso; a hipótese "vale para todo inteiro entre \(1\) e \(n - 1\)" (segunda forma) dá.</p>
+  </div>
+
+  <p>Vamos aprofundar essa demonstração completa quando chegarmos ao Teorema Fundamental da Aritmética, na Unidade II. Por ora, o que importa é reconhecer <strong>o sintoma</strong>: sempre que o passo indutivo depende de dividir \(n\) em partes de tamanho desconhecido, é sinal de que se precisa da indução completa.</p>
+
+  <div class="box">
+    <span class="label">Regra prática para decidir qual forma usar</span>
+    <p>Pergunte: para provar \(P(k+1)\), eu preciso só de \(P(k)\), ou posso precisar de \(P(j)\) para algum \(j\) bem menor que \(k\)? No primeiro caso, primeira forma. No segundo, indução completa.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2 id="tres-portas-uma-sala-pbo-inducao"><span class="snum" data-n="5" aria-hidden="true"></span>Três portas, uma sala: PBO ⇔ Indução</h2>
+  <p class="sec-lead">Um ponto de fundamentação axiomática que costuma passar despercebido: nenhum dos três princípios é "mais básico" que os outros.</p>
+
+  <p>O livro-texto (Apêndice A) demonstra que os três enunciados são logicamente equivalentes:</p>
+  <p>\[
+  A_0 \text{ (Boa Ordem)} \;\Rightarrow\; A_1 \text{ (Indução, 1ª forma)} \;\Rightarrow\; A_2 \text{ (Indução completa, 2ª forma)} \;\Rightarrow\; A_0 \text{ (Boa Ordem)}
+  \]</p>
+  <p class="cap">A cadeia de implicações fecha um ciclo: assumir qualquer um dos três como axioma permite demonstrar os outros dois como teoremas.</p>
+
+  <div class="dem">
+    <span class="label">A ideia da implicação A₀ ⇒ A₁ (por contradição)</span>
+    <p>Suponha \(B\) satisfazendo (i) e (ii) da primeira forma, mas que \(B\) <em>não</em> contenha todos os inteiros positivos. Seja \(A\) o conjunto dos inteiros positivos que <strong>não</strong> estão em \(B\) — por hipótese, \(A\) é não vazio. Pelo PBO, \(A\) tem um elemento mínimo \(a_0\). Como \(1 \in B\), temos \(a_0 \neq 1\), logo \(a_0 - 1 \geq 1\) e, por ser menor que o mínimo de \(A\), \(a_0 - 1 \in B\). Mas então, pela propriedade (ii), o sucessor \((a_0 - 1) + 1 = a_0\) também deveria estar em \(B\) — contradição, pois \(a_0 \in A\). Logo \(A\) é vazio e \(B\) contém todos os inteiros positivos.<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box think">
+    <span class="label">Por que isso importa, e não é só "filosofia"</span>
+    <p>Essa equivalência mostra que indução não é um "truque de demonstração" isolado — é <strong>a mesma ideia</strong> que garante a existência de um elemento mínimo, escrita de três formas diferentes, mais convenientes para situações diferentes. Ao ensinar, escolher qual das três apresentar primeiro é uma decisão didática, não uma hierarquia matemática.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2 id="divisibilidade-a-primeira-definicao-do-curso"><span class="snum" data-n="6" aria-hidden="true"></span>Divisibilidade: a primeira definição do curso</h2>
+  <p class="sec-lead">Com o instrumento de prova em mãos, começamos o objeto de estudo propriamente dito.</p>
+
+  <div class="thm">
+    <span class="label">Definição 1.1</span>
+    <p>Sejam \(a\) e \(b\) inteiros. Dizemos que <strong>\(a\) divide \(b\)</strong>, e escrevemos \(a \mid b\), se existe um inteiro \(c\) tal que \(b = a c\). Se \(a\) não divide \(b\), escrevemos \(a \nmid b\).</p>
+  </div>
+
+  <p>Alguns cuidados de linguagem que valem a pena antecipar, porque são fonte comum de confusão em sala:</p>
+  <ul>
+    <li>\(a \mid b\) é uma <strong>relação</strong> entre dois números (verdadeira ou falsa), bem diferente de \(a/b\), que é um <strong>número</strong> (o quociente, que pode não ser inteiro).</li>
+    <li>Todo inteiro divide \(0\): \(a \mid 0\) para qualquer \(a\), pois \(0 = a \cdot 0\).</li>
+    <li>\(1\) e \(-1\) dividem qualquer inteiro.</li>
+  </ul>
+
+  <div class="thm">
+    <span class="label">Proposição 1.1 · Transitividade</span>
+    <p>Se \(a\), \(b\) e \(c\) são inteiros, \(a \mid b\) e \(b \mid c\), então \(a \mid c\).</p>
+  </div>
+  <div class="dem">
+    <span class="label">Demonstração</span>
+    <p>Como \(a \mid b\) e \(b \mid c\), existem inteiros \(k_1\) e \(k_2\) com \(b = k_1 a\) e \(c = k_2 b\). Substituindo o valor de \(b\) na segunda equação, \(c = k_2(k_1 a) = (k_2 k_1) a\), o que mostra que \(a \mid c\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="thm">
+    <span class="label">Proposição 1.2 · Combinação linear</span>
+    <p>Se \(a\), \(b\), \(c\), \(m\) e \(n\) são inteiros, \(c \mid a\) e \(c \mid b\), então \(c \mid (ma + nb)\).</p>
+  </div>
+  <div class="dem">
+    <span class="label">Demonstração</span>
+    <p>De \(c \mid a\) e \(c \mid b\) vem \(a = k_1 c\) e \(b = k_2 c\). Multiplicando a primeira por \(m\), a segunda por \(n\), e somando: \(ma + nb = (mk_1 + nk_2)c\), ou seja, \(c \mid (ma + nb)\).<span class="qed">∎</span></p>
+  </div>
+
+  <p class="cap">Exemplo imediato: como \(3 \mid 15\) e \(3 \mid 42\), a Proposição 1.2 garante que \(3 \mid (8\cdot 15 - 7\cdot 42)\), sem precisar calcular esse número. Essa propriedade — combinar divisibilidades sem fazer a conta — é a que mais vai reaparecer no restante do curso, em especial quando chegarmos ao máximo divisor comum.</p>
+
+  <div class="box market">
+    <span class="label">Adiantando o que vem por aí</span>
+    <p>A Divisibilidade continua na Aula 02 com o <strong>Algoritmo da Divisão</strong> (existência e unicidade de quociente e resto) — que já usa o PBO de hoje na demonstração — seguido de Máximo Divisor Comum, Algoritmo de Euclides, Mínimo Múltiplo Comum, Teorema Fundamental da Aritmética e Números Primos: o núcleo da Unidade I e II do programa.</p>
+  </div>
+</section>
+
+<!-- ATIVIDADE -->
+<section>
+  <h2 id="atividade-em-duplas"><span class="snum" data-n="7" aria-hidden="true"></span>Atividade em duplas</h2>
+  <p class="sec-lead">45 minutos escrevendo demonstrações — a única forma de a indução deixar de ser um algoritmo decorado.</p>
+
+  <div class="lab">
+    <div class="lab-h">
+      <div class="t">Prática guiada</div>
+      <div class="n">Da fórmula à prova formal</div>
+    </div>
+    <div class="lab-b">
+      <ol class="steps">
+        <li><b>Base e hipótese, sempre por escrito.</b> Antes de calcular qualquer coisa, cada dupla escreve explicitamente: "Base: verificar P(1) é ___. Hipótese de indução: suponho que ___. Quero provar: ___." Sem essas três frases, a resolução não está completa — mesmo que a conta esteja certa.</li>
+        <li><b>Prova por indução (1ª forma), item (a).</b> Mostrem que \(1^2 + 2^2 + 3^2 + \cdots + n^2 = \dfrac{n(n+1)(2n+1)}{6}\) para todo inteiro positivo \(n\).</li>
+        <li><b>Prova por indução (1ª forma), item (b).</b> Mostrem que \(n! &gt; 2^n\) para todo \(n \geq 4\). (Repare que a base aqui não é \(n = 1\).)</li>
+        <li><b>Divisibilidade.</b> Usando a Proposição 1.2 (combinação linear) — sem calcular o valor de \(35n + 26\) nem de \(7n + 3\) — decidam: existe algum inteiro \(m &gt; 1\) tal que \(m \mid (35n+26)\) e \(m \mid (7n+3)\) simultaneamente, para todo \(n\)? Justifiquem.</li>
+        <li><b>Diagnóstico: 1ª forma ou indução completa?</b> Sem resolver, apenas decidam e justifiquem em duas linhas: para provar que "todo inteiro \(n \geq 2\) possui um fator primo", qual forma da indução vocês usariam? Guardem a resposta — vamos confirmar na Aula 02.</li>
+      </ol>
+
+      <div class="box think" style="margin-bottom:0">
+        <span class="label">Pegadinha proposital</span>
+        <p>No item 3, é tentador tentar provar para todo \(n \geq 1\) e travar em \(n = 1, 2, 3\). A base de uma indução não precisa ser \(n = 1\): pode ser qualquer valor a partir do qual a afirmação passa a ser verdadeira. Descubram onde exatamente \(n! &gt; 2^n\) começa a valer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section>
+  <h2 id="resumo-em-seis-linhas"><span class="snum" data-n="8" aria-hidden="true"></span>Resumo em seis linhas</h2>
+  <div class="recap">
+    <h3>Se você lembrar só disso, está bom</h3>
+    <ol>
+      <li>O Princípio da Boa Ordem garante que todo conjunto não vazio de inteiros positivos tem um menor elemento — e falha fora de \(\mathbb{Z}^+\).</li>
+      <li>A primeira forma da indução prova \(P(n)\) para todo \(n\) a partir de uma base e de um passo \(P(k) \Rightarrow P(k+1)\).</li>
+      <li>A indução completa libera o passo indutivo para usar qualquer \(P(j)\) com \(j \leq k\), não só \(P(k)\) — necessária quando a afirmação "quebra" \(n\) em partes de tamanho variável.</li>
+      <li>PBO, indução finita e indução completa são logicamente equivalentes: nenhum é mais fundamental que os outros.</li>
+      <li>\(a \mid b\) significa que existe inteiro \(c\) com \(b = ac\); é uma relação, não uma divisão.</li>
+      <li>Divisibilidade é transitiva e se preserva por combinação linear — a propriedade que vai sustentar o Máximo Divisor Comum na próxima aula.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- EXERCÍCIOS -->
+<section>
+  <h2 id="para-casa"><span class="snum" data-n="9" aria-hidden="true"></span>Para casa</h2>
+  <p class="sec-lead">Baseados nos problemas propostos de SANTOS, cap. 1. Tragam as soluções por escrito para o início da Aula 02.</p>
+
+  <div class="ex">
+    <div class="n">Exercício 1 · Indução, 1ª forma</div>
+    <p>Prove, por indução, que para todo inteiro positivo \(n\): (a) \(1 + 3 + 5 + \cdots + (2n - 1) = n^2\); (b) \(9 \mid (10^{n+1} - 9n - 10)\).</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 2 · Indução, atenção à base</div>
+    <p>Prove que \(n^2 &gt; 2n + 1\) para todo \(n \geq 3\), e que \(n! &gt; 2^n\) para todo \(n \geq 4\). Em cada caso, explique em uma frase por que a afirmação é falsa para valores de \(n\) logo abaixo da base escolhida.</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 3 · Divisibilidade</div>
+    <p>Mostre que o produto de 3 inteiros consecutivos é divisível por 6. (Dica: entre 3 inteiros consecutivos, pelo menos um é múltiplo de 2 e exatamente um é múltiplo de 3 — mas o exercício pede a demonstração, não só a constatação.)</p>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 4 · Reflexão para a docência</div>
+    <p>Procure, em um livro didático de Ensino Médio, uma passagem que use "indução informal" (por exemplo, ao apresentar a fórmula da soma de uma PA ou do termo geral de uma PG). Reescreva essa passagem identificando explicitamente qual seria a base e qual seria o passo indutivo de uma prova formal. Traga a fonte (livro e página).</p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Leitura para a próxima aula</span>
+    <p>SANTOS, J. P. O. <em>Introdução à Teoria dos Números</em>, Capítulo 1, seções 1.3 (O Algoritmo da Divisão) e 1.4 (O Máximo Divisor Comum). Se possível, revisem também o Apêndice A completo — usaremos a equivalência PBO ⇔ Indução na demonstração do Algoritmo da Divisão.</p>
+  </div>
+</section>
+
+<!-- PRÓXIMA -->
+<section>
+  <h2 id="na-proxima-aula"><span class="snum" data-n="10" aria-hidden="true"></span>Na próxima aula</h2>
+  <p><strong>Aula 02 — Divisibilidade: Algoritmo da Divisão e Máximo Divisor Comum.</strong> Vamos provar, usando o PBO de hoje, que a divisão com resto sempre existe e é única; em seguida definimos o máximo divisor comum e mostramos que ele sempre se escreve como uma combinação linear \(ma + nb\) — o resultado mais reaproveitado do curso.</p>
+  <p><strong>Tragam:</strong> os quatro exercícios resolvidos e a passagem didática do Exercício 4.</p>
+</section>
+
+<aside class="aula-refs">
+<b>Teoria dos Números — Curso de Licenciatura em Matemática</b> · UNIFAP · 2026.2<br>
+  Material de aula preparado a partir de SANTOS, J. P. O. <em>Introdução à Teoria dos Números</em>, Rio de Janeiro: SBM/IMPA, 1998 (Capítulo 1 e Apêndice A). Referências complementares: ROSEN, K. H. <em>Elementary Number Theory and Its Applications</em>, 6ª ed.
+</aside>
+</div>
+{% endraw %}

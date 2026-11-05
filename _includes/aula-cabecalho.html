@@ -1,0 +1,15 @@
+{% comment %}
+  Cabeçalho das aulas importadas: etiquetas (encontro, unidade, ...) e resumo.
+  Dados em page.aula (gerado por bin/importar-aula).
+{% endcomment %}
+{% if page.aula %}
+<div class="aula-cabecalho">
+  {% if page.aula.kicker %}<p class="aula-cabecalho__kicker">{{ page.aula.kicker }}</p>{% endif %}
+  {% if page.aula.etiquetas %}
+  <ul class="aula-cabecalho__etiquetas">
+    {% for e in page.aula.etiquetas %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% if page.aula.resumo %}<p class="aula-cabecalho__resumo">{{ page.aula.resumo }}</p>{% endif %}
+</div>
+{% endif %}

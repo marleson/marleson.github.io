@@ -10,7 +10,12 @@
 <script>
   window.MathJax = {
     tex: {
+      {%- if page.collection == 'notas-de-aula' %}
+      // Nas notas de aula só \( ... \) é fórmula em linha: assim "R$ 4,00" fica como texto
+      inlineMath: [['\\(', '\\)']],
+      {%- else %}
       inlineMath: [['$', '$'], ['\\(', '\\)']],
+      {%- endif %}
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       processEscapes: true,
       processEnvironments: true,
@@ -36,6 +41,11 @@
   };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+{% endif %}
+
+{% if page.graficos %}
+<!-- Gráficos interativos (páginas com `graficos: true`) -->
+<script defer src="{{ '/assets/js/grafico-afim.js' | relative_url }}"></script>
 {% endif %}
 
 <!-- Botões de reação/compartilhamento (ShareThis) -->
