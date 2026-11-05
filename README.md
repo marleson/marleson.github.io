@@ -119,6 +119,9 @@ A equação \eqref{eq:euler} ...
 Atalhos: `\R \N \Z \Q \C`, `\dd` (diferencial), `\abs{x}`, `\norm{v}` — para criar outros,
 edite `macros` em `_includes/head/custom.html`.
 
+**Nas notas de aula**, fórmula em linha é só `\( ... \)` (o `$` simples fica desligado para que
+"R$ 4,00" apareça como texto). Destaque continua com `$$ ... $$` ou `\[ ... \]`.
+
 Caixas para teoremas etc. (o `markdown="1"` é obrigatório):
 
 ```markdown

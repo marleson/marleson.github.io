@@ -345,6 +345,12 @@ a.disciplina-card {
       > div { grid-template-columns: 1fr; }
       dt { border-bottom: 1px solid $nota-linha; }
     }
+
+    // Roteiro por seções (número + tópico): coluna estreita, inclusive no celular
+    &.route--secoes > div { grid-template-columns: 3em 1fr; }
+    &.route--secoes dt { text-align: center; border-bottom: none; }
+    &.route--secoes a { text-decoration: none; }
+    &.route--secoes a:hover b { text-decoration: underline; }
   }
 
   // Caixas

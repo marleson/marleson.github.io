@@ -10,7 +10,12 @@
 <script>
   window.MathJax = {
     tex: {
+      {%- if page.collection == 'notas-de-aula' %}
+      // Nas notas de aula só \( ... \) é fórmula em linha: assim "R$ 4,00" fica como texto
+      inlineMath: [['\\(', '\\)']],
+      {%- else %}
       inlineMath: [['$', '$'], ['\\(', '\\)']],
+      {%- endif %}
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       processEscapes: true,
       processEnvironments: true,

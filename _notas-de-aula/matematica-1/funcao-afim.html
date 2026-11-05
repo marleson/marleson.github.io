@@ -22,7 +22,7 @@ aula:
 
 <section>
   <div class="goals">
-    <h2>O que você vai aprender</h2>
+    <h2 id="objetivos">O que você vai aprender</h2>
     <ul>
       <li>Reconhecer uma função afim \(f(x) = ax + b\) e identificar os coeficientes \(a\) e \(b\).</li>
       <li>Calcular <strong>valores numéricos</strong> e resolver equações do tipo \(f(x) = k\).</li>
@@ -35,9 +35,28 @@ aula:
   </div>
 </section>
 
+<!-- ROTEIRO -->
+<section>
+  <h2 id="roteiro-da-aula"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro da aula</h2>
+  <p class="sec-lead">Clique em um tópico para ir direto a ele.</p>
+  <dl class="route route--secoes">
+    <div><dt>1</dt><dd><a href="#situacao-inicial"><b>Uma situação para começar.</b></a> o preço da corrida de mototáxi.</dd></div>
+    <div><dt>2</dt><dd><a href="#definicao-e-coeficientes"><b>Definição e coeficientes.</b></a> a lei \(f(x)=ax+b\), a taxa de variação \(a\) e o coeficiente linear \(b\).</dd></div>
+    <div><dt>3</dt><dd><a href="#valor-numerico"><b>Valor numérico.</b></a> calcular \(f(k)\) e resolver \(f(x)=k\).</dd></div>
+    <div><dt>4</dt><dd><a href="#grafico"><b>O gráfico é uma reta.</b></a> como traçar, onde corta os eixos e o zero da função.</dd></div>
+    <div><dt>5</dt><dd><a href="#crescente-decrescente"><b>Crescente, decrescente ou constante.</b></a> o sinal de \(a\) decide.</dd></div>
+    <div><dt>6</dt><dd><a href="#dominio-e-imagem"><b>Domínio e imagem.</b></a> em \(\R\) e em intervalos.</dd></div>
+    <div><dt>7</dt><dd><a href="#lei-por-dois-pontos"><b>Lei a partir de dois pontos.</b></a> descobrir \(a\) e \(b\) pelo gráfico.</dd></div>
+    <div><dt>8</dt><dd><a href="#estudo-do-sinal"><b>Estudo do sinal.</b></a> onde \(f(x)\) é positiva, nula ou negativa.</dd></div>
+    <div><dt>9</dt><dd><a href="#voltando-ao-mototaxi"><b>Voltando ao mototáxi.</b></a> a situação inicial com as novas ferramentas.</dd></div>
+    <div><dt>10</dt><dd><a href="#resumo"><b>Resumo.</b></a> tudo da aula em um quadro.</dd></div>
+    <div><dt>11</dt><dd><a href="#exercicios"><b>Exercícios.</b></a> para praticar, com respostas.</dd></div>
+  </dl>
+</section>
+
 <!-- 1 -->
 <section>
-  <h2><span class="snum" data-n="1" aria-hidden="true"></span>Uma situação para começar</h2>
+  <h2 id="situacao-inicial"><span class="snum" data-n="1" aria-hidden="true"></span>Uma situação para começar</h2>
   <p class="sec-lead">Antes da definição, um problema do dia a dia.</p>
 
   <p>Em uma cidade, uma corrida de mototáxi custa <strong>R$ 4,00 fixos</strong> (a "bandeirada") mais <strong>R$ 1,50 por quilômetro</strong> rodado <em>(valores fictícios)</em>. Quanto custa uma corrida de \(x\) quilômetros?</p>
@@ -65,7 +84,7 @@ aula:
 
 <!-- 2 -->
 <section>
-  <h2><span class="snum" data-n="2" aria-hidden="true"></span>Definição e coeficientes</h2>
+  <h2 id="definicao-e-coeficientes"><span class="snum" data-n="2" aria-hidden="true"></span>Definição e coeficientes</h2>
   <p class="sec-lead">Dando nome ao que vimos no mototáxi.</p>
 
   <div class="thm">
@@ -107,7 +126,7 @@ aula:
 
 <!-- 3 -->
 <section>
-  <h2><span class="snum" data-n="3" aria-hidden="true"></span>Valor numérico</h2>
+  <h2 id="valor-numerico"><span class="snum" data-n="3" aria-hidden="true"></span>Valor numérico</h2>
   <p class="sec-lead">Calcular \(f(x_0)\) é trocar \(x\) por \(x_0\) na lei da função.</p>
 
   <p>O <strong>valor numérico</strong> de \(f\) em \(x = x_0\) é o número \(f(x_0) = a x_0 + b\). No gráfico, ele é a <strong>altura</strong> do ponto da reta que está sobre \(x_0\): o ponto \((x_0,\, f(x_0))\).</p>
@@ -143,7 +162,7 @@ aula:
 
 <!-- 4 -->
 <section>
-  <h2><span class="snum" data-n="4" aria-hidden="true"></span>O gráfico é uma reta</h2>
+  <h2 id="grafico"><span class="snum" data-n="4" aria-hidden="true"></span>O gráfico é uma reta</h2>
   <p class="sec-lead">E, por isso, dois pontos bastam para desenhá-lo.</p>
 
   <p>Na função afim, a taxa de variação é sempre a mesma: se \(x\) aumenta 1 unidade, \(f(x)\) muda exatamente \(a\) unidades, em qualquer lugar do gráfico. De fato, para quaisquer \(x_1 \neq x_2\),</p>
@@ -196,7 +215,7 @@ aula:
 
 <!-- 5 -->
 <section>
-  <h2><span class="snum" data-n="5" aria-hidden="true"></span>Função crescente, decrescente ou constante</h2>
+  <h2 id="crescente-decrescente"><span class="snum" data-n="5" aria-hidden="true"></span>Função crescente, decrescente ou constante</h2>
   <p class="sec-lead">Só o sinal de \(a\) já responde.</p>
 
   <div class="thm">
@@ -243,7 +262,7 @@ aula:
 
 <!-- 6 -->
 <section>
-  <h2><span class="snum" data-n="6" aria-hidden="true"></span>Domínio e imagem</h2>
+  <h2 id="dominio-e-imagem"><span class="snum" data-n="6" aria-hidden="true"></span>Domínio e imagem</h2>
   <p class="sec-lead">Quais valores podem entrar e quais valores saem.</p>
 
   <p>O <strong>domínio</strong> \(D\) é o conjunto dos valores de \(x\) que podemos usar; a <strong>imagem</strong> \(\mathrm{Im}\) é o conjunto dos valores \(f(x)\) que a função de fato produz.</p>
@@ -278,7 +297,7 @@ aula:
 
 <!-- 7 -->
 <section>
-  <h2><span class="snum" data-n="7" aria-hidden="true"></span>Descobrindo a lei a partir de dois pontos</h2>
+  <h2 id="lei-por-dois-pontos"><span class="snum" data-n="7" aria-hidden="true"></span>Descobrindo a lei a partir de dois pontos</h2>
   <p class="sec-lead">Se dois pontos determinam a reta, também determinam \(a\) e \(b\).</p>
 
   <p>Se o gráfico passa por \(A(x_1, y_1)\) e \(B(x_2, y_2)\), com \(x_1 \neq x_2\), então</p>
@@ -309,7 +328,7 @@ aula:
 
 <!-- 8 -->
 <section>
-  <h2><span class="snum" data-n="8" aria-hidden="true"></span>Estudo do sinal</h2>
+  <h2 id="estudo-do-sinal"><span class="snum" data-n="8" aria-hidden="true"></span>Estudo do sinal</h2>
   <p class="sec-lead">Para quais valores de \(x\) a função é positiva? E negativa?</p>
 
   <p>Com \(a \neq 0\), a reta cruza o eixo \(x\) uma única vez, no zero \(x_0 = -\tfrac{b}{a}\). De um lado do zero a função é positiva (gráfico acima do eixo \(x\)), do outro é negativa:</p>
@@ -335,7 +354,7 @@ aula:
 
 <!-- 9 -->
 <section>
-  <h2><span class="snum" data-n="9" aria-hidden="true"></span>Voltando ao mototáxi</h2>
+  <h2 id="voltando-ao-mototaxi"><span class="snum" data-n="9" aria-hidden="true"></span>Voltando ao mototáxi</h2>
   <p class="sec-lead">Tudo o que vimos, aplicado ao problema do início.</p>
 
   <div class="dem">
@@ -350,7 +369,7 @@ aula:
 
 <!-- 10 -->
 <section>
-  <h2><span class="snum" data-n="10" aria-hidden="true"></span>Resumo</h2>
+  <h2 id="resumo"><span class="snum" data-n="10" aria-hidden="true"></span>Resumo</h2>
   <div class="recap">
     <h3>Para guardar</h3>
     <ol>
@@ -366,7 +385,7 @@ aula:
 
 <!-- 11 -->
 <section>
-  <h2><span class="snum" data-n="11" aria-hidden="true"></span>Exercícios</h2>
+  <h2 id="exercicios"><span class="snum" data-n="11" aria-hidden="true"></span>Exercícios</h2>
   <p class="sec-lead">Tente resolver antes de abrir a resposta. Use os gráficos interativos para conferir.</p>
 
   <div class="ex">
