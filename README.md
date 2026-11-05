@@ -62,6 +62,31 @@ acrescente `--forcar`. Depois é só fazer commit e push.
 A navegação "Anterior / Próxima" e a lista de aulas na barra lateral são geradas sozinhas,
 dentro da mesma disciplina.
 
+### Gráficos interativos (função afim)
+
+Qualquer aula pode ter gráficos interativos de função afim. Coloque `graficos: true` no front
+matter e, onde quiser o gráfico:
+
+```html
+<div class="grafico-afim" data-titulo="Interativo · explore a e b"
+     data-a="1" data-b="2" data-janela="-6,6,-6,6"
+     data-controles="a,b" data-mostrar="raiz,intercepto,inclinacao">
+  <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+</div>
+```
+
+| Atributo | O que faz |
+|---|---|
+| `data-a`, `data-b` | valores iniciais da função \(f(x) = ax + b\) |
+| `data-janela` | região visível: `xmin,xmax,ymin,ymax` (mesma escala nos dois eixos) |
+| `data-controles` | controles exibidos: `a`, `b`, `x` (ponto que percorre a reta), `dominio` |
+| `data-mostrar` | marcadores: `raiz`, `intercepto`, `inclinacao`, `sinal` |
+| `data-modo="dois-pontos"` | o aluno arrasta dois pontos e o gráfico calcula `a` e `b` (`data-pontos="x1,y1,x2,y2"`) |
+| `data-x`, `data-dominio` | valor inicial do ponto móvel / intervalo inicial do domínio |
+
+O código está em `assets/js/grafico-afim.js` (JavaScript puro, sem bibliotecas externas), e
+funciona com mouse, toque e teclado. Exemplo completo: `_notas-de-aula/matematica-1/funcao-afim.html`.
+
 ### Nova nota de aula em Markdown
 
 ```bash

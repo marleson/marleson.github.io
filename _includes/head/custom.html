@@ -38,6 +38,11 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 {% endif %}
 
+{% if page.graficos %}
+<!-- Gráficos interativos (páginas com `graficos: true`) -->
+<script defer src="{{ '/assets/js/grafico-afim.js' | relative_url }}"></script>
+{% endif %}
+
 <!-- Botões de reação/compartilhamento (ShareThis) -->
 <script src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb0ff07525e90012616e2b&product=inline-reaction-buttons" async="async"></script>
 

@@ -455,3 +455,136 @@ a.disciplina-card {
   .aula-cabecalho { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .aula .lab-h, .aula .snum { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+// =============================================================================
+// Gráficos interativos (assets/js/grafico-afim.js)
+// =============================================================================
+.grafico-afim {
+  margin: 1.5em 0;
+  padding: 1em;
+  border: 1px solid $nota-linha-2;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  hyphens: manual;
+}
+.grafico-afim .grafico-afim__titulo {
+  margin: 0 0 0.75em;
+  font-size: $type-size-6;
+  font-weight: 700;
+  color: $nota-azul-2;
+
+  &::before { content: "\25B6\FE0E  "; font-size: 0.85em; }
+}
+.grafico-afim__corpo {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr;
+
+  @include breakpoint($medium) { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; }
+}
+.grafico-afim__svg {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  height: auto;
+  font-family: $sans-serif;
+  user-select: none;
+}
+
+// elementos do SVG
+.g-grade line { stroke: #edf0f4; stroke-width: 1; }
+.g-eixo line { stroke: $nota-texto-3; stroke-width: 1.5; }
+.g-nome-eixo { font-size: 13px; font-style: italic; fill: $nota-texto-3; }
+.g-rotulo text { font-size: 10.5px; fill: $nota-texto-3; }
+.g-reta { stroke: $nota-azul-2; stroke-width: 3.5; stroke-linecap: round; }
+.g-reta--fraca { stroke: #b9c7d8; stroke-width: 2; stroke-dasharray: 6 5; }
+.g-reta--pos { stroke: #1c7c4f; }
+.g-reta--neg { stroke: #b4323f; }
+.g-tracejado { stroke: $nota-texto-3; stroke-width: 1.3; stroke-dasharray: 4 4; }
+.g-tracejado--x { stroke: #b06b00; }
+.g-faixa { stroke-width: 9; stroke-linecap: round; opacity: 0.45; }
+.g-faixa--dom { stroke: #6d28a8; }
+.g-faixa--img { stroke: #0f766e; }
+.g-inclinacao { fill: none; stroke: #b06b00; stroke-width: 2.2; stroke-dasharray: 5 3; }
+.g-inclinacao-txt { font-size: 12px; font-weight: 700; fill: #b06b00; }
+
+.g-ponto circle { stroke: #fff; stroke-width: 2; }
+.g-ponto text { font-size: 11.5px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.g-ponto--b circle { fill: #0f766e; }    .g-ponto--b text { fill: #0f766e; }
+.g-ponto--raiz circle { fill: #b4323f; } .g-ponto--raiz text { fill: #b4323f; }
+.g-ponto--x circle { fill: #b06b00; }    .g-ponto--x text { fill: #8a5300; }
+.g-ponto--dom circle { fill: #6d28a8; }  .g-ponto--dom text { fill: #5b2190; }
+.g-ponto--arrastar {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+
+  circle { fill: $nota-azul; }
+  .g-alvo { fill: rgba(34, 80, 125, 0.12); stroke: none; }
+  text { fill: $nota-azul; }
+  &:focus .g-alvo, &:hover .g-alvo { fill: rgba(34, 80, 125, 0.28); }
+  &:active { cursor: grabbing; }
+}
+
+// painel
+.grafico-afim__controles { display: flex; flex-direction: column; gap: 0.6em; }
+.grafico-afim__slider {
+  display: block;
+  font-size: $type-size-6;
+
+  input[type="range"] { width: 100%; margin: 0.2em 0 0; accent-color: $nota-azul-2; height: 1.6em; cursor: pointer; }
+}
+.grafico-afim__slider-topo { display: flex; gap: 0.25em; font-style: italic; }
+.grafico-afim__slider output { font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums; color: $nota-azul; }
+.grafico-afim__reset {
+  align-self: flex-start;
+  margin: 0.2em 0 0;
+  padding: 0.3em 0.9em;
+  border: 1px solid $nota-linha-2;
+  border-radius: 999px;
+  background: #fbfcfd;
+  color: $nota-azul-2;
+  font-size: $type-size-7;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover { background: $nota-azul-claro; }
+}
+.grafico-afim .grafico-afim__dica { margin: 0; font-size: $type-size-7; line-height: 1.45; color: $nota-texto-3; }
+.grafico-afim .grafico-afim__info {
+  margin-top: 0.9em;
+  padding: 0.7em 0.9em;
+  border-radius: 8px;
+  background: #f5f7fa;
+  font-size: $type-size-6;
+  font-variant-numeric: tabular-nums;
+
+  p { margin: 0 0 0.3em; }
+  p:last-child { margin-bottom: 0; }
+}
+.grafico-afim__lei { font-size: $type-size-5; font-weight: 700; color: $nota-azul; }
+.grafico-afim__alerta { color: #a4283f; font-weight: 600; }
+.g-cresce strong, .g-pos strong { color: #1c7c4f; }
+.g-decresce strong, .g-neg strong { color: #b4323f; }
+.g-valor strong { color: #8a5300; }
+.g-dom strong { color: #6d28a8; }
+.g-img strong { color: #0f766e; }
+
+// Respostas dos exercícios
+.aula details {
+  margin-top: 0.6em;
+  padding: 0.5em 0.9em;
+  border: 1px dashed $nota-linha-2;
+  border-radius: 8px;
+  background: #fff;
+
+  summary { cursor: pointer; font-weight: 600; color: $nota-azul-2; font-size: $type-size-6; }
+  &[open] summary { margin-bottom: 0.4em; }
+  p:last-child { margin-bottom: 0; }
+}
+
+@media print {
+  .grafico-afim__controles, .grafico-afim__reset { display: none; }
+  .aula details { border: none; }
+}

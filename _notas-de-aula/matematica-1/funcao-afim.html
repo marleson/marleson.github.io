@@ -1,0 +1,446 @@
+---
+title: "Função afim"
+disciplina: "matematica-1"
+ordem: 1
+date: "2026-11-05"
+excerpt: "Definição, valor numérico, gráfico, zero, crescimento e decrescimento, domínio e imagem e estudo do sinal da função afim — com gráficos interativos e exemplos resolvidos."
+graficos: true
+aula:
+  kicker: "Matemática 1 · 1º ano do Ensino Médio · Funções"
+  resumo: "Quando uma grandeza cresce (ou diminui) sempre na mesma proporção, aparece uma <strong>função afim</strong>. Nesta aula vamos entender sua lei, calcular valores, desenhar o gráfico — que é sempre uma reta — e descobrir, só olhando para os coeficientes, se ela cresce ou decresce, onde corta os eixos e qual é a sua imagem. Os gráficos desta página são interativos: mexa neles!"
+  etiquetas:
+    - "Unidade: Funções"
+    - "Gráficos interativos"
+    - "12 exemplos resolvidos"
+    - "Exercícios com respostas"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+
+<section>
+  <div class="goals">
+    <h2>O que você vai aprender</h2>
+    <ul>
+      <li>Reconhecer uma função afim \(f(x) = ax + b\) e identificar os coeficientes \(a\) e \(b\).</li>
+      <li>Calcular <strong>valores numéricos</strong> e resolver equações do tipo \(f(x) = k\).</li>
+      <li>Construir o <strong>gráfico</strong> (uma reta) a partir de dois pontos e interpretar os coeficientes no gráfico.</li>
+      <li>Encontrar o <strong>zero</strong> da função e o ponto onde a reta corta o eixo \(y\).</li>
+      <li>Decidir se a função é <strong>crescente, decrescente ou constante</strong> só pelo sinal de \(a\).</li>
+      <li>Determinar <strong>domínio e imagem</strong>, inclusive quando o domínio é um intervalo.</li>
+      <li>Descobrir a lei da função a partir de <strong>dois pontos</strong> e fazer o <strong>estudo do sinal</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1 -->
+<section>
+  <h2><span class="snum" data-n="1" aria-hidden="true"></span>Uma situação para começar</h2>
+  <p class="sec-lead">Antes da definição, um problema do dia a dia.</p>
+
+  <p>Em uma cidade, uma corrida de mototáxi custa <strong>R$ 4,00 fixos</strong> (a "bandeirada") mais <strong>R$ 1,50 por quilômetro</strong> rodado <em>(valores fictícios)</em>. Quanto custa uma corrida de \(x\) quilômetros?</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th scope="col">Distância (km)</th><th scope="col">Cálculo</th><th scope="col">Preço (R$)</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>\(4 + 1{,}5 \cdot 0\)</td><td>4,00</td></tr>
+      <tr><td>1</td><td>\(4 + 1{,}5 \cdot 1\)</td><td>5,50</td></tr>
+      <tr><td>2</td><td>\(4 + 1{,}5 \cdot 2\)</td><td>7,00</td></tr>
+      <tr><td>5</td><td>\(4 + 1{,}5 \cdot 5\)</td><td>11,50</td></tr>
+      <tr><td>\(x\)</td><td>\(4 + 1{,}5 \cdot x\)</td><td>\(P(x) = 1{,}5x + 4\)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Repare em duas coisas: existe um <strong>valor fixo</strong> (4, que se paga mesmo com 0 km) e uma <strong>taxa constante</strong> (cada quilômetro a mais acrescenta sempre 1,50). Toda vez que uma situação tem esse formato — "valor inicial + taxa constante × quantidade" — ela é descrita por uma função afim.</p>
+
+  <div class="box think">
+    <span class="label">Pense um minuto</span>
+    <p>Um plano de internet cobra R$ 60,00 por mês, sem nenhuma taxa extra. Um estacionamento cobra R$ 3,00 por hora, sem taxa fixa. As duas situações também são descritas por funções afins? Quais seriam o "valor fixo" e a "taxa" em cada caso?</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="snum" data-n="2" aria-hidden="true"></span>Definição e coeficientes</h2>
+  <p class="sec-lead">Dando nome ao que vimos no mototáxi.</p>
+
+  <div class="thm">
+    <span class="label">Definição · Função afim</span>
+    <p>Uma função \(f: \mathbb{R} \to \mathbb{R}\) é chamada <strong>função afim</strong> quando existem números reais \(a\) e \(b\) tais que</p>
+    <p>\[ f(x) = ax + b \quad \text{para todo } x \in \mathbb{R}. \]</p>
+    <p>O número \(a\) é o <strong>coeficiente angular</strong> (ou taxa de variação) e \(b\) é o <strong>coeficiente linear</strong> (ou termo independente).</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="k">Caso geral</div><p>\(f(x) = 3x - 2\): \(a = 3\) e \(b = -2\).</p></div>
+    <div class="card"><div class="k">Função linear (\(b = 0\))</div><p>\(f(x) = 4x\): \(a = 4\) e \(b = 0\). Quando \(a = 1\) e \(b = 0\), temos a <strong>função identidade</strong> \(f(x) = x\).</p></div>
+    <div class="card"><div class="k">Função constante (\(a = 0\))</div><p>\(f(x) = 7\): \(a = 0\) e \(b = 7\). O valor não depende de \(x\).</p></div>
+  </div>
+
+  <div class="box warn">
+    <span class="label">Atenção à ordem dos termos</span>
+    <p>Em \(f(x) = 5 - 2x\), o coeficiente angular é \(a = -2\) (o número que multiplica \(x\)) e \(b = 5\). O \(a\) <strong>não</strong> é "o primeiro número que aparece". Também é comum o livro chamar de <em>função polinomial do 1º grau</em> a função afim com \(a \neq 0\).</p>
+  </div>
+
+  <h3>Exemplo resolvido 1 — é ou não é função afim?</h3>
+  <p>Decida quais funções são afins e, nesses casos, identifique \(a\) e \(b\):
+  (a) \(f(x) = 2x + 1\);
+  (b) \(g(x) = x^2 + 1\);
+  (c) \(h(x) = \dfrac{x + 3}{2}\);
+  (d) \(m(x) = \dfrac{3}{x}\);
+  (e) \(n(x) = 2(x - 1) + x\);
+  (f) \(p(x) = (x+1)^2 - x^2\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>(a) Sim: \(a = 2\), \(b = 1\).</p>
+    <p>(b) Não: aparece \(x^2\).</p>
+    <p>(c) Sim: \(h(x) = \dfrac{x}{2} + \dfrac{3}{2}\), logo \(a = \dfrac{1}{2}\) e \(b = \dfrac{3}{2}\).</p>
+    <p>(d) Não: \(x\) está no denominador (e \(x = 0\) nem pode ser usado).</p>
+    <p>(e) Sim, depois de simplificar: \(n(x) = 2x - 2 + x = 3x - 2\), logo \(a = 3\), \(b = -2\).</p>
+    <p>(f) Sim! Parece de 2º grau, mas \((x+1)^2 - x^2 = x^2 + 2x + 1 - x^2 = 2x + 1\). Logo \(a = 2\), \(b = 1\). <strong>Sempre simplifique antes de decidir.</strong><span class="qed">∎</span></p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="snum" data-n="3" aria-hidden="true"></span>Valor numérico</h2>
+  <p class="sec-lead">Calcular \(f(x_0)\) é trocar \(x\) por \(x_0\) na lei da função.</p>
+
+  <p>O <strong>valor numérico</strong> de \(f\) em \(x = x_0\) é o número \(f(x_0) = a x_0 + b\). No gráfico, ele é a <strong>altura</strong> do ponto da reta que está sobre \(x_0\): o ponto \((x_0,\, f(x_0))\).</p>
+
+  <h3>Exemplo resolvido 2 — calculando valores</h3>
+  <p>Dada \(f(x) = 3x - 5\), calcule \(f(2)\), \(f(-1)\), \(f(0)\) e \(f\!\left(\tfrac{1}{3}\right)\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>\[
+    \begin{aligned}
+    f(2) &= 3 \cdot 2 - 5 = 6 - 5 = 1 \\
+    f(-1) &= 3 \cdot (-1) - 5 = -3 - 5 = -8 \\
+    f(0) &= 3 \cdot 0 - 5 = -5 \\
+    f\!\left(\tfrac{1}{3}\right) &= 3 \cdot \tfrac{1}{3} - 5 = 1 - 5 = -4
+    \end{aligned}
+    \]</p>
+    <p>Observe que \(f(0) = -5 = b\). Isso sempre acontece: \(f(0) = a \cdot 0 + b = b\).<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo resolvido 3 — o caminho inverso</h3>
+  <p>Ainda com \(f(x) = 3x - 5\): para qual valor de \(x\) temos \(f(x) = 10\)?</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>Basta resolver a equação \(3x - 5 = 10\): \(3x = 15\), logo \(x = 5\). Conferindo: \(f(5) = 15 - 5 = 10\). ✔<span class="qed">∎</span></p>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · valor numérico" data-a="2" data-b="-3" data-x="1"
+       data-janela="-6,6,-8,8" data-controles="a,b,x" data-mostrar="intercepto">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">Mova o controle \(x\): o ponto laranja percorre a reta e o painel mostra a conta \(f(x) = a\cdot x + b\). Tente achar, só mexendo no controle, o valor de \(x\) que faz \(f(x) = 5\) quando \(f(x) = 2x - 3\). Depois confira resolvendo a equação.</p>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="snum" data-n="4" aria-hidden="true"></span>O gráfico é uma reta</h2>
+  <p class="sec-lead">E, por isso, dois pontos bastam para desenhá-lo.</p>
+
+  <p>Na função afim, a taxa de variação é sempre a mesma: se \(x\) aumenta 1 unidade, \(f(x)\) muda exatamente \(a\) unidades, em qualquer lugar do gráfico. De fato, para quaisquer \(x_1 \neq x_2\),</p>
+  <p>\[ \frac{f(x_2) - f(x_1)}{x_2 - x_1} = \frac{(a x_2 + b) - (a x_1 + b)}{x_2 - x_1} = \frac{a(x_2 - x_1)}{x_2 - x_1} = a. \]</p>
+  <p>Uma "inclinação" que nunca muda é exatamente o que caracteriza uma <strong>reta</strong>. Como por dois pontos passa uma única reta, para desenhar o gráfico basta calcular dois pontos e ligá-los.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">O que \(b\) mostra</div><p>A reta corta o eixo \(y\) no ponto \((0, b)\), porque \(f(0) = b\).</p></div>
+    <div class="card"><div class="k">O que \(a\) mostra</div><p>A inclinação: andando 1 para a direita, a reta sobe \(a\) (se \(a &gt; 0\)) ou desce \(|a|\) (se \(a &lt; 0\)).</p></div>
+    <div class="card"><div class="k">Zero da função</div><p>Onde a reta corta o eixo \(x\): \(f(x) = 0 \Rightarrow x = -\dfrac{b}{a}\) (quando \(a \neq 0\)).</p></div>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · explore os coeficientes a e b" data-a="1" data-b="2"
+       data-janela="-6,6,-6,6" data-controles="a,b" data-mostrar="raiz,intercepto,inclinacao">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">Mexa em \(b\) com \(a\) parado: a reta só "sobe e desce", sem mudar a inclinação. Agora mexa em \(a\) com \(b\) parado: a reta gira em torno do ponto \((0, b)\). O degrau laranja mostra o que \(a\) significa: andando 1 para a direita, a reta sobe (ou desce) \(a\).</p>
+
+  <h3>Exemplo resolvido 4 — construindo o gráfico</h3>
+  <p>Construa o gráfico de \(f(x) = -2x + 4\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>Escolhemos alguns valores de \(x\) (dois bastam; um terceiro serve de conferência):</p>
+    <div class="tw">
+    <table>
+      <thead><tr><th scope="col">\(x\)</th><th scope="col">\(f(x) = -2x + 4\)</th><th scope="col">Ponto</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>\(-2\cdot 0 + 4 = 4\)</td><td>\((0, 4)\) — corta o eixo \(y\)</td></tr>
+        <tr><td>2</td><td>\(-2\cdot 2 + 4 = 0\)</td><td>\((2, 0)\) — corta o eixo \(x\)</td></tr>
+        <tr><td>3</td><td>\(-2\cdot 3 + 4 = -2\)</td><td>\((3, -2)\) — conferência</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Marcamos os pontos e traçamos a reta que passa por eles. Como \(a = -2 &lt; 0\), a reta "desce" da esquerda para a direita. Use o gráfico interativo acima com \(a = -2\) e \(b = 4\) para conferir.<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo resolvido 5 — zero da função</h3>
+  <p>Encontre o zero de \(f(x) = 3x - 6\) e o ponto em que o gráfico corta o eixo \(y\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p><b>Zero:</b> \(3x - 6 = 0 \Rightarrow 3x = 6 \Rightarrow x = 2\). O gráfico corta o eixo \(x\) em \((2, 0)\). (Pela fórmula: \(x = -\tfrac{b}{a} = -\tfrac{-6}{3} = 2\).)</p>
+    <p><b>Eixo \(y\):</b> \(f(0) = -6\), ou seja, o ponto \((0, -6)\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Dica</span>
+    <p>Os dois pontos mais práticos para desenhar o gráfico costumam ser justamente \((0, b)\) e \(\left(-\tfrac{b}{a}, 0\right)\): onde a reta corta os eixos. Se eles ficarem muito próximos (ou forem o mesmo ponto, quando \(b = 0\)), escolha outro valor de \(x\).</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="snum" data-n="5" aria-hidden="true"></span>Função crescente, decrescente ou constante</h2>
+  <p class="sec-lead">Só o sinal de \(a\) já responde.</p>
+
+  <div class="thm">
+    <span class="label">Definições</span>
+    <p>Uma função \(f\) é <strong>crescente</strong> quando, aumentando \(x\), o valor \(f(x)\) aumenta: \(x_1 &lt; x_2 \Rightarrow f(x_1) &lt; f(x_2)\).</p>
+    <p>É <strong>decrescente</strong> quando, aumentando \(x\), o valor \(f(x)\) diminui: \(x_1 &lt; x_2 \Rightarrow f(x_1) &gt; f(x_2)\).</p>
+    <p>É <strong>constante</strong> quando \(f(x_1) = f(x_2)\) para quaisquer \(x_1, x_2\).</p>
+  </div>
+
+  <div class="thm">
+    <span class="label">Propriedade</span>
+    <p>A função afim \(f(x) = ax + b\) é crescente se \(a &gt; 0\), decrescente se \(a &lt; 0\) e constante se \(a = 0\).</p>
+  </div>
+  <div class="dem">
+    <span class="label">Por quê?</span>
+    <p>Se \(x_1 &lt; x_2\), então \(x_2 - x_1 &gt; 0\) e</p>
+    <p>\[ f(x_2) - f(x_1) = a(x_2 - x_1). \]</p>
+    <p>O sinal dessa diferença é o sinal de \(a\): se \(a &gt; 0\), \(f(x_2) &gt; f(x_1)\) (cresce); se \(a &lt; 0\), \(f(x_2) &lt; f(x_1)\) (decresce); se \(a = 0\), \(f(x_2) = f(x_1)\) (constante).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · o sinal de a decide" data-a="2" data-b="1"
+       data-janela="-6,6,-6,6" data-controles="a" data-mostrar="intercepto,inclinacao">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">Arraste \(a\) dos valores positivos para os negativos, passando pelo zero. Observe quando a reta sobe, fica "deitada" e desce — e quanto maior \(|a|\), mais "em pé" ela fica.</p>
+
+  <h3>Exemplo resolvido 6 — classificando</h3>
+  <p>Classifique: (a) \(f(x) = 5 - 2x\); (b) \(g(x) = \dfrac{x - 1}{3}\); (c) \(h(x) = -3\); (d) \(k(x) = -(-x + 4)\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>(a) \(a = -2 &lt; 0\): <strong>decrescente</strong> (cuidado: o "5" vem primeiro, mas não é o \(a\)).</p>
+    <p>(b) \(g(x) = \tfrac{1}{3}x - \tfrac{1}{3}\), \(a = \tfrac{1}{3} &gt; 0\): <strong>crescente</strong>.</p>
+    <p>(c) \(a = 0\): <strong>constante</strong>.</p>
+    <p>(d) \(k(x) = x - 4\), \(a = 1 &gt; 0\): <strong>crescente</strong>.<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo resolvido 7 — com parâmetro</h3>
+  <p>Para quais valores de \(m\) a função \(f(x) = (2m - 6)x + 1\) é crescente? E decrescente?</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>Aqui \(a = 2m - 6\). Crescente: \(2m - 6 &gt; 0 \Rightarrow m &gt; 3\). Decrescente: \(2m - 6 &lt; 0 \Rightarrow m &lt; 3\). Para \(m = 3\), \(a = 0\) e a função é constante (\(f(x) = 1\)).<span class="qed">∎</span></p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="snum" data-n="6" aria-hidden="true"></span>Domínio e imagem</h2>
+  <p class="sec-lead">Quais valores podem entrar e quais valores saem.</p>
+
+  <p>O <strong>domínio</strong> \(D\) é o conjunto dos valores de \(x\) que podemos usar; a <strong>imagem</strong> \(\mathrm{Im}\) é o conjunto dos valores \(f(x)\) que a função de fato produz.</p>
+  <ul>
+    <li>Se \(f: \mathbb{R} \to \mathbb{R}\) com \(a \neq 0\): \(D = \mathbb{R}\) e \(\mathrm{Im} = \mathbb{R}\) — a reta "sobe" (ou desce) para sempre, passando por todas as alturas.</li>
+    <li>Se \(a = 0\) (constante): \(D = \mathbb{R}\) e \(\mathrm{Im} = \{b\}\) — só sai um valor.</li>
+    <li>Em problemas reais o domínio costuma ser <strong>restrito</strong>: no mototáxi, não existe distância negativa, então \(x \geq 0\).</li>
+  </ul>
+
+  <p>Quando o domínio é um intervalo \([m, M]\), o gráfico é um <strong>segmento de reta</strong>. Como a função afim é sempre crescente ou sempre decrescente, os valores extremos da imagem estão nas pontas: basta calcular \(f(m)\) e \(f(M)\).</p>
+
+  <h3>Exemplo resolvido 8 — função crescente com domínio restrito</h3>
+  <p>Determine a imagem de \(f(x) = 2x + 1\) com domínio \(D = [-1, 3]\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>\(f(-1) = -2 + 1 = -1\) e \(f(3) = 6 + 1 = 7\). Como \(a = 2 &gt; 0\), a função cresce de \(-1\) até \(7\): \(\mathrm{Im} = [-1, 7]\).<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo resolvido 9 — função decrescente com domínio restrito</h3>
+  <p>Determine a imagem de \(g(x) = -x + 2\) com domínio \(D = [-2, 4]\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>\(g(-2) = 2 + 2 = 4\) e \(g(4) = -4 + 2 = -2\). Como \(a = -1 &lt; 0\), a função decresce: o <em>maior</em> valor está no início do domínio e o <em>menor</em> no fim. Portanto \(\mathrm{Im} = [-2, 4]\) (sempre escrevemos o intervalo do menor para o maior).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · domínio e imagem" data-a="2" data-b="1" data-dominio="-1,3"
+       data-janela="-5,5,-6,10" data-controles="a,b,dominio" data-mostrar="">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">A faixa roxa no eixo \(x\) é o domínio; a faixa verde no eixo \(y\) é a imagem. Reproduza o Exemplo 8 e depois o Exemplo 9 (\(a = -1\), \(b = 2\), domínio de \(-2\) a \(4\)). O que acontece com a imagem quando \(a = 0\)?</p>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="snum" data-n="7" aria-hidden="true"></span>Descobrindo a lei a partir de dois pontos</h2>
+  <p class="sec-lead">Se dois pontos determinam a reta, também determinam \(a\) e \(b\).</p>
+
+  <p>Se o gráfico passa por \(A(x_1, y_1)\) e \(B(x_2, y_2)\), com \(x_1 \neq x_2\), então</p>
+  <p>\[ a = \frac{y_2 - y_1}{x_2 - x_1} \qquad\text{e}\qquad b = y_1 - a\,x_1. \]</p>
+
+  <h3>Exemplo resolvido 10 — pela taxa de variação</h3>
+  <p>Encontre a função afim cujo gráfico passa por \((1, 3)\) e \((3, 7)\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>\(a = \dfrac{7 - 3}{3 - 1} = \dfrac{4}{2} = 2\) e \(b = 3 - 2 \cdot 1 = 1\). Logo \(f(x) = 2x + 1\). Conferindo no outro ponto: \(f(3) = 6 + 1 = 7\). ✔<span class="qed">∎</span></p>
+  </div>
+
+  <h3>Exemplo resolvido 11 — por sistema</h3>
+  <p>Encontre \(f\) sabendo que \(f(-2) = 5\) e \(f(2) = -3\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>Substituindo em \(f(x) = ax + b\):</p>
+    <p>\[ \begin{cases} -2a + b = 5 \\ \phantom{-}2a + b = -3 \end{cases} \]</p>
+    <p>Somando as equações: \(2b = 2\), logo \(b = 1\). Voltando na segunda: \(2a + 1 = -3 \Rightarrow a = -2\). Portanto \(f(x) = -2x + 1\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · arraste os pontos" data-modo="dois-pontos" data-pontos="1,3,3,7"
+       data-janela="-6,6,-6,8" data-mostrar="intercepto">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">Arraste os pontos A e B: o painel recalcula \(a\) e \(b\) com as fórmulas acima. Coloque A em \((-2, 5)\) e B em \((2, -3)\) para conferir o Exemplo 11. O que acontece se os dois pontos tiverem o mesmo \(x\)?</p>
+</section>
+
+<!-- 8 -->
+<section>
+  <h2><span class="snum" data-n="8" aria-hidden="true"></span>Estudo do sinal</h2>
+  <p class="sec-lead">Para quais valores de \(x\) a função é positiva? E negativa?</p>
+
+  <p>Com \(a \neq 0\), a reta cruza o eixo \(x\) uma única vez, no zero \(x_0 = -\tfrac{b}{a}\). De um lado do zero a função é positiva (gráfico acima do eixo \(x\)), do outro é negativa:</p>
+  <div class="cards">
+    <div class="card"><div class="k">Se \(a &gt; 0\) (crescente)</div><p>\(f(x) &lt; 0\) para \(x &lt; x_0\) e \(f(x) &gt; 0\) para \(x &gt; x_0\).</p></div>
+    <div class="card"><div class="k">Se \(a &lt; 0\) (decrescente)</div><p>\(f(x) &gt; 0\) para \(x &lt; x_0\) e \(f(x) &lt; 0\) para \(x &gt; x_0\).</p></div>
+  </div>
+
+  <h3>Exemplo resolvido 12</h3>
+  <p>Estude o sinal de (a) \(f(x) = 2x - 6\) e (b) \(g(x) = -x + 4\).</p>
+  <div class="dem">
+    <span class="label">Resolução</span>
+    <p>(a) Zero: \(2x - 6 = 0 \Rightarrow x = 3\). Como \(a = 2 &gt; 0\): \(f(x) &lt; 0\) para \(x &lt; 3\), \(f(3) = 0\) e \(f(x) &gt; 0\) para \(x &gt; 3\).</p>
+    <p>(b) Zero: \(-x + 4 = 0 \Rightarrow x = 4\). Como \(a = -1 &lt; 0\): \(g(x) &gt; 0\) para \(x &lt; 4\), \(g(4) = 0\) e \(g(x) &lt; 0\) para \(x &gt; 4\).<span class="qed">∎</span></p>
+  </div>
+
+  <div class="grafico-afim" data-titulo="Interativo · sinal da função" data-a="2" data-b="-6"
+       data-janela="-6,6,-8,8" data-controles="a,b" data-mostrar="sinal,intercepto">
+    <p>Gráfico interativo: ative o JavaScript do navegador para usar.</p>
+  </div>
+  <p class="cap">A parte <span style="color:#1c7c4f;font-weight:700">verde</span> da reta é onde \(f(x) &gt; 0\); a parte <span style="color:#b4323f;font-weight:700">vermelha</span>, onde \(f(x) &lt; 0\). Troque o sinal de \(a\) e veja as cores trocarem de lado.</p>
+</section>
+
+<!-- 9 -->
+<section>
+  <h2><span class="snum" data-n="9" aria-hidden="true"></span>Voltando ao mototáxi</h2>
+  <p class="sec-lead">Tudo o que vimos, aplicado ao problema do início.</p>
+
+  <div class="dem">
+    <span class="label">Resolução completa</span>
+    <p><b>Lei:</b> \(P(x) = 1{,}5x + 4\), com \(a = 1{,}5\) (preço por km) e \(b = 4\) (bandeirada).</p>
+    <p><b>Valor numérico:</b> uma corrida de 8 km custa \(P(8) = 1{,}5 \cdot 8 + 4 = 12 + 4 = 16\), ou seja, R$ 16,00.</p>
+    <p><b>Equação:</b> com R$ 25,00, quantos km dá para andar? \(1{,}5x + 4 = 25 \Rightarrow 1{,}5x = 21 \Rightarrow x = 14\) km.</p>
+    <p><b>Crescimento:</b> \(a = 1{,}5 &gt; 0\): quanto mais longe, mais caro (crescente).</p>
+    <p><b>Domínio:</b> só faz sentido \(x \geq 0\). Com essa restrição, a imagem é \([4, +\infty)\): nenhuma corrida custa menos que R$ 4,00.<span class="qed">∎</span></p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <h2><span class="snum" data-n="10" aria-hidden="true"></span>Resumo</h2>
+  <div class="recap">
+    <h3>Para guardar</h3>
+    <ol>
+      <li>Função afim: \(f(x) = ax + b\); \(a\) é o coeficiente angular (taxa de variação) e \(b\) o coeficiente linear.</li>
+      <li>Valor numérico: \(f(x_0) = a x_0 + b\); em particular \(f(0) = b\).</li>
+      <li>O gráfico é uma reta: corta o eixo \(y\) em \((0, b)\) e, se \(a \neq 0\), o eixo \(x\) em \(\left(-\tfrac{b}{a}, 0\right)\).</li>
+      <li>\(a &gt; 0\): crescente; \(a &lt; 0\): decrescente; \(a = 0\): constante.</li>
+      <li>Com \(a \neq 0\) e \(D = \mathbb{R}\), \(\mathrm{Im} = \mathbb{R}\). Com domínio \([m, M]\), a imagem vai de \(\min\{f(m), f(M)\}\) até \(\max\{f(m), f(M)\}\).</li>
+      <li>Por dois pontos: \(a = \dfrac{y_2 - y_1}{x_2 - x_1}\) e \(b = y_1 - a x_1\).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 11 -->
+<section>
+  <h2><span class="snum" data-n="11" aria-hidden="true"></span>Exercícios</h2>
+  <p class="sec-lead">Tente resolver antes de abrir a resposta. Use os gráficos interativos para conferir.</p>
+
+  <div class="ex">
+    <div class="n">Exercício 1 · Coeficientes</div>
+    <p>Identifique \(a\) e \(b\): (a) \(f(x) = -4x + 7\); (b) \(g(x) = \dfrac{x}{5}\); (c) \(h(x) = 9 - x\); (d) \(k(x) = 2(3x - 1) - 5x\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>(a) \(a = -4\), \(b = 7\). (b) \(a = \tfrac{1}{5}\), \(b = 0\) (linear). (c) \(a = -1\), \(b = 9\). (d) \(k(x) = 6x - 2 - 5x = x - 2\): \(a = 1\), \(b = -2\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 2 · Valor numérico</div>
+    <p>Dada \(f(x) = -2x + 3\), calcule \(f(-2)\), \(f(0)\) e \(f\!\left(\tfrac{1}{2}\right)\). Depois, encontre \(x\) tal que \(f(x) = -5\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>\(f(-2) = 7\), \(f(0) = 3\), \(f\!\left(\tfrac{1}{2}\right) = 2\). E \(-2x + 3 = -5 \Rightarrow x = 4\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 3 · Gráfico</div>
+    <p>Esboce o gráfico de \(f(x) = x - 3\), indicando os pontos onde ele corta os eixos.</p>
+    <details><summary>Ver resposta</summary>
+      <p>Corta o eixo \(y\) em \((0, -3)\) e o eixo \(x\) em \((3, 0)\). É uma reta crescente (\(a = 1\)). Confira no gráfico da seção 4 com \(a = 1\) e \(b = -3\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 4 · Crescimento e zero</div>
+    <p>Para cada função, diga se é crescente ou decrescente e calcule o zero: (a) \(f(x) = 4x - 8\); (b) \(g(x) = -3x - 9\); (c) \(h(x) = \tfrac{1}{2}x + 2\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>(a) Crescente, zero \(x = 2\). (b) Decrescente, zero \(x = -3\). (c) Crescente, zero \(x = -4\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 5 · Parâmetro</div>
+    <p>Para quais valores de \(k\) a função \(f(x) = (3 - k)x + 2\) é decrescente?</p>
+    <details><summary>Ver resposta</summary>
+      <p>\(3 - k &lt; 0 \Rightarrow k &gt; 3\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 6 · Domínio e imagem</div>
+    <p>Determine a imagem: (a) \(f(x) = 3x - 2\) com \(D = [0, 4]\); (b) \(g(x) = -2x + 5\) com \(D = [-1, 3]\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>(a) \(f(0) = -2\), \(f(4) = 10\): \(\mathrm{Im} = [-2, 10]\). (b) \(g(-1) = 7\), \(g(3) = -1\): \(\mathrm{Im} = [-1, 7]\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 7 · Lei por dois pontos</div>
+    <p>Determine a função afim tal que \(f(0) = -1\) e \(f(2) = 5\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>\(b = f(0) = -1\); \(2a - 1 = 5 \Rightarrow a = 3\). Logo \(f(x) = 3x - 1\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 8 · Estudo do sinal</div>
+    <p>Estude o sinal de \(f(x) = -3x + 6\).</p>
+    <details><summary>Ver resposta</summary>
+      <p>Zero em \(x = 2\); como \(a = -3 &lt; 0\): \(f(x) &gt; 0\) para \(x &lt; 2\) e \(f(x) &lt; 0\) para \(x &gt; 2\).</p>
+    </details>
+  </div>
+
+  <div class="ex">
+    <div class="n">Exercício 9 · Problema</div>
+    <p>Uma locadora cobra R$ 80,00 de diária mais R$ 0,60 por quilômetro rodado. (a) Escreva a lei \(C(x)\) do custo de um dia com \(x\) km. (b) Quanto custa um dia com 150 km? (c) Com R$ 200,00, quantos km podem ser rodados em um dia?</p>
+    <details><summary>Ver resposta</summary>
+      <p>(a) \(C(x) = 0{,}6x + 80\). (b) \(C(150) = 90 + 80 = 170\): R$ 170,00. (c) \(0{,}6x + 80 = 200 \Rightarrow 0{,}6x = 120 \Rightarrow x = 200\) km.</p>
+    </details>
+  </div>
+</section>
+
+</div>
+{% endraw %}
