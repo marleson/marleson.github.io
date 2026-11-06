@@ -48,6 +48,11 @@
 <script defer src="{{ '/assets/js/grafico-afim.js' | relative_url }}"></script>
 {% endif %}
 
+{% for js in page.interativos %}
+<!-- Interativos da aula (front matter `interativos: [nome]` carrega assets/js/nome.js) -->
+<script defer src="{{ '/assets/js/' | append: js | append: '.js' | relative_url }}"></script>
+{% endfor %}
+
 <!-- Botões de reação/compartilhamento (ShareThis) -->
 <script src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb0ff07525e90012616e2b&product=inline-reaction-buttons" async="async"></script>
 

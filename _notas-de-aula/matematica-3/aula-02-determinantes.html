@@ -1,0 +1,353 @@
+---
+title: "Determinantes"
+disciplina: "matematica-3"
+ordem: 2
+date: "2026-11-05"
+excerpt: "Determinantes de ordem 1, 2 e 3 (regra de Sarrus), significado geométrico, propriedades, teorema de Binet e matriz inversa — com interativos e exercícios."
+interativos: [matrizes]
+aula:
+  kicker: "Matemática 3 · 3º ano do Ensino Médio · Aula 02"
+  resumo: "O <strong>determinante</strong> é um número associado a cada matriz quadrada. Ele diz se a matriz tem inversa (\\(\\det A \\neq 0\\)), ajuda a resolver sistemas lineares, a verificar se pontos estão alinhados e a calcular áreas, com aplicações na Matemática, na Física e na computação."
+  etiquetas:
+    - "Unidade: Matrizes e sistemas lineares"
+    - "5 interativos"
+    - "17 exemplos"
+    - "Exercícios com respostas"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+
+<section>
+  <div class="goals">
+    <h2 id="objetivos">O que você vai aprender</h2>
+    <ul>
+      <li>Calcular determinantes de ordem 1, 2 e 3 (<strong>regra de Sarrus</strong>).</li>
+      <li>Interpretar o determinante \(2 \times 2\) como <strong>área</strong> de um paralelogramo.</li>
+      <li>Usar as <strong>propriedades</strong> para simplificar contas, incluindo os teoremas de Jacobi e de Binet.</li>
+      <li>Decidir se uma matriz é <strong>invertível</strong> e calcular a inversa de uma matriz \(2 \times 2\).</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="roteiro-da-aula"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro da aula</h2>
+  <p class="sec-lead">Clique em um tópico para ir direto a ele.</p>
+  <dl class="route route--secoes">
+    <div><dt>1</dt><dd><a href="#determinante-de-uma-matriz-de-ordem-1"><b>Determinante de uma matriz de ordem 1.</b></a> o próprio elemento.</dd></div>
+    <div><dt>2</dt><dd><a href="#determinante-de-uma-matriz-de-ordem-2"><b>Determinante de uma matriz de ordem 2.</b></a> diagonal principal menos secundária, e o determinante como área.</dd></div>
+    <div><dt>3</dt><dd><a href="#determinante-de-uma-matriz-de-ordem-3"><b>Determinante de uma matriz de ordem 3.</b></a> a regra de Sarrus passo a passo.</dd></div>
+    <div><dt>4</dt><dd><a href="#propriedades-dos-determinantes"><b>Propriedades dos determinantes.</b></a> nove propriedades, Jacobi e Binet.</dd></div>
+    <div><dt>5</dt><dd><a href="#matriz-inversa"><b>Matriz inversa.</b></a> quando existe e como calcular (ordem 2).</dd></div>
+    <div><dt>6</dt><dd><a href="#exercicios"><b>Exercícios.</b></a> para praticar, com respostas.</dd></div>
+  </dl>
+</section>
+
+<section>
+<h2 id="determinante-de-uma-matriz-de-ordem-1"><span class="snum" data-n="1" aria-hidden="true"></span>Determinante de uma matriz de ordem 1</h2>
+<p>É dado pelo próprio elemento da matriz. O determinante de matriz de ordem 1, ou seja, \(A = (a_{11})\), é o próprio elemento \(a_{11}\). Indicamos esse determinante por \(\det A = a_{11}\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 1</span>
+<p>\(B= [7]\), então \(\det B = 7\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 2</span>
+<p><span class="nb">\(C= \begin{bmatrix} -\frac{1}{5} \end{bmatrix}\)</span>, então \(\det C = -\dfrac{1}{5}\).</p>
+</div>
+</section>
+
+<section>
+<h2 id="determinante-de-uma-matriz-de-ordem-2"><span class="snum" data-n="2" aria-hidden="true"></span>Determinante de uma matriz de ordem 2</h2>
+<p>O determinante de uma matriz quadrada <span class="nb">\(A = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}\)</span> é igual à diferença do produto dos elementos da diagonal principal pelo produto dos elementos da diagonal secundária.</p>
+<p class="eq">\[
+\boxed{\det A = \begin{vmatrix}
+				a_{11} & a_{12} \\
+				a_{21} & a_{22}
+			\end{vmatrix} = a_{11} \cdot a_{22} - a_{12} \cdot a_{21}}
+\]</p>
+<p>De maneira prática, mantemos o sinal do produto dos elementos da diagonal principal e trocamos o sinal do produto dos elementos da diagonal secundária.</p>
+<p class="eq">\[ \det A = \begin{vmatrix} \color{#1d4f91}{a_{11}} & \color{#b4323f}{a_{12}} \\ \color{#b4323f}{a_{21}} & \color{#1d4f91}{a_{22}} \end{vmatrix} = \underbrace{\color{#1d4f91}{a_{11} \cdot a_{22}}}_{\text{mantém o sinal}} \; - \underbrace{\color{#b4323f}{a_{12} \cdot a_{21}}}_{\text{troca o sinal}} \]</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 3</span>
+<p>Dada a matriz
+ <span class="nb">\(A= \begin{bmatrix} 9 & 2  \\ 5 & -1 \end{bmatrix}\)</span>, então \(\det A = \begin{vmatrix} 9 & 2  \\ 5 & -1 \end{vmatrix} = 9 \cdot (-1) - 2 \cdot 5 = -9 - 10 = -19\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 4</span>
+<p><span class="nb">\(E= \begin{bmatrix} -1 & 2 \\ 3  & 4 \end{bmatrix}\)</span>, então \(\det E = (-1) \cdot 4 - 2 \cdot 3 = -4 - 6 = -10\).</p>
+</div>
+<div class="mx" data-tipo="det" data-matriz="9,2;5,-1" data-titulo="Explore: o determinante de ordem 2">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Clique em “Próximo” para ver cada diagonal. Troque os números (aceita frações como <code>1/2</code> e decimais como <code>0,5</code>) e confira os Exemplos 3 e 4.</p>
+<h3>O significado geométrico</h3>
+<p>Os determinantes também medem <strong>áreas</strong>. As duas colunas de uma matriz \(2 \times 2\) podem ser vistas como dois vetores, \(u\) e \(v\), saindo da origem. Eles formam um paralelogramo, e</p>
+<p class="eq">\[ \text{área do paralelogramo} = \left|\det A\right|. \]</p>
+<p>O sinal do determinante indica a orientação: positivo quando, para ir de \(u\) até \(v\), giramos no sentido anti-horário; negativo no sentido horário. Quando \(\det A = 0\), os dois vetores estão alinhados e o paralelogramo “achata”.</p>
+<div class="mx" data-tipo="area" data-matriz="3,1;1,2" data-titulo="Explore: o determinante como área">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Arraste as pontas dos vetores. Tente deixar o determinante igual a zero, ou trocar o seu sinal sem mudar a área.</p>
+</section>
+
+<section>
+<h2 id="determinante-de-uma-matriz-de-ordem-3"><span class="snum" data-n="3" aria-hidden="true"></span>Determinante de uma matriz de ordem 3</h2>
+<p>Dada a matriz quadrada <span class="nb">\(A = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix}\)</span>, podemos obter o \(\det A\) por meio do seguinte cálculo:</p>
+<p class="eq">\[
+\boxed{\hspace{-0.5cm}
+			\begin{array}{rcl}
+				\det A & = & a_{11} \cdot a_{22} \cdot a_{33} + a_{12} \cdot a_{23} \cdot a_{31} + a_{13} \cdot a_{21} \cdot a_{32}   \\
+				       & - & (a_{13} \cdot a_{22} \cdot a_{31} + a_{12} \cdot a_{21} \cdot a_{33} + a_{11} \cdot a_{23} \cdot a_{32})
+			\end{array} \hspace{-0.5cm}}
+\]</p>
+<p>Para obter os produtos acima, utilizamos a regra de Sarrus. De acordo com essa regra:</p>
+<ul>
+<li>Repetimos a 1ª e a 2ª colunas à direita da matriz. Em seguida, efetuamos as multiplicações conforme as indicações das setas no esquema a seguir.</li>
+<li>O sinal do produto dos elementos indicados pelas setas azuis é <strong>mantido</strong> e o do produto dos elementos indicados pelas setas vermelhas é <strong>trocado</strong>.</li>
+<li>O determinante é a soma dos resultados obtidos.</li>
+</ul>
+<div class="box tip">
+<span class="label">Observe</span>
+<p>De modo geral, mantemos os sinais dos produtos obtidos no sentido da diagonal principal e trocamos os sinais dos produtos obtidos no sentido da diagonal secundária.</p>
+</div>
+<p class="eq">\[ \left[\begin{array}{ccc|cc} a_{11} & a_{12} & a_{13} & a_{11} & a_{12} \\ a_{21} & a_{22} & a_{23} & a_{21} & a_{22} \\ a_{31} & a_{32} & a_{33} & a_{31} & a_{32} \end{array}\right] \]</p>
+<p>No interativo abaixo, cada clique em “Próximo” destaca uma das seis diagonais: as três azuis (no sentido da diagonal principal) e as três vermelhas (no sentido da secundária).</p>
+<div class="mx" data-tipo="det" data-matriz="1,0,4;7,-2,10;1,5,6" data-titulo="Explore: a regra de Sarrus">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">A matriz inicial é a do Exemplo 5. Edite os números para conferir outros cálculos: as colunas repetidas se atualizam sozinhas.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 5</span>
+<p>Utilizando a regra de Sarrus, vamos obter o determinante da matriz <span class="nb">\(A = \begin{bmatrix} 1 & 0  & 4  \\ 7 & -2 & 10 \\ 1 & 5  & 6 \end{bmatrix}\)</span>.</p>
+<p>\(\det A = 1 \cdot (-2) \cdot 6 + 0 \cdot 10 \cdot 1 + 4 \cdot 7 \cdot 5 - (4 \cdot (-2) \cdot 1 + 0 \cdot 7 \cdot 6 + 1 \cdot 10 \cdot 5) = -12 + 140 - (-8 + 50) = 128 - 42 = 86\).</p>
+</div>
+</section>
+
+<section>
+<h2 id="propriedades-dos-determinantes"><span class="snum" data-n="4" aria-hidden="true"></span>Propriedades dos determinantes</h2>
+<p>Algumas propriedades podem ser utilizadas para simplificar o cálculo de um determinante. A seguir, apresento algumas dessas propriedades, lembrando que elas são válidas para qualquer matriz quadrada.</p>
+<div class="thm">
+<span class="label">1ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\), o seu determinante é igual ao determinante da sua transposta, ou seja, \(\det A = \det A^T\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 6</span>
+<p>Sejam <span class="nb">\(A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}\)</span> e <span class="nb">\(A^T = \begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 1 \cdot 4 - 2 \cdot 3 = -2\) e \(\det A^T = 1 \cdot 4 - 3 \cdot 2 = -2\).</p>
+<p>Portanto, \(\det A = \det A^T\).</p>
+</div>
+<div class="thm">
+<span class="label">2ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\), se todos os elementos de uma linha ou de uma coluna de \(A\) forem iguais a zero, então \(\det A = 0\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 7</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \\ 4 & 5 & 6 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 1 \cdot 0 \cdot 6 + 2 \cdot 0 \cdot 4 + 3 \cdot 0 \cdot 5 - (3 \cdot 0 \cdot 4 + 2 \cdot 0 \cdot 6 + 1 \cdot 0 \cdot 5) = 0\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 8</span>
+<p>Seja <span class="nb">\(B = \begin{bmatrix} -1 & 0 \\ 11 & 0 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det B = (-1) \cdot 0 - 11\cdot 0 = 0\).</p>
+</div>
+<div class="thm">
+<span class="label">3ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\geq 2\), se trocarmos duas linhas ou duas colunas de \(A\), o determinante muda de sinal. Ou seja, se \(B\) é obtida de \(A\) trocando duas linhas (ou duas colunas), então \(\det B = -\det A\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 9</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}\)</span>. Note que, \(\det A = 1 \cdot 4 - 2 \cdot 3 = -2\).</p>
+<p>Agora, vamos trocar as linhas de \(A\). Obtemos <span class="nb">\(B = \begin{bmatrix} 3 & 4 \\ 1 & 2 \end{bmatrix}\)</span> e \(\det B = 3 \cdot 2 - 4 \cdot 1 = 2\).</p>
+<p>Portanto, \(\det B = -\det A\).</p>
+</div>
+<div class="thm">
+<span class="label">4ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\geq 2\), se os elementos correspondentes de duas linhas (ou duas colunas) forem iguais, então \(\det A = 0\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 10</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 1 & 2 & 3 \\ 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 1 \cdot 2 \cdot 6 + 2 \cdot 3 \cdot 4 + 3 \cdot 1 \cdot 5 - (3 \cdot 2 \cdot 4 + 2 \cdot 1 \cdot 6 + 1 \cdot 3 \cdot 5) = 51 - 51 = 0\).</p>
+</div>
+<div class="thm">
+<span class="label">5ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\geq 2\), se multiplicarmos todos os elementos de uma linha (ou de uma coluna) de \(A\) por um número real \(k\), o determinante também fica multiplicado por \(k\). Ou seja, se \(B\) é obtida de \(A\) multiplicando uma linha (ou coluna) por \(k\), então \(\det B = k \cdot \det A\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 11</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 1 \cdot 4 - 2 \cdot 3 = -2\).</p>
+<p>Agora, vamos multiplicar a primeira linha de \(A\) por \(3\). Obtemos <span class="nb">\(B = \begin{bmatrix} 3 & 6 \\ 3 & 4 \end{bmatrix}\)</span> e \(\det B = 3 \cdot 4 - 6 \cdot 3 = -6\).</p>
+<p>Portanto, \(\det B = 3 \cdot \det A\).</p>
+</div>
+<div class="thm">
+<span class="label">6ª propriedade</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\geq 2\), se cada elemento de certa linha (ou coluna) for igual ao produto entre o elemento correspondente de outra linha (ou coluna) e um número real \(k\) não nulo, então \(\det A = 0\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 12</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 2 & 8  \\ 3 & 12 \end{bmatrix}\)</span>, então \(\det A = 2 \cdot 12 - 8 \cdot 3 = 24 - 24 = 0\).</p>
+<p>Nesse caso, a 2ª coluna é o produto da 1ª coluna por \(4\).</p>
+</div>
+<div class="thm">
+<span class="label">7ª propriedade</span>
+<p>Dada uma matriz triangular \(A\), seu determinante é igual ao produto dos elementos da diagonal principal.</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 13</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 0 & 0 & 6 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 1 \cdot 4 \cdot 6 = 24\).</p>
+</div>
+<div class="thm">
+<span class="label">8ª propriedade (Teorema de Jacobi)</span>
+<p>Seja uma matriz quadrada \(A\) de ordem \(n\geq 2\). Se multiplicarmos todos os elementos de uma linha (ou de uma coluna) dessa matriz por um número real \(k\) e somarmos o resultado a outra linha (ou coluna), obtemos uma matriz \(B\) com \(\det B = \det A\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 14</span>
+<p>Seja <span class="nb">\(A = \begin{bmatrix} 2  & 3 & 5 \\ -3 & 4 & 0 \\ 6  & 9 & 7 \end{bmatrix}\)</span>.</p>
+<p>Então, \(\det A = 56 + 0 -135 + 63  -120 - 0 = -136\).</p>
+<p>Multiplicando a 1ª coluna de \(A\) por \((-2)\) e somando o resultado à 3ª coluna, obtemos a matriz <span class="nb">\(B = \begin{bmatrix} 2  & 3 & 1  \\ -3 & 4 & 6  \\ 6  & 9 & -5 \end{bmatrix}\)</span>. Calculando o \(\det B\), temos \(\det B = -40 + 108 - 27 -45 -24 -108 = -136\).</p>
+<p>Portanto, \(\det A = \det B\).</p>
+</div>
+<div class="mx" data-tipo="det" data-matriz="2,3,5;-3,4,0;6,9,7" data-operacoes data-titulo="Explore: as propriedades em ação">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">A matriz inicial é a do Exemplo 14. Troque duas linhas, multiplique uma linha por \(k\), some a uma linha um múltiplo de outra (Jacobi) ou transponha a matriz. O registro mostra o que acontece com o determinante a cada operação; compare com as propriedades 1, 3, 5 e 8. Tente também deixar duas linhas iguais.</p>
+<div class="thm">
+<span class="label">9ª propriedade (Teorema de Binet)</span>
+<p>Sejam as matrizes quadradas \(A\) e \(B\) de mesma ordem. Então, \(\det(AB) = \det A \cdot \det B\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 15</span>
+<p>Sejam <span class="nb">\(A = \begin{bmatrix} 1 & 6  \\ 2 & -3 \end{bmatrix}\)</span> e <span class="nb">\(B = \begin{bmatrix} 2 & 5 \\ 1 & 9 \end{bmatrix}\)</span>.</p>
+<p>\(A\cdot B = \begin{bmatrix} 1 & 6  \\ 2 & -3 \end{bmatrix} \cdot \begin{bmatrix} 2 & 5 \\ 1 & 9 \end{bmatrix} = \begin{bmatrix} 8 & 59  \\ 1 & -17 \end{bmatrix}\).</p>
+<p>Assim, \(\det(AB) = 8 \cdot (-17) - 59 \cdot 1 = -136 - 59 = -195\).</p>
+<p>Agora, vamos calcular o determinante de \(A\) e \(B\) separadamente.</p>
+<p>\(\det A = 1 \cdot (-3) - 6 \cdot 2 = -15\) e \(\det B = 2 \cdot 9 - 5 \cdot 1 = 13\).</p>
+<p>Assim, \(\det(AB) = \det A \cdot \det B = (-15) \cdot 13 = -195\).</p>
+<p>Portanto, \(\det(AB) = \det A \cdot \det B\).</p>
+</div>
+<h3>Consequência do teorema de Binet</h3>
+<p>Se uma matriz quadrada \(A\) de ordem \(n\) é invertível, vale a igualdade \(A\cdot A^{-1} = I_n\). Dessa igualdade, temos: \(\det(A\cdot A^{-1}) = \det(I_n)\).</p>
+<p>Como \(\det(A\cdot A^{-1}) = \det A \cdot \det A^{-1}\) (teorema de Binet) e \(\det I_n = 1\), temos:</p>
+<p class="eq">\[
+\det (A\cdot A^{-1}) = \det I_n \implies \det A \cdot \det A^{-1} = 1.
+\]</p>
+<p>Como o produto é igual a \(1\), nenhum dos fatores pode ser zero: \(\det A\neq 0\). Assim,</p>
+<p class="eq">\[
+\boxed{\det A^{-1} = \dfrac{1}{\det A}}
+\]</p>
+<p>Portanto, se \(A\) é invertível, então \(\det A \neq 0\).</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>A recíproca também é verdadeira: se \(\det A \neq 0\), então \(A\) é invertível. Assim, <strong>\(A\) é invertível se, e somente se, \(\det A \neq 0\)</strong>.</p>
+</div>
+</section>
+
+<section>
+<h2 id="matriz-inversa"><span class="snum" data-n="5" aria-hidden="true"></span>Matriz inversa</h2>
+<div class="thm">
+<span class="label">Definição · Matriz inversa</span>
+<p>Dada uma matriz quadrada \(A\) de ordem \(n\), a sua <strong>inversa</strong>, quando existe, é a matriz \(A^{-1}\), também de ordem \(n\), tal que</p>
+<p class="eq">\[ A \cdot A^{-1} = A^{-1} \cdot A = I_n. \]</p>
+<p>Pela seção anterior, \(A^{-1}\) existe se, e somente se, \(\det A \neq 0\), e nesse caso \(\det A^{-1} = \dfrac{1}{\det A}\).</p>
+</div>
+<p>Para calcular a matriz inversa de ordem 2, usaremos a seguinte regra prática:</p>
+<ol>
+<li>Calcular o determinante da matriz. Se \(\det A = 0\), a matriz não tem inversa.</li>
+<li>Trocar de posição os elementos da diagonal principal e trocar o sinal dos elementos da diagonal secundária.</li>
+<li>Dividir todos os elementos da matriz obtida pelo determinante.</li>
+</ol>
+<p class="eq">\[ \boxed{A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \implies A^{-1} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}} \]</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 16 · Inversa pela regra prática</span>
+<p>Determine \(A^{-1}\) para <span class="nb">\(A = \begin{bmatrix} 2 & 1 \\ 3 & 3 \end{bmatrix}\)</span>.</p>
+<p><strong>1º passo:</strong> \(\det A = 2\cdot 3 - 1\cdot 3 = 3 \neq 0\), então \(A\) tem inversa.</p>
+<p><strong>2º passo:</strong> trocamos de posição o \(2\) e o \(3\) da diagonal principal e trocamos o sinal do \(1\) e do \(3\) da diagonal secundária:</p>
+<p class="eq">\[ \begin{bmatrix} 3 & -1 \\ -3 & 2 \end{bmatrix} \]</p>
+<p><strong>3º passo:</strong> dividimos tudo por \(\det A = 3\):</p>
+<p class="eq">\[ A^{-1} = \frac{1}{3}\begin{bmatrix} 3 & -1 \\ -3 & 2 \end{bmatrix} = \begin{bmatrix} 1 & -\tfrac{1}{3} \\ -1 & \tfrac{2}{3} \end{bmatrix} \]</p>
+<p><strong>Conferindo:</strong> \(A \cdot A^{-1} = \begin{bmatrix} 2\cdot 1 + 1\cdot(-1) & 2\cdot\left(-\tfrac{1}{3}\right) + 1\cdot\tfrac{2}{3} \\ 3\cdot 1 + 3\cdot(-1) & 3\cdot\left(-\tfrac{1}{3}\right) + 3\cdot\tfrac{2}{3} \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = I_2\). ✔</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 17 · Inversa pela definição</span>
+<p>Vamos obter a mesma inversa usando só a definição. Procuramos <span class="nb">\(A^{-1} = \begin{bmatrix} x & y \\ z & w \end{bmatrix}\)</span> com \(A \cdot A^{-1} = I_2\):</p>
+<p class="eq">\[ \begin{bmatrix} 2 & 1 \\ 3 & 3 \end{bmatrix} \begin{bmatrix} x & y \\ z & w \end{bmatrix} = \begin{bmatrix} 2x + z & 2y + w \\ 3x + 3z & 3y + 3w \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \]</p>
+<p>Igualando os elementos correspondentes, obtemos dois sistemas:</p>
+<p class="eq">\[ \begin{cases} 2x + z = 1 \\ 3x + 3z = 0 \end{cases} \implies z = -x,\; x = 1,\; z = -1 \qquad \begin{cases} 2y + w = 0 \\ 3y + 3w = 1 \end{cases} \implies w = -2y,\; y = -\tfrac{1}{3},\; w = \tfrac{2}{3} \]</p>
+<p>Logo <span class="nb">\(A^{-1} = \begin{bmatrix} 1 & -\tfrac{1}{3} \\ -1 & \tfrac{2}{3} \end{bmatrix}\)</span>, o mesmo resultado. A regra prática é só um atalho para essa conta.</p>
+</div>
+<div class="box warn">
+<span class="label">Cuidado com a ordem dos passos</span>
+<p>Os três passos precisam ser feitos todos: trocar os elementos da diagonal principal, trocar o sinal dos da secundária e dividir pelo determinante. Esquecer a troca de sinal é o erro mais comum, e dá para detectá-lo conferindo se \(A \cdot A^{-1} = I\).</p>
+</div>
+<div class="mx" data-tipo="inversa" data-matriz="2,1;3,3" data-titulo="Explore: a inversa passo a passo">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Edite a matriz: os passos e a conferência \(A \cdot A^{-1} = I_2\) são refeitos na hora. Encontre uma matriz sem inversa.</p>
+</section>
+
+<section>
+<h2 id="exercicios"><span class="snum" data-n="6" aria-hidden="true"></span>Exercícios</h2>
+<div class="ex" id="ex-1">
+<div class="n">Exercício 1</div>
+<p>Calcule os determinantes: (a) <span class="nb">\(\begin{vmatrix} 3 & -2 \\ 4 & 5 \end{vmatrix}\)</span>; (b) <span class="nb">\(\begin{vmatrix} -1 & 4 \\ 2 & -8 \end{vmatrix}\)</span>; (c) <span class="nb">\(\begin{vmatrix} \tfrac{1}{2} & 3 \\ 2 & 4 \end{vmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>(a) \(15 - (-8) = 23\); (b) \(8 - 8 = 0\); (c) \(2 - 6 = -4\).</p>
+</details>
+</div>
+<div class="ex" id="ex-2">
+<div class="n">Exercício 2</div>
+<p>Use a regra de Sarrus para calcular \(\det A\), sendo <span class="nb">\(A = \begin{bmatrix} 2 & 1 & 3 \\ 0 & -1 & 4 \\ 1 & 2 & 0 \end{bmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(\det A = 2\cdot(-1)\cdot 0 + 1\cdot 4\cdot 1 + 3\cdot 0\cdot 2 - \big(3\cdot(-1)\cdot 1 + 1\cdot 0\cdot 0 + 2\cdot 4\cdot 2\big) = 4 - (-3 + 16) = -9\).</p>
+</details>
+</div>
+<div class="ex" id="ex-3">
+<div class="n">Exercício 3</div>
+<p>Resolva a equação <span class="nb">\(\begin{vmatrix} x & 2 \\ 3 & x \end{vmatrix} = 10\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(x^2 - 6 = 10 \Rightarrow x^2 = 16 \Rightarrow x = 4\) ou \(x = -4\).</p>
+</details>
+</div>
+<div class="ex" id="ex-4">
+<div class="n">Exercício 4</div>
+<p>Sem usar Sarrus, determine: (a) <span class="nb">\(\begin{vmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 7 & 8 & 9 \end{vmatrix}\)</span>; (b) <span class="nb">\(\begin{vmatrix} 5 & 0 & 0 \\ 1 & -2 & 0 \\ 4 & 7 & 3 \end{vmatrix}\)</span>. Diga qual propriedade você usou.</p>
+<details><summary>Ver resposta</summary>
+<p>(a) \(0\): a 2ª linha é o dobro da 1ª (6ª propriedade). (b) \(5\cdot(-2)\cdot 3 = -30\): a matriz é triangular (7ª propriedade).</p>
+</details>
+</div>
+<div class="ex" id="ex-5">
+<div class="n">Exercício 5</div>
+<p>Sabendo que <span class="nb">\(\begin{vmatrix} a & b \\ c & d \end{vmatrix} = 7\)</span>, calcule: (a) <span class="nb">\(\begin{vmatrix} c & d \\ a & b \end{vmatrix}\)</span>; (b) <span class="nb">\(\begin{vmatrix} 3a & 3b \\ c & d \end{vmatrix}\)</span>; (c) <span class="nb">\(\begin{vmatrix} a + 2c & b + 2d \\ c & d \end{vmatrix}\)</span>; (d) <span class="nb">\(\begin{vmatrix} a & c \\ b & d \end{vmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>(a) \(-7\) (troca de linhas); (b) \(21\) (uma linha multiplicada por 3); (c) \(7\) (Jacobi); (d) \(7\) (transposta).</p>
+</details>
+</div>
+<div class="ex" id="ex-6">
+<div class="n">Exercício 6</div>
+<p>\(A\) e \(B\) são matrizes de ordem 3 com \(\det A = 2\) e \(\det B = -5\). Calcule \(\det(AB)\), \(\det(A^T)\) e \(\det(A^{-1})\).</p>
+<details><summary>Ver resposta</summary>
+<p>\(\det(AB) = 2\cdot(-5) = -10\) (Binet); \(\det(A^T) = 2\); \(\det(A^{-1}) = \tfrac{1}{2}\).</p>
+</details>
+</div>
+<div class="ex" id="ex-7">
+<div class="n">Exercício 7</div>
+<p>Para quais valores de \(k\) a matriz <span class="nb">\(\begin{bmatrix} k & 4 \\ 1 & k \end{bmatrix}\)</span> é invertível? Calcule também a inversa de <span class="nb">\(\begin{bmatrix} 3 & 1 \\ 5 & 2 \end{bmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(\det = k^2 - 4 \neq 0 \Rightarrow k \neq 2\) e \(k \neq -2\). A inversa pedida: \(\det = 6 - 5 = 1\), logo \(\begin{bmatrix} 3 & 1 \\ 5 & 2 \end{bmatrix}^{-1} = \begin{bmatrix} 2 & -1 \\ -5 & 3 \end{bmatrix}\).</p>
+</details>
+</div>
+<div class="ex" id="ex-8">
+<div class="n">Exercício 8</div>
+<p>Os vetores \(u = (4, 1)\) e \(v = (1, 3)\) formam um paralelogramo. Use um determinante para calcular a sua área e confira no interativo da seção 2.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(\begin{vmatrix} 4 & 1 \\ 1 & 3 \end{vmatrix} = 12 - 1 = 11\)</span>. A área é \(11\) unidades de área.</p>
+</details>
+</div>
+</section>
+
+</div>
+{% endraw %}

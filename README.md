@@ -87,6 +87,30 @@ matter e, onde quiser o gráfico:
 O código está em `assets/js/grafico-afim.js` (JavaScript puro, sem bibliotecas externas), e
 funciona com mouse, toque e teclado. Exemplo completo: `_notas-de-aula/matematica-1/funcao-afim.html`.
 
+### Interativos de matrizes, determinantes e sistemas
+
+Coloque `interativos: [matrizes]` no front matter (carrega `assets/js/matrizes.js`) e, onde
+quiser o interativo, um `<div class="mx">` com o tipo e os dados. Matrizes são escritas por
+linhas separadas por `;`, com elementos separados por `,` (aceita frações como `1/2`):
+
+```html
+<div class="mx" data-tipo="det" data-matriz="1,0,4;7,-2,10;1,5,6" data-titulo="Explore: a regra de Sarrus">
+  <p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+```
+
+| `data-tipo` | O que mostra | Atributos |
+|---|---|---|
+| `lei` | matriz pela lei de formação, diagonais e transposta | `data-m`, `data-n`, `data-lei` (`2i+3j`, `i+j`, `i-j`, `ij`, `i2+j2`, `2ij-1`, `id`, `maior`) |
+| `produto` | multiplicação \(A \cdot B\) passo a passo (linha × coluna) | `data-a`, `data-b` |
+| `det` | determinante 2×2 ou Sarrus 3×3 passo a passo | `data-matriz`; `data-operacoes` mostra as operações das propriedades |
+| `area` | determinante 2×2 como área do paralelogramo (vetores arrastáveis) | `data-matriz` |
+| `inversa` | inversa 2×2 pela regra prática, com a conferência \(A \cdot A^{-1} = I\) | `data-matriz` |
+| `sistema` | sistema 2×2 como duas retas, com \(D\), \(D_x\), \(D_y\) e a classificação | `data-sistema="a,b,c;d,e,f"` (\(ax + by = c\)), `data-presets="rótulo:a,b,c;d,e,f\|…"`, `data-janela` |
+| `escalona` | escalonamento da matriz completa, com histórico e sugestão do próximo passo | `data-matriz` (última coluna = termos independentes) |
+
+As contas são feitas com frações exatas. Exemplos completos nas aulas de `_notas-de-aula/matematica-3/`.
+
 ### Nova nota de aula em Markdown
 
 ```bash
