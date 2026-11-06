@@ -46,12 +46,10 @@ matematica-2:
   nome: "Matemática 2"
   nivel: medio
   curso: "2º ano do Ensino Médio"
-  descricao: "Trigonometria, matrizes e sistemas, contagem e probabilidade."
+  descricao: "Trigonometria, contagem e probabilidade."
   unidades:
     - titulo: "Trigonometria"
       topicos: ["Trigonometria no triângulo retângulo", "Ciclo trigonométrico", "Funções trigonométricas", "Relações e transformações"]
-    - titulo: "Matrizes e sistemas lineares"
-      topicos: ["Matrizes e operações", "Determinantes", "Sistemas lineares"]
     - titulo: "Análise combinatória e probabilidade"
       topicos: ["Princípio fundamental da contagem", "Arranjos, permutações e combinações", "Binômio de Newton", "Probabilidade"]
 
@@ -59,8 +57,10 @@ matematica-3:
   nome: "Matemática 3"
   nivel: medio
   curso: "3º ano do Ensino Médio"
-  descricao: "Geometria, estatística, números complexos e polinômios."
+  descricao: "Matrizes, determinantes e sistemas lineares; geometria, estatística, números complexos e polinômios."
   unidades:
+    - titulo: "Matrizes e sistemas lineares"
+      topicos: ["Matrizes e operações", "Determinantes", "Sistemas lineares"]
     - titulo: "Geometria"
       topicos: ["Geometria plana: áreas", "Geometria espacial: prismas, pirâmides, cilindros, cones e esferas"]
     - titulo: "Geometria analítica"

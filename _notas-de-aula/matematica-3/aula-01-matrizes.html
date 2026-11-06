@@ -1,0 +1,1011 @@
+---
+title: "Matrizes"
+disciplina: "matematica-3"
+ordem: 1
+date: "2026-11-05"
+excerpt: "Representação, lei de formação, tipos de matrizes, igualdade, adição, subtração, multiplicação por um número e multiplicação de matrizes — com interativos e exercícios resolvidos."
+interativos: [matrizes]
+aula:
+  kicker: "Matemática 3 · 3º ano do Ensino Médio · Aula 01"
+  resumo: "Uma <strong>matriz</strong> é uma tabela de números organizada em linhas e colunas. Nesta aula vamos aprender a representá-las, reconhecer os principais tipos e operar com elas: somar, subtrair, multiplicar por um número e multiplicar duas matrizes. Matrizes organizam dados e aparecem em transformações geométricas, computação gráfica, sistemas lineares e análise de dados."
+  etiquetas:
+    - "Unidade: Matrizes e sistemas lineares"
+    - "2 interativos"
+    - "20 exemplos"
+    - "61 exercícios com respostas"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+
+<section>
+  <div class="goals">
+    <h2 id="objetivos">O que você vai aprender</h2>
+    <ul>
+      <li>Reconhecer uma matriz, sua ordem \(m \times n\) e a posição de cada elemento \(a_{ij}\).</li>
+      <li>Construir uma matriz a partir de uma <strong>lei de formação</strong>.</li>
+      <li>Identificar os principais <strong>tipos de matrizes</strong>: quadrada, identidade, transposta, simétrica, triangular, diagonal…</li>
+      <li>Decidir quando duas matrizes são <strong>iguais</strong>.</li>
+      <li><strong>Somar</strong>, <strong>subtrair</strong> e <strong>multiplicar por um número</strong>.</li>
+      <li><strong>Multiplicar duas matrizes</strong> e saber quando o produto existe.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="roteiro-da-aula"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro da aula</h2>
+  <p class="sec-lead">Clique em um tópico para ir direto a ele.</p>
+  <dl class="route route--secoes">
+    <div><dt>1</dt><dd><a href="#representacao-de-uma-matriz"><b>Representação de uma matriz.</b></a> ordem, elemento \(a_{ij}\) e lei de formação.</dd></div>
+    <div><dt>2</dt><dd><a href="#tipos-de-matrizes"><b>Tipos de matrizes.</b></a> de linha a diagonal, passando por identidade e transposta.</dd></div>
+    <div><dt>3</dt><dd><a href="#igualdade-de-matrizes"><b>Igualdade de matrizes.</b></a> elementos correspondentes iguais.</dd></div>
+    <div><dt>4</dt><dd><a href="#adicao-e-subtracao"><b>Adição e subtração de matrizes.</b></a> elemento a elemento, só para matrizes de mesma ordem.</dd></div>
+    <div><dt>5</dt><dd><a href="#multiplicacao-por-um-numero-real"><b>Multiplicação de um número real por uma matriz.</b></a> cada elemento vezes \(k\).</dd></div>
+    <div><dt>6</dt><dd><a href="#multiplicacao-de-matrizes"><b>Multiplicação de matrizes.</b></a> linha × coluna e a regra das dimensões.</dd></div>
+  </dl>
+</section>
+
+<section>
+<h2 id="representacao-de-uma-matriz"><span class="snum" data-n="1" aria-hidden="true"></span>Representação de uma matriz</h2>
+<p>Uma matriz \(A\) de ordem \(m \times n\) é uma tabela retangular com \(m\) linhas e \(n\) colunas, cujos elementos são números reais. A matriz \(A\) é representada por:</p>
+<p class="eq">\[
+A = \begin{bmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n} \\
+			a_{21} & a_{22} & \cdots & a_{2n} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			a_{m1} & a_{m2} & \cdots & a_{mn}
+		\end{bmatrix}
+\]</p>
+<p>onde \(a_{ij}\) é o elemento da linha \(i\) e coluna \(j\) da matriz \(A\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 1 · Ordem de uma matriz</span>
+<p>Uma matriz \(A\) de ordem \(3 \times 2\) é dada por:</p>
+<p class="eq">\[
+A = \begin{bmatrix}
+				1 & 2 \\
+				3 & 4 \\
+				5 & 6
+			\end{bmatrix}
+\]</p>
+<p>onde \(a_{12} = 2\), \(a_{22} = 4\) e \(a_{31} = 5\).</p>
+</div>
+<p>Genericamente, uma matriz pode ser representada por \(A=(a_{ij})_{m\times n}\), onde:</p>
+<ul>
+<li>\(A\) é o nome da matriz;</li>
+<li>\(a_{ij}\) é o elemento da linha \(i\) e coluna \(j\) da matriz \(A\);</li>
+<li>\(i\) representa a linha da matriz;</li>
+<li>\(j\) representa a coluna da matriz;</li>
+<li>\(m\) é o número de linhas da matriz;</li>
+<li>\(n\) é o número de colunas da matriz.</li>
+</ul>
+<div class="dem exemplo">
+<span class="label">Exemplo 2 · Representação de uma matriz</span>
+<p>Representar a matriz \(A=(a_{ij})_{3\times 3}\), onde \(a_{ij} = 2i+3j\).</p>
+<p class="eq">\[\begin{aligned} A &= \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix} \\ &= \begin{bmatrix} 2\cdot 1 + 3\cdot 1 & 2\cdot 1 + 3\cdot 2 & 2\cdot 1 + 3\cdot 3 \\ 2\cdot 2 + 3\cdot 1 & 2\cdot 2 + 3\cdot 2 & 2\cdot 2 + 3\cdot 3 \\ 2\cdot 3 + 3\cdot 1 & 2\cdot 3 + 3\cdot 2 & 2\cdot 3 + 3\cdot 3 \end{bmatrix} \\ &= \begin{bmatrix} 5 & 8  & 11 \\ 7 & 10 & 13 \\ 9 & 12 & 15 \end{bmatrix} \end{aligned}\]</p>
+</div>
+<div class="mx" data-tipo="lei" data-m="3" data-n="3" data-lei="2i+3j" data-titulo="Explore: monte a matriz pela lei de formação">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Escolha o número de linhas, de colunas e a lei. Passe o mouse (ou toque) em um elemento: a linha \(i\) e a coluna \(j\) dele se acendem e aparece a conta. As caixas de seleção marcam as diagonais e mostram a transposta, assuntos da próxima seção.</p>
+</section>
+
+<section>
+<h2 id="tipos-de-matrizes"><span class="snum" data-n="2" aria-hidden="true"></span>Tipos de matrizes</h2>
+<h3>a) Matriz retangular</h3>
+<p>matriz com número diferente de linhas e colunas. Isto é, \(A_{m\times n}\), com \(m\neq n\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 3 · Matriz retangular</span>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}\)</span> é uma matriz retangular de ordem \(2\times 3\).</p>
+</div>
+<h3>b) Matriz linha</h3>
+<p>É a matriz que possui apenas uma linha. Ou seja, \(m = 1\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 4 · Matriz linha</span>
+<p><span class="nb">\(A_{ 1\times 3} = \begin{bmatrix} 2 & 7 & -8 \end{bmatrix}\)</span>; <span class="nb">\(B_{ 1\times 2} = \begin{bmatrix} 2{,}5 & 15 \end{bmatrix}\)</span></p>
+</div>
+<h3>c) Matriz coluna</h3>
+<p>É a matriz que possui apenas uma coluna. Ou seja, \(n = 1\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 5 · Matriz coluna</span>
+<p><span class="nb">\(A_{ 3\times 1} = \begin{bmatrix} 2 \\ 7 \\ -4 \end{bmatrix}\)</span>; <span class="nb">\(B_{ 2\times 1} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}\)</span>; <span class="nb">\(C_{ 4\times 1} = \begin{bmatrix} 2  \\ -7 \\ -2 \\ 0 \end{bmatrix}\)</span></p>
+</div>
+<h3>d) Matriz quadrada</h3>
+<p>É uma matriz que apresenta a mesma quantidade de linhas e colunas. Ou seja, \(m = n\).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 6 · Matriz quadrada</span>
+<p><span class="nb">\(A_{ 2\times 2} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B_{ 3\times 3} = \begin{bmatrix} 1  & 2  & 3  \\ 7  & 6  & 5  \\ -8 & -4 & -9 \end{bmatrix}\)</span></p>
+</div>
+<div class="box tip">
+<span class="label">Toda matriz quadrada tem duas diagonais</span>
+<p><strong>Diagonal Principal:</strong> formada pelos elementos \(a_{ij}\) com \(i = j\).</p>
+<p><strong>Diagonal Secundária:</strong> formada pelos elementos \(a_{ij}\) com \(i + j = n + 1\) (\(n\) é a ordem da matriz).</p>
+<p class="eq">\[ \begin{bmatrix} \color{#1d4f91}{a_{11}} & a_{12} & \color{#b4323f}{a_{13}} \\ a_{21} & \color{#6d28a8}{a_{22}} & a_{23} \\ \color{#b4323f}{a_{31}} & a_{32} & \color{#1d4f91}{a_{33}} \end{bmatrix} \]</p>
+<p>Em azul, a diagonal principal (\(a_{11}, a_{22}, a_{33}\)); em vermelho, a secundária (\(a_{13}, a_{22}, a_{31}\)). O elemento \(a_{22}\) está nas duas. No interativo da seção 1, escolha uma matriz quadrada e marque as diagonais.</p>
+</div>
+<h3>e) Matriz nula</h3>
+<p>É a matriz em que todos os seus elementos são iguais a zero.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 7 · Matriz nula</span>
+<p><span class="nb">\(A = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}\)</span>;
+ <span class="nb">\(B = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}\)</span>;
+ <span class="nb">\(C = \begin{bmatrix} 0 & 0 & 0 \end{bmatrix}\)</span></p>
+</div>
+<h3>f) Matriz oposta</h3>
+<p>É a matriz obtida trocando-se o sinal de todos os elementos de uma matriz.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 8 · Matriz oposta</span>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & a  \\ 2 & -3 \end{bmatrix}\)</span>; 
+ <span class="nb">\(-A = \begin{bmatrix} -1 & -a \\ -2 & 3 \end{bmatrix}\)</span></p>
+</div>
+<h3>g) Matriz identidade</h3>
+<p>É uma matriz quadrada cujos elementos da diagonal principal são iguais a 1 e os demais elementos são iguais a zero. Por definição, temos que:</p>
+<p class="eq">\[
+I_n = (I_{ij})_{n\times n} = \left\{
+		\begin{array}{cl}
+			1, & \text{se } i=j     \\
+			0, & \text{se } i\neq j
+		\end{array}
+		\right.
+\]</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 9 · Matriz identidade</span>
+<p><span class="nb">\(I_{2} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\)</span>; 
+ <span class="nb">\(I_{3} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}\)</span></p>
+</div>
+<h3>h) Matriz transposta</h3>
+<p>É a matriz obtida quando trocamos ordenadamente as linhas pelas colunas e, vice-versa.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 10 · Matriz transposta</span>
+<p>\(A = \begin{bmatrix} 1 & -4 & 7  \\ 0 & 1  & 10 \end{bmatrix} \quad \iff \quad A^{T} = \begin{bmatrix} 1  & 0  \\ -4 & 1  \\ 7  & 10 \end{bmatrix}\)</p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-1">
+<div class="n">Exercício 1</div>
+<p>Forme a matriz transposta de cada matriz dada:</p>
+<ul class="rot">
+<li><span class="it">a)</span> <span class="nb">\(A = \begin{pmatrix} 3 & 4 \\ 7 & 5 \\ 2 & 8 \end{pmatrix}\)</span></li>
+<li><span class="it">b)</span> <span class="nb">\(B = \begin{pmatrix} 1 & 0 & 0 \\ 2 & 3 & 0 \\ 4 & 5 & 6 \end{pmatrix}\)</span></li>
+<li><span class="it">c)</span> <span class="nb">\(C = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}\)</span></li>
+<li><span class="it">d)</span> <span class="nb">\(D = \begin{pmatrix} 1 & -1 \\ -1 & 6 \end{pmatrix}\)</span></li>
+</ul>
+<details><summary>Ver resposta</summary>
+<p>As matrizes transpostas são:</p>
+<ul class="rot">
+<li><span class="it">a)</span> <span class="nb">\(A^t = \begin{pmatrix} 3 & 7 & 2 \\ 4 & 5 & 8 \end{pmatrix}\)</span></li>
+<li><span class="it">b)</span> <span class="nb">\(B^t = \begin{pmatrix} 1 & 2 & 4 \\ 0 & 3 & 5 \\ 0 & 0 & 6 \end{pmatrix}\)</span></li>
+<li><span class="it">c)</span> <span class="nb">\(C^t = \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}\)</span></li>
+<li><span class="it">d)</span> <span class="nb">\(D^t = \begin{pmatrix} 1 & -1 \\ -1 & 6 \end{pmatrix}\)</span></li>
+</ul>
+</details>
+</div>
+<div class="ex" id="ex-2">
+<div class="n">Exercício 2</div>
+<p>Obtenha a matriz transposta de:</p>
+<ul class="rot">
+<li><span class="it">a)</span> \(A = (a_{ij})_{3 \times 2}\) com \(a_{ij} = i^2 - j^2\)</li>
+<li><span class="it">b)</span> \(B = (b_{ij})_{1 \times 4}\) com \(b_{ij} = \dfrac{i + j}{2}\)</li>
+</ul>
+<details><summary>Ver resposta</summary>
+<p>As transpostas solicitadas são:</p>
+<ul class="rot">
+<li><span class="it">a)</span> <span class="nb">\(A^t = \begin{pmatrix} 0 & 3 & 8 \\ -3 & 0 & 5 \end{pmatrix}\)</span></li>
+<li><span class="it">b)</span> <span class="nb">\(B^t = \begin{pmatrix} 1 \\ 3/2 \\ 2 \\ 5/2 \end{pmatrix}\)</span></li>
+</ul>
+</details>
+</div>
+<div class="ex" id="ex-3">
+<div class="n">Exercício 3</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} 3 & 6 & 10 \\ -2 & -2 & -2 \end{pmatrix}\)</span>, qual é a matriz transposta da matriz transposta de \(A\)?</p>
+<details><summary>Ver resposta</summary>
+<p>A transposta da transposta de uma matriz é a própria matriz original: <span class="nb">\(A = \begin{pmatrix} 3 & 6 & 10 \\ -2 & -2 & -2 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-4">
+<div class="n">Exercício 4</div>
+<p>Determine a matriz \(A\) sabendo que <span class="nb">\(A^t = \begin{pmatrix} 10 & 0 \\ 10 & 1 \\ 0 & 1 \end{pmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>Aplicando a transposição novamente em \(A^t\): <span class="nb">\(A = \begin{pmatrix} 10 & 10 & 0 \\ 0 & 1 & 1 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-5">
+<div class="n">Exercício 5</div>
+<p>Dada \(A^t = (b_{ij})_{3 \times 4}\) com \(b_{ij} = i - j\), determine a matriz \(A\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 0 & 1 & 2 \\ -1 & 0 & 1 \\ -2 & -1 & 0 \\ -3 & -2 & -1 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-6">
+<div class="n">Exercício 6</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 + a & b \\ 2c & 2 + d \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 3 & -1 \\ 2 & 4 \end{pmatrix}\)</span>, calcule \(a, b, c\) e \(d\) para que se tenha \(A = B^t\).</p>
+<details><summary>Ver resposta</summary>
+<p>Igualando \(A\) à transposta de \(B\) (<span class="nb">\(B^t = \begin{pmatrix} 3 & 2 \\ -1 & 4 \end{pmatrix}\)</span>):
+\(a = 2, b = 2, c = -1/2, d = 2\).</p>
+</details>
+</div>
+<div class="ex" id="ex-7">
+<div class="n">Exercício 7</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\)</span>, qual é a condição que \(a, b, c\) e \(d\) devem satisfazer para que se tenha \(A^t = A\)?</p>
+<details><summary>Ver resposta</summary>
+<p>A condição é que \(b = c\), sendo \(a\) e \(d\) quaisquer números reais.</p>
+</details>
+</div>
+<h3>i) Matriz simétrica</h3>
+<p>É uma matriz quadrada igual a sua transposta (\(A=A^T\)).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 11 · Matriz simétrica</span>
+<p>As matrizes \(A\) e \(B\) são simétricas:</p>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & 4 \\ 4 & 1 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B = \begin{bmatrix} 1 & 2  & 3  \\ 2 & 4  & -5 \\ 3 & -5 & -9 \end{bmatrix}\)</span></p>
+</div>
+<h3>j) Matriz antissimétrica</h3>
+<p>É a matriz que tem transposta igual a oposta. (\(A=-A^T\)).</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 12 · Matriz antissimétrica</span>
+<p>As matrizes \(A\) e \(B\) são antissimétricas:</p>
+<p><span class="nb">\(A = \begin{bmatrix} 0  & 4 \\ -4 & 0 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B = \begin{bmatrix} 0  & 2 & 3  \\ -2 & 0 & -5 \\ -3 & 5 & 0 \end{bmatrix}\)</span></p>
+</div>
+<h3>k) Matriz triangular superior</h3>
+<p>É a matriz quadrada em que os elementos abaixo da diagonal principal são iguais a zero.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 13 · Matriz triangular superior</span>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & 4 \\ 0 & 1 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B = \begin{bmatrix} 1 & 2 & 3  \\ 0 & 4 & -5 \\ 0 & 0 & -9 \end{bmatrix}\)</span></p>
+</div>
+<h3>l) Matriz triangular inferior</h3>
+<p>É a matriz quadrada em que os elementos acima da diagonal principal são iguais a zero.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 14 · Matriz triangular inferior</span>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & 0  & 0 \\ 2 & 4  & 0 \\ 3 & -5 & 9 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 2 & 3 & 0 & 0 \\ 4 & 5 & 8 & 0 \\ 6 & 7 & 9 & 1 \end{bmatrix}\)</span></p>
+</div>
+<h3>m) Matriz diagonal</h3>
+<p>É a matriz quadrada cujos elementos “de fora” da diagonal principal são iguais a zero.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 15 · Matriz diagonal</span>
+<p><span class="nb">\(A = \begin{bmatrix} 1 & 0 & 0  \\ 0 & 4 & 0  \\ 0 & 0 & -9 \end{bmatrix}\)</span>; 
+ <span class="nb">\(B = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 8 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}\)</span></p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-8">
+<div class="n">Exercício 8</div>
+<p>Associe cada matriz \(A, B, C, D\) e \(E\) ao seu tipo \(m \times n\) (de I a VI):</p>
+<p class="eq">\begin{equation*}
+A = \begin{pmatrix} 4 & 2 \\ -1 & 3 \\ 5 & -2 \end{pmatrix}, B = \begin{pmatrix} 6 & 2 & 0 & 8 \\ 0 & 0 & 1 & 0 \end{pmatrix}, C = \begin{pmatrix} 3 & 2 \\ 4 & -1 \\ 0 & 1 \\ 5 & 7 \end{pmatrix}, D = \begin{pmatrix} 1 \\ 4 \\ 0 \end{pmatrix}, E = \begin{pmatrix} 3 & 2 & 7 \end{pmatrix}
+\end{equation*}</p>
+<p>(I) \(1 \times 3\) (II) \(2 \times 3\) (III) \(3 \times 1\) (IV) \(3 \times 2\) (V) \(4 \times 2\) (VI) \(2 \times 4\)</p>
+<details><summary>Ver resposta</summary>
+<p>A - IV; B - VI; C - V; D - III; E - I.</p>
+</details>
+</div>
+<div class="ex" id="ex-9">
+<div class="n">Exercício 9</div>
+<p>Quantos elementos possui uma matriz \(3 \times 4\)? E uma matriz quadrada de ordem 6?</p>
+<details><summary>Ver resposta</summary>
+<p>A matriz \(3 \times 4\) possui 12 elementos (\(3 \times 4 = 12\)). A matriz quadrada de ordem 6 possui 36 elementos (\(6 \times 6 = 36\)).</p>
+</details>
+</div>
+<div class="ex" id="ex-10">
+<div class="n">Exercício 10</div>
+<p>Quais podem ser os tipos das matrizes que possuem 4 elementos? E das que possuem 12 elementos?</p>
+<details><summary>Ver resposta</summary>
+<p>Para 4 elementos: \(1 \times 4, 4 \times 1, 2 \times 2\).
+Para 12 elementos: \(1 \times 12, 12 \times 1, 2 \times 6, 6 \times 2, 3 \times 4, 4 \times 3\).</p>
+</details>
+</div>
+<div class="ex" id="ex-11">
+<div class="n">Exercício 11</div>
+<p>Na matriz <span class="nb">\(A = \begin{pmatrix} 0 & 1 & 2 & 3 \\ 4 & 5 & 6 & 7 \\ 8 & 9 & 10 & 11 \\ 12 & 13 & 14 & 15 \end{pmatrix}\)</span> dê o valor de:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(a_{22}\)</li>
+<li><span class="it">b)</span> \(a_{31}\)</li>
+<li><span class="it">c)</span> \(a_{13}\)</li>
+<li><span class="it">d)</span> \(a_{42}\)</li>
+<li><span class="it">e)</span> \(a_{14}\)</li>
+<li><span class="it">f)</span> \(a_{12}\)</li>
+</ul>
+</div>
+<p>g) todos os elementos da diagonal principal; 
+h) todos os elementos da diagonal secundária.</p>
+<details><summary>Ver resposta</summary>
+<p>a) 5; b) 8; c) 2; d) 13; e) 3; f) 1.
+g) 0, 5, 10, 15; h) 3, 6, 9, 12.</p>
+</details>
+</div>
+<div class="ex" id="ex-12">
+<div class="n">Exercício 12</div>
+<p>Forme a matriz \(A = (a_{ij})_{2 \times 2}\) definida por \(a_{ij} = 2i + j - 1\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 2 & 3 \\ 4 & 5 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-13">
+<div class="n">Exercício 13</div>
+<p>Forme a matriz \(A = (a_{ij})_{2 \times 2}\) definida por \(a_{ij} = i^2 + j^2\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 2 & 5 \\ 5 & 8 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-14">
+<div class="n">Exercício 14</div>
+<p>Forme a matriz \(A = (a_{ij})_{2 \times 3}\) definida por \(a_{ij} = 2ij - 1\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 1 & 3 & 5 \\ 3 & 7 & 11 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-15">
+<div class="n">Exercício 15</div>
+<p>Forme a matriz \(A = (a_{ij})_{3 \times 3}\) definida por <span class="nb">\(a_{ij} = \begin{cases} i + j, & \text{se } i = j \\ ij, & \text{se } i \neq j \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 2 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 6 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-16">
+<div class="n">Exercício 16</div>
+<p>Forme a matriz \(A = (a_{ij})_{3 \times 3}\) definida por <span class="nb">\(a_{ij} = \begin{cases} 1, & \text{se } i = j \\ 0, & \text{se } i \neq j \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}\)</span> (Matriz identidade de ordem 3).</p>
+</details>
+</div>
+<div class="ex" id="ex-17">
+<div class="n">Exercício 17</div>
+<p>Calcule a soma dos elementos da diagonal principal da matriz \(A = (a_{ij})_{4 \times 4}\) onde \(a_{ij} = (-1)^i + (-1)^j\).</p>
+<details><summary>Ver resposta</summary>
+<p>Soma = 0.</p>
+</details>
+</div>
+<div class="ex" id="ex-18">
+<div class="n">Exercício 18</div>
+<p>Calcule o produto dos elementos da 2ª linha da matriz \(A = (a_{ij})_{4 \times 3}\) onde <span class="nb">\(a_{ij} = \begin{cases} i, & \text{se } i \geq j \\ j, & \text{se } i \lt  j \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>Os elementos da 2ª linha são \(a_{21}=2, a_{22}=2, a_{23}=3\). O produto é \(2 \times 2 \times 3 = 12\).</p>
+</details>
+</div>
+<div class="ex" id="ex-19">
+<div class="n">Exercício 19</div>
+<p>Calcule a soma dos elementos da 3ª coluna da matriz \(A = (a_{ij})_{3 \times 3}\) onde \(a_{ij} = 2^i - 2^j\).</p>
+<details><summary>Ver resposta</summary>
+<p>Os elementos da 3ª coluna são \(a_{13}=2^1-2^3=-6, a_{23}=2^2-2^3=-4, a_{33}=2^3-2^3=0\). A soma é \(-6 - 4 + 0 = -10\).</p>
+</details>
+</div>
+<div class="ex" id="ex-20">
+<div class="n">Exercício 20</div>
+<p>Dada a matriz \(A = (a_{ij})_{2 \times 2}\) em que \(a_{ij} = (i + j)^2 - 1\), calcule o valor da expressão \(a_{11}a_{22} - a_{12}a_{21}\).</p>
+<details><summary>Ver resposta</summary>
+<p>\(a_{11}=3, a_{22}=15, a_{12}=8, a_{21}=8\). O valor é \((3 \times 15) - (8 \times 8) = 45 - 64 = -19\).</p>
+</details>
+</div>
+<div class="ex" id="ex-21">
+<div class="n">Exercício 21</div>
+<p>Dada a matriz \(A = (a_{ij})_{3 \times 3}\) em que <span class="nb">\(a_{ij} = \begin{cases} i + j, & \text{se } i \geq j \\ 0, & \text{se } i \lt  j \end{cases}\)</span>, calcule a diferença entre o produto dos elementos da diagonal principal e o da diagonal secundária.</p>
+<details><summary>Ver resposta</summary>
+<p>Diagonal Principal: \(2 \times 4 \times 6 = 48\). Diagonal Secundária: \(0 \times 4 \times 4 = 0\). Diferença: \(48 - 0 = 48\).</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2 id="igualdade-de-matrizes"><span class="snum" data-n="3" aria-hidden="true"></span>Igualdade de matrizes</h2>
+<p>Duas matrizes \(A\) e \(B\), de mesma ordem, são iguais se, e somente se, todos os elementos correspondentes de \(A\) e \(B\) são iguais.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 16 · Igualdade de matrizes</span>
+<p>Dados <span class="nb">\(A = \begin{bmatrix} 1 & 2  & 3  \\ 2 & 4  & -5 \\ 3 & -5 & -9 \end{bmatrix}\)</span> e 
+ <span class="nb">\(B = \begin{bmatrix} 1 & 2  & 3  \\ 2 & 4  & -5 \\ 3 & -5 & -9 \end{bmatrix}\)</span>
+ 
+ \(\implies \quad A=B\)</p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-22">
+<div class="n">Exercício 22</div>
+<p>Calcule \(a, b, c\) e \(d\) para que seja válida a igualdade de matrizes:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} 3a & b + 1 \\ c + d & c - d \end{pmatrix} = \begin{pmatrix} 6 & 5 \\ 2 & 0 \end{pmatrix}
+\end{equation*}</p>
+<details><summary>Ver resposta</summary>
+<p>\(a = 2, b = 4, c = 1, d = 1\).</p>
+</details>
+</div>
+<div class="ex" id="ex-23">
+<div class="n">Exercício 23</div>
+<p>Calcule \(x\) e \(y\) para que seja verdadeira a igualdade:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} x^2 - y \\ 2x + y \\ 2xy \end{pmatrix} = \begin{pmatrix} 0 \\ 3 \\ 2 \end{pmatrix}
+\end{equation*}</p>
+<details><summary>Ver resposta</summary>
+<p>\(x = 1, y = 1\).</p>
+</details>
+</div>
+<div class="ex" id="ex-24">
+<div class="n">Exercício 24</div>
+<p>Verifique se existem valores de \(x\) e \(y\) que tornam verdadeira a igualdade:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} x^2 & y^2 \\ 2x & y + 2 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ -2 & 3 \end{pmatrix}
+\end{equation*}</p>
+<details><summary>Ver resposta</summary>
+<p>Sim; \(x = -1, y = 1\).</p>
+</details>
+</div>
+<div class="ex" id="ex-25">
+<div class="n">Exercício 25</div>
+<p>Verifique se existem valores de \(x\) e \(y\) que tornam verdadeira a igualdade:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} x + y & x - y \\ xy & \dfrac{x}{y} \end{pmatrix} = \begin{pmatrix} 10 & 0 \\ 5 & 1 \end{pmatrix}
+\end{equation*}</p>
+<details><summary>Ver resposta</summary>
+<p>Não existem.</p>
+</details>
+</div>
+<div class="ex" id="ex-26">
+<div class="n">Exercício 26</div>
+<p>Se \(\begin{pmatrix} a + 2 & x & y \\ -x & b + 1 & -y \end{pmatrix} = \begin{pmatrix} -a - 2 & -a & -b \\ a & -b - 1 & b \end{pmatrix}\), qual é o valor da soma \(x + y\)?</p>
+<details><summary>Ver resposta</summary>
+<p>\(3\).</p>
+</details>
+</div>
+<div class="ex" id="ex-27">
+<div class="n">Exercício 27</div>
+<p>Se \(\begin{pmatrix} a & a + b & a + b + c \\ 0 & d + e & d + e + f \\ 0 & 0 & e + f \end{pmatrix} = \begin{pmatrix} 1 & 3 & 5 \\ 0 & 3 & 5 \\ 0 & 0 & 5 \end{pmatrix}\), qual é o valor da expressão \(abc + def\)?</p>
+<details><summary>Ver resposta</summary>
+<p>\(4\).</p>
+</details>
+</div>
+<div class="ex" id="ex-28">
+<div class="n">Exercício 28</div>
+<p>Forme todas as matrizes quadradas de ordem 2, distintas, em que dois elementos são iguais a 1 e os outros dois elementos são iguais a 2.</p>
+<details><summary>Ver resposta</summary>
+<p>As matrizes são:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} 1 & 1 \\ 2 & 2 \end{pmatrix}, \begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}, \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}, \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}, \begin{pmatrix} 2 & 1 \\ 2 & 1 \end{pmatrix}, \begin{pmatrix} 2 & 2 \\ 1 & 1 \end{pmatrix}
+\end{equation*}</p>
+</details>
+</div>
+<div class="ex" id="ex-29">
+<div class="n">Exercício 29</div>
+<p>Forme todas as matrizes quadradas de ordem 3, distintas, onde em cada linha e em cada coluna um elemento é igual a 1 e os demais são iguais a zero.</p>
+<details><summary>Ver resposta</summary>
+<p>As matrizes são:</p>
+<p class="eq">\begin{equation*}
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}
+\end{equation*}</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2 id="adicao-e-subtracao"><span class="snum" data-n="4" aria-hidden="true"></span>Adição e subtração de matrizes</h2>
+<h3>Adição</h3>
+<p>Para somarmos duas matrizes, somamos os elementos correspondentes, só conseguimos somar matrizes de mesma ordem.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 17 · Soma de matrizes</span>
+<p><span class="nb">\(A = \begin{bmatrix} 21 & 17 & 15 \\ 18 & 13 & 9  \\ 11 & 9  & 3 \end{bmatrix}\)</span> e 
+ <span class="nb">\(B = \begin{bmatrix} 23 & 14 & 17 \\ 17 & 16 & 8  \\ 18 & 10 & 5 \end{bmatrix}\)</span></p>
+<p class="eq">\[
+\implies A+B = \begin{bmatrix}
+				44 & 31 & 22 \\
+				35 & 29 & 17 \\
+				29 & 19 & 8
+			\end{bmatrix}
+\]</p>
+</div>
+<h3>Subtração</h3>
+<p>Para subtrairmos duas matrizes, subtraímos os elementos correspondentes, só conseguimos subtrair matrizes de mesma ordem.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 18 · Subtração de matrizes</span>
+<p><span class="nb">\(A = \begin{bmatrix} 21 & 17 & 15 \\ 18 & 13 & 9  \\ 11 & 9  & 3 \end{bmatrix}\)</span> e 
+ <span class="nb">\(B = \begin{bmatrix} 23 & 14 & 17 \\ 17 & 16 & 8  \\ 18 & 10 & 5 \end{bmatrix}\)</span></p>
+<p class="eq">\[
+\implies A-B = \begin{bmatrix}
+				-2 & 3  & -2 \\
+				1  & -3 & 1  \\
+				-7 & -1 & -2
+			\end{bmatrix}
+\]</p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-30">
+<div class="n">Exercício 30</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 3 & 2 \\ -1 & 4 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 1 & 3 \\ 2 & -2 \end{pmatrix}\)</span>, <span class="nb">\(C = \begin{pmatrix} 0 & 2 \\ 5 & 8 \end{pmatrix}\)</span> e <span class="nb">\(D = \begin{pmatrix} 1 & -1 & 2 \\ 0 & 3 & 1 \end{pmatrix}\)</span>, calcule, se existir:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(A + B\)</li>
+<li><span class="it">b)</span> \(B + C\)</li>
+<li><span class="it">c)</span> \(C - A\)</li>
+<li><span class="it">d)</span> \(A + D\)</li>
+<li><span class="it">e)</span> \(B - C\)</li>
+<li><span class="it">f)</span> \(D - C\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 4 & 5 \\ 1 & 2 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 1 & 5 \\ 7 & 6 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -3 & 0 \\ 6 & 4 \end{pmatrix}\)</span>; d) \(\nexists\) (tipos diferentes); e) <span class="nb">\(\begin{pmatrix} 1 & 1 \\ -3 & -10 \end{pmatrix}\)</span>; f) \(\nexists\).</p>
+</details>
+</div>
+<div class="ex" id="ex-31">
+<div class="n">Exercício 31</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 2 \\ 3 & -1 \\ 2 & 5 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 3 & -1 \\ 4 & 0 \\ 1 & 1 \end{pmatrix}\)</span> e <span class="nb">\(C = \begin{pmatrix} 6 & 5 \\ 2 & 4 \\ 0 & 0 \end{pmatrix}\)</span>, calcule:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(A + B + C\)</li>
+<li><span class="it">b)</span> \(A + B - C\)</li>
+<li><span class="it">c)</span> \(A - B - C\)</li>
+<li><span class="it">d)</span> \(A - B + C\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 10 & 6 \\ 9 & 3 \\ 3 & 6 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} -2 & -4 \\ 5 & -5 \\ 3 & 6 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -8 & -2 \\ -3 & -5 \\ 1 & 4 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 4 & 8 \\ 1 & 3 \\ 1 & 4 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-32">
+<div class="n">Exercício 32</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 2 & 0 \\ 1 & 3 & 4 \\ 0 & 2 & 1 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} -1 & -1 & 2 \\ 0 & 1 & 3 \\ 4 & 2 & -2 \end{pmatrix}\)</span>, calcule:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(B - A\)</li>
+<li><span class="it">b)</span> \(A^t + B\)</li>
+<li><span class="it">c)</span> \(A + B^t\)</li>
+<li><span class="it">d)</span> \(A^t - B^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} -2 & -3 & 2 \\ -1 & -2 & -1 \\ 4 & 0 & -3 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 0 & 0 & 2 \\ 2 & 4 & 5 \\ 4 & 6 & -1 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 0 & 2 & 4 \\ 0 & 4 & 6 \\ 2 & 5 & -1 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 2 & 1 & -4 \\ 3 & 2 & 0 \\ -2 & 1 & 3 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-33">
+<div class="n">Exercício 33</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 1 & 1 \\ 2 & 3 & 4 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 1 & 2 \\ 2 & 1 \\ 3 & 3 \end{pmatrix}\)</span>, calcule, se existir:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(A + B\)</li>
+<li><span class="it">b)</span> \(A^t + B\)</li>
+<li><span class="it">c)</span> \(A + B^t\)</li>
+<li><span class="it">d)</span> \(A^t + B^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) \(\nexists\); b) <span class="nb">\(\begin{pmatrix} 2 & 4 \\ 3 & 4 \\ 4 & 7 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 2 & 3 & 4 \\ 4 & 4 & 7 \end{pmatrix}\)</span>; d) \(\nexists\).</p>
+</details>
+</div>
+<div class="ex" id="ex-34">
+<div class="n">Exercício 34</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & -1 & 1 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 4 & -2 & 2 \\ 5 & 2 & 0 \end{pmatrix}\)</span>,</p>
+<ul class="rot">
+<li><span class="it">a)</span> calcule \(A + B, (A + B)^t\) e \(A^t + B^t\) e verifique que \((A + B)^t = A^t + B^t\);</li>
+<li><span class="it">b)</span> calcule \(A - B, (A - B)^t\) e \(A^t - B^t\) e verifique que \((A - B)^t = A^t - B^t\).</li>
+</ul>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(A+B = \begin{pmatrix} 5 & 0 & 5 \\ 7 & 1 & 1 \end{pmatrix}\)</span>, <span class="nb">\((A+B)^t = A^t+B^t = \begin{pmatrix} 5 & 7 \\ 0 & 1 \\ 5 & 1 \end{pmatrix}\)</span>.
+b) <span class="nb">\(A-B = \begin{pmatrix} -3 & 4 & 1 \\ -3 & -3 & 1 \end{pmatrix}\)</span>, <span class="nb">\((A-B)^t = A^t-B^t = \begin{pmatrix} -3 & -3 \\ 4 & -3 \\ 1 & 1 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-35">
+<div class="n">Exercício 35</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 10 & 3 \\ -15 & 12 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} -5 & -2 \\ 1 & -3 \end{pmatrix}\)</span>, determine a matriz \(X\) em cada equação:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(X - A^t = 0\)</li>
+<li><span class="it">b)</span> \(X + B^t = 0\)</li>
+<li><span class="it">c)</span> \(X + A = B\)</li>
+<li><span class="it">d)</span> \(X - B = A^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 10 & -15 \\ 3 & 12 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 5 & -1 \\ 2 & 3 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -15 & -5 \\ 16 & -15 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 5 & -17 \\ 4 & 9 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-36">
+<div class="n">Exercício 36</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 3 & 1 & 3 \\ 2 & 4 & 2 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} -1 & 2 & 0 \\ 4 & -3 & 1 \end{pmatrix}\)</span>, determine a matriz \(X\) nos casos:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(X + A = 0\)</li>
+<li><span class="it">b)</span> \(X + B = A\)</li>
+<li><span class="it">c)</span> \(X + A^t = B^t\)</li>
+<li><span class="it">d)</span> \(X + A + B = 0\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} -3 & -1 & -3 \\ -2 & -4 & -2 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 4 & -1 & 3 \\ -2 & 7 & 1 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -4 & 2 \\ 1 & -7 \\ -3 & -1 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} -2 & -3 & -3 \\ -6 & -1 & -3 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-37">
+<div class="n">Exercício 37</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} 3 & 7 \\ -1/2 & 2 \\ 1 & \sqrt{2} \end{pmatrix}\)</span>, determine \(X\) nos casos:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(X + A^t = 0\)</li>
+<li><span class="it">b)</span> \(X^t - A = 0\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} -3 & 1/2 & -1 \\ -7 & -2 & -\sqrt{2} \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 3 & -1/2 & 1 \\ 7 & 2 & \sqrt{2} \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-38">
+<div class="n">Exercício 38</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 3 & 1 \\ 2 & 7 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} -1 & 1/2 \\ 1/2 & 2 \end{pmatrix}\)</span>, determine as matrizes \(X\) e \(Y\) em cada caso:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> <span class="nb">\(\begin{cases} X - A^t = B \\ Y - A = B^t \end{cases}\)</span></li>
+<li><span class="it">b)</span> <span class="nb">\(\begin{cases} X^t = A - B \\ Y^t + A + B = 0 \end{cases}\)</span></li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(X = \begin{pmatrix} 2 & 5/2 \\ 3/2 & 9 \end{pmatrix}\)</span>, <span class="nb">\(Y = \begin{pmatrix} 2 & 3/2 \\ 5/2 & 9 \end{pmatrix}\)</span>; b) <span class="nb">\(X = \begin{pmatrix} 4 & 3/2 \\ 1/2 & 5 \end{pmatrix}\)</span>, <span class="nb">\(Y = \begin{pmatrix} -2 & -5/2 \\ -3/2 & -9 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-39">
+<div class="n">Exercício 39</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} 1 & -1 & -2 \\ -3 & 0 & 1 \\ 4 & -2 & 0 \end{pmatrix}\)</span>, determine a matriz \(X\) nos casos:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(X + A^t = A\)</li>
+<li><span class="it">b)</span> \(X - A = A\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 0 & 2 & -6 \\ -2 & 0 & 3 \\ 6 & -3 & 0 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 2 & -2 & -4 \\ -6 & 0 & 2 \\ 8 & -4 & 0 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-40">
+<div class="n">Exercício 40</div>
+<p>Resolva a equação \(A - X = B\) sendo dadas \(A = (a_{ij})_{2 \times 2}\) com \(a_{ij} = i^2 + 2i - j\) e \(B = (b_{ij})_{2 \times 2}\) com \(b_{ij} = a_{ji}\).</p>
+<details><summary>Ver resposta</summary>
+<p>Primeiro, calculamos <span class="nb">\(A = \begin{pmatrix} 2 & 1 \\ 7 & 6 \end{pmatrix}\)</span>. Como \(B\) é a transposta de \(A\) (\(b_{ij} = a_{ji}\)), temos <span class="nb">\(B = \begin{pmatrix} 2 & 7 \\ 1 & 6 \end{pmatrix}\)</span>. Logo, <span class="nb">\(X = A - B = \begin{pmatrix} 0 & -6 \\ 6 & 0 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2 id="multiplicacao-por-um-numero-real"><span class="snum" data-n="5" aria-hidden="true"></span>Multiplicação de um número real por uma matriz</h2>
+<p>Dado um número \(k\in\mathbb{R}\), devemos multiplicar todos os elementos da matriz por esse número.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 19 · Multiplicação de número por matriz</span>
+<p><span class="nb">\(A = \begin{bmatrix} 21 & 17 & 15 \\ 18 & 13 & 9  \\ 11 & 9  & 3 \end{bmatrix}\)</span> e 
+ \(k=5\)</p>
+<p class="eq">\[
+\implies 5A = 5\cdot 	\begin{bmatrix}
+				21 & 17 & 15 \\
+				18 & 13 & 9  \\
+				11 & 9  & 3
+			\end{bmatrix} = \begin{bmatrix}
+				105 & 85 & 75 \\
+				90  & 65 & 45 \\
+				55  & 45 & 15
+			\end{bmatrix}
+\]</p>
+</div>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>Em particular, se \(k=-1\) a matriz \(kA\) é a <strong>matriz oposta</strong> de \(A\). Isto é, \((-1)A=-A\).</p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-41">
+<div class="n">Exercício 41</div>
+<p>Dada a matriz <span class="nb">\(A = \begin{pmatrix} 2 & -1 & 0 & 8 \\ 12 & 0 & -3 & 10 \end{pmatrix}\)</span>, determine as matrizes:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(2A\)</li>
+<li><span class="it">b)</span> \(-3A\)</li>
+<li><span class="it">c)</span> \(\frac{1}{2}A\)</li>
+<li><span class="it">d)</span> \(-\frac{1}{10}A\)</li>
+<li><span class="it">e)</span> \(3A^t\)</li>
+<li><span class="it">f)</span> \(-2A^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 4 & -2 & 0 & 16 \\ 24 & 0 & -6 & 20 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} -6 & 3 & 0 & -24 \\ -36 & 0 & 9 & -30 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 1 & -1/2 & 0 & 4 \\ 6 & 0 & -3/2 & 5 \end{pmatrix}\)</span>; 
+d) <span class="nb">\(\begin{pmatrix} -1/5 & 1/10 & 0 & -4/5 \\ -6/5 & 0 & 3/10 & -1 \end{pmatrix}\)</span>; e) <span class="nb">\(\begin{pmatrix} 6 & 36 \\ -3 & 0 \\ 0 & -9 \\ 24 & 30 \end{pmatrix}\)</span>; f) <span class="nb">\(\begin{pmatrix} -4 & -24 \\ 2 & 0 \\ 0 & 6 \\ -16 & -20 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-42">
+<div class="n">Exercício 42</div>
+<p>Dada a matriz <span class="nb">\(A = \begin{pmatrix} 2 & 6 \\ 1 & 4 \\ 0 & -1/2 \end{pmatrix}\)</span>, calcule as matrizes \(10A, (10A)^t\) e \(10 \cdot A^t\) e verifique que \((10A)^t = 10A^t\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(10A = \begin{pmatrix} 20 & 60 \\ 10 & 40 \\ 0 & -5 \end{pmatrix}\)</span>. A transposta desta é <span class="nb">\((10A)^t = \begin{pmatrix} 20 & 10 & 0 \\ 60 & 40 & -5 \end{pmatrix}\)</span>, que é idêntica a \(10 \cdot A^t\).</p>
+</details>
+</div>
+<div class="ex" id="ex-43">
+<div class="n">Exercício 43</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 3 & -1 \\ 2 & 4 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 2 & 2 \\ 0 & 4 \end{pmatrix}\)</span>, calcule as matrizes:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(2A + 3B\)</li>
+<li><span class="it">b)</span> \(A^t - 2B\)</li>
+<li><span class="it">c)</span> \(\frac{1}{4}B - \frac{1}{2}A\)</li>
+<li><span class="it">d)</span> \(3A - \frac{1}{2}B^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 12 & 4 \\ 4 & 20 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} -1 & -2 \\ -1 & -4 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -1 & 1 \\ -1 & -1 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 8 & -3 \\ 5 & 10 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-44">
+<div class="n">Exercício 44</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} 3 \\ 0 \\ 2 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix}\)</span> e <span class="nb">\(C = \begin{pmatrix} 5 \\ -2 \\ 2 \end{pmatrix}\)</span>, calcule as matrizes:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(A + 2B + 3C\)</li>
+<li><span class="it">b)</span> \(3A - 2B - C\)</li>
+<li><span class="it">c)</span> \(2A - \frac{1}{2}B + C\)</li>
+<li><span class="it">d)</span> \(\frac{1}{3}(A + B + C)\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 16 \\ -2 \\ 10 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 6 \\ -2 \\ 2 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 23/2 \\ -3 \\ 11/2 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 7/3 \\ 0 \\ 5/3 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-45">
+<div class="n">Exercício 45</div>
+<p>Se <span class="nb">\(A = \begin{pmatrix} 1 & -1 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 3 & 0 \end{pmatrix}\)</span> e <span class="nb">\(C = \begin{pmatrix} 2 & 4 \end{pmatrix}\)</span>, calcule as matrizes:</p>
+<ul class="rot">
+<li><span class="it">a)</span> \(3(A - B) + 2C\)</li>
+<li><span class="it">b)</span> \(5(2A - 3B + C) - 3(B - A)\)</li>
+</ul>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} -2 & 5 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} -31 & 7 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-46">
+<div class="n">Exercício 46</div>
+<p>Dada <span class="nb">\(A = \begin{pmatrix} 2 & 1 & 1 \\ -1 & 3 & 1 \\ -1 & -1 & 4 \end{pmatrix}\)</span>, calcule a matriz \(5(2A)^t - 3(-A)\).</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(\begin{pmatrix} 26 & -7 & -7 \\ 7 & 39 & -7 \\ 7 & 7 & 52 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-47">
+<div class="n">Exercício 47</div>
+<p>Resolva a equação \(2X + A = 3B\), sendo dadas as matrizes <span class="nb">\(A = \begin{pmatrix} -1 \\ 0 \\ 2 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 1 \\ 1 \\ 4 \end{pmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(X = \begin{pmatrix} 2 \\ 3/2 \\ 5 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-48">
+<div class="n">Exercício 48</div>
+<p>Resolva a equação \(2A - 5X = B^t\), sendo dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 1 \\ 1 & 9 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 1 & 2 \\ -2 & 0 \end{pmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(X = \begin{pmatrix} 1/5 & 4/5 \\ 0 & 18/5 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-49">
+<div class="n">Exercício 49</div>
+<p>Calcule os números \(a, b, x\) e \(y\) que tornam verdadeira a igualdade:</p>
+<p class="eq">\begin{equation*}
+a \begin{pmatrix} 1 & x \\ y & 0 \end{pmatrix} + b \begin{pmatrix} -1 & y \\ -x & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -1 & 2 \end{pmatrix}
+\end{equation*}</p>
+<details><summary>Ver resposta</summary>
+<p>\(a = 2, b = 2, x = 1/2, y = 0\).</p>
+</details>
+</div>
+<div class="ex" id="ex-50">
+<div class="n">Exercício 50</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} -1 & 2 \\ 2 & 2 \end{pmatrix}\)</span>, calcule as matrizes \(X\) e \(Y\) em cada sistema:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> <span class="nb">\(\begin{cases} X + Y = A \\ X - Y = B \end{cases}\)</span></li>
+<li><span class="it">b)</span> <span class="nb">\(\begin{cases} X + 2Y = 7A - 2B \\ 2X - Y = 4A + B \end{cases}\)</span></li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(X = \begin{pmatrix} 0 & 1 \\ 3/2 & 3/2 \end{pmatrix}\)</span>, <span class="nb">\(Y = \begin{pmatrix} 1 & -1 \\ -1/2 & -1/2 \end{pmatrix}\)</span>.
+b) <span class="nb">\(X = \begin{pmatrix} 3 & 0 \\ 3 & 3 \end{pmatrix}\)</span>, <span class="nb">\(Y = \begin{pmatrix} 3 & -2 \\ 0 & 0 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2 id="multiplicacao-de-matrizes"><span class="snum" data-n="6" aria-hidden="true"></span>Multiplicação de matrizes</h2>
+<p>Para multiplicarmos duas matrizes, devemos multiplicar, ordenadamente, os elementos de uma linha da primeira matriz pelos elementos de uma coluna da segunda matriz, e adicionar os produtos assim obtidos; para tal, é necessário que o número de colunas da primeira matriz seja igual ao número de linhas da segunda matriz.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 20 · Multiplicação entre matrizes</span>
+<p>Determine o produto das matrizes a seguir</p>
+<p class="eq">\[
+A B = \begin{bmatrix}
+				3 & 2 & 1  \\
+				7 & 0 & -3
+			\end{bmatrix} \cdot \begin{bmatrix}
+				2 & 1 \\
+				1 & 3 \\
+				4 & 0
+			\end{bmatrix} =
+\]</p>
+<p class="eq">\[
+{\small = \begin{bmatrix}
+						3\cdot 2 + 2\cdot 1 + 1\cdot 4    & 3\cdot 1 + 2\cdot 3+ 1\cdot 0     \\
+						7\cdot 2 + 0\cdot 1 + (-3)\cdot 4 & 7\cdot 1 + 0\cdot 3 + (-3)\cdot 0
+					\end{bmatrix}}
+\]</p>
+<p class="eq">\[
+A B = \begin{bmatrix}
+				12 & 9 \\
+				2  & 7
+			\end{bmatrix}
+\]</p>
+</div>
+<div class="mx" data-tipo="produto" data-a="3,2,1;7,0,-3" data-b="2,1;1,3;4,0" data-titulo="Explore: linha de A vezes coluna de B">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Clique em “Próximo” (ou em uma casa do resultado): a linha de \(A\) e a coluna de \(B\) usadas se acendem e a conta aparece embaixo. Os números podem ser editados e o tamanho das matrizes pode ser mudado; experimente uma combinação em que o produto não existe. O botão “Trocar a ordem” mostra que, em geral, \(A \cdot B \neq B \cdot A\).</p>
+<div class="box warn">
+<span class="label">Atenção!</span>
+<p>Para multiplicar duas matrizes o número de colunas da primeira matriz deve ser igual ao número de linhas da segunda matriz.</p>
+<p class="eq">\[ \underset{{\color{#1d4f91}{m}} \times {\color{#b4323f}{p}}}{A} \cdot \underset{{\color{#b4323f}{p}} \times {\color{#0f766e}{n}}}{B} = \underset{{\color{#1d4f91}{m}} \times {\color{#0f766e}{n}}}{A\,B} \]</p>
+<p>Os números “de dentro” (em vermelho) precisam ser iguais; os “de fora” dão a ordem do resultado: o número de linhas de \(A\) e o número de colunas de \(B\).</p>
+</div>
+<h3 class="exs">Exercícios</h3>
+<div class="ex" id="ex-51">
+<div class="n">Exercício 51</div>
+<p>Calcule os seguintes produtos:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(\begin{pmatrix} 3 & 10 \end{pmatrix} \begin{pmatrix} 2 \\ 5 \end{pmatrix}\)</li>
+<li><span class="it">b)</span> \(\begin{pmatrix} 8 & 4 & -1 \end{pmatrix} \begin{pmatrix} 2 \\ 0 \\ 3 \end{pmatrix}\)</li>
+<li><span class="it">c)</span> \(\begin{pmatrix} -2 & -2 & 5 \end{pmatrix} \begin{pmatrix} 4 \\ -1 \\ 1 \end{pmatrix}\)</li>
+<li><span class="it">d)</span> \(\begin{pmatrix} 5 & 6 \end{pmatrix} \begin{pmatrix} -6 \\ 5 \end{pmatrix}\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) \((56)\); b) \((13)\); c) \((-1)\); d) \((0)\).</p>
+</details>
+</div>
+<div class="ex" id="ex-52">
+<div class="n">Exercício 52</div>
+<p>Copie e complete o quadro colocando o tipo \(m \times n\) de cada matriz (se existir):</p>
+<div class="centro"><div class="tw"><table>
+<tr><th>matriz \(A\)</th><th>matriz \(B\)</th><th>matriz \(AB\)</th></tr>
+<tr><td>\(2 \times 3\)</td><td>\(3 \times 4\)</td><td></td></tr>
+<tr><td>\(5 \times 2\)</td><td>\(2 \times 2\)</td><td></td></tr>
+<tr><td>\(3 \times 3\)</td><td>\(3 \times 1\)</td><td></td></tr>
+<tr><td>\(2 \times 4\)</td><td>\(3 \times 4\)</td><td></td></tr>
+<tr><td>\(5 \times 3\)</td><td>\(3 \times 5\)</td><td></td></tr>
+<tr><td>\(3 \times 5\)</td><td>\(5 \times 3\)</td><td></td></tr>
+<tr><td>\(1 \times 3\)</td><td></td><td>\(1 \times 4\)</td></tr>
+<tr><td></td><td>\(2 \times 5\)</td><td>\(3 \times 5\)</td></tr>
+</table></div></div>
+<details><summary>Ver resposta</summary>
+<p>Os tipos são, respectivamente: \(2 \times 4\); \(5 \times 2\); \(3 \times 1\); Não existe (\(\nexists\)); \(5 \times 5\); \(3 \times 3\); \(3 \times 4\); \(3 \times 2\).</p>
+</details>
+</div>
+<div class="ex" id="ex-53">
+<div class="n">Exercício 53</div>
+<p>Calcule o produto indicado em cada caso:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(\begin{pmatrix} 3 & 8 \end{pmatrix} \begin{pmatrix} 2 & 5 \\ 1 & 3 \end{pmatrix}\)</li>
+<li><span class="it">b)</span> \(\begin{pmatrix} 1 & 2 & -1 \end{pmatrix} \begin{pmatrix} 5 & 1 \\ 0 & 2 \\ 3 & -2 \end{pmatrix}\)</li>
+<li><span class="it">c)</span> \(\begin{pmatrix} 4 & 2 \end{pmatrix} \begin{pmatrix} 1 & 3 & -1 \\ 0 & 2 & -2 \end{pmatrix}\)</li>
+<li><span class="it">d)</span> \(\begin{pmatrix} 6 & 5 & -2 \end{pmatrix} \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 14 & 39 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 2 & 7 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 4 & 16 & -8 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 12 & 21 & 30 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-54">
+<div class="n">Exercício 54</div>
+<p>Calcule o produto indicado em cada caso:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(\begin{pmatrix} 4 & 5 \\ 2 & 2 \end{pmatrix} \begin{pmatrix} 5 \\ 2 \end{pmatrix}\)</li>
+<li><span class="it">b)</span> \(\begin{pmatrix} 3 & 1 & 4 \\ 2 & 2 & 5 \\ -1 & 1 & 0 \end{pmatrix} \begin{pmatrix} 7 \\ 2 \\ 3 \end{pmatrix}\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 30 \\ 14 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 35 \\ 33 \\ -5 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-55">
+<div class="n">Exercício 55</div>
+<p>Calcule \(AB\) e \(BA\) sendo dadas <span class="nb">\(A = \begin{pmatrix} 3 & 4 & 2 \\ 1 & 0 & 5 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 2 & 1 \\ 4 & 3 \\ 5 & 6 \end{pmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(AB = \begin{pmatrix} 32 & 27 \\ 27 & 31 \end{pmatrix}\)</span>; <span class="nb">\(BA = \begin{pmatrix} 7 & 8 & 9 \\ 15 & 16 & 23 \\ 21 & 20 & 40 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-56">
+<div class="n">Exercício 56</div>
+<p>Calcule \(AB\) e \(BA\) sendo <span class="nb">\(A = \begin{pmatrix} 1 & -1 \\ 2 & 4 \end{pmatrix}\)</span> e <span class="nb">\(B = \begin{pmatrix} 3 & 7 \\ 10 & 2 \end{pmatrix}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(AB = \begin{pmatrix} -7 & 5 \\ 46 & 22 \end{pmatrix}\)</span>; <span class="nb">\(BA = \begin{pmatrix} 17 & 25 \\ 14 & -2 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-57">
+<div class="n">Exercício 57</div>
+<p>Dados <span class="nb">\(A = \begin{pmatrix} 1 & 2 \\ -2 & -1 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 3 & -1 & 2 \\ 0 & 4 & -2 \end{pmatrix}\)</span>, <span class="nb">\(C = \begin{pmatrix} 5 & 2 \\ -1 & 0 \\ 0 & 3 \end{pmatrix}\)</span> e <span class="nb">\(D = \begin{pmatrix} 1 & 1 & 2 \\ 1 & 2 & 2 \\ 2 & 2 & 2 \end{pmatrix}\)</span>, calcule se existir:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(AB\)</li>
+<li><span class="it">b)</span> \(AC\)</li>
+<li><span class="it">c)</span> \(AD\)</li>
+<li><span class="it">d)</span> \(BA\)</li>
+<li><span class="it">e)</span> \(BC\)</li>
+<li><span class="it">f)</span> \(BD\)</li>
+<li><span class="it">g)</span> \(CA\)</li>
+<li><span class="it">h)</span> \(CB\)</li>
+<li><span class="it">i)</span> \(CD\)</li>
+<li><span class="it">j)</span> \(DA\)</li>
+<li><span class="it">k)</span> \(DB\)</li>
+<li><span class="it">l)</span> \(DC\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 3 & 7 & -2\\ -6 & -2 & -2 \end{pmatrix}\)</span>; b) \(\nexists\); c) \(\nexists\); d) \(\nexists\); e) <span class="nb">\(\begin{pmatrix} 16 & 12 \\ -4 & -6 \end{pmatrix}\)</span>; f) <span class="nb">\(\begin{pmatrix} 6 & 5 & 8 \\ 0 & 4 & 4 \end{pmatrix}\)</span>; g) <span class="nb">\(\begin{pmatrix} 1 & 8 \\ -1 & -2 \\ -6 & -3 \end{pmatrix}\)</span>; h) <span class="nb">\(\begin{pmatrix} 15 & 3 & 6\\ -3 & 1 & -2\\ 0 & 12 & -6 \end{pmatrix}\)</span>; i) \(\nexists\); j) \(\nexists\); k) \(\nexists\); l) <span class="nb">\(\begin{pmatrix} 4 & 8 \\ 3 & 8 \\ 8 & 10 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-58">
+<div class="n">Exercício 58</div>
+<p>Dadas <span class="nb">\(A = \begin{pmatrix} 2 & -1 & 3 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 1 & 1 \\ -1 & 1 \\ 2 & 0 \end{pmatrix}\)</span> e <span class="nb">\(C = \begin{pmatrix} 3 & 2 \\ 1 & 5 \end{pmatrix}\)</span>, calcule se existir:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(AB\)</li>
+<li><span class="it">b)</span> \(AC\)</li>
+<li><span class="it">c)</span> \(BC\)</li>
+<li><span class="it">d)</span> \(CB\)</li>
+<li><span class="it">e)</span> \(CB^t\)</li>
+<li><span class="it">f)</span> \(C^tB^t\)</li>
+<li><span class="it">g)</span> \(B^tC\)</li>
+<li><span class="it">h)</span> \(B^tA^t\)</li>
+<li><span class="it">i)</span> \(CC\)</li>
+<li><span class="it">j)</span> \(BB\)</li>
+<li><span class="it">l)</span> \(BB^t\)</li>
+<li><span class="it">m)</span> \(AA^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 9 & 1 \end{pmatrix}\)</span>; b) \(\nexists\); c) <span class="nb">\(\begin{pmatrix} 4 & 7 \\ -2 & 3 \\ 6 & 4 \end{pmatrix}\)</span>; d) \(\nexists\); e) <span class="nb">\(\begin{pmatrix} 5 & -1 & 6 \\ 6 & 4 & 2 \end{pmatrix}\)</span>; f) <span class="nb">\(\begin{pmatrix} 4 & -2 & 6 \\ 7 & 3 & 4 \end{pmatrix}\)</span>; g) \(\nexists\); h) <span class="nb">\(\begin{pmatrix} 9 \\ 1 \end{pmatrix}\)</span>; i) <span class="nb">\(\begin{pmatrix} 11 & 16 \\ 8 & 27 \end{pmatrix}\)</span>; j) \(\nexists\); l) <span class="nb">\(\begin{pmatrix} 2 & 0 & 2 \\ 0 & 2 & -2 \\ 2 & -2 & 4 \end{pmatrix}\)</span>; m) \((14)\).</p>
+</details>
+</div>
+<div class="ex" id="ex-59">
+<div class="n">Exercício 59</div>
+<p>Dadas <span class="nb">\(A = \begin{pmatrix} 5 & 4 \\ 1 & 2 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}\)</span> e <span class="nb">\(C = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}\)</span>, calcule se existir:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(AB\)</li>
+<li><span class="it">b)</span> \(BA\)</li>
+<li><span class="it">c)</span> \(AC\)</li>
+<li><span class="it">d)</span> \(CA\)</li>
+<li><span class="it">e)</span> \(BC\)</li>
+<li><span class="it">f)</span> \(CB\)</li>
+<li><span class="it">g)</span> \(A^tC\)</li>
+<li><span class="it">h)</span> \(CC^t\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 9 & 13 \\ 3 & 5 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 6 & 6 \\ 7 & 8 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 4 & 9 \\ 2 & 3 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 1 & 2 \\ 6 & 6 \end{pmatrix}\)</span>; e) <span class="nb">\(\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}\)</span>; f) <span class="nb">\(\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}\)</span>; g) <span class="nb">\(\begin{pmatrix} 1 & 6 \\ 2 & 6 \end{pmatrix}\)</span>; h) <span class="nb">\(\begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-60">
+<div class="n">Exercício 60</div>
+<p>Dadas as matrizes <span class="nb">\(A = \begin{pmatrix} 2 & 5 \\ -1 & 3 \end{pmatrix}\)</span>, <span class="nb">\(B = \begin{pmatrix} 4 & 0 \\ 1 & 1 \end{pmatrix}\)</span>, <span class="nb">\(C = \begin{pmatrix} -2 & -1 \\ 1 & 2 \end{pmatrix}\)</span> e <span class="nb">\(D = \begin{pmatrix} 5 & -3 \\ -3 & 5 \end{pmatrix}\)</span>, calcule:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(AB + CD\)</li>
+<li><span class="it">b)</span> \(BC - AD\)</li>
+<li><span class="it">c)</span> \(AC + CA\)</li>
+<li><span class="it">d)</span> \(BD - DB\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 6 & 6 \\ -2 & 10 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} -3 & -23 \\ 13 & -17 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} -2 & -5 \\ 5 & 18 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 3 & -9 \\ 9 & -3 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+<div class="ex" id="ex-61">
+<div class="n">Exercício 61</div>
+<p>Sendo <span class="nb">\(A = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 2 & 0 \\ 1 & 2 & 3 \end{pmatrix}\)</span>, determine:</p>
+<div class="multicol">
+<ul class="rot">
+<li><span class="it">a)</span> \(A \cdot A\)</li>
+<li><span class="it">b)</span> \(A^t \cdot A^t\)</li>
+<li><span class="it">c)</span> \(A \cdot A^t\)</li>
+<li><span class="it">d)</span> \(A^t \cdot A\)</li>
+</ul>
+</div>
+<details><summary>Ver resposta</summary>
+<p>a) <span class="nb">\(\begin{pmatrix} 1 & 0 & 0 \\ 3 & 4 & 0 \\ 6 & 10 & 9 \end{pmatrix}\)</span>; b) <span class="nb">\(\begin{pmatrix} 1 & 3 & 6 \\ 0 & 4 & 10 \\ 0 & 0 & 9 \end{pmatrix}\)</span>; c) <span class="nb">\(\begin{pmatrix} 1 & 1 & 1 \\ 1 & 5 & 5 \\ 1 & 5 & 14 \end{pmatrix}\)</span>; d) <span class="nb">\(\begin{pmatrix} 3 & 4 & 3 \\ 4 & 8 & 6 \\ 3 & 6 & 9 \end{pmatrix}\)</span>.</p>
+</details>
+</div>
+</section>
+
+</div>
+{% endraw %}

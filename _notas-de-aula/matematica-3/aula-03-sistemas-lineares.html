@@ -1,0 +1,1235 @@
+---
+title: "Sistemas lineares"
+disciplina: "matematica-3"
+ordem: 3
+date: "2026-11-05"
+excerpt: "Equações e sistemas lineares, forma matricial, classificação (SPD, SPI, SI), interpretação geométrica, regra de Cramer, substituição, adição e escalonamento — com interativos e exercícios."
+interativos: [matrizes]
+aula:
+  kicker: "Matemática 3 · 3º ano do Ensino Médio · Aula 03"
+  resumo: "Um <strong>sistema linear</strong> é um conjunto de equações em que as incógnitas aparecem só com expoente 1, sem multiplicações entre elas. Procuramos valores que satisfaçam todas as equações ao mesmo tempo. O sistema pode ter uma única solução (SPD), infinitas (SPI) ou nenhuma (SI), e pode ser resolvido por substituição, por adição, pela regra de Cramer ou por escalonamento."
+  etiquetas:
+    - "Unidade: Matrizes e sistemas lineares"
+    - "6 interativos"
+    - "23 exemplos"
+    - "Exercícios com respostas"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+
+<section>
+  <div class="goals">
+    <h2 id="objetivos">O que você vai aprender</h2>
+    <ul>
+      <li>Reconhecer equações e sistemas lineares e verificar se uma ênupla é solução.</li>
+      <li>Escrever um sistema nas formas de <strong>matriz completa</strong> e <strong>equação matricial</strong> \(AX = B\).</li>
+      <li><strong>Classificar</strong> um sistema (SPD, SPI ou SI) e interpretar a classificação com <strong>retas no plano</strong>.</li>
+      <li>Resolver sistemas pela <strong>regra de Cramer</strong> e pelos métodos da <strong>substituição</strong> e da <strong>adição</strong>.</li>
+      <li>Resolver e classificar sistemas por <strong>escalonamento</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="roteiro-da-aula"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro da aula</h2>
+  <p class="sec-lead">Clique em um tópico para ir direto a ele.</p>
+  <dl class="route route--secoes">
+    <div><dt>1</dt><dd><a href="#equacao-linear"><b>Equação linear.</b></a> forma geral e soluções.</dd></div>
+    <div><dt>2</dt><dd><a href="#sistemas-de-equacoes-lineares"><b>Sistemas de equações lineares.</b></a> solução, matriz associada e forma matricial.</dd></div>
+    <div><dt>3</dt><dd><a href="#classificacao"><b>Classificação dos sistemas lineares.</b></a> SPD, SPI e SI, as retas no plano e a regra das proporções.</dd></div>
+    <div><dt>4</dt><dd><a href="#regra-de-cramer"><b>Regra de Cramer.</b></a> solução por determinantes.</dd></div>
+    <div><dt>5</dt><dd><a href="#metodo-da-substituicao"><b>Método da substituição.</b></a> isolar e substituir.</dd></div>
+    <div><dt>6</dt><dd><a href="#metodo-da-adicao"><b>Método da adição.</b></a> somar equações para eliminar uma incógnita.</dd></div>
+    <div><dt>7</dt><dd><a href="#escalonamento"><b>Escalonamento.</b></a> operações elementares até a forma de escada.</dd></div>
+    <div><dt>8</dt><dd><a href="#exercicios"><b>Exercícios.</b></a> para praticar, com respostas.</dd></div>
+  </dl>
+</section>
+
+<section>
+<h2 id="equacao-linear"><span class="snum" data-n="1" aria-hidden="true"></span>Equação linear</h2>
+<p>Denomina-se equação linear toda equação que pode ser escrita na forma geral:</p>
+<p class="eq">\[
+\boxed{a_1x_1 + a_2x_2 + \cdots + a_nx_n = b}
+\]</p>
+<p>onde \(a_1, a_2, \ldots, a_n\) são números reais, \(x_1, x_2, \ldots, x_n\) são incógnitas e \(b\) é um número real.</p>
+<p>Em geral, as incógnitas \(x_1, x_2, \ldots, x_n\) podem ser representadas por \(x, y, z, \ldots\).</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>Pela definição, <strong>não</strong> são equações lineares:</p>
+<ul>
+<li>\(xy=10\)</li>
+<li>\(x^2+y=6\)</li>
+<li>\(x^2-xy-yz+z^2=1\)</li>
+</ul>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 1</span>
+<p>Veja a equação: \(3x+2y=18\)</p>
+<p>Dizemos que:</p>
+<ul>
+<li>o par ordenado \((4,3)\) é uma solução da equação, pois \(3\cdot4+2\cdot3=12+6=18\);</li>
+<li>o par ordenado \((6,0)\) é uma solução da equação, pois \(3\cdot6+2\cdot0=18+0=18\);</li>
+<li>o par ordenado \((5,1)\) não é uma solução da equação, pois \(3\cdot5+2\cdot1=15+2\neq 18\).</li>
+</ul>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 2</span>
+<p>Veja a equação: \(3x+y-2z=8\)</p>
+<p>Dizemos que:</p>
+<ul>
+<li>o terno ordenado \((2,4,1)\) é uma solução da equação, pois \(3\cdot2+4-2\cdot1=6+4-2=8\);</li>
+<li>o terno ordenado \((0, 6,-1)\) é uma solução da equação, pois \(3\cdot0+6-2\cdot(-1)=0+6+2=8\);</li>
+<li>o terno ordenado \((1, 2, 3)\) não é uma solução da equação, pois \(3\cdot1+2-2\cdot3=3+2-6\neq 8\).</li>
+</ul>
+</div>
+<p>Generalizando, dada a equação linear:</p>
+<p class="eq">\begin{equation*}
+        a_1x_1 + a_2x_2 + \cdots + a_nx_n = b
+    \end{equation*}</p>
+<p>dizemos que a ênupla (sequência ordenada de \(n\) números) \((\alpha_1, \alpha_2, \ldots, \alpha_n)\) é uma solução da equação <strong>se, e somente se</strong>:</p>
+<p class="eq">\begin{equation*}
+        \boxed{a_1\alpha_1 + a_2\alpha_2 + \cdots + a_n\alpha_n = b}
+    \end{equation*}</p>
+<div class="box think">
+<span class="label">Geometricamente</span>
+<ol>
+<li>cada par ordenado \((x, y)\) de números reais representa um ponto no plano;</li>
+<li>cada terno ordenado \((x, y, z)\) de números reais representa um ponto no espaço.</li>
+</ol>
+</div>
+</section>
+
+<section>
+<h2 id="sistemas-de-equacoes-lineares"><span class="snum" data-n="2" aria-hidden="true"></span>Sistemas de equações lineares</h2>
+<p>São sistemas de equações da seguinte forma:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
+            a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
+            \vdots                                           \\
+            a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+        \end{cases}
+    \end{equation*}</p>
+<p>onde \(a_{ij}\) são os coeficientes, \(x_i\) são as incógnitas e \(b_i\) são os termos independentes. Esse sistema tem \(m\) equações e \(n\) incógnitas; os números \(m\) e \(n\) podem ser iguais ou diferentes.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 3</span>
+<p class="eq">\begin{equation*}
+            S_1: \begin{cases}
+                2x + 3y = 5 \\
+                4x - y = 1
+            \end{cases}
+        \end{equation*}</p>
+<p>\(S_1\) é um sistema linear de 2 equações e 2 incógnitas.</p>
+<p class="eq">\begin{equation*}
+            S_2: \begin{cases}
+                x + y + z = 1 \\
+                x - y - z =2  \\
+                2x + 3y + z = 5
+            \end{cases}
+        \end{equation*}</p>
+<p>\(S_2\) é um sistema linear de 3 equações e 3 incógnitas.</p>
+</div>
+<div class="box warn">
+<span class="label">Atenção!</span>
+<p>Note que para um sistema de equações ser um Sistema Linear é necessário que:</p>
+<ul>
+<li>os expoentes das variáveis sejam sempre iguais a 1;</li>
+<li>as operações entre os termos são sempre adições e/ou subtrações;</li>
+<li>não haja outros tipos de funções.</li>
+</ul>
+</div>
+<h3>Solução de um sistema linear</h3>
+<p>Dizemos que \((\alpha_1, \alpha_2, \alpha_3, \dots, \alpha_n)\) é solução de um sistema linear quando \((\alpha_1, \alpha_2, \alpha_3, \dots, \alpha_n)\) é solução de cada uma das equações do sistema.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 4</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y = 13 \\
+                3x - 5y = 10
+            \end{cases}
+        \end{equation*}</p>
+<p>admite a solução \((x, y) = (5, 1)\), pois:
+ <span class="nb">\(\begin{cases} 2\cdot 5 + 3\cdot 1 =  13 \\ 3\cdot 5 - 5\cdot 1 =  10 \end{cases}\)</span></p>
+<p>No entanto, \((x, y) = (2, 3)\) <strong>não é solução</strong> do sistema, pois:
+ <span class="nb">\(\begin{cases} 2\cdot 2 + 3\cdot 3 = 13 \\ 3\cdot 2 - 5\cdot 3  \neq 10 \end{cases}\)</span></p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 5</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x + 2y + 3z = 1 \\
+                4x - y - z = 3  \\
+                x + y - z = 6
+            \end{cases}
+        \end{equation*}</p>
+<p>admite a solução \((x, y, z) = (1, 3, -2)\).</p>
+<p><strong>Verifique!</strong></p>
+</div>
+<h3>Matriz associada a um sistema linear</h3>
+<p>A matriz associada a um sistema linear é a matriz cujas linhas são formadas pelos coeficientes das incógnitas de cada uma das equações do sistema.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 6</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y = 5 \\
+                4x - y = 1
+            \end{cases}
+        \end{equation*}</p>
+<p>tem a matriz associada:</p>
+<p class="eq">\begin{equation*}
+            A =
+            \begin{pmatrix}
+                2 & 3  \\
+                4 & -1
+            \end{pmatrix}
+        \end{equation*}</p>
+<p>A matriz \(A\) é chamada de <strong>matriz incompleta</strong>, isto é, formada somente pelos coeficientes do sistema.</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 7</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y = 5 \\
+                4x - y = 1
+            \end{cases}
+        \end{equation*}</p>
+<p>tem a matriz associada:</p>
+<p class="eq">\begin{equation*}
+            A =
+            \left(\begin{array}{cc|c}
+2 & 3 & 5 \\
+4 & -1 & 1
+\end{array}\right)
+        \end{equation*}</p>
+<p>A matriz \(A\) é chamada de <strong>matriz completa (ou aumentada)</strong>, isto é, formada pelos coeficientes do sistema e os termos independentes.</p>
+</div>
+<h4>Forma matricial de um sistema linear</h4>
+<p>Qualquer sistema linear \(n\times n\) pode ser escrito na forma matricial:</p>
+<p class="eq">\begin{equation*}
+        AX = B
+    \end{equation*}</p>
+<p>onde \(A\) é a matriz dos coeficientes, \(X\) é o vetor das incógnitas e \(B\) é o vetor dos termos independentes.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 8</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y = 1 \\
+                x - y = 3
+            \end{cases}
+        \end{equation*}</p>
+<p>pode ser escrito na forma matricial:</p>
+<p class="eq">\begin{equation*}
+            \begin{bmatrix}
+                2 & 3  \\
+                1 & -1
+            \end{bmatrix}\cdot
+            \begin{bmatrix}
+                x \\
+                y
+            \end{bmatrix} =
+            \begin{bmatrix}
+                1 \\
+                3
+            \end{bmatrix}
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 9</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y + z = 1 \\
+                x - y + 2z = 3  \\
+                3x + 2y - z = 0
+            \end{cases}
+        \end{equation*}</p>
+<p>pode ser escrito na forma matricial:</p>
+<p class="eq">\begin{equation*}
+            \begin{bmatrix}
+                2 & 3  & 1  \\
+                1 & -1 & 2  \\
+                3 & 2  & -1
+            \end{bmatrix}\cdot
+            \begin{bmatrix}
+                x \\
+                y \\
+                z
+            \end{bmatrix} =
+            \begin{bmatrix}
+                1 \\
+                3 \\
+                0
+            \end{bmatrix}
+        \end{equation*}</p>
+</div>
+</section>
+
+<section>
+<h2 id="classificacao"><span class="snum" data-n="3" aria-hidden="true"></span>Classificação dos sistemas lineares</h2>
+<p>Quanto ao número de soluções um sistema linear de equações pode ser:</p>
+<ul>
+<li><strong>Sistema Possível e Determinado (SPD)</strong>: admite uma única solução;</li>
+<li><strong>Sistema Possível e Indeterminado (SPI)</strong>: admite infinitas soluções;</li>
+<li><strong>Sistema Impossível (SI)</strong>: não possui solução.</li>
+</ul>
+<p>O esquema abaixo resume as três possibilidades de classificação:</p>
+<div class="arvore" role="img" aria-label="Esquema: um sistema é possível (determinado ou indeterminado) ou impossível">
+  <div class="no raiz">Sistema</div>
+  <div class="no pos">Possível<small>tem solução</small></div>
+  <div class="no imp no--si">Impossível<small>não tem solução</small></div>
+  <div class="no spd no--spd">Determinado (SPD)<small>a solução é única</small></div>
+  <div class="no spi no--spi">Indeterminado (SPI)<small>infinitas soluções</small></div>
+  <div class="no si no--si">SI<small>\(S = \varnothing\)</small></div>
+</div>
+<h3>Interpretação geométrica</h3>
+<p>Para fazer a representação gráfica de um sistema, devemos perceber que cada equação linear dele pode ser reescrita como uma função afim, cujo gráfico é uma reta.</p>
+<p class="eq">\begin{equation*}
+        \textbf{a)}
+        \begin{cases}
+            3x - y = 10 \\
+            2x + 5y = 1
+        \end{cases} \implies
+        \begin{cases}
+            y = 3x - 10 \\
+            y = -\frac{2}{5}x + \frac{1}{5}
+        \end{cases}
+    \end{equation*}</p>
+<p>Traçando os gráficos das duas funções, temos:</p>
+<div class="mx" data-tipo="sistema" data-sistema="3,-1,10;2,5,1" data-presets="(a) concorrentes:3,-1,10;2,5,1|(b) paralelas:1,-2,5;2,-4,2|(c) coincidentes:2,-6,8;3,-9,12" data-titulo="Explore: as retas do sistema (a)">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Cada equação é uma reta (azul para a equação I e vermelha, tracejada, para a II). Edite os coeficientes ou use os botões (a), (b) e (c) para ver os três casos desta seção. O painel calcula \(D\), \(D_x\) e \(D_y\), a classificação e a solução; esses determinantes aparecem de novo na regra de Cramer, na seção 4.</p>
+<p>As retas concorrentes indicam que existe um único par ordenado que é solução do sistema <strong>(sistema possível e determinado)</strong>.</p>
+<p class="eq">\begin{equation*}
+        \textbf{b)}
+        \left\{
+        \begin{array}{rcl}
+            x - 2y  & = & 5 \\
+            2x - 4y & = & 2 \\
+        \end{array}
+        \right. \implies
+        \begin{array}{c}
+            \left\{
+            \begin{array}{rcl}
+                -\cancel{2x} + \cancel{4y} & = & -10 \\
+                \cancel{2x} - \cancel{4y}  & = & 2   \\
+            \end{array}
+            \right.
+            \\[0.5em]
+            \hline
+            \hspace{11mm} 0y         = -8
+        \end{array}
+    \end{equation*}</p>
+<p>Se em \(0y = -8\) não existe valor real para \(y\), então não existe par ordenado de números reais que seja solução do sistema. Dizemos que o sistema tem como solução \(S = \varnothing\) e que ele é um sistema impossível (não tem nenhuma solução).</p>
+<p>Veja a representação gráfica desse sistema:</p>
+<div class="mx" data-tipo="sistema" data-sistema="1,-2,5;2,-4,2" data-titulo="Sistema (b): retas paralelas">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+
+<p>As retas paralelas e distintas indicam que não existe par ordenado que seja solução do sistema <strong>(sistema impossível)</strong>.</p>
+<p class="eq">\begin{equation*}
+        \textbf{c)}
+        \begin{cases}
+            2x - 6y  = 8 \\
+            3x - 9y = 12 \\
+        \end{cases} \implies
+        \begin{array}{c}
+            \left\{
+            \begin{array}{rcl}
+                \cancel{6x} - \cancel{18y}  & = & 24  \\
+                -\cancel{6x} + \cancel{18y} & = & -24 \\
+            \end{array}
+            \right.
+            \\[0.5em]
+            \hline
+            \hspace{12mm} 0y         = 0
+        \end{array}
+    \end{equation*}</p>
+<p>Se \(0y = 0\), a incógnita \(y\) pode assumir qualquer valor real. Fazendo \(y = \alpha\), com \(\alpha \in \mathbb{R}\), e substituindo em uma das equações do sistema, temos:</p>
+<p class="eq">\begin{eqnarray*}
+        2x - 6\alpha &=& 8 \\
+        2x &=& 8 + 6\alpha \\
+        x &=& 4 + 3\alpha
+    \end{eqnarray*}</p>
+<p>O par ordenado \((4 + 3\alpha, \alpha)\) com \(\alpha \in \mathbb{R}\) é solução do sistema. Portanto, o sistema admite infinitas soluções e dizemos que ele é um sistema possível e indeterminado.</p>
+<p>Observe a representação gráfica desse sistema:</p>
+<div class="mx" data-tipo="sistema" data-sistema="2,-6,8;3,-9,12" data-titulo="Sistema (c): retas coincidentes">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+
+<p>As retas coincidentes indicam que existem infinitos pares ordenados que são soluções do sistema (<strong>sistema possível e indeterminado</strong>).</p>
+<h3>Regra das proporções para sistemas 2 × 2</h3>
+<p>A classificação de um sistema linear de equações do tipo <span class="nb">\(\begin{cases} ax + by = c \\ dx + ey = f \end{cases}\)</span> pode ser obtida comparando as razões entre os coeficientes (supondo \(d\), \(e\) e \(f\) diferentes de zero):</p>
+<p><strong>Sistema Possível e Determinado (SPD): </strong></p>
+<p class="eq">\[
+\frac{a}{d} \neq \frac{b}{e}
+\]</p>
+<p><strong>Sistema Possível e Indeterminado (SPI): </strong></p>
+<p class="eq">\[
+\frac{a}{d} = \frac{b}{e} = \frac{c}{f}
+\]</p>
+<p><strong>Sistema Impossível (SI): </strong></p>
+<p class="eq">\[
+\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}
+\]</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 10</span>
+<p>Faça a discussão do sistema <span class="nb">\(\begin{cases} x + y = m \\ m^2 x + y = m \end{cases}\)</span>.
+ Pelo esquema anterior, temos</p>
+<p class="eq">\begin{equation*}
+            \frac{1}{m^2} = \frac{1}{1} \implies m^2 = 1 \implies m = \pm 1
+        \end{equation*}</p>
+<p>Se \(m = \pm 1\), também vale \(\dfrac{c}{f} = \dfrac{m}{m} = 1\), então as três razões são iguais e o sistema é possível e indeterminado (SPI). Se \(m \neq \pm 1\), o sistema é possível e determinado (SPD). Para nenhum valor de \(m\) ele é impossível.</p>
+</div>
+</section>
+
+<section>
+<h2 id="regra-de-cramer"><span class="snum" data-n="4" aria-hidden="true"></span>Regra de Cramer</h2>
+<p>Existem vários métodos para resolver sistemas lineares. Nas próximas seções apresentamos os mais utilizados, começando pela regra de Cramer, que usa determinantes.</p>
+<p>Se um sistema linear de \(n\) equações com \(n\) incógnitas é possível e determinado, então a solução do sistema é dada por:</p>
+<p class="eq">\begin{equation*}
+        \boxed{x = \frac{D_x}{D}, \quad y = \frac{D_y}{D}, \quad z = \frac{D_z}{D}}
+    \end{equation*}</p>
+<p>onde \(D\) é o determinante da matriz dos coeficientes do sistema e \(D_x\), \(D_y\) e \(D_z\) são os determinantes das matrizes obtidas substituindo a \(i\)-ésima coluna da matriz dos coeficientes pelo vetor dos termos independentes.</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>Vamos utilizar a Regra de Cramer para a solução de sistemas que apresentam 3 equações e três variáveis, por isso definimos apenas \(D_x\), \(D_y\) , \(D_z\).</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 11</span>
+<p>Resolva o sistema
+ <span class="nb">\(\begin{cases} x + 3y + 2z = 5  \\ 2x + y + 3z = 12 \\ 3x - y + z = 10 \end{cases}\)</span> utilizando a Regra de Cramer.</p>
+<p>Pela regra de Cramer, temos como determinante principal</p>
+<p class="eq">\begin{equation*}
+            D = \begin{vmatrix}
+                1 & 3  & 2 \\
+                2 & 1  & 3 \\
+                3 & -1 & 1
+            \end{vmatrix} = 1+ 27 -4 - 6 + 3 -6 = 15
+        \end{equation*}</p>
+<p>Agora, vamos calcular os determinantes \(D_x\), \(D_y\) e \(D_z\).</p>
+<p class="eq">\begin{equation*}
+            D_x = \begin{vmatrix}
+                5  & 3  & 2 \\
+                12 & 1  & 3 \\
+                10 & -1 & 1
+            \end{vmatrix}  = 30
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            D_y = \begin{vmatrix}
+                1 & 5  & 2 \\
+                2 & 12 & 3 \\
+                3 & 10 & 1
+            \end{vmatrix} = -15
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            D_z = \begin{vmatrix}
+                1 & 3  & 5  \\
+                2 & 1  & 12 \\
+                3 & -1 & 10
+            \end{vmatrix} =  45
+        \end{equation*}</p>
+<p>Assim, temos que</p>
+<p class="eq">\begin{eqnarray*}
+            x &=& \frac{D_x}{D} = \frac{30}{15} = 2, \\
+            y &=& \frac{D_y}{D} = \frac{-15}{15} = -1,\\  z &=& \frac{D_z}{D} = \frac{45}{15} = 3
+        \end{eqnarray*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x = 2  \\
+                y = -1 \\
+                z = 3
+            \end{cases}
+        \end{equation*}</p>
+</div>
+<p><strong>Discussão de um sistema linear pela regra de Cramer:</strong></p>
+<ol>
+<li>Sistema Possível e Determinado (SPD): \(D \neq 0\).</li>
+<li>Sistema Impossível (SI): \(D = 0\) e pelo menos um dos determinantes \(D_x\), \(D_y\), \(D_z\) é diferente de zero.</li>
+<li>\(D = D_x = D_y = D_z = 0\): o sistema é SPI ou SI. Em sistemas \(2 \times 2\) (com equações de verdade, ou seja, sem todos os coeficientes nulos), é SPI; em sistemas \(3 \times 3\), é preciso escalonar para decidir.</li>
+</ol>
+<div class="dem exemplo">
+<span class="label">Exemplo 12</span>
+<p>O sistema do exemplo anterior é possível e determinado (SPD), pois \(D = 15 \neq 0\).</p>
+</div>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>A regra de Cramer é computacionalmente ineficiente para sistemas grandes (acima de \(3\times 3\)), pois o número de contas cresce como \(n!\) (fatorial). Na prática, para sistemas grandes, usa-se o escalonamento.</p>
+</div>
+</section>
+
+<section>
+<h2 id="metodo-da-substituicao"><span class="snum" data-n="5" aria-hidden="true"></span>Método da substituição</h2>
+<p>O <strong>método da substituição</strong> é uma estratégia utilizada para resolver sistemas lineares. A ideia central é <strong>isolar uma das incógnitas em uma das equações</strong> e, em seguida, <strong>substituir essa expressão na outra equação</strong>. Dessa forma, o sistema passa a ter apenas uma incógnita em uma das etapas da resolução, o que torna o problema mais simples. É um método muito utilizado quando a regra de Cramer se torna trabalhosa (por exemplo, quando os coeficientes são números grandes).</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>Ao utilizar esse método, é conveniente escolher a incógnita que seja mais fácil de isolar. Em geral, começamos pela variável que aparece com coeficiente \(1\) ou \(-1\), pois isso evita contas desnecessárias.</p>
+</div>
+<p>Vamos considerar o seguinte sistema linear:</p>
+<p class="eq">\[
+\begin{cases}
+x + 2y = 5 \\
+3x - 5y = 4
+\end{cases}
+\]</p>
+<p>Chamemos a primeira equação de \(I\) e a segunda de \(II\).</p>
+<p><strong>1º passo: isolar uma das incógnitas.</strong></p>
+<p>Na equação \(I\), temos:</p>
+<p class="eq">\[
+x + 2y = 5
+\]</p>
+<p>Como a incógnita \(x\) possui coeficiente \(1\), é mais simples isolá-la:</p>
+<p class="eq">\[
+x = 5 - 2y
+\]</p>
+<p><strong>2º passo: substituir na outra equação.</strong></p>
+<p>Agora substituímos a expressão encontrada para \(x\) na equação \(II\):</p>
+<p class="eq">\[
+3x - 5y = 4
+\]</p>
+<p>Substituindo \(x\) por \(5 - 2y\), obtemos:</p>
+<p class="eq">\[
+3(5 - 2y) - 5y = 4
+\]</p>
+<p>Efetuando os cálculos:</p>
+<p class="eq">\[
+15 - 6y - 5y = 4 \implies 15 - 11y = 4 \implies  -11y = 4 - 15
+\]</p>
+<p class="eq">\[
+-11y = -11 \implies y = 1
+\]</p>
+<p><strong>3º passo: encontrar o valor da outra incógnita.</strong></p>
+<p>Substituindo \(y=1\) em \(x = 5 - 2y\), temos:</p>
+<p class="eq">\[
+x = 5 - 2\cdot 1 \implies x = 5 - 2 \implies  x = 3
+\]</p>
+<p>Logo, a solução do sistema é:</p>
+<p class="eq">\[
+\boxed{(x,y) = (3,1)}
+\]</p>
+<div class="box tip">
+<span class="label">Conclusão</span>
+<p>No método da substituição, transformamos temporariamente o sistema em uma equação com apenas uma incógnita. Depois de encontrar esse valor, fazemos a substituição de volta para determinar a outra variável.</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 13</span>
+<p>Resolva o sistema linear:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            3x + 4y - 7z = -34 \\
+            5x - 4y + 7z = 50  \\
+            3x - 3y - 7z = -13
+        \end{cases}
+    \end{equation*}</p>
+<p>Pelo método da substituição, precisamos isolar uma incógnita, escolhemos \(x\) na linha 1:</p>
+<p class="eq">\begin{equation*}
+        3x = -34 - 4y + 7z \implies x = \frac{-34 - 4y + 7z}{3}
+    \end{equation*}</p>
+<p>Agora, substituímos \(x\) nas outras duas equações:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            5\cdot \left(\dfrac{-34 - 4y + 7z}{3}\right) - 4y + 7z = 50 \\
+            3\cdot \left(\dfrac{-34 - 4y + 7z}{3}\right) - 3y - 7z = -13
+        \end{cases}
+    \end{equation*}</p>
+<p>Simplificando, temos:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            \dfrac{-32y+56z-170}{3} = 50 \\
+            -7y - 34 = -13
+        \end{cases}
+    \end{equation*}</p>
+<p>Isolando \(y\) na segunda equação:</p>
+<p class="eq">\begin{equation*}
+        -7y = 21 \implies y = - 3
+    \end{equation*}</p>
+<p>Agora, substituímos \(y\) na primeira equação:</p>
+<p class="eq">\begin{equation*}
+        \dfrac{-32\cdot (-3) + 56z - 170}{3} = 50
+    \end{equation*}</p>
+<p>Multiplicando por 3, temos:</p>
+<p class="eq">\begin{equation*}
+        56z - 74 = 150 \implies 56z = 224 \implies z = 4
+    \end{equation*}</p>
+<p>Agora, substituímos \(y\) e \(z\) na equação que isolamos \(x\):</p>
+<p class="eq">\begin{flalign*}
+         & x = \frac{-34 - 4\cdot (-3) + 7\cdot 4}{3} = \frac{-34 + 40}{3} = \frac{6}{3} \\
+         & x = 2
+    \end{flalign*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+        x=2, \quad y=-3, \quad z=4.
+    \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 14</span>
+<p><strong>(UFRGS - Adaptado)</strong> Para medir a massa de três maçãs dispomos de uma massa de 100 g e de uma balança de pratos iguais. A massa da maçã maior é igual a massa das duas outras juntas. A massa da menor mais 100 g é igual a massa das outras. A massa da maior mais a da menor é 100 g. Qual a massa total das três maçãs?</p>
+<p><strong>Resolução:</strong> sejam \(x\), \(y\) e \(z\) as massas, em gramas, da maior, da média e da menor maçã. As três frases do enunciado dão:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x = y + z       \\
+                z + 100 = x + y \\
+                x + z = 100
+            \end{cases}
+        \end{equation*}</p>
+<p>organizando o sistema, temos:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x - y - z = 0   \\
+                x + y - z = 100 \\
+                x + z = 100
+            \end{cases}
+        \end{equation*}</p>
+<p>Agora, isolamos \(x\) na linha 3, temos:</p>
+<p class="eq">\begin{equation*}
+            x = 100 - z
+        \end{equation*}</p>
+<p>Substituindo \(x\) nas demais linhas, temos:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                100 - z - y - z = 0 \\
+                100 - z + y - z = 100
+            \end{cases} \implies
+            \begin{cases}
+                y + 2z = 100 \\
+                y - 2z = 0
+            \end{cases}
+        \end{equation*}</p>
+<p>Agora, isolamos \(y\) na segunda equação:</p>
+<p class="eq">\begin{equation*}
+            y = 2z
+        \end{equation*}</p>
+<p>Substituindo \(y\) na primeira equação:</p>
+<p class="eq">\begin{equation*}
+            2z + 2z = 100 \implies z = 25
+        \end{equation*}</p>
+<p>Agora, substituímos \(z\) na equação que isolamos \(y\):</p>
+<p class="eq">\begin{equation*}
+            y = 2\cdot 25 = 50
+        \end{equation*}</p>
+<p>Agora, substituímos \(y\) e \(z\) na equação que isolamos \(x\):</p>
+<p class="eq">\begin{equation*}
+            x = 100 - 25 = 75
+        \end{equation*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+            x = 75, \quad y = 50, \quad z = 25
+        \end{equation*}</p>
+<p>A massa total das três maçãs é</p>
+<p class="eq">\begin{equation*}
+            x + y + z = 75 + 50 + 25 = 150\text{ g}
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 15</span>
+<p><strong>(UFSC)</strong> Considere o sistema</p>
+<p class="eq">\begin{equation*}
+            S_1: \begin{cases}
+                x + 3y =0 \\
+                -2x - 6y = 0
+            \end{cases} \text{ e marque V ou F.}
+        \end{equation*}</p>
+<ul class="rot">
+<li><span class="it">(&nbsp;&nbsp;)</span> O par ordenado \((-15,5)\) é solução do sistema \(S_1\).</li>
+<li><span class="it">(&nbsp;&nbsp;)</span> O sistema \(S_1\) é possível e determinado.</li>
+<li><span class="it">(&nbsp;&nbsp;)</span> A solução do sistema \(S_1\) é uma reta que não passa pela origem.</li>
+<li><span class="it">(&nbsp;&nbsp;)</span> O sistema <span class="nb">\(S_2: \begin{cases} 2x + 6y =0 \\ -10x - 30y = 0 \end{cases}\)</span> é equivalente ao sistema \(S_1\).</li>
+</ul>
+<p><strong>Resolução:</strong></p>
+<ol>
+<li><p>Resolvendo o sistema \(S_1\):</p>
+<p class="eq">\begin{flalign*}
+                       & \begin{cases}
+                             x + 3y = 0 \\
+                             -2x - 6y = 0
+                         \end{cases} \implies
+                      \begin{cases}
+                          x = -3y \\
+                          -2(-3y) - 6y = 0
+                      \end{cases}            \\
+                       & \implies
+                      \begin{cases}
+                          x = -3y \\
+                          0 = 0
+                      \end{cases}
+                  \end{flalign*}</p>
+<p>Temos um SPI. Vamos analisar as proposições: O par ordenado \((-15, 5)\) é uma solução do sistema:</p>
+<p class="eq">\begin{equation*}
+                      \begin{cases}
+                          -15 + 3\cdot 5 = 0 \\
+                          -2\cdot (-15) - 6\cdot 5 = 0
+                      \end{cases} \implies
+                      \begin{cases}
+                          0 = 0 \\
+                          0 = 0
+                      \end{cases}
+                  \end{equation*}</p>
+<p>Portanto, a proposição é <strong>VERDADEIRA</strong>.</p></li>
+<li>O sistema \(S_1\) é possível e determinado: <strong>FALSO</strong>, pois o sistema é SPI.</li>
+<li>A solução do sistema \(S_1\) é uma reta que não passa pela origem: <strong>FALSO</strong>, pois a reta passa pela origem.</li>
+<li>O sistema \(S_2\) é equivalente ao sistema \(S_1\): <strong>VERDADEIRO</strong>, pois o sistema \(S_2\) é um múltiplo do sistema \(S_1\).</li>
+</ol>
+</div>
+</section>
+
+<section>
+<h2 id="metodo-da-adicao"><span class="snum" data-n="6" aria-hidden="true"></span>Método da adição</h2>
+<p>O <strong>método da adição</strong>, também conhecido como método da eliminação, consiste em <strong>somar ou subtrair as equações de um sistema</strong> com o objetivo de <strong>eliminar uma das incógnitas</strong>. Dessa forma, o sistema é reduzido a uma equação com apenas uma variável, facilitando sua resolução.</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>Antes de somar ou subtrair as equações, pode ser necessário <strong>multiplicar uma ou ambas por um número</strong>, de modo que os coeficientes de uma das incógnitas se tornem opostos. Assim, ao somar as equações, essa incógnita será eliminada.</p>
+</div>
+<p>Vamos considerar o sistema linear</p>
+<p class="eq">\[
+\begin{cases}
+x + y = 10 \\
+2x - y = 4
+\end{cases}
+\]</p>
+<p><strong>1º passo: somar as equações.</strong></p>
+<p>Observe que as incógnitas \(y\) possuem coeficientes opostos (\(+1\) e \(-1\)). Assim, ao somar as equações, a variável \(y\) será eliminada:</p>
+<p class="eq">\begin{equation*}
+    \begin{array}{c}
+        \left\{
+        \begin{array}{rcl}
+            x + \cancel{y} & = & 10 \\
+            2x - \cancel{y}  & = & 4   \\
+        \end{array}
+        \right.
+        \\[0.5em]
+        \hline
+        \hspace{8mm} 3x         = 14
+    \end{array}
+    \implies
+x = \frac{14}{3}
+\end{equation*}</p>
+<p><strong>2º passo: encontrar o valor da outra incógnita.</strong></p>
+<p>Substituímos o valor de \(x\) em uma das equações, por exemplo, na primeira:</p>
+<p class="eq">\[
+x + y = 10 \implies
+\frac{14}{3} + y = 10
+\implies
+y = 10 - \frac{14}{3}
+\implies
+y = \frac{30}{3} - \frac{14}{3}
+\implies
+y = \frac{16}{3}
+\]</p>
+<p><strong>Solução do sistema:</strong></p>
+<p class="eq">\[
+\boxed{\left(x,y\right) = \left(\frac{14}{3}, \frac{16}{3}\right)}
+\]</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 16</span>
+<p>Resolva o sistema linear</p>
+<p class="eq">\[
+\begin{cases}
+2x + y = 5 \\
+3x + y = 7
+\end{cases}
+\]</p>
+<p><strong>1º passo: eliminar uma incógnita.</strong></p>
+<p>Neste caso, as incógnitas \(y\) possuem o mesmo coeficiente. Para eliminá-las, subtraímos as equações (linha 2 pela linha 1):</p>
+<p class="eq">\begin{equation*}
+    \begin{array}{c}
+        \left\{
+        \begin{array}{rcl}
+            3x + \cancel{y}  & = & 7   \\   
+            2x + \cancel{y} & = & 5 \\   
+        \end{array}
+        \right.
+        \\[0.5em]
+        \hline
+        \hspace{8mm} x         = 2
+    \end{array}
+    \implies
+x = 2
+\end{equation*}</p>
+<p><strong>2º passo: substituir o valor encontrado.</strong></p>
+<p>Substituindo em uma das equações:</p>
+<p class="eq">\[
+2x + y = 5
+\implies
+2\cdot 2 + y = 5
+\implies
+4 + y = 5
+\implies
+y = 1
+\]</p>
+<p><strong>Solução do sistema:</strong></p>
+<p class="eq">\[
+\boxed{(x,y) = (2,1)}
+\]</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 17</span>
+<p>Resolva o sistema linear</p>
+<p class="eq">\[
+\begin{cases}
+5x - 4y = -5 \\
+x + 2y = 13
+\end{cases}
+\]</p>
+<p>Chamemos a primeira equação de \(I\) e a segunda de \(II\).</p>
+<p><strong>1º passo: multiplicar uma das equações para que os coeficientes fiquem opostos.</strong></p>
+<p>Observe que, se multiplicarmos a equação \(II\) por \(2\), obteremos coeficientes opostos para a incógnita \(y\):</p>
+<p class="eq">\[
+\begin{cases}
+5x - 4y = -5 \\
+x + 2y = 13
+\end{cases}
+\implies
+\begin{cases}
+5x - 4y = -5 \\
+2x + 4y = 26
+\end{cases}
+\]</p>
+<p><strong>2º passo: somar as equações.</strong></p>
+<p>Agora somamos \(I\) com \(2\cdot II\):</p>
+<p class="eq">\begin{equation*}
+    \begin{array}{c}
+        \left\{
+        \begin{array}{rcl}
+            5x - \cancel{4y}  & = & -5   \\   
+            2x + \cancel{4y} & = & 26 \\   
+        \end{array}
+        \right.
+        \\[0.5em]
+        \hline
+        \hspace{8mm} 7x         = 21
+    \end{array}
+    \implies
+x = 3
+\end{equation*}</p>
+<p><strong>3º passo: substituir o valor encontrado em uma das equações.</strong></p>
+<p>Substituindo \(x=3\) na equação \(II\), temos:</p>
+<p class="eq">\[
+x + 2y = 13
+\implies
+3 + 2y = 13
+\implies
+2y = 10
+\implies
+y = 5
+\]</p>
+<p>Logo, a solução do sistema é:</p>
+<p class="eq">\[
+\boxed{(x,y) = (3,5)}
+\]</p>
+</div>
+<div class="box tip">
+<span class="label">Conclusão</span>
+<p>O método da adição é especialmente eficiente quando as equações já possuem coeficientes opostos ou iguais para alguma incógnita. Caso contrário, basta multiplicar as equações por números adequados para criar essa situação e então eliminar uma variável.</p>
+</div>
+</section>
+
+<section>
+<h2 id="escalonamento"><span class="snum" data-n="7" aria-hidden="true"></span>Escalonamento</h2>
+<p>O escalonamento é um método de resolução de sistemas lineares que consiste em transformar o sistema em um sistema equivalente, mas mais simples, utilizando operações elementares.
+ As operações elementares são:</p>
+<ul>
+<li>Somar ou subtrair uma equação pela outra;</li>
+<li>Multiplicar uma das equações inteira por um número real diferente de zero;</li>
+<li>Trocar duas equações de posições entre si;</li>
+<li>Multiplicar uma das equações por um número real e somá-la ou subtraí-la a outra;</li>
+<li>Dividir uma equação inteira por um número real diferente de zero.</li>
+</ul>
+<p>Essas operações não alteram a solução do sistema, mas facilitam a resolução.</p>
+<div class="box tip">
+<span class="label">Observação</span>
+<p>O escalonamento é uma técnica muito útil para resolver sistemas lineares de forma geral, independentemente do número de incógnitas e equações.</p>
+</div>
+<p>Um sistema está <strong>escalonado</strong> quando, de uma equação para a seguinte, aumenta o número de coeficientes nulos antes do primeiro coeficiente não nulo (como uma escada). São exemplos de sistemas escalonados:</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 18</span>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x + 3y + z = 1 \\
+                0x + 4y + z = 2 \\
+                0x + 0y + z = 3
+            \end{cases}
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 19</span>
+<p>O sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x - 2y +  5z = 7 \\
+                0x + 3y + 2z = 1 \\
+                0x + 0y + 4z = 8
+            \end{cases} \text{ou }
+            \begin{cases}
+                x - 2y +  5z = 7 \\
+                3y + 2z = 1      \\
+                4z = 8
+            \end{cases}
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 20</span>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x_1 - 2x_2 + x_3 = 5 \\
+                4x_2 + 5x_3 = -4     \\
+            \end{cases} \text{ou }
+            \begin{cases}
+                x_1 - 2x_2 + x_3 = 5 \\
+                4x_2 + 5x_3 = -4     \\
+                0x_3 = 0
+            \end{cases}
+        \end{equation*}</p>
+</div>
+<p>Vamos resolver o sistema abaixo utilizando o método de escalonamento.</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            2x + 3y + z = 1 \\
+            x - y + 2z = 3  \\
+            3x + 2y - z = 0
+        \end{cases}
+    \end{equation*}</p>
+<p>O sistema pode ser escrito na forma de matriz completa (ou aumentada):</p>
+<p class="eq">\begin{equation*}
+        \left[\begin{array}{ccc|c}
+2 & 3 & 1 & 1 \\
+1 & -1 & 2 & 3 \\
+3 & 2 & -1 & 0
+\end{array}\right]
+    \end{equation*}</p>
+<p>Agora, vamos fazer operações elementares para escalonar a matriz:</p>
+<p class="eq">\begin{equation*}
+        L_1\leftrightarrow L_2:
+        \left[\begin{array}{ccc|c}
+1 & -1 & 2 & 3 \\
+2 & 3 & 1 & 1 \\
+3 & 2 & -1 & 0
+\end{array}\right]
+    \end{equation*}</p>
+<p class="eq">\begin{equation*}
+        L_2\leftarrow -2L_1 + L_2:
+        \left[\begin{array}{ccc|c}
+1 & -1 & 2 & 3 \\
+0 & 5 & -3 & -5 \\
+3 & 2 & -1 & 0
+\end{array}\right]
+    \end{equation*}</p>
+<p class="eq">\begin{equation*}
+        L_3\leftarrow -3L_1 + L_3:
+        \left[\begin{array}{ccc|c}
+1 & -1 & 2 & 3 \\
+0 & 5 & -3 & -5 \\
+0 & 5 & -7 & -9
+\end{array}\right]
+    \end{equation*}</p>
+<p class="eq">\begin{equation*}
+        L_3\leftarrow -L_2 + L_3:
+        \left[\begin{array}{ccc|c}
+1 & -1 & 2 & 3 \\
+0 & 5 & -3 & -5 \\
+0 & 0 & -4 & -4
+\end{array}\right]
+    \end{equation*}</p>
+<p>Agora, ao representarmos essa matriz como um sistema novamente, adicionando \(x\), \(y\) e \(z\) nas colunas, encontraremos o seguinte:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            x - y + 2z = 3 \\
+            5y - 3z = -5   \\
+            -4z = -4
+        \end{cases}
+    \end{equation*}</p>
+<p>Agora, vamos resolver o sistema:</p>
+<p class="eq">\begin{equation*}
+        \begin{cases}
+            -4z = -4 \implies z = 1                       \\
+            5y - 3\cdot 1 = -5 \implies y = -\dfrac{2}{5} \\
+            x - \left(-\dfrac{2}{5}\right) + 2\cdot 1 = 3 \implies x = \dfrac{3}{5}
+        \end{cases}
+    \end{equation*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+        x = \dfrac{3}{5} \quad
+        y = -\dfrac{2}{5} \quad
+        z = 1
+    \end{equation*}</p>
+<div class="mx" data-tipo="escalona" data-matriz="2,3,1,1;1,-1,2,3;3,2,-1,0" data-titulo="Explore: escalone você mesmo">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">A matriz inicial é a do sistema acima. Escolha as operações elementares (\(L_i \leftarrow L_i + k \cdot L_j\), troca de linhas ou \(L_i \leftarrow k \cdot L_i\)) e clique em “Aplicar”; o histórico guarda os passos e “Desfazer” volta um. Se travar, “Sugerir” aplica o próximo passo da eliminação. Quando a matriz fica escalonada, o interativo resolve de baixo para cima e classifica o sistema. Antes do primeiro passo, os números podem ser editados para conferir os Exemplos 20 e 21.</p>
+<div class="dem exemplo">
+<span class="label">Exemplo 21</span>
+<p>Considere o sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x + y + z = 6   \\
+                x + 2y + 2z = 9 \\
+                2x + y + 3z = 11
+            \end{cases}
+        \end{equation*}</p>
+<p>Para fazermos o escalonamento devemos transformar o sistema acima em uma matriz. Assim, pegamos os valores dos coeficientes e do termo independente após a igualdade.</p>
+<p class="eq">\begin{equation*}
+            \left[\begin{array}{ccc|c}
+1 & 1 & 1 & 6 \\
+1 & 2 & 2 & 9 \\
+2 & 1 & 3 & 11
+\end{array}\right]
+        \end{equation*}</p>
+<p>Agora, vamos fazer operações elementares para escalonar a matriz:</p>
+<p class="eq">\begin{equation*}
+            L_2 \leftarrow  L_2 - L_1:
+            \left[\begin{array}{ccc|c}
+1 & 1 & 1 & 6 \\
+0 & 1 & 1 & 3 \\
+2 & 1 & 3 & 11
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_3 - 2L_1:
+            \left[\begin{array}{ccc|c}
+1 & 1 & 1 & 6 \\
+0 & 1 & 1 & 3 \\
+0 & -1 & 1 & -1
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_3 + L_2:
+            \left[\begin{array}{ccc|c}
+1 & 1 & 1 & 6 \\
+0 & 1 & 1 & 3 \\
+0 & 0 & 2 & 2
+\end{array}\right]
+        \end{equation*}</p>
+<p>Agora, ao representarmos essa matriz como um sistema novamente, adicionando \(x\), \(y\) e \(z\) nas colunas, encontraremos o seguinte:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x + y + z = 6 \\
+                y + z = 3     \\
+                2z = 2
+            \end{cases}
+        \end{equation*}</p>
+<p>Agora, vamos resolver o sistema:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2z = 2 \implies z = 1    \\
+                y + 1 = 3 \implies y = 2 \\
+                x + 2 + 1 = 6 \implies x = 3
+            \end{cases}
+        \end{equation*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+            x = 3 \quad
+            y = 2 \quad
+            z = 1
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 22</span>
+<p>Considere o sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x + 2y - 3z = 10 \\
+                2x + y + z = 3   \\
+                -3x + 2y + z = -6
+            \end{cases}
+        \end{equation*}</p>
+<p>Para fazermos o escalonamento devemos transformar o sistema acima em uma matriz. Assim, pegamos os valores dos coeficientes e do termo independente após a igualdade.</p>
+<p class="eq">\begin{equation*}
+            \left[\begin{array}{ccc|c}
+1 & 2 & -3 & 10 \\
+2 & 1 & 1 & 3 \\
+-3 & 2 & 1 & -6
+\end{array}\right]
+        \end{equation*}</p>
+<p>Agora, vamos fazer operações elementares para escalonar a matriz:</p>
+<p class="eq">\begin{equation*}
+            L_2 \leftarrow  L_2 - 2L_1:
+            \left[\begin{array}{ccc|c}
+1 & 2 & -3 & 10 \\
+0 & -3 & 7 & -17 \\
+-3 & 2 & 1 & -6
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_3 + 3L_1:
+            \left[\begin{array}{ccc|c}
+1 & 2 & -3 & 10 \\
+0 & -3 & 7 & -17 \\
+0 & 8 & -8 & 24
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_3/8:
+            \left[\begin{array}{ccc|c}
+1 & 2 & -3 & 10 \\
+0 & -3 & 7 & -17 \\
+0 & 1 & -1 & 3
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_2 + 3L_3:
+            \left[\begin{array}{ccc|c}
+1 & 2 & -3 & 10 \\
+0 & -3 & 7 & -17 \\
+0 & 0 & 4 & -8
+\end{array}\right]
+        \end{equation*}</p>
+<p>Agora, ao representarmos essa matriz como um sistema novamente, adicionando \(x\), \(y\) e \(z\) nas colunas, encontraremos o seguinte:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                x + 2y - 3z = 10 \\
+                -3y + 7z = -17   \\
+                4z = -8
+            \end{cases}
+        \end{equation*}</p>
+<p>Agora, vamos resolver o sistema:</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                4z = -8 \implies z = -2                \\
+                -3y + 7\cdot (-2) = -17 \implies y = 1 \\
+                x + 2\cdot 1 - 3\cdot (-2) = 10 \implies x = 2
+            \end{cases}
+        \end{equation*}</p>
+<p>Portanto, a solução do sistema é</p>
+<p class="eq">\begin{equation*}
+            x = 2 \quad
+            y = 1 \quad
+            z = -2
+        \end{equation*}</p>
+</div>
+<div class="dem exemplo">
+<span class="label">Exemplo 23</span>
+<p>Considere o sistema</p>
+<p class="eq">\begin{equation*}
+            \begin{cases}
+                2x - y  = 5 \\
+                x + 3y  = 1 \\
+                3x - y  = 4
+            \end{cases}
+        \end{equation*}</p>
+<p>Para fazermos o escalonamento devemos transformar o sistema acima em uma matriz. Assim, pegamos os valores dos coeficientes e do termo independente após a igualdade.</p>
+<p class="eq">\begin{equation*}
+            \left[\begin{array}{cc|c}
+2 & -1 & 5 \\
+1 & 3 & 1 \\
+3 & -1 & 4
+\end{array}\right]
+        \end{equation*}</p>
+<p>Agora, vamos fazer operações elementares para escalonar a matriz:</p>
+<p class="eq">\begin{equation*}
+            L_2 \leftrightarrow  L_1:
+            \left[\begin{array}{cc|c}
+1 & 3 & 1 \\
+2 & -1 & 5 \\
+3 & -1 & 4
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_2 \leftarrow  L_2 - 2L_1:
+            \left[\begin{array}{cc|c}
+1 & 3 & 1 \\
+0 & -7 & 3 \\
+3 & -1 & 4
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_3 - 3L_1:
+            \left[\begin{array}{cc|c}
+1 & 3 & 1 \\
+0 & -7 & 3 \\
+0 & -10 & 1
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_2 \leftarrow 10L_2 \text{ e }  L_3 \leftarrow  7L_3:
+            \left[\begin{array}{cc|c}
+1 & 3 & 1 \\
+0 & -70 & 30 \\
+0 & -70 & 7
+\end{array}\right]
+        \end{equation*}</p>
+<p class="eq">\begin{equation*}
+            L_3 \leftarrow  L_2 - L_3:
+            \left[\begin{array}{cc|c}
+1 & 3 & 1 \\
+0 & -70 & 30 \\
+0 & 0 & 23
+\end{array}\right]
+        \end{equation*}</p>
+<p>Note que a última linha do sistema é \(0=23\), o que significa que o sistema não tem solução. Portanto, o sistema é impossível (SI).</p>
+</div>
+<div class="mx" data-tipo="escalona" data-matriz="2,-1,5;1,3,1;3,-1,4" data-titulo="Explore: um sistema com mais equações do que incógnitas">
+<p>(Ative o JavaScript para usar este interativo.)</p>
+</div>
+<p class="cap">Este é o sistema do Exemplo 22: três equações e duas incógnitas. Escalone e observe a linha que aparece no final.</p>
+</section>
+
+<section>
+<h2 id="exercicios"><span class="snum" data-n="8" aria-hidden="true"></span>Exercícios</h2>
+<div class="ex" id="ex-1">
+<div class="n">Exercício 1</div>
+<p>Verifique se o terno \((2, -1, 3)\) é solução do sistema <span class="nb">\(\begin{cases} x + y + z = 4 \\ 2x - y + z = 8 \\ x + 2y - z = -3 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>Sim: \(2 - 1 + 3 = 4\), \(4 + 1 + 3 = 8\) e \(2 - 2 - 3 = -3\). As três equações são satisfeitas.</p>
+</details>
+</div>
+<div class="ex" id="ex-2">
+<div class="n">Exercício 2</div>
+<p>Classifique, sem resolver: (a) <span class="nb">\(\begin{cases} 2x + 3y = 5 \\ 4x + 6y = 10 \end{cases}\)</span>; (b) <span class="nb">\(\begin{cases} x - y = 2 \\ 3x - 3y = 1 \end{cases}\)</span>; (c) <span class="nb">\(\begin{cases} x + 2y = 3 \\ 2x - y = 1 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>(a) \(\tfrac{2}{4} = \tfrac{3}{6} = \tfrac{5}{10}\): SPI. (b) \(\tfrac{1}{3} = \tfrac{-1}{-3} \neq \tfrac{2}{1}\): SI. (c) \(\tfrac{1}{2} \neq \tfrac{2}{-1}\): SPD. Confira os três no interativo da seção 3.</p>
+</details>
+</div>
+<div class="ex" id="ex-3">
+<div class="n">Exercício 3</div>
+<p>Resolva pelo método da substituição: <span class="nb">\(\begin{cases} x + y = 7 \\ 2x - y = 2 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(y = 7 - x\); \(2x - (7 - x) = 2 \Rightarrow 3x = 9 \Rightarrow x = 3\) e \(y = 4\). Solução \((3, 4)\).</p>
+</details>
+</div>
+<div class="ex" id="ex-4">
+<div class="n">Exercício 4</div>
+<p>Resolva pelo método da adição: <span class="nb">\(\begin{cases} 3x + 2y = 12 \\ 5x - 2y = 4 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>Somando: \(8x = 16 \Rightarrow x = 2\); \(3 \cdot 2 + 2y = 12 \Rightarrow y = 3\). Solução \((2, 3)\).</p>
+</details>
+</div>
+<div class="ex" id="ex-5">
+<div class="n">Exercício 5</div>
+<p>Resolva pela regra de Cramer: <span class="nb">\(\begin{cases} 2x + y = 8 \\ x - 3y = -3 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(D = 2\cdot(-3) - 1\cdot 1 = -7\), \(D_x = 8\cdot(-3) - 1\cdot(-3) = -21\), \(D_y = 2\cdot(-3) - 8\cdot 1 = -14\). Logo \(x = \tfrac{-21}{-7} = 3\) e \(y = \tfrac{-14}{-7} = 2\).</p>
+</details>
+</div>
+<div class="ex" id="ex-6">
+<div class="n">Exercício 6</div>
+<p>Resolva por escalonamento: <span class="nb">\(\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(L_2 \leftarrow L_2 - 2L_1\) e \(L_3 \leftarrow L_3 - L_1\) dão \(-3y - z = -9\) e \(y - 2z = -4\). Com \(L_3 \leftarrow 3L_3 + L_2\): \(-7z = -21\), logo \(z = 3\); depois \(y = 2\) e \(x = 1\). Solução \((1, 2, 3)\), SPD.</p>
+</details>
+</div>
+<div class="ex" id="ex-7">
+<div class="n">Exercício 7</div>
+<p>Discuta, em função de \(k\), o sistema <span class="nb">\(\begin{cases} x + ky = 1 \\ 2x + 4y = 3 \end{cases}\)</span>.</p>
+<details><summary>Ver resposta</summary>
+<p>\(D = 4 - 2k\). Se \(k \neq 2\): SPD. Se \(k = 2\): \(\tfrac{1}{2} = \tfrac{2}{4} \neq \tfrac{1}{3}\), então SI. O sistema nunca é SPI.</p>
+</details>
+</div>
+<div class="ex" id="ex-8">
+<div class="n">Exercício 8</div>
+<p>Em um estacionamento há carros e motos, num total de 30 veículos e 100 rodas. Quantos são os carros e quantas são as motos?</p>
+<details><summary>Ver resposta</summary>
+<p><span class="nb">\(\begin{cases} c + m = 30 \\ 4c + 2m = 100 \end{cases}\)</span>. Da 1ª, \(m = 30 - c\); então \(4c + 60 - 2c = 100 \Rightarrow c = 20\) e \(m = 10\): 20 carros e 10 motos.</p>
+</details>
+</div>
+</section>
+
+</div>
+{% endraw %}
