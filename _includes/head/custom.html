@@ -8,6 +8,26 @@
 {% if page.mathjax %}
 <!-- MathJax 4: LaTeX nas páginas com `mathjax: true` no front matter -->
 <script>
+  // O tema zera a margem de cima de todo ":first-child" dentro de .page__content.
+  // Isso também atinge as peças com que o MathJax monta parênteses e colchetes altos
+  // (matrizes com 3 ou mais linhas), e o pedaço de cima do delimitador some.
+  // Aqui a regra do tema passa a ignorar o que está dentro das fórmulas.
+  (function () {
+    var alvo = '.page__content :first-child';
+    for (var f = 0; f < document.styleSheets.length; f++) {
+      var folha = document.styleSheets[f], regras;
+      try { regras = folha.cssRules; } catch (e) { continue; }
+      for (var i = 0; i < regras.length; i++) {
+        var r = regras[i];
+        if (r.selectorText && r.selectorText.indexOf(alvo) === 0) {
+          var sel = r.selectorText.replace(alvo, alvo + ':not(mjx-container *)');
+          try { folha.insertRule(sel + '{' + r.style.cssText + '}', i); folha.deleteRule(i + 1); } catch (e) {}
+          return;
+        }
+      }
+    }
+  })();
+
   window.MathJax = {
     tex: {
       {%- if page.collection == 'notas-de-aula' %}
