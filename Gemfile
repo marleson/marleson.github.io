@@ -8,7 +8,7 @@ source "https://rubygems.org"
 #   bundle exec jekyll serve        # servidor local em http://localhost:4000
 #   bundle update github-pages      # atualiza para a versão mais recente
 #
-gem "github-pages", "~> 232", group: :jekyll_plugins
+gem "github-pages", "~> 233", group: :jekyll_plugins
 
 group :jekyll_plugins do
   gem "jekyll-include-cache"   # exigido pelo tema Minimal Mistakes
