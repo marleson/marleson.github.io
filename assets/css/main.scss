@@ -830,6 +830,68 @@ table.mx-mat {
   .si  { grid-column: 3; grid-row: 3; }
 }
 
+// -----------------------------------------------------------------------------
+// Figuras interativas de geometria plana (assets/js/geometria.js)
+// -----------------------------------------------------------------------------
+.geo-fig { fill: rgba(37, 99, 176, 0.13); stroke: #2563b0; stroke-width: 3; stroke-linejoin: round; }
+.geo-fig--ruim { fill: rgba(180, 50, 63, 0.1); stroke: #b4323f; }
+.geo-fig--aberta { fill: none; }
+.geo-fig--sem { fill: none; }
+.geo-fig--copia { fill: rgba(176, 107, 0, 0.13); stroke: #b06b00; stroke-width: 2; stroke-dasharray: 7 5; }
+.geo-meia { fill: rgba(15, 118, 110, 0.2); stroke: none; }
+.geo-tri--0 { fill: rgba(37, 99, 176, 0.2); stroke: none; }
+.geo-tri--1 { fill: rgba(15, 118, 110, 0.22); stroke: none; }
+.geo-borda { fill: none; stroke: $nota-texto-2; stroke-width: 3; }
+.geo-seg { stroke: #1c6b4a; stroke-width: 3.5; stroke-linecap: round; }
+.geo-seg--fora { stroke: #b4323f; stroke-dasharray: 7 5; }
+.geo-base { stroke: $nota-texto-2; stroke-width: 4.5; stroke-linecap: round; }
+.geo-altura { stroke: #b4323f; stroke-width: 2.6; stroke-linecap: round; }
+.geo-altura--trac { stroke-dasharray: 7 5; }
+.geo-diam { stroke: #2563b0; stroke-width: 2.6; stroke-linecap: round; }
+.geo-diag { stroke: #6d28a8; stroke-width: 2.2; stroke-linecap: round; }
+.geo-diag--fraca { opacity: 0.35; }
+.geo-aux { stroke: $nota-texto-3; stroke-width: 1.4; stroke-dasharray: 4 4; fill: none; }
+.geo-cota { stroke: $nota-texto-3; stroke-width: 1.4; }
+.geo-unid { stroke: rgba(37, 99, 176, 0.45); stroke-width: 1; }
+.geo-reto { fill: none; stroke: $nota-texto-2; stroke-width: 1.4; }
+.geo-tracinho { stroke: $nota-texto-2; stroke-width: 2; }
+.geo-ang { fill: rgba(176, 107, 0, 0.22); stroke: #b06b00; stroke-width: 1.5; }
+.geo-ang--ext { fill: rgba(109, 40, 168, 0.18); stroke: #6d28a8; }
+.geo-ang--reflexo { fill: rgba(180, 50, 63, 0.22); stroke: #b4323f; }
+.geo-setor { stroke: #fff; stroke-width: 1; }
+.geo-setor--0 { fill: rgba(37, 99, 176, 0.45); }
+.geo-setor--1 { fill: rgba(176, 107, 0, 0.4); }
+.geo-pto { fill: $nota-texto-2; stroke: #fff; stroke-width: 1.5; }
+.geo-pto--erro { fill: #b4323f; }
+.geo-txt {
+  font-size: 13px; font-weight: 700; fill: $nota-texto-2;
+  paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round;
+}
+.geo-txt--vert { font-size: 14px; font-style: italic; }
+.geo-txt--lado { fill: #1d4f91; }
+.geo-txt--alt { fill: #b4323f; font-style: italic; }
+.geo-txt--diam { fill: #2563b0; font-style: italic; }
+.geo-txt--ang { fill: #8a5300; font-size: 11.5px; }
+.geo-txt--ext { fill: #5b2190; font-size: 11.5px; }
+.geo-txt--diag { fill: #5b2190; }
+.geo-txt--nome { font-weight: 600; font-style: italic; }
+.geo-txt--sel { fill: #8a5300; }
+.geo-txt--fraco { fill: $nota-texto-3; font-weight: 600; }
+.geo .g-ponto--arrastar.geo-sel circle:not(.g-alvo) { fill: #b06b00; }
+.geo .g-ponto--arrastar.geo-h--ab circle:not(.g-alvo) { fill: #1c6b4a; }
+.geo .g-ponto--arrastar.geo-h--ab text { fill: #1c6b4a; font-size: 13px; }
+.geo-setores { border-top: 1px dashed $nota-linha-2; padding-top: 0.6em; }
+.geo-setores[hidden] { display: none; }
+.geo-lista {
+  list-style: none; margin: 0; padding: 0;
+  li { margin: 0.2em 0; padding-left: 1.6em; position: relative; }
+  li::before { position: absolute; left: 0; font-weight: 700; }
+  .geo-ok { color: #14532d; }
+  .geo-ok::before { content: "\2714\FE0E"; }
+  .geo-nao { color: #8a1f30; }
+  .geo-nao::before { content: "\2718\FE0E"; }
+}
+
 @media print {
   .mx__ctr, .mx__btns, .mx__toggles, .mx__ops { display: none; }
 }

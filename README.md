@@ -111,6 +111,30 @@ linhas separadas por `;`, com elementos separados por `,` (aceita frações como
 
 As contas são feitas com frações exatas. Exemplos completos nas aulas de `_notas-de-aula/matematica-3/`.
 
+### Figuras interativas de geometria plana
+
+Coloque `interativos: [geometria]` no front matter (carrega `assets/js/geometria.js`) e, onde
+quiser a figura, um `<div class="mx">` com o tipo da figura. Os pontos azuis podem ser arrastados
+com o mouse, com o dedo ou com as setas do teclado; eles andam de 0,5 em 0,5 na malha, então as
+áreas calculadas pela malha são exatas.
+
+```html
+<div class="mx" data-figura="triangulo" data-modo="livre" data-titulo="Explore: base, altura e área">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+```
+
+| `data-figura` | O que mostra | Atributos |
+|---|---|---|
+| `convexo` | polígono convexo × não convexo e o segmento \(AB\) | `data-inicio` (`seta` ou `hexagono`) |
+| `poligono` | é ou não é polígono (só segmentos, fechado, sem cruzamentos) | `data-inicio` (`aberta`, `cruzada`, `curva`, `poligono`) |
+| `elementos` | lados, vértices, diagonais, ângulos internos e externos, soma dos ângulos | `data-n` (3 a 12), `data-diagonais` (`nenhuma`, `vertice`, `todas`), `data-mostrar` (`interno,externo,triangulos,nomes`) |
+| `triangulo` | área do triângulo | `data-modo`: `livre` (base × altura), `retangulo`, `equilatero`, `isosceles`, `seno`, `heron` |
+| `quadrilatero` | área, perímetro e diagonal | `data-forma`: `quadrado`, `retangulo`, `trapezio`, `losango` |
+| `circulo` | raio, diâmetro, comprimento e área (com os setores rearrumados) | `data-raio` |
+
+Exemplo completo: `_notas-de-aula/matematica-3/aula-04-geometria-plana.html`.
+
 ### Nova nota de aula em Markdown
 
 ```bash

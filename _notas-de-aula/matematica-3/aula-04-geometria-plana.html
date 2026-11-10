@@ -1,0 +1,508 @@
+---
+title: "Geometria plana: polígonos e áreas"
+disciplina: "matematica-3"
+ordem: 4
+date: "2026-11-09"
+excerpt: "Polígonos convexos e não convexos, elementos, soma dos ângulos e número de diagonais; áreas e perímetros de triângulos, quadrado, retângulo, círculo, trapézio e losango — com figuras interativas e exercícios."
+interativos: [geometria]
+aula:
+  kicker: "Matemática 3 · 3º ano do Ensino Médio · Aula 04"
+  resumo: "A <strong>Geometria Plana</strong> estuda as figuras de duas dimensões e suas propriedades. Nesta revisão, o foco são os <strong>polígonos</strong> e o cálculo de <strong>áreas</strong>: saber as fórmulas e decompor figuras complicadas em figuras simples é essencial para medir superfícies e resolver problemas práticos, e servirá de base para a Geometria Espacial."
+  etiquetas:
+    - "Unidade: Geometria"
+    - "15 figuras interativas"
+    - "21 exemplos"
+    - "Exercícios com respostas"
+---
+
+{% include aula-cabecalho.html %}
+
+{% raw %}
+<div class="aula">
+
+<section>
+  <div class="goals">
+    <h2 id="objetivos">O que você vai aprender</h2>
+    <ul>
+      <li>Reconhecer um <strong>polígono</strong> e diferenciar polígonos <strong>convexos</strong> e <strong>não convexos</strong>.</li>
+      <li>Identificar lados, vértices, diagonais e ângulos, e calcular a <strong>soma dos ângulos internos</strong> e o <strong>número de diagonais</strong>.</li>
+      <li>Calcular <strong>áreas e perímetros</strong> de triângulos, quadrado, retângulo, círculo, trapézio e losango.</li>
+      <li>Usar o <strong>teorema de Pitágoras</strong>, a fórmula com o seno e a <strong>fórmula de Heron</strong> quando a altura não é dada.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="roteiro-da-aula"><span class="snum" data-n="0" aria-hidden="true"></span>Roteiro da aula</h2>
+  <p class="sec-lead">Clique em um tópico para ir direto a ele.</p>
+  <dl class="route route--secoes">
+    <div><dt>1</dt><dd><a href="#poligonos"><b>Polígonos.</b></a> convexos e não convexos, definição, elementos, ângulos e diagonais.</dd></div>
+    <div><dt>2</dt><dd><a href="#areas-de-figuras-planas"><b>Áreas de figuras planas.</b></a> o que é área e como medimos.</dd></div>
+    <div><dt>3</dt><dd><a href="#triangulo"><b>Triângulo.</b></a> classificação, base × altura, Pitágoras, seno e Heron.</dd></div>
+    <div><dt>4</dt><dd><a href="#quadrado"><b>Quadrado.</b></a> área, perímetro e diagonal.</dd></div>
+    <div><dt>5</dt><dd><a href="#retangulo"><b>Retângulo.</b></a> área, perímetro e diagonal.</dd></div>
+    <div><dt>6</dt><dd><a href="#circulo"><b>Círculo.</b></a> raio, diâmetro, comprimento da circunferência e área.</dd></div>
+    <div><dt>7</dt><dd><a href="#trapezio"><b>Trapézio.</b></a> tipos, área e perímetro.</dd></div>
+    <div><dt>8</dt><dd><a href="#losango"><b>Losango.</b></a> área pelas diagonais.</dd></div>
+    <div><dt>9</dt><dd><a href="#exercicios"><b>Exercícios.</b></a> para praticar, com respostas.</dd></div>
+  </dl>
+</section>
+
+<section>
+<h2 id="poligonos"><span class="snum" data-n="1" aria-hidden="true"></span>Polígonos</h2>
+<p>Os <em>polígonos</em> são figuras geométricas planas formadas por segmentos de reta. Os elementos de um polígono são os objetos matemáticos que fazem parte da sua estrutura: <em>vértices</em> (pontos), <em>lados</em> (segmentos de reta) e <em>ângulos</em>.</p>
+<p>Um polígono é chamado <strong>convexo</strong> quando, dados dois pontos \(A\) e \(B\) quaisquer no seu interior, o segmento \(AB\) fica totalmente contido no interior do polígono, qualquer que seja a posição de \(A\) e \(B\). Ou seja, é impossível encontrar dois pontos no interior de um polígono convexo tais que algum ponto do segmento \(AB\) fique no exterior.</p>
+<p>Se for possível encontrar <strong>pelo menos um</strong> segmento \(AB\), com \(A\) e \(B\) no interior, que tenha algum ponto no exterior do polígono, a figura é chamada <strong>não convexa</strong> (ou côncava). Na figura abaixo, comece pelo polígono com reentrâncias (não convexo) e depois troque para o hexágono (convexo).</p>
+
+<div class="mx" data-figura="convexo" data-inicio="seta" data-titulo="Explore: convexo ou não convexo?">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<p>Repare que todo polígono não convexo tem pelo menos um ângulo interno maior que \(180^\circ\) (marcado em vermelho na figura). Os <strong>polígonos convexos</strong> têm elementos a mais que os não convexos, além de algumas propriedades exclusivas. Antes de apresentá-los, vamos à definição formal de polígono.</p>
+
+<div class="thm">
+<span class="label">Definição · Polígono</span>
+<p>Um <strong>polígono</strong> é uma figura geométrica plana que:</p>
+<ul>
+  <li>é formada apenas por segmentos de reta;</li>
+  <li>é fechada;</li>
+  <li>tem lados que não se cruzam.</li>
+</ul>
+</div>
+
+<p>Uma figura em que dois segmentos se encontram num ponto que não é extremidade deles (lados que se cruzam) pode ser vista como um conjunto de polígonos, mas não como um polígono único. Também não são polígonos as figuras abertas e as que têm partes curvas.</p>
+
+<div class="mx" data-figura="poligono" data-inicio="aberta" data-titulo="Explore: é ou não é polígono?">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<h3>Elementos de um polígono convexo</h3>
+<p>Todo polígono convexo possui os seguintes elementos:</p>
+<ul>
+  <li><strong>Lados:</strong> os segmentos de reta que formam o polígono;</li>
+  <li><strong>Vértices:</strong> os pontos de encontro entre dois lados;</li>
+  <li><strong>Diagonais:</strong> segmentos de reta que ligam dois vértices <em>não consecutivos</em>. Os segmentos que ligam dois vértices consecutivos são os próprios lados;</li>
+  <li><strong>Ângulos internos:</strong> formados, no interior do polígono, por dois lados consecutivos;</li>
+  <li><strong>Ângulos externos:</strong> formados, no exterior do polígono, por um lado e pelo prolongamento do lado consecutivo a ele. Em cada vértice, o ângulo interno e o externo somam \(180^\circ\).</li>
+</ul>
+
+<div class="mx" data-figura="elementos" data-n="7" data-diagonais="vertice" data-mostrar="interno,externo,nomes" data-titulo="Explore: os elementos de um polígono">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<h3>Propriedades dos polígonos convexos</h3>
+<ul>
+  <li>O número de lados, de vértices, de ângulos internos e de ângulos externos é o mesmo.</li>
+  <li>A <strong>soma dos ângulos internos</strong> de um polígono convexo de \(n\) lados é
+    <p class="eq">\[ \boxed{S_i = (n - 2) \cdot 180^\circ} \]</p>
+    Isso acontece porque as diagonais que saem de um mesmo vértice dividem o polígono em \(n - 2\) triângulos, e a soma dos ângulos de cada triângulo é \(180^\circ\). Marque “Triângulos a partir do vértice” na figura acima para ver.</li>
+  <li>O <strong>número de diagonais</strong> de um polígono convexo de \(n\) lados é
+    <p class="eq">\[ \boxed{d = \dfrac{n(n - 3)}{2}} \]</p>
+    De cada vértice saem \(n - 3\) diagonais (não há diagonal para o próprio vértice nem para os dois vizinhos). Multiplicando por \(n\) vértices, cada diagonal é contada duas vezes (uma por extremidade), por isso dividimos por 2.</li>
+  <li>A <strong>soma dos ângulos externos</strong> de um polígono convexo não depende do número de lados: é sempre \(360^\circ\).</li>
+</ul>
+<p>Num polígono <strong>regular</strong> (todos os lados e todos os ângulos iguais), cada ângulo interno mede \(\dfrac{S_i}{n}\) e cada ângulo externo mede \(\dfrac{360^\circ}{n}\).</p>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 1</span>
+<p>Determine a soma dos ângulos internos e a medida de cada ângulo interno de um icoságono regular.</p>
+<p><em>Resolução.</em> Um icoságono tem vinte lados, logo \(n = 20\). Substituindo na fórmula:</p>
+<p class="eq">\[ S_i = (n - 2) \cdot 180^\circ = (20 - 2) \cdot 180^\circ = 18 \cdot 180^\circ = 3240^\circ \]</p>
+<p>Como o icoságono é regular, os 20 ângulos internos são iguais. Basta dividir a soma pelo número de lados:</p>
+<p class="eq">\[ a_i = \dfrac{3240^\circ}{20} = 162^\circ \]</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 2</span>
+<p>A soma dos ângulos internos de um polígono convexo é \(720^\circ\). Determine o polígono.</p>
+<p><em>Resolução.</em> Substituindo na fórmula:</p>
+<p class="eq">\[ \begin{aligned} 720^\circ &= (n - 2) \cdot 180^\circ \\ 720^\circ &= 180^\circ n - 360^\circ \\ 180^\circ n &= 1080^\circ \\ n &= \dfrac{1080^\circ}{180^\circ} = 6 \end{aligned} \]</p>
+<p>O polígono tem 6 lados: é um <strong>hexágono</strong>.</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 3</span>
+<p>Determine o número de diagonais de um pentágono e represente-as graficamente.</p>
+<p><em>Resolução.</em> O pentágono tem cinco lados, então \(n = 5\):</p>
+<p class="eq">\[ d = \dfrac{5 \cdot (5 - 3)}{2} = \dfrac{5 \cdot 2}{2} = 5 \]</p>
+<p>Na figura, as 5 diagonais aparecem em roxo. De cada vértice saem \(5 - 3 = 2\) diagonais; troque o vértice destacado clicando nele.</p>
+<div class="mx" data-figura="elementos" data-n="5" data-diagonais="todas" data-mostrar="" data-titulo="As diagonais do pentágono">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 4</span>
+<p>Cada ângulo externo de um polígono regular mede \(30^\circ\). Quantos lados e quantas diagonais ele tem?</p>
+<p><em>Resolução.</em> A soma dos ângulos externos é \(360^\circ\) e, no polígono regular, eles são todos iguais:</p>
+<p class="eq">\[ n = \dfrac{360^\circ}{30^\circ} = 12 \qquad\text{e}\qquad d = \dfrac{12 \cdot (12 - 3)}{2} = \dfrac{12 \cdot 9}{2} = 54 \]</p>
+<p>É um <strong>dodecágono</strong>, com 54 diagonais. Cada ângulo interno mede \(180^\circ - 30^\circ = 150^\circ\).</p>
+</div>
+</section>
+
+<section>
+<h2 id="areas-de-figuras-planas"><span class="snum" data-n="2" aria-hidden="true"></span>Áreas de figuras planas</h2>
+<p>A <strong>área</strong> de uma figura plana mede o tamanho da sua superfície: quanto maior a superfície, maior a área. As figuras planas têm duas dimensões, comprimento e largura (são bidimensionais).</p>
+<p>Medir uma área é comparar a superfície com uma unidade: um quadrado de lado 1. Se o lado mede 1 cm, a unidade é o centímetro quadrado (\(\text{cm}^2\)); se mede 1 m, é o metro quadrado (\(\text{m}^2\)). Nas figuras interativas desta aula, cada quadradinho da malha é uma unidade de área.</p>
+<p>Já o <strong>perímetro</strong> é a soma das medidas de todos os lados, ou seja, o comprimento do contorno da figura. Ele é medido em unidades de comprimento (cm, m, ...).</p>
+</section>
+
+<section>
+<h2 id="triangulo"><span class="snum" data-n="3" aria-hidden="true"></span>Triângulo</h2>
+<p>É o polígono formado por três lados. Os triângulos são classificados de acordo com as medidas dos lados e dos ângulos.</p>
+<div class="multicol">
+<p><strong>Quanto aos lados:</strong></p>
+<ul>
+  <li><strong>Equilátero:</strong> os três lados iguais e os três ângulos internos iguais (\(60^\circ\));</li>
+  <li><strong>Isósceles:</strong> dois lados iguais e dois ângulos internos iguais (os da base);</li>
+  <li><strong>Escaleno:</strong> todos os lados e todos os ângulos internos diferentes.</li>
+</ul>
+<p><strong>Quanto aos ângulos:</strong></p>
+<ul>
+  <li><strong>Retângulo:</strong> um ângulo interno de \(90^\circ\);</li>
+  <li><strong>Obtusângulo:</strong> um ângulo interno obtuso (maior que \(90^\circ\)) e dois agudos (menores que \(90^\circ\));</li>
+  <li><strong>Acutângulo:</strong> os três ângulos internos agudos.</li>
+</ul>
+</div>
+
+<h3>Área do triângulo</h3>
+<p>Na maioria das situações, usamos a medida de uma <strong>base</strong> e da <strong>altura</strong> relativa a ela. A altura é o segmento que sai do vértice oposto à base e encontra a reta da base formando um ângulo de \(90^\circ\). Qualquer lado pode ser a base, e cada base tem a sua altura.</p>
+<p class="eq">\[ \boxed{\text{Área} = \dfrac{b \cdot h}{2}} \]</p>
+<p class="cap">Sendo \(b\) a base e \(h\) a altura relativa a essa base.</p>
+<p>A fórmula vem do fato de que o triângulo é a metade de um paralelogramo de mesma base e mesma altura. Na figura, troque a base e veja que a área não muda. Num triângulo obtusângulo, algumas alturas caem <em>fora</em> do triângulo, sobre o prolongamento da base.</p>
+
+<div class="mx" data-figura="triangulo" data-modo="livre" data-titulo="Explore: base, altura e área do triângulo">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 5</span>
+<p>Um triângulo tem base de 8 cm e altura de 5 cm. Qual é a sua área?</p>
+<p><em>Resolução.</em> \(\text{Área} = \dfrac{b \cdot h}{2} = \dfrac{8 \cdot 5}{2} = \dfrac{40}{2} = 20\ \text{cm}^2\).</p>
+</div>
+
+<h3>Triângulo retângulo</h3>
+<p>Das três alturas de um triângulo retângulo, duas coincidem com os <strong>catetos</strong>. Por isso, um cateto pode ser a base e o outro, a altura. Com os catetos \(b\) e \(c\):</p>
+<p class="eq">\[ \boxed{\text{Área} = \dfrac{b \cdot c}{2}} \qquad\text{ou}\qquad \text{Área} = \dfrac{a \cdot h}{2} \]</p>
+<p class="cap">Na segunda forma, a base é a hipotenusa \(a\) e \(h\) é a altura relativa a ela.</p>
+<p>Além disso, se conhecemos dois lados de um triângulo retângulo, encontramos o terceiro pelo <strong>teorema de Pitágoras</strong>: \(a^2 = b^2 + c^2\).</p>
+
+<div class="mx" data-figura="triangulo" data-modo="retangulo" data-titulo="Explore: o triângulo retângulo">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 6</span>
+<p>Os catetos de um triângulo retângulo medem 6 cm e 8 cm. Calcule a área, a hipotenusa e a altura relativa à hipotenusa.</p>
+<p><em>Resolução.</em> A área é \(\dfrac{6 \cdot 8}{2} = 24\ \text{cm}^2\). Por Pitágoras, \(a^2 = 6^2 + 8^2 = 36 + 64 = 100\), logo \(a = 10\) cm. Usando a hipotenusa como base, a área também é \(\dfrac{a \cdot h}{2}\):</p>
+<p class="eq">\[ \dfrac{10 \cdot h}{2} = 24 \;\Rightarrow\; 5h = 24 \;\Rightarrow\; h = 4{,}8\ \text{cm} \]</p>
+</div>
+
+<h3>Triângulo equilátero</h3>
+<p>No triângulo equilátero de lado \(L\), a altura divide o triângulo em dois triângulos retângulos iguais, de lados \(L\) (hipotenusa), \(h\) e \(\dfrac{L}{2}\) (a base fica dividida ao meio). Por Pitágoras:</p>
+<p class="eq">\[ L^2 = h^2 + \left(\dfrac{L}{2}\right)^2 \;\Rightarrow\; h^2 = L^2 - \dfrac{L^2}{4} = \dfrac{3L^2}{4} \;\Rightarrow\; h = \dfrac{L\sqrt{3}}{2} \]</p>
+<p>Substituindo a altura na fórmula da área:</p>
+<p class="eq">\[ \text{Área} = \dfrac{L \cdot h}{2} = \dfrac{L}{2} \cdot \dfrac{L\sqrt{3}}{2} \;\Longrightarrow\; \boxed{\text{Área} = \dfrac{L^2\sqrt{3}}{4}} \]</p>
+
+<div class="mx" data-figura="triangulo" data-modo="equilatero" data-titulo="Explore: altura e área do triângulo equilátero">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 7</span>
+<p>Calcule a altura e a área de um triângulo equilátero de lado 6 cm.</p>
+<p><em>Resolução.</em> \(h = \dfrac{6\sqrt{3}}{2} = 3\sqrt{3} \approx 5{,}2\ \text{cm}\) e \(\text{Área} = \dfrac{6^2\sqrt{3}}{4} = \dfrac{36\sqrt{3}}{4} = 9\sqrt{3} \approx 15{,}59\ \text{cm}^2\).</p>
+</div>
+
+<h3>Triângulo isósceles</h3>
+<p>Para calcular a área do triângulo isósceles, usamos a fórmula de um triângulo qualquer, \(\dfrac{b \cdot h}{2}\). Quando a altura não é conhecida, usamos o teorema de Pitágoras: a altura relativa à base cai exatamente no <strong>ponto médio</strong> da base.</p>
+
+<div class="mx" data-figura="triangulo" data-modo="isosceles" data-titulo="Explore: o triângulo isósceles">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 8</span>
+<p>Um triângulo isósceles tem os dois lados iguais medindo 5 cm e a base medindo 6 cm. Qual é a sua área?</p>
+<p><em>Resolução.</em> A altura divide a base em duas partes de 3 cm. No triângulo retângulo formado: \(5^2 = 3^2 + h^2 \Rightarrow h^2 = 25 - 9 = 16 \Rightarrow h = 4\) cm. Assim, \(\text{Área} = \dfrac{6 \cdot 4}{2} = 12\ \text{cm}^2\).</p>
+</div>
+
+<h3>Dois lados e o ângulo entre eles</h3>
+<p>Se conhecemos dois lados de um triângulo e o ângulo formado entre eles, a área é dada por:</p>
+<p class="eq">\[ \boxed{S = \dfrac{1}{2}\, b \cdot c \cdot \mathrm{sen}\,\alpha} \]</p>
+<p>em que \(b\) e \(c\) são os lados e \(\alpha\) é o ângulo entre eles. A fórmula vale para <strong>qualquer</strong> triângulo (escaleno, isósceles, equilátero, retângulo...). Ela vem de \(S = \dfrac{b \cdot h}{2}\): no triângulo retângulo destacado pela altura, \(\mathrm{sen}\,\alpha = \dfrac{h}{c}\), ou seja, \(h = c \cdot \mathrm{sen}\,\alpha\).</p>
+
+<div class="mx" data-figura="triangulo" data-modo="seno" data-titulo="Explore: a área com o seno">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 9</span>
+<p>Dois lados de um triângulo medem 4 cm e 6 cm, e o ângulo entre eles mede \(30^\circ\). Qual é a área?</p>
+<p><em>Resolução.</em> Como \(\mathrm{sen}\,30^\circ = \dfrac{1}{2}\): \(S = \dfrac{1}{2} \cdot 4 \cdot 6 \cdot \dfrac{1}{2} = 6\ \text{cm}^2\).</p>
+</div>
+
+<h3>Fórmula de Heron</h3>
+<p>Outra maneira de calcular a área de um triângulo é a <strong>fórmula de Heron</strong> (ou teorema de Herão). Ela usa apenas as medidas dos lados \(a\), \(b\) e \(c\) e o <strong>semiperímetro</strong> \(p\), que é a metade do perímetro:</p>
+<p class="eq">\[ \boxed{S = \sqrt{p(p - a)(p - b)(p - c)}} \qquad\text{com}\qquad \boxed{p = \dfrac{a + b + c}{2}} \]</p>
+<p>Não é preciso conhecer a altura: quando ela não é dada, a fórmula de Heron facilita o cálculo da área.</p>
+
+<div class="mx" data-figura="triangulo" data-modo="heron" data-titulo="Explore: a fórmula de Heron">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 10</span>
+<p>Calcule a área de um triângulo de lados 13 cm, 14 cm e 15 cm.</p>
+<p><em>Resolução.</em> O semiperímetro é \(p = \dfrac{13 + 14 + 15}{2} = 21\). Então</p>
+<p class="eq">\[ S = \sqrt{21 \cdot (21 - 13)(21 - 14)(21 - 15)} = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = \sqrt{7056} = 84\ \text{cm}^2 \]</p>
+</div>
+</section>
+
+<section>
+<h2 id="quadrado"><span class="snum" data-n="4" aria-hidden="true"></span>Quadrado</h2>
+<p>É o quadrilátero regular: tem quatro lados <strong>congruentes</strong> (de mesma medida) e quatro ângulos internos de \(90^\circ\), chamados ângulos retos.</p>
+<p>Para calcular a área do quadrado, basta multiplicar a medida de dois lados (\(L\)). Muitas vezes os lados são chamados de base (\(b\)) e altura (\(h\)); no quadrado, a base é igual à altura (\(b = h\)). Logo:</p>
+<p class="eq">\[ \boxed{A = L^2} \qquad\text{ou}\qquad A = b \cdot h \]</p>
+<p>Diferente da área, o <strong>perímetro</strong> é a soma de todos os lados. No quadrado, \(P = L + L + L + L\), ou seja,</p>
+<p class="eq">\[ \boxed{P = 4L} \]</p>
+<p>A diagonal divide o quadrado em dois triângulos retângulos isósceles. Por Pitágoras, \(d^2 = L^2 + L^2 = 2L^2\), então \(d = L\sqrt{2}\).</p>
+
+<div class="mx" data-figura="quadrilatero" data-forma="quadrado" data-titulo="Explore: área e perímetro do quadrado">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 11</span>
+<p>Um quadrado tem lado de 7 cm. Calcule sua área e seu perímetro.</p>
+<p><em>Resolução.</em> \(A = 7^2 = 49\ \text{cm}^2\) e \(P = 4 \cdot 7 = 28\ \text{cm}\).</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 12</span>
+<p>A área de uma sala quadrada é \(36\ \text{m}^2\). Quanto mede o lado, o perímetro e a diagonal da sala?</p>
+<p><em>Resolução.</em> \(L^2 = 36 \Rightarrow L = 6\) m. O perímetro é \(P = 4 \cdot 6 = 24\) m, e a diagonal é \(d = 6\sqrt{2} \approx 8{,}49\) m.</p>
+</div>
+</section>
+
+<section>
+<h2 id="retangulo"><span class="snum" data-n="5" aria-hidden="true"></span>Retângulo</h2>
+<p>É o quadrilátero que tem os quatro ângulos internos retos (\(90^\circ\)). Seus lados opostos são paralelos e têm a mesma medida. Assim como no quadrado, a soma dos ângulos internos é \(4 \cdot 90^\circ = 360^\circ\).</p>
+<p>A área do retângulo é o produto da medida da base pela medida da altura:</p>
+<p class="eq">\[ \boxed{A = b \cdot h} \]</p>
+<p class="cap">Sendo \(A\) a área, \(b\) a base e \(h\) a altura.</p>
+
+<div class="box warn">
+<span class="label">Fique atento!</span>
+<p>Em geral, um retângulo tem dois lados menores e dois maiores. Quando os quatro lados são iguais, o retângulo é um quadrado: todo quadrado é também um retângulo.</p>
+</div>
+
+<p>O <strong>perímetro</strong> do retângulo é a soma de todos os lados: \(P = b + h + b + h\), isto é,</p>
+<p class="eq">\[ \boxed{P = 2 \cdot (b + h)} \]</p>
+<p>O segmento que une dois vértices não consecutivos é a <strong>diagonal</strong>. Traçando uma diagonal, o retângulo fica dividido em dois triângulos retângulos, cujos catetos são a base e a altura. Pelo teorema de Pitágoras (o quadrado da hipotenusa é igual à soma dos quadrados dos catetos):</p>
+<p class="eq">\[ d^2 = b^2 + h^2 \qquad\text{ou}\qquad \boxed{d = \sqrt{b^2 + h^2}} \]</p>
+
+<div class="mx" data-figura="quadrilatero" data-forma="retangulo" data-titulo="Explore: área, perímetro e diagonal do retângulo">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 13</span>
+<p>Um terreno retangular mede 12 m de frente e 30 m de fundo. Qual é a sua área? Quantos metros de muro são necessários para cercá-lo?</p>
+<p><em>Resolução.</em> \(A = 12 \cdot 30 = 360\ \text{m}^2\). O muro corresponde ao perímetro: \(P = 2 \cdot (12 + 30) = 84\) m.</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 14</span>
+<p>A diagonal de um retângulo mede 10 cm e a base mede 8 cm. Calcule a altura e a área.</p>
+<p><em>Resolução.</em> Por Pitágoras, \(10^2 = 8^2 + h^2 \Rightarrow h^2 = 100 - 64 = 36 \Rightarrow h = 6\) cm. Então \(A = 8 \cdot 6 = 48\ \text{cm}^2\).</p>
+</div>
+</section>
+
+<section>
+<h2 id="circulo"><span class="snum" data-n="6" aria-hidden="true"></span>Círculo</h2>
+<p>O círculo (também chamado de disco) é a região plana limitada por uma <strong>circunferência</strong>. A circunferência é só a “linha” do contorno; o círculo é a circunferência junto com todo o seu interior.</p>
+<p>O <strong>raio</strong> (\(r\)) é a distância do centro a qualquer ponto da circunferência. O <strong>diâmetro</strong> (\(d\)) é o segmento que liga dois pontos da circunferência passando pelo centro, dividindo o círculo em duas metades iguais. Por isso, o diâmetro vale o dobro do raio:</p>
+<p class="eq">\[ d = 2r \]</p>
+
+<div class="box warn">
+<span class="label">Fique atento!</span>
+<p>Não confunda raio e diâmetro: o raio vai do centro até a borda; o diâmetro atravessa o círculo inteiro, passando pelo centro. Se um problema der o diâmetro, divida por 2 para obter o raio antes de usar as fórmulas.</p>
+</div>
+
+<p>A área do círculo depende da medida do raio:</p>
+<p class="eq">\[ \boxed{A = \pi \cdot r^2} \]</p>
+<p class="cap">Sendo \(\pi\) a constante pi (\(\pi \approx 3{,}14\)) e \(r\) o raio.</p>
+<p>O perímetro do círculo é o <strong>comprimento da circunferência</strong>. Ele é igual a \(\pi\) vezes o diâmetro, ou seja, \(2\pi\) vezes o raio:</p>
+<p class="eq">\[ \boxed{C = 2\pi \cdot r} \qquad\text{ou}\qquad \boxed{C = \pi \cdot d} \]</p>
+<p>Por que a área é \(\pi r^2\)? Na figura, marque “Cortar em setores”: os setores do círculo, rearrumados lado a lado, quase formam um retângulo de base igual a meia circunferência (\(\pi r\)) e altura \(r\). A área desse “retângulo” é \(\pi r \cdot r = \pi r^2\).</p>
+
+<div class="mx" data-figura="circulo" data-titulo="Explore: raio, diâmetro, comprimento e área">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 15</span>
+<p>Calcule a área e o comprimento da circunferência de um círculo de raio 5 cm (use \(\pi \approx 3{,}14\)).</p>
+<p><em>Resolução.</em> \(A = \pi \cdot 5^2 = 25\pi \approx 78{,}5\ \text{cm}^2\) e \(C = 2\pi \cdot 5 = 10\pi \approx 31{,}4\) cm.</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 16</span>
+<p>O que tem mais pizza: uma pizza de 40 cm de diâmetro ou duas pizzas de 30 cm de diâmetro?</p>
+<p><em>Resolução.</em> A pizza grande tem raio 20 cm: \(A = \pi \cdot 20^2 = 400\pi \approx 1256\ \text{cm}^2\). Cada pizza menor tem raio 15 cm: \(A = \pi \cdot 15^2 = 225\pi\), e as duas juntas somam \(450\pi \approx 1413\ \text{cm}^2\). As duas pizzas de 30 cm têm mais pizza.</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 17</span>
+<p>Uma roda tem circunferência de 62,8 cm. Qual é o seu raio?</p>
+<p><em>Resolução.</em> \(2\pi r = 62{,}8 \Rightarrow 2 \cdot 3{,}14 \cdot r = 62{,}8 \Rightarrow 6{,}28\, r = 62{,}8 \Rightarrow r = 10\) cm.</p>
+</div>
+</section>
+
+<section>
+<h2 id="trapezio"><span class="snum" data-n="7" aria-hidden="true"></span>Trapézio</h2>
+<p>É um quadrilátero notável com <strong>dois lados paralelos</strong>, chamados <strong>bases</strong>: uma é a base maior (\(B\)) e a outra, a base menor (\(b\)). Os outros dois lados (\(L_1\) e \(L_2\)) não são paralelos. A <strong>altura</strong> (\(h\)) é a distância entre as bases. A soma dos ângulos internos é \(360^\circ\).</p>
+<p>Os trapézios são classificados em:</p>
+<ul>
+  <li><strong>Trapézio retângulo:</strong> tem dois ângulos de \(90^\circ\) (um dos lados é perpendicular às bases);</li>
+  <li><strong>Trapézio isósceles:</strong> também chamado de trapézio simétrico, os lados não paralelos têm a mesma medida;</li>
+  <li><strong>Trapézio escaleno:</strong> os lados não paralelos têm medidas diferentes.</li>
+</ul>
+<p>Para medir a superfície do trapézio, usamos:</p>
+<p class="eq">\[ \boxed{A = \dfrac{(B + b) \cdot h}{2}} \]</p>
+<p class="cap">Sendo \(A\) a área, \(B\) a base maior, \(b\) a base menor e \(h\) a altura.</p>
+<p>Na figura, marque “Juntar uma cópia girada”: dois trapézios iguais formam um paralelogramo de base \(B + b\) e altura \(h\). O trapézio é metade dele. Arraste os vértices e veja o tipo do trapézio mudar.</p>
+
+<div class="mx" data-figura="quadrilatero" data-forma="trapezio" data-titulo="Explore: tipos e área do trapézio">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<p>O <strong>perímetro</strong> do trapézio é a soma de todos os lados:</p>
+<p class="eq">\[ \boxed{P = B + b + L_1 + L_2} \]</p>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 18</span>
+<p>Um trapézio tem bases de 10 cm e 6 cm e altura de 4 cm. Qual é a sua área?</p>
+<p><em>Resolução.</em> \(A = \dfrac{(10 + 6) \cdot 4}{2} = \dfrac{16 \cdot 4}{2} = 32\ \text{cm}^2\).</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 19</span>
+<p>Um trapézio isósceles tem bases de 12 cm e 6 cm, e os lados não paralelos medem 5 cm. Calcule a altura, a área e o perímetro.</p>
+<p><em>Resolução.</em> Traçando as alturas a partir dos vértices da base menor, a base maior fica dividida em \(3 + 6 + 3\) (as sobras dos dois lados são iguais, pois o trapézio é isósceles). Em cada triângulo retângulo formado: \(5^2 = 3^2 + h^2 \Rightarrow h = 4\) cm. Então</p>
+<p class="eq">\[ A = \dfrac{(12 + 6) \cdot 4}{2} = 36\ \text{cm}^2 \qquad\text{e}\qquad P = 12 + 6 + 5 + 5 = 28\ \text{cm} \]</p>
+</div>
+</section>
+
+<section>
+<h2 id="losango"><span class="snum" data-n="8" aria-hidden="true"></span>Losango</h2>
+<p>É o quadrilátero com os <strong>quatro lados iguais</strong>. Seus lados opostos são paralelos, seus ângulos opostos são congruentes e suas duas diagonais se cruzam <strong>perpendicularmente</strong>, cortando-se ao meio. Em geral, tem dois ângulos agudos (menores que \(90^\circ\)) e dois obtusos (maiores que \(90^\circ\)); quando os quatro ângulos são retos, o losango é um quadrado.</p>
+<p>A área do losango é calculada pelas diagonais:</p>
+<p class="eq">\[ \boxed{A = \dfrac{D \cdot d}{2}} \]</p>
+<p class="cap">Sendo \(A\) a área, \(D\) a diagonal maior e \(d\) a diagonal menor.</p>
+<p>O losango é metade do retângulo de lados \(D\) e \(d\) que o envolve (marque “Retângulo D × d em volta” na figura). Como as diagonais se cortam ao meio formando \(90^\circ\), o lado pode ser obtido por Pitágoras: \(L^2 = \left(\dfrac{D}{2}\right)^2 + \left(\dfrac{d}{2}\right)^2\).</p>
+
+<div class="mx" data-figura="quadrilatero" data-forma="losango" data-titulo="Explore: área do losango">
+  <p>(Ative o JavaScript para usar esta figura interativa.)</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 20</span>
+<p>As diagonais de um losango medem 10 cm e 6 cm. Calcule a área, o lado e o perímetro.</p>
+<p><em>Resolução.</em> \(A = \dfrac{10 \cdot 6}{2} = 30\ \text{cm}^2\). As metades das diagonais medem 5 e 3, então \(L^2 = 5^2 + 3^2 = 34 \Rightarrow L = \sqrt{34} \approx 5{,}83\) cm, e \(P = 4\sqrt{34} \approx 23{,}3\) cm.</p>
+</div>
+
+<div class="dem exemplo">
+<span class="label">Exemplo 21</span>
+<p>O lado de um losango mede 5 cm e a diagonal maior mede 8 cm. Qual é a área?</p>
+<p><em>Resolução.</em> A metade da diagonal maior é 4. Por Pitágoras, a metade da diagonal menor é \(\sqrt{5^2 - 4^2} = 3\), logo \(d = 6\) cm. Então \(A = \dfrac{8 \cdot 6}{2} = 24\ \text{cm}^2\).</p>
+</div>
+</section>
+
+<section>
+<h2 id="exercicios"><span class="snum" data-n="9" aria-hidden="true"></span>Exercícios</h2>
+<div class="ex" id="ex-1">
+<div class="n">Exercício 1 · (FGV, 2024)</div>
+<p>Um retângulo de \(12\ \text{cm}^2\) de área tem um dos lados com o triplo do comprimento do outro. Assinale a opção que indica a medida do perímetro desse retângulo.</p>
+<p>(a) 12 cm &nbsp; (b) 14 cm &nbsp; (c) 16 cm &nbsp; (d) 18 cm &nbsp; (e) 28 cm</p>
+<details><summary>Ver resposta</summary>
+<p>Chamando um lado de \(L\) e o outro de \(3L\), a área é \(A = L \cdot 3L = 3L^2 = 12 \Rightarrow L^2 = 4 \Rightarrow L = 2\) cm. O perímetro é \(P = L + 3L + L + 3L = 8L = 8 \cdot 2 = 16\) cm. <strong>Resposta: (c).</strong></p>
+</details>
+</div>
+
+<div class="ex" id="ex-2">
+<div class="n">Exercício 2</div>
+<p>Quantas diagonais tem um decágono convexo? Qual é a soma dos seus ângulos internos?</p>
+<details><summary>Ver resposta</summary>
+<p>\(d = \dfrac{10 \cdot 7}{2} = 35\) diagonais e \(S_i = (10 - 2) \cdot 180^\circ = 1440^\circ\).</p>
+</details>
+</div>
+
+<div class="ex" id="ex-3">
+<div class="n">Exercício 3</div>
+<p>Cada ângulo interno de um polígono regular mede \(140^\circ\). Que polígono é esse?</p>
+<details><summary>Ver resposta</summary>
+<p>Cada ângulo externo mede \(180^\circ - 140^\circ = 40^\circ\), então \(n = \dfrac{360^\circ}{40^\circ} = 9\): é um <strong>eneágono</strong>.</p>
+</details>
+</div>
+
+<div class="ex" id="ex-4">
+<div class="n">Exercício 4</div>
+<p>Calcule a área de um triângulo cujos lados medem 5 cm, 12 cm e 13 cm (dica: verifique se ele é retângulo).</p>
+<details><summary>Ver resposta</summary>
+<p>Como \(5^2 + 12^2 = 25 + 144 = 169 = 13^2\), o triângulo é retângulo, com catetos 5 e 12. Área \(= \dfrac{5 \cdot 12}{2} = 30\ \text{cm}^2\). (Pela fórmula de Heron: \(p = 15\) e \(S = \sqrt{15 \cdot 10 \cdot 3 \cdot 2} = \sqrt{900} = 30\).)</p>
+</details>
+</div>
+
+<div class="ex" id="ex-5">
+<div class="n">Exercício 5</div>
+<p>Um triângulo equilátero tem perímetro de 18 cm. Calcule sua altura e sua área.</p>
+<details><summary>Ver resposta</summary>
+<p>O lado mede \(18 \div 3 = 6\) cm. Então \(h = \dfrac{6\sqrt{3}}{2} = 3\sqrt{3} \approx 5{,}2\) cm e \(\text{Área} = \dfrac{6^2\sqrt{3}}{4} = 9\sqrt{3} \approx 15{,}59\ \text{cm}^2\).</p>
+</details>
+</div>
+
+<div class="ex" id="ex-6">
+<div class="n">Exercício 6</div>
+<p>Um terreno retangular tem perímetro de 100 m e um dos lados mede 20 m. Qual é a área do terreno?</p>
+<details><summary>Ver resposta</summary>
+<p>\(2 \cdot (20 + x) = 100 \Rightarrow 20 + x = 50 \Rightarrow x = 30\) m. A área é \(20 \cdot 30 = 600\ \text{m}^2\).</p>
+</details>
+</div>
+
+<div class="ex" id="ex-7">
+<div class="n">Exercício 7</div>
+<p>Uma praça circular tem 15 m de raio. Quantos metros de cerca são necessários para contorná-la, e qual é a área da praça? (Use \(\pi \approx 3{,}14\).)</p>
+<details><summary>Ver resposta</summary>
+<p>Cerca: \(C = 2 \cdot 3{,}14 \cdot 15 = 94{,}2\) m. Área: \(A = 3{,}14 \cdot 15^2 = 3{,}14 \cdot 225 = 706{,}5\ \text{m}^2\).</p>
+</details>
+</div>
+
+<div class="ex" id="ex-8">
+<div class="n">Exercício 8</div>
+<p>Um trapézio tem bases de 9 cm e 5 cm e altura de 6 cm. Calcule sua área.</p>
+<details><summary>Ver resposta</summary>
+<p>\(A = \dfrac{(9 + 5) \cdot 6}{2} = \dfrac{14 \cdot 6}{2} = 42\ \text{cm}^2\).</p>
+</details>
+</div>
+
+<div class="ex" id="ex-9">
+<div class="n">Exercício 9</div>
+<p>As diagonais de um losango medem 12 cm e 16 cm. Calcule a área, o lado e o perímetro do losango.</p>
+<details><summary>Ver resposta</summary>
+<p>\(A = \dfrac{16 \cdot 12}{2} = 96\ \text{cm}^2\). As metades das diagonais medem 8 e 6, então \(L = \sqrt{8^2 + 6^2} = \sqrt{100} = 10\) cm e \(P = 4 \cdot 10 = 40\) cm.</p>
+</details>
+</div>
+
+<div class="ex" id="ex-10">
+<div class="n">Exercício 10</div>
+<p>Uma <em>coroa circular</em> é a região entre duas circunferências de mesmo centro. Calcule a área da coroa entre as circunferências de raios 5 cm e 3 cm. (Use \(\pi \approx 3{,}14\).)</p>
+<details><summary>Ver resposta</summary>
+<p>É a área do círculo maior menos a do menor: \(\pi \cdot 5^2 - \pi \cdot 3^2 = 25\pi - 9\pi = 16\pi \approx 50{,}24\ \text{cm}^2\).</p>
+</details>
+</div>
+</section>
+
+</div>
+{% endraw %}

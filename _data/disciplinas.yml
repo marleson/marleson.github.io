@@ -62,7 +62,7 @@ matematica-3:
     - titulo: "Matrizes e sistemas lineares"
       topicos: ["Matrizes e operações", "Determinantes", "Sistemas lineares"]
     - titulo: "Geometria"
-      topicos: ["Geometria plana: áreas", "Geometria espacial: prismas, pirâmides, cilindros, cones e esferas"]
+      topicos: ["Geometria plana: polígonos e áreas", "Geometria espacial: prismas, pirâmides, cilindros, cones e esferas"]
     - titulo: "Geometria analítica"
       topicos: ["Ponto e reta", "Circunferência", "Cônicas"]
     - titulo: "Estatística"
